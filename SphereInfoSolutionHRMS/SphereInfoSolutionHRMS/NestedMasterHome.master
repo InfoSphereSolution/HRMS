@@ -1,121 +1,25 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/MasterMain.Master" AutoEventWireup="true" CodeBehind="NestedMasterHome.master.cs" Inherits="SphereInfoSolutionHRMS.NestedMasterHome" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
     <link href="Style/css/StyleHome.css" rel="stylesheet" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContentHolder" runat="server">
     <div class="row">
-        <div class="col-lg-11 col-sm-11 col-xs-11">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
             <%--start homeheader--%>
-            
 
-        
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">NavBar</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li></li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu 1 <b class="caret"></b></a>
-                    <ul class="dropdown-menu multi-level">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                        <li class="dropdown-submenu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-submenu">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Action</a></li>
-                                                <li><a href="#">Another action</a></li>
-                                                <li><a href="#">Something else here</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Separated link</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">One more separated link</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu 2 <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                        <li class="dropdown-submenu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li class="dropdown-submenu">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="dropdown-submenu">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Action</a></li>
-                                                <li><a href="#">Another action</a></li>
-                                                <li><a href="#">Something else here</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">Separated link</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#">One more separated link</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+            <ul class="topnav" id="myTopnav">
+                <li><a href="../home.aspx">Home</a></li>
+                <li><asp:Button ID="btnlogout" runat="server" Text="Logout" OnClick="btnlogout_Click" CssClass="btn btn-primary btn-signout"/></li>                
+                <li class="icon">
+                    <a href="javascript:void(0);" onclick="myFunction()">&#9776;</a>
                 </li>
             </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</div>
-
-
-
 
             <%--end homeheader--%>
-        </div>
-        <div class="col-lg-1 col-sm-1 col-xs-1 text-right">
-            <a href="../home.aspx">Home</a>
-            <asp:Button ID="btnlogout" runat="server" Text="Logout" OnClick="btnlogout_Click" class="btn btn-warning btn-md" />
-        </div>
+        </div>       
     </div>
     <div class="row">
         <div class="col-lg-2">
@@ -125,8 +29,7 @@
                 <Items>
                     <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                     <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-
-
+                    <asp:MenuItem Text="Client Details" NavigateUrl="~/Admin/ClientDetails.aspx" />
                 </Items>
             </asp:Menu>
 
@@ -138,4 +41,14 @@
             <asp:ContentPlaceHolder ID="homeContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
         </div>
     </div>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
 </asp:Content>
