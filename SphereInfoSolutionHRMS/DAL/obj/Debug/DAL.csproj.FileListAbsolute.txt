@@ -1,0 +1,4 @@
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\DAL\bin\Debug\DAL.dll
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\DAL\bin\Debug\DAL.pdb
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.dll
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.pdb

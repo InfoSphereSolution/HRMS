@@ -1,0 +1,7 @@
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\Models\bin\Debug\Models.dll
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\Models\bin\Debug\Models.pdb
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\Models\obj\Debug\Models.dll
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\Models\obj\Debug\Models.pdb
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\Models\bin\Debug\DAL.dll
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\Models\bin\Debug\DAL.pdb
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache

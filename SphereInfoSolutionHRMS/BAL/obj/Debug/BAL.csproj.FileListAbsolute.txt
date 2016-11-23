@@ -1,0 +1,9 @@
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\BAL\bin\Debug\BAL.dll
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\BAL\bin\Debug\BAL.pdb
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.dll
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.pdb
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\BAL\bin\Debug\DAL.dll
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\BAL\bin\Debug\Models.dll
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\BAL\bin\Debug\DAL.pdb
+C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\BAL\bin\Debug\Models.pdb
