@@ -9,3 +9,14 @@ C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\SphereInfoSolu
 C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\BAL.pdb
 C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\DAL.pdb
 C:\Users\user\Desktop\Rohit Thakur\Project\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Models.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\SphereInfoSolutionHRMS.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\SphereInfoSolutionHRMS.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\BAL.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\DAL.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Models.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\BAL.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\DAL.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Models.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.pdb
