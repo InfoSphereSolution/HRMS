@@ -72,22 +72,22 @@
                     class="menuText">
 
                     <Items>
-                        <asp:MenuItem Text="Admin" NavigateUrl="#">
+                        <asp:MenuItem Text="Admin">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
                             <asp:MenuItem Text="Client Details" NavigateUrl="~/Admin/ClientDetails.aspx" />
                         </asp:MenuItem>
-                        <asp:MenuItem Text="Miscellaneous" NavigateUrl="#">
+                        <asp:MenuItem Text="Miscellaneous">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
                             <asp:MenuItem Text="Client Details" NavigateUrl="~/Admin/ClientDetails.aspx" />
                         </asp:MenuItem>
-                        <asp:MenuItem Text="Attendance" NavigateUrl="#">
+                        <asp:MenuItem Text="Attendance">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
                             <asp:MenuItem Text="Client Details" NavigateUrl="~/Admin/ClientDetails.aspx" />
                         </asp:MenuItem>
-                        <asp:MenuItem Text="Reports" NavigateUrl="#">
+                        <asp:MenuItem Text="Reports">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
                             <asp:MenuItem Text="Client Details" NavigateUrl="~/Admin/ClientDetails.aspx" />

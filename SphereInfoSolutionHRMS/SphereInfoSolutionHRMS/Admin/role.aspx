@@ -1,13 +1,7 @@
 ﻿<%@ Page Title="Role" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="role.aspx.cs" Inherits="SphereInfoSolutionHRMS.Admin.role" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
-    <style>
-        .hidden
-        {
-            display: none;
-        }
-    </style>
-  
+ 
     <div class="row text-center">
     </div>
     <div class="row">
@@ -24,25 +18,25 @@
                             <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary btn-md" OnClick="btnSearch_Click" />
                         </td>
                         <td>
-                            <asp:Button ID="btnShowAllReoles" runat="server" Text="Show All Roles" CssClass="btn btn-primary btn-md" OnClick="btnShowAllReoles_Click" />
+                            <asp:Button ID="btnShowAllRoles" runat="server" Text="Show All Roles" CssClass="btn btn-primary btn-md" OnClick="btnShowAllRoles_Click" />
                         </td>
                     </tr>
                 </table>
                 </center>
             </div>
             <hr class="small" />
-
-            <h3 class="text-primary">List of Roles</h3>
-
+            
             <center>
+            <h3 class="text-primary">List of Roles</h3>
+            
             <asp:GridView ID="gvRole" runat="server" DataKeyNames="RoleId" AutoGenerateColumns="False"  OnRowCommand="gvRole_RowCommand" 
                 OnRowDataBound="gvRole_RowDataBound" CssClass="table table-hover table-bordered table-condensed"
                 HeaderStyle-CssClass="gvHeader">
                 <Columns>
-                    <asp:BoundField DataField="RoleId" HeaderText="RoleId" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                    <asp:BoundField DataField="RoleName" HeaderText="RoleName"/>
-                    <asp:BoundField DataField="Role_Level" HeaderText="RoleLevel"/>
-                    <asp:BoundField DataField="IsActive" HeaderText="IsActive" />
+                    <asp:BoundField DataField="RoleId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="RoleName" HeaderText="Name"/>
+                    <asp:BoundField DataField="Role_Level" HeaderText="Level"/>
+                    <asp:BoundField DataField="IsActive" HeaderText="Is Active" />
                     <asp:TemplateField HeaderText="Remove">
                         <ItemTemplate>
                             <center>
@@ -71,11 +65,11 @@
                                  <asp:CheckBox ID="chkboxSelectRole" runat="server" onclick = "Check_Click(this)" />                            
                         </ItemTemplate>                        
                     </asp:TemplateField>
-                    <asp:BoundField DataField="TempRoleId" HeaderText="TempRoleId" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                    <asp:BoundField DataField="RoleId" HeaderText="RoleId" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                    <asp:BoundField DataField="RoleName" HeaderText="RoleName"/>
-                    <asp:BoundField DataField="Role_Level" HeaderText="RoleLevel"/>
-                    <asp:BoundField DataField="IsActive" HeaderText="IsActive" />  
+                    <asp:BoundField DataField="TempRoleId" HeaderText="Temp Role Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="RoleId" HeaderText="Role Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="RoleName" HeaderText="Name"/>
+                    <asp:BoundField DataField="Role_Level" HeaderText="Level"/>
+                    <asp:BoundField DataField="IsActive" HeaderText="Is Active" />  
                    <asp:BoundField DataField="Operation" HeaderText="Operation" />  
                 </Columns>
 </asp:GridView>
@@ -96,16 +90,10 @@
                     <td>
                         <asp:TextBox ID="txtrolename" runat="server" placeholder="Enter Role" Width="250px" CssClass="form-control input-md"></asp:TextBox>
                     </td>
-                    <td>
-
-                    </td>
                 </tr>
                 <tr>
                     <td>
                     <asp:DropDownList ID="ddllevel" runat="server" Width="250px" CssClass="form-control input-md"></asp:DropDownList>
-                    </td>
-                    <td>
-
                     </td>
                 </tr>
                 <tr>

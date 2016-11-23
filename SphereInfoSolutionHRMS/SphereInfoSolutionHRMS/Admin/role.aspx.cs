@@ -264,7 +264,7 @@ namespace SphereInfoSolutionHRMS.Admin
             }
         }
 
-        protected void btnShowAllReoles_Click(object sender, EventArgs e)
+        protected void btnShowAllRoles_Click(object sender, EventArgs e)
         {
             bindgrid();
             txtSearchRole.Text = "";
