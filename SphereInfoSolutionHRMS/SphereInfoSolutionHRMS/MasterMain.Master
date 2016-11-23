@@ -11,6 +11,8 @@
     <link href="Style/css/LoginCSS.css" rel="stylesheet" />
     <script src="Style/js/sidemenu.js"></script>
     <link href="Style/css/StyleHome.css" rel="stylesheet" />
+      <script src="../Style/js/CheckRow.js"></script>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

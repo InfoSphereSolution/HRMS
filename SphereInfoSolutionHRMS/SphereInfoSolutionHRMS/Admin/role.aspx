@@ -7,8 +7,7 @@
             display: none;
         }
     </style>
-    <script src="../Style/js/CheckRow.js"></script>
-
+  
     <div class="row text-center">
     </div>
     <div class="row">
