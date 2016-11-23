@@ -113,6 +113,7 @@
             <%--end homeheader--%>
         </div>
         <div class="col-lg-1 col-sm-1 col-xs-1 text-right">
+            <a href="../home.aspx">Home</a>
             <asp:Button ID="btnlogout" runat="server" Text="Logout" OnClick="btnlogout_Click" class="btn btn-warning btn-md" />
         </div>
     </div>
