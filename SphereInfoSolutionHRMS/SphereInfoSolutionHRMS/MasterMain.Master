@@ -1,52 +1,55 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterMain.master.cs" Inherits="SphereInfoSolutionHRMS.MasterMain" %>
 
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Main Master</title>
+    
+    <%--<script src="Style/js/jquery-3.1.1.min.js"></script>--%>
+    <link href="Style/css/LoginCSS.css" rel="stylesheet" />        
+    <script src="../Style/js/CheckRow.js"></script>    
+    <script src="Style/js/jquery.min.js"></script>    
+    <script src="Style/js/bootstrap.min.js"></script>    
     <link href="Style/css/bootstrap.css" rel="stylesheet" />
-    <script src="Style/js/bootstrap.js"></script>
-    <script src="Style/js/jquery-3.1.1.min.js"></script>
-    <link href="Style/css/LoginCSS.css" rel="stylesheet" />
-    <script src="Style/js/sidemenu.js"></script>
-    <link href="Style/css/StyleHome.css" rel="stylesheet" />
-      <script src="../Style/js/CheckRow.js"></script>
-
+   
+  
+    <link href="Style/css/navHome.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <div class="container">
         <div id="header" class="row">
-            <div class="col-lg-5 col-sm-5">                
-                <asp:Image ID="imgLogo" class="img-responsive pull-right-lg center-block" runat="server" ImageUrl="~/Images/spherelogo.jpg" alt="logo"  style="max-height:125px" />
+            <div class="col-lg-5 col-sm-5">
+                <asp:Image ID="imgLogo" class="img-responsive pull-right-lg center-block" runat="server" ImageUrl="~/Images/spherelogo.jpg" alt="logo" Style="max-height: 125px" />
             </div>
             <div class="col-lg-7 col-sm-7">
-               <asp:Image ID="imgName" class="img-responsive pull-left-lg center-block" runat="server" ImageUrl="~/Images/shpereconame.jpg" alt="Sphere Info Solution" style="max-height:125px"  />
+                <asp:Image ID="imgName" class="img-responsive pull-left-lg center-block" runat="server" ImageUrl="~/Images/shpereconame.jpg" alt="Sphere Info Solution" Style="max-height: 125px" />
             </div>
         </div>
         <form id="mainForm" runat="server">
-        <div id="mainContent" class="row">
-            <div class="col-lg-12">
-               
+            <div id="mainContent" class="row">
+                <div class="col-lg-12">
+
                     <div>
                         <asp:ContentPlaceHolder ID="mainContentHolder" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
-                
+
+                </div>
             </div>
-        </div>
         </form>
         <div id="footer" class="row">
             <div class="col-lg-12 text-right">
-               <asp:HyperLink ID="hlLogin" runat="server" Visible="false">Login</asp:HyperLink>                
+                <asp:HyperLink ID="hlLogin" runat="server" Visible="false">Login</asp:HyperLink>
                 <asp:HyperLink ID="hlAboutContact" runat="server">About/Contact</asp:HyperLink>
             </div>
             <div class="col-lg-12 text-center">
-                 <asp:Label ID="lblCopyright" runat="server" Text="© 2016 Sphere Info Solutions Pvt. Ltd. All Rights Reserved."></asp:Label>                
+                <asp:Label ID="lblCopyright" runat="server" Text="© 2016 Sphere Info Solutions Pvt. Ltd. All Rights Reserved."></asp:Label>
             </div>
-            
+
         </div>
     </div>
 

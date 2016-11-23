@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="role.aspx.cs" Inherits="SphereInfoSolutionHRMS.Admin.role" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="Role" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="role.aspx.cs" Inherits="SphereInfoSolutionHRMS.Admin.role" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
     <style>

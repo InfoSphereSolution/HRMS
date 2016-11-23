@@ -3,7 +3,7 @@
          var row = objRef.parentNode.parentNode;
          if (objRef.checked) {
              //If checked change color to Gainsboro
-             row.style.backgroundColor = "D5D8DC";
+             row.style.backgroundColor = "#D5D8DC";
          }
          else {
              //If not checked change back to original color

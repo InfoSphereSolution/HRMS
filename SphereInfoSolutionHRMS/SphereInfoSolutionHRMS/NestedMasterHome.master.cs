@@ -10,6 +10,13 @@ namespace SphereInfoSolutionHRMS
 {
     public partial class NestedMasterHome : System.Web.UI.MasterPage
     {
+        public string PageName
+        {
+            get { return this.lblPageName.Text; }
+            set { this.lblPageName.Text = value; }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,7 +27,7 @@ namespace SphereInfoSolutionHRMS
             Session.Clear();
             Session.Abandon();
             Session.RemoveAll();
-            btnlogout.Visible = false;
+            lbtnlogout.Visible = false;
             FormsAuthentication.SignOut();
             FormsAuthentication.RedirectToLoginPage();
         }

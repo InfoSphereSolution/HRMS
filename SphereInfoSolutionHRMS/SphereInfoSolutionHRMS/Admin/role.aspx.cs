@@ -21,6 +21,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 Displaylevel();
                 bindgrid();
                 bindTempgrid();
+                ((NestedMasterHome)this.Master).PageName = "Role";
             }
         }
         public void Displaylevel()

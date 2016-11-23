@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="ClientDetails.aspx.cs" Inherits="SphereInfoSolutionHRMS.Admin.ClientDetails" %>
+﻿<%@ Page Title="Client Details" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="ClientDetails.aspx.cs" Inherits="SphereInfoSolutionHRMS.Admin.ClientDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
     <center>
