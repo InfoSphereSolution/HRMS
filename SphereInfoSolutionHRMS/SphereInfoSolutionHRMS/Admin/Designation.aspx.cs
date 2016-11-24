@@ -11,8 +11,8 @@ namespace SphereInfoSolutionHRMS.Admin
 {
     public partial class Designation : System.Web.UI.Page
     {
-        Models.DesignationModel desigantionmodel = new DesignationModel();
-        BAL.Designation designation = new BAL.Designation();
+        Models.DesignationAttribute desigantionmodel = new Models.DesignationAttribute();
+        BAL.DesignationMaster designation = new BAL.DesignationMaster();
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
@@ -82,6 +82,8 @@ namespace SphereInfoSolutionHRMS.Admin
                 gvTempDesignation.DataBind();
                 gvTempDesignation.Visible = true;
                 lblMessageTempDesignation.Text = "";
+                btnapprove.Visible = true;
+                btnreject.Visible = true;
             }
             else
             {
