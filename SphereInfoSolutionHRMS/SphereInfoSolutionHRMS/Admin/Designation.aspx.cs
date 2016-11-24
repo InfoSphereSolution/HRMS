@@ -308,5 +308,9 @@ namespace SphereInfoSolutionHRMS.Admin
             }
         }
 
+        protected void btnShowAllDesignation_Click(object sender, EventArgs e)
+        {
+            DisplayDesigantion();
+        }
     }
 }

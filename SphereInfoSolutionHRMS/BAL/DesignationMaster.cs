@@ -107,7 +107,7 @@ namespace BAL
         public DataTable FilterDesignation(string designationname)
         {
 
-            dt = DAL.SQLHelp.ExecuteSelect("select * from Mst_Designation where DesigantionName=designationname=" + designationname);
+            dt = DAL.SQLHelp.ExecuteSelect("select * from vw_GetDesignation where Designation_Name='" + designationname + "'");
             return dt;
         }
     }

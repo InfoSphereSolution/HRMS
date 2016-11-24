@@ -16,10 +16,10 @@
                             <asp:TextBox ID="txtSearchDesignation" runat="server" CssClass="form-control input-md" placeholder="Enter Designation"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary btn-md"/>
+                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary btn-md" OnClick="btnSearch_Click"/>
                         </td>
                         <td>
-                            <asp:Button ID="btnShowAllDesignation" runat="server" Text="Show All Designation" CssClass="btn btn-primary btn-md"/>
+                            <asp:Button ID="btnShowAllDesignation" runat="server" Text="Show All Designation" CssClass="btn btn-primary btn-md" OnClick="btnShowAllDesignation_Click"/>
                         </td>
                     </tr>
                 </table>
