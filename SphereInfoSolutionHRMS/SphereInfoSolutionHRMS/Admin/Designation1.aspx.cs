@@ -56,10 +56,10 @@ namespace SphereInfoSolutionHRMS.Admin
         {
 
             dt = designation.GetDesigantion();
-           if (dt.Rows.Count > 0)
-           {
-               gvDesignation.DataSource = dt;
-         
+            if (dt.Rows.Count > 0)
+            {
+                gvDesignation.DataSource = dt;
+
                 gvDesignation.DataBind();
                 gvDesignation.Visible = true;
                 lblMessageDesignation.Text = "";
@@ -89,7 +89,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 gvTempDesignation.Visible = false;
                 lblMessageTempDesignation.Text = "No Record Found";
                 btnapprove.Visible = false;
-                btnreject.Visible = false;  
+                btnreject.Visible = false;
             }
         }
 
@@ -237,7 +237,7 @@ namespace SphereInfoSolutionHRMS.Admin
             DisplayTempDesigantion();
             DisplayDesigantion();
             lblMessageTempDesignation.Text = "";
-  
+
         }
 
         protected void UpdateTempDesignation(int Operation)

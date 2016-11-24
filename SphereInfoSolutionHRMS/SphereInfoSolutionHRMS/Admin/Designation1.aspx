@@ -1,9 +1,7 @@
-﻿
-<%@ Page Title="Designation" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="Designation.aspx.cs" Inherits="SphereInfoSolutionHRMS.Admin.Designation" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="Designation1.aspx.cs" Inherits="SphereInfoSolutionHRMS.Admin.Designation1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
-  
-    <div class="row text-center">
+
+ <div class="row text-center">
     </div>
     <div class="row">
         <div class="col-lg-8 col-sm-8 text-center border-right">
@@ -118,4 +116,6 @@
                 </center>
         </div>
     </div>
+
+
 </asp:Content>
