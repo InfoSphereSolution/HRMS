@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\ClientDetails.aspx" />
     <Content Include="Admin\Designation.aspx" />
     <Content Include="Admin\role.aspx" />
     <Content Include="home.aspx" />
@@ -80,6 +81,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\ClientDetails.aspx.cs">
+      <DependentUpon>ClientDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ClientDetails.aspx.designer.cs">
+      <DependentUpon>ClientDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Designation.aspx.cs">
       <DependentUpon>Designation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

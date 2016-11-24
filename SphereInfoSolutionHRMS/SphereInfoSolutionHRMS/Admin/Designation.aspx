@@ -15,7 +15,7 @@
                             <asp:TextBox ID="txtSearchDesignation" runat="server" CssClass="form-control input-md" placeholder="Enter Designation"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary btn-md"/>
+                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary btn-md" OnClick="btnSearch_Click"/>
                         </td>
                         <td>
                             <asp:Button ID="btnShowAllDesignation" runat="server" Text="Show All Designation" CssClass="btn btn-primary btn-md"/>
@@ -28,18 +28,19 @@
 
             <center>
                 <h3 class="text-primary">List of Designations</h3>
-            <asp:GridView ID="gvDesignation" runat="server" DataKeyNames="DesignationId" AutoGenerateColumns="False" 
-                CssClass="table table-hover table-bordered table-condensed"
+            <asp:GridView ID="gvDesignation" runat="server" DataKeyNames="Desig_Id" AutoGenerateColumns="False" 
+               OnRowCommand="gvDesignation_RowCommand"  OnRowDataBound="gvDesignation_RowDataBound"  CssClass="table table-hover table-bordered table-condensed"
                 HeaderStyle-CssClass="gvHeader">
                 <Columns>
-                    <asp:BoundField DataField="DesignationId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                    <asp:BoundField DataField="DesignationName" HeaderText="Name"/>
-                    <asp:BoundField DataField="Designation_Level" HeaderText="Level"/>
+                      <asp:BoundField DataField="Desig_Id" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                     <asp:BoundField DataField="Department_Name" HeaderText="Department Name"/>
+               <%--      <asp:BoundField DataField="RoleName" HeaderText="RoleName"/>
+               --%>     <asp:BoundField DataField="Designation_Name" HeaderText="Desigantion"/>
                     <asp:BoundField DataField="IsActive" HeaderText="Is Active" />
                     <asp:TemplateField HeaderText="Remove">
                         <ItemTemplate>
                             <center>
-                            <asp:Button ID="btnRemove" runat="server" CommandName="Remove" CommandArgument='<%# Eval("DesignationId") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
+                            <asp:Button ID="btnRemove" runat="server" CommandName="Remove" CommandArgument='<%# Eval("Desig_Id") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
                                 </center>
                         </ItemTemplate>
                     </asp:TemplateField>                       
@@ -54,7 +55,7 @@
                 <br />               
 
                    <asp:GridView ID="gvTempDesignation" runat="server" AutoGenerateColumns="False" 
-                       DataKeyNames="TempDesignationId" CssClass="table table-bordered table-condensed" HeaderStyle-CssClass="gvHeader">
+                    OnRowDataBound = "RowDataBound"   DataKeyNames="TempDesigId" CssClass="table table-bordered table-condensed" HeaderStyle-CssClass="gvHeader">
                 <Columns>
                     <asp:TemplateField HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">                        
                         <HeaderTemplate>                            
@@ -64,16 +65,16 @@
                                  <asp:CheckBox ID="chkboxSelectDesignation" runat="server" onclick = "Check_Click(this)" />                            
                         </ItemTemplate>                        
                     </asp:TemplateField>
-                    <asp:BoundField DataField="TempDesignationId" HeaderText="Temp Designation ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                    <asp:BoundField DataField="DesignationId" HeaderText="Designation ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                    <asp:BoundField DataField="DesignationName" HeaderText="Name"/>
-                    <asp:BoundField DataField="Designation_Level" HeaderText="Level"/>
+                    <asp:BoundField DataField="TempDesigId" HeaderText="Temp Designation ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="Desig_Id" HeaderText="Designation ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="Department_Name" HeaderText="Department"/>
+                    <asp:BoundField DataField="Designation_Name" HeaderText="Designation" />
                     <asp:BoundField DataField="IsActive" HeaderText="Is Active" />  
                    <asp:BoundField DataField="Operation" HeaderText="Operation" />  
                 </Columns>
 </asp:GridView>
-                <asp:Button ID="btnapprove" runat="server" Text="Approve" CssClass="btn btn-success btn-md" Width="100px"/>&nbsp;&nbsp;
-                <asp:Button ID="btnreject" runat="server" Text="Reject"  CssClass="btn btn-danger btn-md" Width="100px"/>
+                <asp:Button ID="btnapprove" runat="server" Text="Approve" CssClass="btn btn-success btn-md" Width="100px" OnClick="btnapprove_Click"/>&nbsp;&nbsp;
+                <asp:Button ID="btnreject" runat="server" Text="Reject"  CssClass="btn btn-danger btn-md" Width="100px" OnClick="btnreject_Click"/>
                 <br />
                 <asp:Label ID="lblMessageTempDesignation" runat="server"></asp:Label>
             </center>
@@ -102,7 +103,7 @@
                 </tr>                
                 <tr>
                     <td colspan="2">
-                    <asp:Button ID="btnAddDesignation" runat="server" Text="Add" Width="250px" CssClass="btn btn-success btn-md"></asp:Button>
+                    <asp:Button ID="btnAddDesignation" runat="server" Text="Add" Width="250px" CssClass="btn btn-success btn-md" OnClick="btnAddDesignation_Click"></asp:Button>
                     </td>
                 </tr>
                 <tr>
