@@ -80,7 +80,7 @@
             </center>
         </div>
 
-
+        <%--  --%>
         <div class="col-lg-4 col-sm-4 text-center">
             <center>
                 <hr class="small" />
