@@ -4,9 +4,11 @@
     <style>
         .menuText
         {
-            font-size:medium;
+            font-size: medium;
         }
     </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainContentHolder" runat="server">
 
@@ -59,7 +61,7 @@
                     Orientation="Horizontal"
                     StaticDisplayLevels="1"
                     DynamicPopOutImageUrl="../Img/arrow.png"
-                    StaticEnableDefaultPopOutImage="False"                    
+                    StaticEnableDefaultPopOutImage="False"
                     MaximumDynamicDisplayLevels="10"
                     EnableViewState="false"
                     CssClass="nav navbar-fix-top"
@@ -75,22 +77,28 @@
                         <asp:MenuItem Text="Admin">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Client Details" NavigateUrl="~/Admin/ClientDetails.aspx" />
+                            <asp:MenuItem Text="Client">
+                                <asp:MenuItem Text="View Clients" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetailstab" />
+                                <asp:MenuItem Text="Add New Client" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetails" />
+                                <asp:MenuItem Text="Holiday List" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
+                                <asp:MenuItem Text="Add New Holiday" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
+                            </asp:MenuItem>
+
                         </asp:MenuItem>
                         <asp:MenuItem Text="Miscellaneous">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Client Details" NavigateUrl="~/Admin/ClientDetails.aspx" />
+                            <asp:MenuItem Text="Add Client" NavigateUrl="~/Admin/AddClient.aspx" />
                         </asp:MenuItem>
                         <asp:MenuItem Text="Attendance">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Client Details" NavigateUrl="~/Admin/ClientDetails.aspx" />
+                            <asp:MenuItem Text="Add Client" NavigateUrl="~/Admin/AddClient.aspx" />
                         </asp:MenuItem>
                         <asp:MenuItem Text="Reports">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Client Details" NavigateUrl="~/Admin/ClientDetails.aspx" />
+                            <asp:MenuItem Text="Add Client" NavigateUrl="~/Admin/AddClient.aspx" />
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>
