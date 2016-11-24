@@ -62,7 +62,7 @@
                                 <asp:CheckBox ID="checkAll" runat="server" onclick = "checkAll(this);" />                            
                         </HeaderTemplate>
                         <ItemTemplate>                            
-                               <asp:CheckBox ID="chkboxSelectRole" runat="server" onclick = "Check_Click(this)" />                            
+                                 <asp:CheckBox ID="chkboxSelectRole" runat="server" onclick = "Check_Click(this)" />                            
                         </ItemTemplate>                        
                     </asp:TemplateField>
                     <asp:BoundField DataField="TempRoleId" HeaderText="Temp Role Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
