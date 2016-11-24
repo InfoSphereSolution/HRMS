@@ -44,7 +44,7 @@ namespace BAL
         }
 
         // Add Role
-        public int AddDesignation(Models.DesignationModel designation)
+        public int AddDesignation(Models.DesignationAttribute designation)
         {
             int count = 0;
             List<SqlParameter> sqldesignation = new List<SqlParameter>();
@@ -66,7 +66,7 @@ namespace BAL
 
 
         //Remove Role From DesignationMaster
-        public int RemoveDesignation(Models.DesignationModel designation)
+        public int RemoveDesignation(Models.DesignationAttribute designation)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
             sqlparam.Add(new SqlParameter("@Desig_id", designation.DesigId));
@@ -85,7 +85,7 @@ namespace BAL
 
 
         //Update Designation From Temp Table 
-        public int UpdateTempDesignation(Models.DesignationModel designation)
+        public int UpdateTempDesignation(Models.DesignationAttribute designation)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
             sqlparam.Add(new SqlParameter("@TempDesignId", designation.TempDesigId));
@@ -107,7 +107,7 @@ namespace BAL
         public DataTable FilterDesignation(string designationname)
         {
 
-            dt = DAL.SQLHelp.ExecuteSelect("select * from vw_GetDesignation where Desigantion_Name=='" + designationname + "'");
+            dt = DAL.SQLHelp.ExecuteSelect("select * from Mst_Designation where DesigantionName=designationname=" + designationname);
             return dt;
         }
     }
