@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class DesignationModel
+    public class DesignationAttribute
     {
         public int DesigId { get; set; }
         public string DesignationName { get; set; }
@@ -16,6 +16,5 @@ namespace Models
         public int Operation { get; set; }
         public int TempDesigId { get; set; }
         public int UpdatedBy { get; set; }
-
     }
 }
