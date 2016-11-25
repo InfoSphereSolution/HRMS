@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="Admin\ClientDetails.aspx" />
     <Content Include="Admin\Designation.aspx" />
+    <Content Include="Admin\EmployeeDetails.aspx" />
     <Content Include="Admin\role.aspx" />
     <Content Include="home.aspx" />
     <Content Include="Images\avatar_2x.png" />
@@ -98,6 +99,13 @@
     </Compile>
     <Compile Include="Admin\Designation.aspx.designer.cs">
       <DependentUpon>Designation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\EmployeeDetails.aspx.cs">
+      <DependentUpon>EmployeeDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\EmployeeDetails.aspx.designer.cs">
+      <DependentUpon>EmployeeDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\role.aspx.cs">
       <DependentUpon>role.aspx</DependentUpon>
