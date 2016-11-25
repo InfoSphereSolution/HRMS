@@ -70,6 +70,7 @@
     <Content Include="Images\images.jpg" />
     <Content Include="Images\shpereconame.jpg" />
     <Content Include="Images\spherelogo.jpg" />
+    <Content Include="Style\css\navHome.css" />
     <Content Include="Style\js\CheckRow.js" />
     <Content Include="Style\js\sidemenu.js" />
     <Content Include="Login\Login.aspx" />

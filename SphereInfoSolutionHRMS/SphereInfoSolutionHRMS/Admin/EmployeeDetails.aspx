@@ -73,6 +73,10 @@
                                             <asp:Label ID="lblEmployeeID" runat="server" Text="ID" Font-Bold="true"></asp:Label>
                                             <asp:TextBox ID="txtEmployeeID" CssClass="form-control" runat="server" placeholder="Employee ID" ReadOnly="true"></asp:TextBox>
                                         </div>
+                                        <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
+                                            <asp:Image ID="imgEmployeePicture" CssClass="img-responsive img-circle center-block" Style="padding: 5px" AlternateText="Profile Image" ImageAlign="Middle" ImageUrl="~/Images/spherelogo.jpg" runat="server" />
+                                            <asp:FileUpload ID="fuEmployeePicture" runat="server" CssClass="form-control center-block" />
+                                        </div>
                                     </div>
 
                                     <div class="row">
