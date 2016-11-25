@@ -42,7 +42,7 @@
                         <asp:Label ID="lblMessageClientList" runat="server"></asp:Label>
 
 
-                        <%--Waiting for approval grid view--%>
+                        <%--Waiting for approval grid--%>
                         <h3 class="text-primary">Pending Requests</h3>
                         <br />
 
