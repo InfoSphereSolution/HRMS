@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
 
-    <cc1:toolkitscriptmanager runat="server"></cc1:toolkitscriptmanager>
+    <cc1:ToolkitScriptManager runat="server"></cc1:ToolkitScriptManager>
     <div class="panel panel-default" style="padding: 10px; margin: 10px">
         <div id="Tabs" role="tabpanel">
             <!-- Nav tabs -->
@@ -113,12 +113,12 @@
                                                 <asp:Button ID="btnAddCityPanel" runat="server" CssClass="btn btn-primary btn-md form-control pull-right" Text="+" Width="15%" />
                                             </div>
 
-                                            <cc1:modalpopupextender id="mpeAddCity" runat="server"
-                                                popupcontrolid="pnlAddCity"
-                                                targetcontrolid="btnAddCityPanel"
-                                                cancelcontrolid="btnCancelCity"
-                                                backgroundcssclass="modal-backdrop">
-                                            </cc1:modalpopupextender>
+                                            <cc1:ModalPopupExtender ID="mpeAddCity" runat="server"
+                                                PopupControlID="pnlAddCity"
+                                                TargetControlID="btnAddCityPanel"
+                                                CancelControlID="btnCancelCity"
+                                                BackgroundCssClass="modal-backdrop">
+                                            </cc1:ModalPopupExtender>
 
                                             <asp:Panel ID="pnlAddCity" runat="server" CssClass="modal-dialog">
 
@@ -148,12 +148,12 @@
                                                 <asp:Button ID="btnAddStatePanel" runat="server" CssClass="btn btn-primary btn-md form-control pull-right" Text="+" Width="15%" />
                                             </div>
 
-                                            <cc1:modalpopupextender id="mpeAddState" runat="server"
-                                                popupcontrolid="pnlAddState"
-                                                targetcontrolid="btnAddStatePanel"
-                                                cancelcontrolid="btnCancelState"
-                                                backgroundcssclass="modal-backdrop">
-                                            </cc1:modalpopupextender>
+                                            <cc1:ModalPopupExtender ID="mpeAddState" runat="server"
+                                                PopupControlID="pnlAddState"
+                                                TargetControlID="btnAddStatePanel"
+                                                CancelControlID="btnCancelState"
+                                                BackgroundCssClass="modal-backdrop">
+                                            </cc1:ModalPopupExtender>
 
                                             <asp:Panel ID="pnlAddState" runat="server" CssClass="modal-dialog">
 
@@ -198,6 +198,13 @@
                                             <asp:CheckBox ID="cbIsSaturdayWorking" CssClass="checkbox-inline" Text="Saturday working?" runat="server" />
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <asp:Label ID="lblNoOfOptionalHolidays" runat="server" Text="Number of Paid Optional Holidays" Font-Bold="true"></asp:Label>
+                                            <asp:TextBox ID="txtNoOfOptionalHolidays" CssClass="form-control" runat="server" placeholder="Enter Number of Paid Optional Holidays Allowed Here.."></asp:TextBox>
+                                        </div>
+                                    </div>
+
                                     <div class="row">
                                         <asp:Panel ID="pnlISSaturdayWorking" runat="server">
                                             <div class="col-sm-12 form-group">
@@ -278,6 +285,32 @@
                                                         </asp:Label>
                                                     </div>
                                                 </div>
+
+                                                <div id="CustomShiftList">
+                                                    <h3 class="text-primary">List of Custom Shift</h3>
+
+
+                                                    <asp:GridView ID="gvCustomShiftList" runat="server" DataKeyNames="CustomShiftID" AutoGenerateColumns="False"
+                                                        CssClass="table table-hover table-bordered table-condensed"
+                                                        HeaderStyle-CssClass="gvHeader">
+                                                        <Columns>
+                                                            <asp:BoundField DataField="CustomShiftID" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                                            <asp:BoundField DataField="CustomShiftName" HeaderText="Name" />
+                                                            <asp:BoundField DataField="CustomShiftStart" HeaderText="Level" />
+                                                            <asp:BoundField DataField="CustomShiftEnd" HeaderText="Is Active" />
+                                                            <asp:BoundField DataField="CustomShiftHours" HeaderText="Is Active" />
+                                                            <asp:TemplateField HeaderText="Remove" ItemStyle-CssClass="center-block text-center">
+                                                                <ItemTemplate>                                                                    
+                                                                    <asp:Button ID="btnRemoveCustomeShift" runat="server" CommandName="Remove" CommandArgument='<%# Eval("CustomShiftID") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
+                                                                </ItemTemplate>
+                                                            </asp:TemplateField>
+                                                        </Columns>
+                                                    </asp:GridView>
+
+
+                                                </div>
+
+
                                             </asp:Panel>
                                         </div>
                                     </div>
