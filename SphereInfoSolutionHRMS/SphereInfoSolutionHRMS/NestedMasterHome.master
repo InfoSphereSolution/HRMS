@@ -77,28 +77,46 @@
                         <asp:MenuItem Text="Admin">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Client">
+                            <asp:MenuItem Text="Client" NavigateUrl="~/Admin/ClientDetails.aspx">
                                 <asp:MenuItem Text="View Clients" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetailstab" />
                                 <asp:MenuItem Text="Add New Client" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetails" />
                                 <asp:MenuItem Text="Holiday List" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
                                 <asp:MenuItem Text="Add New Holiday" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
                             </asp:MenuItem>
-
+                            <asp:MenuItem Text="Employee" NavigateUrl="~/Admin/EmployeeDetails.aspx" />
                         </asp:MenuItem>
                         <asp:MenuItem Text="Miscellaneous">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Add Client" NavigateUrl="~/Admin/AddClient.aspx" />
+                            <asp:MenuItem Text="Client" NavigateUrl="~/Admin/ClientDetails.aspx">
+                                <asp:MenuItem Text="View Clients" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetailstab" />
+                                <asp:MenuItem Text="Add New Client" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetails" />
+                                <asp:MenuItem Text="Holiday List" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
+                                <asp:MenuItem Text="Add New Holiday" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Employee" NavigateUrl="~/Admin/EmployeeDetails.aspx" />
                         </asp:MenuItem>
                         <asp:MenuItem Text="Attendance">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Add Client" NavigateUrl="~/Admin/AddClient.aspx" />
+                            <asp:MenuItem Text="Client" NavigateUrl="~/Admin/ClientDetails.aspx">
+                                <asp:MenuItem Text="View Clients" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetailstab" />
+                                <asp:MenuItem Text="Add New Client" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetails" />
+                                <asp:MenuItem Text="Holiday List" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
+                                <asp:MenuItem Text="Add New Holiday" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Employee" NavigateUrl="~/Admin/EmployeeDetails.aspx" />
                         </asp:MenuItem>
                         <asp:MenuItem Text="Reports">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Add Client" NavigateUrl="~/Admin/AddClient.aspx" />
+                            <asp:MenuItem Text="Client" NavigateUrl="~/Admin/ClientDetails.aspx">
+                                <asp:MenuItem Text="View Clients" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetailstab" />
+                                <asp:MenuItem Text="Add New Client" NavigateUrl="~/Admin/ClientDetails.aspx#clientDetails" />
+                                <asp:MenuItem Text="Holiday List" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
+                                <asp:MenuItem Text="Add New Holiday" NavigateUrl="~/Admin/ClientDetails.aspx#holidayList" />
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Employee" NavigateUrl="~/Admin/EmployeeDetails.aspx" />
                         </asp:MenuItem>
                     </Items>
                 </asp:Menu>
