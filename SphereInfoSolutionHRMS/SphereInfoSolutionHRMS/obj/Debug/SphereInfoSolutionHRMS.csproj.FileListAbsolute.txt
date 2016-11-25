@@ -20,3 +20,17 @@ C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHR
 C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.csprojResolveAssemblyReference.cache
 C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.dll
 C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\SphereInfoSolutionHRMS.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\SphereInfoSolutionHRMS.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxControlToolkit.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\BAL.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\DAL.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Models.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxMin.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\BAL.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\DAL.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Models.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxControlToolkit.pdb

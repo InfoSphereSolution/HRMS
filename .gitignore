@@ -1,3 +1,20 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @InfoSphereSolution
+ Watch 0
+  Star 0
+  Fork 0 InfoSphereSolution/HRMS
+ Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
+Branch: master Find file Copy pathHRMS/.gitignore
+2479fd5  a day ago
+@InfoSphereSolution InfoSphereSolution Update .gitignore
+1 contributor
+RawBlameHistory     
+283 lines (228 sloc)  4.66 KB
 
 # Created by https://www.gitignore.io/api/visualstudio
 
@@ -280,3 +297,5 @@ __pycache__/
 
 ### VisualStudio Patch ###
 build/
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help
