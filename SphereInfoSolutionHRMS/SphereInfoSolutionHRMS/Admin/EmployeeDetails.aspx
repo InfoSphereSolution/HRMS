@@ -31,10 +31,10 @@
                                     <asp:TextBox ID="txtSearchEmployeeName" runat="server" CssClass="form-control input-md" placeholder="Enter Employee Name Here.."></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnSearchEmployee" runat="server" Text="Search" CssClass="btn btn-primary btn-md" />
+                                    <asp:Button ID="btnSearchEmployee" runat="server" Text="Search" CssClass="btn btn-primary btn-md" OnClick="btnSearchEmployee_Click" />
                                 </td>
                                 <td>
-                                    <asp:Button ID="btnShowAllEmployee" runat="server" Text="Show All Employee" CssClass="btn btn-primary btn-md" />
+                                    <asp:Button ID="btnShowAllEmployee" runat="server" Text="Show All Employee" CssClass="btn btn-primary btn-md" OnClick="btnShowAllEmployee_Click" />
                                 </td>
                             </tr>
                         </table>
@@ -42,7 +42,7 @@
 
                         <asp:GridView ID="gvEmployeeList" runat="server" DataKeyNames="EmployeeId" AutoGenerateColumns="False"
                             CssClass="table table-hover table-bordered table-condensed"
-                            HeaderStyle-CssClass="gvHeader">
+                            HeaderStyle-CssClass="gvHeader" OnRowCommand="gvEmployeeList_RowCommand">
                             <Columns>
                                 <asp:BoundField DataField="EmployeeId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                 <asp:BoundField DataField="EmployeeName" HeaderText="Name" />
@@ -68,14 +68,20 @@
                         <div class="col-lg-12 well">
                             <div class="row">
                                 <div class="col-sm-12">
+
                                     <div class="row">
-                                        <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
-                                            <asp:Label ID="lblEmployeeID" runat="server" Text="ID" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtEmployeeID" CssClass="form-control" runat="server" placeholder="Employee ID" ReadOnly="true"></asp:TextBox>
+                                        <div class="col-lg-8 col-sm-8 col-xs-12 form-group">
                                         </div>
-                                        <div class="col-lg-6 col-sm-6 col-xs-12 form-group">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
                                             <asp:Image ID="imgEmployeePicture" CssClass="img-responsive img-circle center-block" Style="padding: 5px" AlternateText="Profile Image" ImageAlign="Middle" ImageUrl="~/Images/spherelogo.jpg" runat="server" />
                                             <asp:FileUpload ID="fuEmployeePicture" runat="server" CssClass="form-control center-block" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
+                                            <asp:Label ID="lblEmployeeID" runat="server" Text="ID" Font-Bold="true"></asp:Label>
+                                            <asp:TextBox ID="txtEmployeeID" CssClass="form-control" runat="server" placeholder="Employee ID" ReadOnly="true"></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -303,7 +309,7 @@
                                         <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
                                             <asp:Label ID="lblDateOfJoining" runat="server" Text="Date of Joining" Font-Bold="true"></asp:Label>
                                             <asp:TextBox ID="txtDateOfJoining" CssClass="form-control" runat="server" placeholder="Enter Date of Joining Here.."></asp:TextBox>
-                                            <cc1:CalendarExtender ID="ceDateofJoining" runat="server" TargetControlID="txtDateOfJoining" Format="yyyy/M/dd"></cc1:CalendarExtender>
+                                            <ajaxToolkit:CalendarExtender ID="ceDateofJoining" runat="server" TargetControlID="txtDateOfJoining" Format="yyyy/M/dd"></ajaxToolkit:CalendarExtender>
                                         </div>
                                         <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
                                             <asp:Label ID="lblDepartment" runat="server" Text="Department" Font-Bold="true"></asp:Label>
@@ -407,7 +413,7 @@
                                     </div>
 
                                     <asp:Button ID="btnBackPersonalDetails" href="#PersonalDetails" aria-controls="PersonalDetails" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-left" Text="Back" />
-                                    <asp:Button ID="btnSaveEmployee" runat="server" class="btn btn-lg btn-primary pull-right" Text="Save" />
+                                    <asp:Button ID="btnSaveEmployee" runat="server" class="btn btn-lg btn-primary pull-right" Text="Save" OnClick="btnSaveEmployee_Click" />
                                     <%--<asp:Button ID="btnToHoliday" href="#holidayList" aria-controls="holidayList" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-right" Text="Next" />--%>
                                 </div>
                             </div>
