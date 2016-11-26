@@ -1,10 +1,43 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="ClientDetails.aspx.cs" Inherits="SphereInfoSolutionHRMS.Admin.ClientDetails" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="ClientDetails.aspx.cs" MaintainScrollPositionOnPostback="true" Inherits="SphereInfoSolutionHRMS.Admin.ClientDetails" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
+ <cc1:ToolkitScriptManager runat="server"></cc1:ToolkitScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+<%-- <script type="text/javascript">
+     function ShowPanel1() {
+             document.getElementById('<%= pnlISSaturdayWorking.ClientID %>').style.display = 'block';    
+         
+                      }
+ </script>--%>
+    <script type="text/javascript">
+        function ShowHideDiv(cbCustomShift)
+        {
+            var dvPassport = document.getElementById("div1");
+            dvPassport.style.display = cbCustomShift.checked ? "block" : "none";
+        }
+ </script>
 
-    <cc1:ToolkitScriptManager runat="server"></cc1:ToolkitScriptManager>
+                <script type="text/javascript">
+                    function ShowHideDiv2(cblsSaterdayWorking) {
+                        var dvPassport = document.getElementById("div2");
+                        dvPassport.style.display = cblsSaterdayWorking.checked ? "block" : "none";
+                    }
+ </script>
+
+<%--    <script type="text/javascript">
+        $(function () {
+            $("#cbIsSaturdayWorking").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#div1").show();
+                } else {
+                    $("#div1").hide();
+                }
+            });
+        });
+</script>--%>
     <div class="panel panel-default" style="padding: 10px; margin: 10px">
         <div id="Tabs" role="tabpanel">
             <!-- Nav tabs -->
@@ -96,50 +129,15 @@
                                             <asp:TextBox ID="txtClientName" CssClass="form-control" runat="server" placeholder="Enter Client Name Here.."></asp:TextBox>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <%--<div class="form-group">
                                         <asp:Label ID="lblDescription" runat="server" Text="Description" Font-Bold="true"></asp:Label>
                                         <asp:TextBox ID="txtDescription" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Enter Description Here.." runat="server"></asp:TextBox>
-                                    </div>
+                                    </div>--%>
                                     <div class="form-group">
                                         <asp:Label ID="lblAddress" runat="server" Text="Address" Font-Bold="true"></asp:Label>
                                         <asp:TextBox ID="txtAddress" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Enter Address Here.." runat="server"></asp:TextBox>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-4 form-group">
-                                            <asp:Label ID="lblCity" runat="server" Text="City" Font-Bold="true"></asp:Label>
-                                            <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control"></asp:DropDownList>
-
-                                            <div style="padding: 2px;">
-                                                <asp:Button ID="btnAddCityPanel" runat="server" CssClass="btn btn-primary btn-md form-control pull-right" Text="+" Width="15%" />
-                                            </div>
-
-                                            <cc1:ModalPopupExtender ID="mpeAddCity" runat="server"
-                                                PopupControlID="pnlAddCity"
-                                                TargetControlID="btnAddCityPanel"
-                                                CancelControlID="btnCancelCity"
-                                                BackgroundCssClass="modal-backdrop">
-                                            </cc1:ModalPopupExtender>
-
-                                            <asp:Panel ID="pnlAddCity" runat="server" CssClass="modal-dialog">
-
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h3 class="modal-title">
-                                                            <asp:Label ID="lblHeaderAddCity" runat="server" Text="Enter Details" Font-Bold="true"></asp:Label>
-                                                        </h3>
-                                                    </div>
-                                                    <div class="modal-body" style="padding: 5px;">
-
-                                                        <asp:DropDownList ID="ddlCityState" runat="server" CssClass="form-control"></asp:DropDownList>
-                                                        <asp:TextBox ID="txtCityName" CssClass="form-control" placeholder="Enter City Name Here.." runat="server"></asp:TextBox>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <asp:Button ID="btnCancelCity" runat="server" class="btn btn-md btn-primary" Text="Cancel" />
-                                                        <asp:Button ID="btnAddNewCity" runat="server" class="btn btn-md btn-primary" Text="Add City" />
-                                                    </div>
-                                                </div>
-                                            </asp:Panel>
-                                        </div>
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblState" runat="server" Text="State" Font-Bold="true"></asp:Label>
                                             <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control"></asp:DropDownList>
@@ -168,12 +166,47 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <asp:Button ID="btnCancelState" runat="server" class="btn btn-md btn-primary" Text="Cancel" />
-                                                        <asp:Button ID="btnAddNewState" runat="server" class="btn btn-md btn-primary" Text="Add State" />
+                                                        <asp:Button ID="btnAddNewState" runat="server" class="btn btn-md btn-primary" Text="Add State" OnClick="btnAddNewState_Click" />
                                                     </div>
                                                 </div>
                                             </asp:Panel>
 
                                         </div>
+                                        <div class="col-sm-4 form-group">
+                                            <asp:Label ID="lblCity" runat="server" Text="City" Font-Bold="true"></asp:Label>
+                                            <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control"></asp:DropDownList>
+
+                                            <div style="padding:2px;">
+                                                <asp:Button ID="btnAddCityPanel" runat="server" CssClass="btn btn-primary btn-md form-control pull-right" Text="+" Width="15%" />
+                                            </div>
+
+                                            <cc1:ModalPopupExtender ID="mpeAddCity" runat="server"
+                                                PopupControlID="pnlAddCity"
+                                                TargetControlID="btnAddCityPanel"
+                                                CancelControlID="btnCancelCity"
+                                                BackgroundCssClass="modal-backdrop">
+                                            </cc1:ModalPopupExtender>
+
+                                            <asp:Panel ID="pnlAddCity" runat="server" CssClass="modal-dialog">
+                                             <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title">
+                                                            <asp:Label ID="lblHeaderAddCity" runat="server" Text="Enter Details" Font-Bold="true"></asp:Label>
+                                                        </h3>
+                                                    </div>
+                                                    <div class="modal-body" style="padding: 5px;">
+
+                                                        <asp:DropDownList ID="ddlCityState" runat="server" CssClass="form-control"></asp:DropDownList>
+                                                        <asp:TextBox ID="txtCityName" CssClass="form-control" placeholder="Enter City Name Here.." runat="server"></asp:TextBox>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <asp:Button ID="btnCancelCity" runat="server" class="btn btn-md btn-primary" Text="Cancel" />
+                                                        <asp:Button ID="btnAddNewCity" runat="server" class="btn btn-md btn-primary" Text="Add City" OnClick="btnAddNewCity_Click" />
+                                                    </div>
+                                                </div>
+                                            </asp:Panel>
+                                        </div>
+                                        
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblPincode" runat="server" Text="Pincode" Font-Bold="true"></asp:Label>
                                             <asp:TextBox ID="txtPincode" CssClass="form-control" runat="server" placeholder="Enter Pincode Here.."></asp:TextBox>
@@ -195,19 +228,15 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 form-group">
-                                            <asp:CheckBox ID="cbIsSaturdayWorking" CssClass="checkbox-inline" Text="Saturday working?" runat="server" />
+                                            <asp:CheckBox ID="cbIsSaturdayWorking" CssClass="checkbox-inline" Text="Saturday working?" runat="server"  onclick="ShowHideDiv2(this)" />
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-4 form-group">
-                                            <asp:Label ID="lblNoOfOptionalHolidays" runat="server" Text="Number of Paid Optional Holidays" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtNoOfOptionalHolidays" CssClass="form-control" runat="server" placeholder="Enter Number of Paid Optional Holidays Allowed Here.."></asp:TextBox>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
+                                        <div id="div2"  Style="display: none">
                                         <asp:Panel ID="pnlISSaturdayWorking" runat="server">
                                             <div class="col-sm-12 form-group">
+
+                        
                                                 <asp:CheckBox ID="cbFirstSaturday" CssClass="checkbox-inline" Text="First" runat="server" />
                                                 <asp:CheckBox ID="cbSecondSaturday" CssClass="checkbox-inline" Text="Second" runat="server" />
                                                 <asp:CheckBox ID="cbThirdSaturday" CssClass="checkbox-inline" Text="Third" runat="server" />
@@ -215,11 +244,17 @@
                                                 <asp:CheckBox ID="cbFifthSaturday" CssClass="checkbox-inline" Text="Fifth" runat="server" />
                                             </div>
                                         </asp:Panel>
+                                     </div>
+                                    </div>
+                                      <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <asp:Label ID="lblNoOfOptionalHolidays" runat="server" Text="Number of Paid Optional Holidays" Font-Bold="true"></asp:Label>
+                                            <asp:TextBox ID="txtNoOfOptionalHolidays" CssClass="form-control" runat="server" placeholder="Enter Number of Paid Optional Holidays Allowed Here.."></asp:TextBox>
+                                        </div>
                                     </div>
 
                                     <asp:Button ID="btnToShift" href="#shiftDetails" aria-controls="shiftDetails" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-right" Text="Next" />
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -236,7 +271,12 @@
                                             <asp:Label ID="lblShift" runat="server" Text="Shift" Font-Bold="true"></asp:Label>
                                             <div class="row">
                                                 <div class="col-sm-6 form-group">
-                                                    <asp:DropDownList ID="ddlGeneralShift" runat="server" CssClass="form-control"></asp:DropDownList>
+                                                    <asp:DropDownList ID="ddlGeneralShift" runat="server" CssClass="form-control">
+                                                         <asp:ListItem Text="--Select Shift--" Value="0" /> 
+                                                            <asp:ListItem Text="General-1" Value="1" /> 
+                                                         <asp:ListItem Text="General-2" Value="2" /> 
+                                                         <asp:ListItem Text="General-3" Value="3" />                   
+                                                    </asp:DropDownList>
                                                 </div>
                                                 <div class="col-sm-6 form-group">
                                                     <asp:Label ID="lblGeneralShiftDetails" runat="server" Text="Label">
@@ -262,20 +302,22 @@
                                             <asp:CheckBox ID="cbFlexibleShift" CssClass="checkbox-inline" Text="Flexible Timing(Hours: 09)" runat="server" />
                                         </div>
                                         <div class="col-sm-6 form-group">
-                                            <asp:CheckBox ID="cbCustomShift" CssClass="checkbox-inline" Text="Custom Shift" runat="server" />
+                                            <asp:CheckBox ID="cbCustomShift" CssClass="checkbox-inline" Text="Custom Shift" runat="server"  onclick="ShowHideDiv(this)"  />
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-12 form-group">
+                                            <div id="div1" style="display: none">
                                             <asp:Panel ID="pnlCustomShift" runat="server">
                                                 <asp:Label ID="lblHeaderCustomShift" runat="server" Text="Custom Shift" Font-Bold="true"></asp:Label>
                                                 <div class="row" style="padding: 5px;">
                                                     <div class="col-sm-6">
+                                                        
                                                         <asp:TextBox ID="txtCustomShiftName" runat="server" placeholder="Enter Shift Name Here.." CssClass="form-control"></asp:TextBox>
                                                         <asp:TextBox ID="txtCustomShiftStart" runat="server" placeholder="Enter Start Time.." CssClass="form-control"></asp:TextBox>
                                                         <asp:TextBox ID="txtCustomShiftEnd" runat="server" placeholder="Enter End Time.." CssClass="form-control"></asp:TextBox>
                                                         <asp:TextBox ID="txtCustomShiftHours" runat="server" placeholder="Enter Hours.." CssClass="form-control"></asp:TextBox>
-                                                        <asp:Button ID="btnAddCustomShift" runat="server" Text="Add" class="btn btn-sm btn-primary pull-right" />
+                                                        <asp:Button ID="btnAddCustomShift" runat="server" Text="Add" class="btn btn-sm btn-primary pull-right"  OnClick="btnAddCustomShift_Click"/>
                                                         <asp:Button ID="btnCancelCustomShift" runat="server" Text="Cancel" class="btn btn-sm btn-danger pull-right" />
                                                     </div>
                                                     <div class="col-sm-6" style="padding: 5px;">
@@ -290,20 +332,26 @@
                                                     <h3 class="text-primary">List of Custom Shift</h3>
 
 
-                                                    <asp:GridView ID="gvCustomShiftList" runat="server" DataKeyNames="CustomShiftID" AutoGenerateColumns="False"
+                                                    <asp:GridView ID="gvCustomShiftList" runat="server"  AutoGenerateColumns="False"
                                                         CssClass="table table-hover table-bordered table-condensed"
                                                         HeaderStyle-CssClass="gvHeader">
                                                         <Columns>
-                                                            <asp:BoundField DataField="CustomShiftID" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                                            <asp:BoundField DataField="ClientId" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                                              <asp:BoundField DataField="ShipName" HeaderText="ShipName" />
+                                                            <asp:BoundField DataField="StartTime" HeaderText="StartTime" />
+                                                            <asp:BoundField DataField="EndTime" HeaderText="EndTime" />
+                                                             <asp:BoundField DataField="Hours" HeaderText="Hours" />
+                                                   
+                                                           <%-- <asp:BoundField DataField="CustomShiftID" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                                             <asp:BoundField DataField="CustomShiftName" HeaderText="Name" />
                                                             <asp:BoundField DataField="CustomShiftStart" HeaderText="Level" />
                                                             <asp:BoundField DataField="CustomShiftEnd" HeaderText="Is Active" />
-                                                            <asp:BoundField DataField="CustomShiftHours" HeaderText="Is Active" />
-                                                            <asp:TemplateField HeaderText="Remove" ItemStyle-CssClass="center-block text-center">
+                                                            <asp:BoundField DataField="CustomShiftHours" HeaderText="Is Active" />--%>
+                                                            <%--<asp:TemplateField HeaderText="Remove" ItemStyle-CssClass="center-block text-center">
                                                                 <ItemTemplate>                                                                    
                                                                     <asp:Button ID="btnRemoveCustomeShift" runat="server" CommandName="Remove" CommandArgument='<%# Eval("CustomShiftID") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
                                                                 </ItemTemplate>
-                                                            </asp:TemplateField>
+                                                            </asp:TemplateField>--%>
                                                         </Columns>
                                                     </asp:GridView>
 
@@ -312,13 +360,16 @@
 
 
                                             </asp:Panel>
+                                                </div>
                                         </div>
                                     </div>
 
 
                                     <asp:Button ID="btnBackClientDetails" href="#clientDetails" aria-controls="clientDetails" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-left" Text="Back" />
-                                    <asp:Button ID="btnSaveClient" runat="server" class="btn btn-lg btn-primary pull-right" Text="Save" />
-                                    <%--<asp:Button ID="btnToHoliday" href="#holidayList" aria-controls="holidayList" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-right" Text="Next" />--%>
+                                    <asp:Button ID="btnSaveClient" runat="server" class="btn btn-lg btn-primary pull-right" Text="Save" OnClick="btnSaveClient_Click" />
+                                
+                                    <asp:Label runat="server" id="lblstatus"></asp:Label>
+                                        <%--<asp:Button ID="btnToHoliday" href="#holidayList" aria-controls="holidayList" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-right" Text="Next" />--%>
                                 </div>
                             </div>
                         </div>
@@ -347,10 +398,7 @@
                                     </table>
                                 </div>
                                 <hr class="small" />
-
-
-                                <h3 class="text-primary">List of Holidays</h3>
-
+                               <h3 class="text-primary">List of Holidays</h3>
                                 <asp:GridView ID="gvHolidayList" runat="server" DataKeyNames="ClientHolidayId" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-condensed"
                                     HeaderStyle-CssClass="gvHeader">
                                     <Columns>
@@ -450,5 +498,6 @@
             </div>
         </div>
     </div>
-
+   </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

@@ -110,5 +110,7 @@ namespace BAL
             dt = DAL.SQLHelp.ExecuteSelect("select * from Mst_Designation where DesigantionName=designationname=" + designationname);
             return dt;
         }
+
+
     }
 }

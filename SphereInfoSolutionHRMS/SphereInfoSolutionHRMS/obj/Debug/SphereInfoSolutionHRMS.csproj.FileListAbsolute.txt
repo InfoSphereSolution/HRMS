@@ -34,3 +34,5 @@ C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRM
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\DAL.pdb
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Models.pdb
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxControlToolkit.pdb
+C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxMin.dll
+C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxControlToolkit.pdb
