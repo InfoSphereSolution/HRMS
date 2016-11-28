@@ -20,11 +20,54 @@ namespace SphereInfoSolutionHRMS.Admin
         {
             if (!IsPostBack)
             {
-                //bindEmployeeList();
+                bindEmployeeList();
+                bindAllDDL();
                 //bindEmployeeID()
             }
         }
 
+        //bind all the dropdownlist
+        protected void bindAllDDL()
+        {
+            DataTable dt;
+             dt = employee.FetchState();
+            
+             ddlState.DataSource = dt;
+             ddlState.DataValueField = "State_Id";
+             ddlState.DataTextField = "StateName";
+             ddlState.DataBind();
+
+             ddlCityState.DataSource = dt;
+             ddlCityState.DataValueField = "State_Id";
+             ddlCityState.DataTextField = "StateName";
+             ddlCityState.DataBind();
+
+             
+             dt = employee.FetchCity();
+             ddlCity.DataSource = dt;
+             ddlCity.DataValueField = "City_Id";
+             ddlCity.DataTextField = "CityName";
+             ddlCity.DataBind();
+
+             dt = employee.FetchDepartment();
+             ddlDepartment.DataSource = dt;
+             ddlDepartment.DataValueField = "Dept_Id";
+             ddlDepartment.DataTextField = "Department_Name";
+             ddlDepartment.DataBind();
+
+             dt = employee.FetchDesignation();
+             ddlDesignation.DataSource = dt;
+             ddlDesignation.DataValueField = "Desig_Id";
+             ddlDesignation.DataTextField = "Designation_Name";
+             ddlDesignation.DataBind();
+
+             dt = employee.FetchClient();
+             ddlCLientName.DataSource = dt;
+             ddlCLientName.DataValueField = "ClientId";
+             ddlCLientName.DataTextField = "ClientName";
+             ddlCLientName.DataBind();
+        }
+        
         //Bind employee List to the gridview
         protected void bindEmployeeList()
         {
@@ -81,16 +124,16 @@ namespace SphereInfoSolutionHRMS.Admin
             employeeModel.EmpState = ddlState.SelectedIndex;
             employeeModel.EmpCity = ddlCity.SelectedIndex;
             employeeModel.EmpPincode = Convert.ToInt32(txtPincode.Text);
-            employeeModel.EmpBAN = Convert.ToInt32(txtBankACC.Text);
-            employeeModel.EmpPAN = Convert.ToInt32(txtPAN.Text);
-            employeeModel.EmpAdhaar = Convert.ToInt32(txtAdhaarNumber.Text);
+            employeeModel.EmpBAN = txtBankACC.Text;
+            employeeModel.EmpPAN = txtPAN.Text;
+            employeeModel.EmpAdhaar = txtAdhaarNumber.Text;
         }
 
         //Get employee passport details from the page
         protected void getEmployeePassport()
         {
             //Passport Details
-            employeeModel.EmpPassportNumber = Convert.ToInt32(txtPassportNumber.Text);
+            employeeModel.EmpPassportNumber = Convert.ToString(txtPassportNumber.Text);
             employeeModel.EmpPassportIssuePlace = txtPassportIssuePlace.Text;
             employeeModel.EmpPassportIssueCountry = txtPassportIssueCountry.Text;
             employeeModel.EmpPassportIssueDate = Convert.ToDateTime(txtPassportIssueDate.Text);
@@ -129,9 +172,9 @@ namespace SphereInfoSolutionHRMS.Admin
         }
 
         //Bind selected employee details to the page
-        protected void bindEmployeeDetails(Int32 EmpID)
+        protected void bindEmployeeDetails(Int32 UserID)
         {
-            EmployeeModel employeeModel = employee.FetchEmployeeDetails(EmpID);
+            EmployeeModel employeeModel = employee.FetchEmployeeDetails(UserID);
             try
             {
                 bindEmpoyeePersonal(employeeModel);
@@ -150,14 +193,14 @@ namespace SphereInfoSolutionHRMS.Admin
         protected void bindEmpoyeePersonal(EmployeeModel employeeModel)
         {
             //Employees Personal Details            
-            lblEmployeeID.Text = Convert.ToString(employeeModel.EmpID);
+            txtEmployeeID.Text = Convert.ToString(employeeModel.EmpID);
             imgEmployeePicture.ImageUrl = Convert.ToString(employeeModel.EmpImgURL);
             txtEmployeeFirstName.Text = employeeModel.EmpFirstName;
             txtEmployeeMiddleName.Text = employeeModel.EmpMiddleName;
             txtEmployeeLastName.Text = employeeModel.EmpLastName;
-            ddlGender.SelectedIndex = Convert.ToInt32(employeeModel.EmpGender);
+            ddlGender.SelectedItem.Text = employeeModel.EmpGender;
             txtDatefBirth.Text = Convert.ToString(employeeModel.EmpDOB);
-            ddlMaritalStatus.SelectedIndex = Convert.ToInt32(employeeModel.EmpMaritalStatus);
+            ddlMaritalStatus.SelectedItem.Text = employeeModel.EmpMaritalStatus;
             txtMobile.Text = employeeModel.EmpContact;
             txtAltMobile.Text = employeeModel.EmpAltContact;
             txtPersonalEmailID.Text = employeeModel.EmpPersonalEmailID;
@@ -165,8 +208,8 @@ namespace SphereInfoSolutionHRMS.Admin
             txtNationality.Text = employeeModel.EmpNationality;
             txtCurrentAddress.Text = employeeModel.EmpCurrentAddress;
             txtPermanentAddress.Text = employeeModel.EmpPermanentAddress;
-            ddlState.SelectedIndex = employeeModel.EmpState;
-            ddlCity.SelectedIndex = employeeModel.EmpCity;
+            ddlState.SelectedValue = Convert.ToString(employeeModel.EmpState);
+            ddlCity.SelectedValue = Convert.ToString(employeeModel.EmpCity);
             txtPincode.Text = Convert.ToString(employeeModel.EmpPincode);
             txtBankACC.Text = Convert.ToString(employeeModel.EmpBAN);
             txtPAN.Text = Convert.ToString(employeeModel.EmpPAN);
@@ -190,14 +233,14 @@ namespace SphereInfoSolutionHRMS.Admin
         {
             //Employees Professional Details
             txtDateOfJoining.Text = Convert.ToString(employeeModel.EmpDOJ);
-            ddlDepartment.SelectedIndex = employeeModel.EmpDepartment;
-            ddlDesignation.SelectedIndex = employeeModel.EmpDesignation;
+            ddlDepartment.SelectedValue = Convert.ToString(employeeModel.EmpDepartment);
+            ddlDesignation.SelectedValue = Convert.ToString(employeeModel.EmpDesignation);
             txtBondStart.Text = Convert.ToString(employeeModel.EmpBondStart);
             txtBondEnd.Text = Convert.ToString(employeeModel.EmpBondEnd);
             txtOrganizationEmailID.Text = employeeModel.EmpOrganizationEmailID;
-            ddlCLientName.SelectedIndex = employeeModel.EmpClientID;
-            ddlShift.SelectedIndex = employeeModel.EmpShiftID;
-            ddlReportingManager.SelectedIndex = employeeModel.EmpReportingManagerID;
+            ddlCLientName.SelectedValue = Convert.ToString(employeeModel.EmpClientID);
+            ddlShift.SelectedValue = Convert.ToString(employeeModel.EmpShiftID);
+            ddlReportingManager.SelectedValue = Convert.ToString(employeeModel.EmpReportingManagerID);
             cbIsConfirm.Checked = employeeModel.EmpIsConfirm;
             txtConfirmationDate.Text = Convert.ToString(employeeModel.EmpConfirmDate);
             cbBackgroundVerification.Checked = employeeModel.EmpBackgroundVerification;
@@ -215,19 +258,19 @@ namespace SphereInfoSolutionHRMS.Admin
         //Check which action button on the gridview is pressed
         protected void gvEmployeeList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int EmpID = Convert.ToInt32(e.CommandArgument);
+            int UserID = Convert.ToInt32(e.CommandArgument);
 
             if (e.CommandName == "View")
             {
-                bindEmployeeDetails(EmpID);
+                bindEmployeeDetails(UserID);
             }
-            else if (e.CommandName == "Edit")
+            else if (e.CommandName == "Change")
             {
-                bindEmployeeDetails(EmpID);
+                bindEmployeeDetails(UserID);
             }
             else if (e.CommandName == "Remove")
             {
-                removeEmployee(EmpID);
+                removeEmployee(UserID);
             }
             else { }
         }

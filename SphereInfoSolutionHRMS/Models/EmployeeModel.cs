@@ -27,13 +27,13 @@ namespace Models
         public Int32 EmpState { get; set; }
         public Int32 EmpCity { get; set; }
         public Int32 EmpPincode { get; set; }
-        public Int32 EmpBAN { get; set; }
-        public Int32 EmpPAN { get; set; }
-        public Int32 EmpAdhaar { get; set; }
-        public Int32 EmpPassportNumber { get; set; }
+        public String EmpBAN { get; set; }
+        public String EmpPAN { get; set; }
+        public String EmpAdhaar { get; set; }
+        public String EmpPassportNumber { get; set; }
         public String EmpPassportIssuePlace { get; set; }
         public String EmpPassportIssueCountry { get; set; }
-        public DateTime EmpPassportIssueDate { get; set; }
+        public DateTime EmpPassportIssueDate { get; set; }        
         public DateTime EmpPassportExpiryDate { get; set; }
         public String EmpECNRStatus { get; set; }
 

@@ -40,20 +40,22 @@
                         </table>
                         <h3 class="text-primary text-center">List of Employees</h3>
 
-                        <asp:GridView ID="gvEmployeeList" runat="server" DataKeyNames="EmployeeId" AutoGenerateColumns="False"
+                        <asp:GridView ID="gvEmployeeList" runat="server" DataKeyNames="UserId" AutoGenerateColumns="False"
                             CssClass="table table-hover table-bordered table-condensed"
                             HeaderStyle-CssClass="gvHeader" OnRowCommand="gvEmployeeList_RowCommand">
                             <Columns>
-                                <asp:BoundField DataField="EmployeeId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                                <asp:BoundField DataField="EmployeeName" HeaderText="Name" />
-                                <asp:BoundField DataField="Designation" HeaderText="Designation" />
+                                <asp:BoundField DataField="UserId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                <asp:BoundField DataField="ReportingManager_Id" HeaderText="ReportingManager_Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                <asp:BoundField DataField="Employee_Name" HeaderText="Employee_Name" />
+                                <asp:BoundField DataField="Designation_Name" HeaderText="Designation" />                                
+                                <asp:BoundField DataField="Reporting_Manager" HeaderText="Reporting Manager" />
                                 <asp:BoundField DataField="ClientName" HeaderText="Client" />
                                 <asp:BoundField DataField="IsActive" HeaderText="Is Active" />
                                 <asp:TemplateField HeaderText="Actions" ItemStyle-CssClass="center-block text-center">
                                     <ItemTemplate>
-                                        <asp:Button ID="btnViewEmployee" runat="server" CommandName="View" CommandArgument='<%# Eval("EmployeeId") %>' Text="View" CssClass="btn btn-primary btn-xs"></asp:Button>
-                                        <asp:Button ID="btnEditEmployee" runat="server" CommandName="Edit" CommandArgument='<%# Eval("EmployeeId") %>' Text="Edit" CssClass="btn btn-primary btn-xs"></asp:Button>
-                                        <asp:Button ID="btnRemoveEmployee" runat="server" CommandName="Remove" CommandArgument='<%# Eval("EmployeeId") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
+                                        <asp:Button ID="btnViewEmployee" runat="server" CommandName="View" CommandArgument='<%# Eval("UserId") %>' Text="View" CssClass="btn btn-primary btn-xs"></asp:Button>
+                                        <asp:Button ID="btnEditEmployee" runat="server" CommandName="Change" CommandArgument='<%# Eval("UserId") %>' Text="Edit" CssClass="btn btn-primary btn-xs"></asp:Button>
+                                        <asp:Button ID="btnRemoveEmployee" runat="server" CommandName="Remove" CommandArgument='<%# Eval("UserId") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
