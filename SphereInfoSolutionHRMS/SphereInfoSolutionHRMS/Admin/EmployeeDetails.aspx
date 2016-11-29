@@ -42,7 +42,7 @@
 
                         <asp:GridView ID="gvEmployeeList" runat="server" DataKeyNames="UserId" AutoGenerateColumns="False"
                             CssClass="table table-hover table-bordered table-condensed"
-                            HeaderStyle-CssClass="gvHeader" OnRowCommand="gvEmployeeList_RowCommand">
+                            HeaderStyle-CssClass="gvHeader" OnRowCommand="gvEmployeeList_RowCommand" OnRowDataBound="gvEmployeeList_RowDataBound">
                             <Columns>
                                 <asp:BoundField DataField="UserId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                 <asp:BoundField DataField="ReportingManager_Id" HeaderText="ReportingManager_Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
@@ -52,8 +52,8 @@
                                 <asp:BoundField DataField="ClientName" HeaderText="Client" />
                                 <asp:BoundField DataField="IsActive" HeaderText="Is Active" />
                                 <asp:TemplateField HeaderText="Actions" ItemStyle-CssClass="center-block text-center">
-                                    <ItemTemplate>
-                                        <asp:Button ID="btnViewEmployee" runat="server" CommandName="View" CommandArgument='<%# Eval("UserId") %>' Text="View" CssClass="btn btn-primary btn-xs"></asp:Button>
+                                    <ItemTemplate>                                                                                
+                                        <asp:Button ID="btnDisplayEmployeeDetails" runat="server" CommandName="Display" CommandArgument='<%# Eval("UserId") %>' Text="View" CssClass="btn btn-primary btn-xs"></asp:Button>
                                         <asp:Button ID="btnEditEmployee" runat="server" CommandName="Change" CommandArgument='<%# Eval("UserId") %>' Text="Edit" CssClass="btn btn-primary btn-xs"></asp:Button>
                                         <asp:Button ID="btnRemoveEmployee" runat="server" CommandName="Remove" CommandArgument='<%# Eval("UserId") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
                                     </ItemTemplate>
@@ -347,7 +347,7 @@
                                     <div class="row">
                                         <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
                                             <asp:Label ID="lblClientName" runat="server" Text="Client Name" Font-Bold="true"></asp:Label>
-                                            <asp:DropDownList ID="ddlCLientName" runat="server" CssClass="form-control"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlCLientName" runat="server" CssClass="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlCLientName_SelectedIndexChanged"></asp:DropDownList>
                                         </div>
                                         <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
                                             <asp:Label ID="lblShift" runat="server" Text="Shift(Timing)" Font-Bold="true"></asp:Label>
@@ -414,7 +414,7 @@
                                         </div>
                                     </div>
 
-                                    <asp:Button ID="btnBackPersonalDetails" href="#PersonalDetails" aria-controls="PersonalDetails" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-left" Text="Back" />
+                                    <asp:Button ID="btnBackPersonalDetails" href="#PersonalDetails" aria-controls="PersonalDetails" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-left" Text="Back"/>
                                     <asp:Button ID="btnSaveEmployee" runat="server" class="btn btn-lg btn-primary pull-right" Text="Save" OnClick="btnSaveEmployee_Click" />
                                     <%--<asp:Button ID="btnToHoliday" href="#holidayList" aria-controls="holidayList" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-right" Text="Next" />--%>
                                 </div>
