@@ -38,6 +38,7 @@
                                 </td>
                             </tr>
                         </table>
+                        <asp:LinkButton ID="lbAddNewEmployee" CssClass="pull-right" OnClick="lbAddNewEmployee_Click" runat="server" >Add New Employee</asp:LinkButton>
                         <h3 class="text-primary text-center">List of Employees</h3>
 
                         <asp:GridView ID="gvEmployeeList" runat="server" DataKeyNames="UserId" AutoGenerateColumns="False"

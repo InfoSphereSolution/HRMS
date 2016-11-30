@@ -144,11 +144,13 @@ namespace BAL
             return employeeModel;
         }
 
-        public void RemoveEmployee(Int32 UserID)
+        public Int32 RemoveEmployee(Int32 UserID, Int32 CurrentUserID)
         {
             List<SqlParameter> sqParam = new List<SqlParameter>();
-            sqParam.Add(new SqlParameter("@UserName", UserID));
-            SQLHelp.ExecuteNonQuery("", sqParam);
+            sqParam.Add(new SqlParameter("@UserId", UserID));
+            sqParam.Add(new SqlParameter("@UpdatedBy", CurrentUserID));
+            Int32 i = SQLHelp.ExecuteNonQuery("Usp_DeleteEmployee", sqParam);
+            return i;
         }
 
         public DataTable UpdateEmployeeDetails(Models.EmployeeModel employeeModel)

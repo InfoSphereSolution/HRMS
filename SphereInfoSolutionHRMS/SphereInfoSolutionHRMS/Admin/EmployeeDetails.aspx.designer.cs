@@ -40,6 +40,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.Button btnShowAllEmployee;
         
         /// <summary>
+        /// lbAddNewEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbAddNewEmployee;
+        
+        /// <summary>
         /// gvEmployeeList control.
         /// </summary>
         /// <remarks>

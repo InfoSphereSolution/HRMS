@@ -111,7 +111,7 @@ namespace SphereInfoSolutionHRMS.Admin
                  * 1 : Inserted successful
                  * 2 : Inserted Unsuccessful
                  * 3 : Updated successful
-                 * 4 : Updated Unsuccessful
+                 * -3 : Updated Unsuccessful
                  */
                 int IsSuccessful = Convert.ToInt32(dt.Rows[0][0]);
 
@@ -126,7 +126,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 { }
                 else if (IsSuccessful == 3)
                 { }
-                else if (IsSuccessful == 4)
+                else if (IsSuccessful == -3)
                 { }
                 else { }
 
@@ -157,12 +157,12 @@ namespace SphereInfoSolutionHRMS.Admin
             employeeModel.Current_UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
 
             /*File uploade code*/
-            
+
             employeeModel.EmpImgURL = "";
             employeeModel.EmpFirstName = txtEmployeeFirstName.Text;
             employeeModel.EmpMiddleName = txtEmployeeMiddleName.Text;
             employeeModel.EmpLastName = txtEmployeeLastName.Text;
-            employeeModel.EmpGender = Convert.ToString(ddlGender.SelectedItem);            
+            employeeModel.EmpGender = Convert.ToString(ddlGender.SelectedItem);
             employeeModel.EmpDOB = String.IsNullOrEmpty(txtDatefBirth.Text) ? (DateTime?)null : Convert.ToDateTime(txtDatefBirth.Text);
             employeeModel.EmpMaritalStatus = Convert.ToString(ddlMaritalStatus.SelectedItem);
             employeeModel.EmpContact = Convert.ToString(txtMobile.Text);
@@ -173,7 +173,7 @@ namespace SphereInfoSolutionHRMS.Admin
             employeeModel.EmpCurrentAddress = txtCurrentAddress.Text;
             employeeModel.EmpPermanentAddress = txtPermanentAddress.Text;
             employeeModel.EmpState = Convert.ToInt32(ddlState.SelectedValue);
-            employeeModel.EmpCity = Convert.ToInt32(ddlCity.SelectedValue);            
+            employeeModel.EmpCity = Convert.ToInt32(ddlCity.SelectedValue);
             employeeModel.EmpPincode = String.IsNullOrEmpty(txtPincode.Text) ? (Int32?)null : Convert.ToInt32(txtPincode.Text);
             employeeModel.EmpBAN = txtBankACC.Text;
             employeeModel.EmpPAN = txtPAN.Text;
@@ -186,8 +186,8 @@ namespace SphereInfoSolutionHRMS.Admin
             //Passport Details
             employeeModel.EmpPassportNumber = Convert.ToString(txtPassportNumber.Text);
             employeeModel.EmpPassportIssuePlace = txtPassportIssuePlace.Text;
-            employeeModel.EmpPassportIssueCountry = txtPassportIssueCountry.Text;            
-            employeeModel.EmpPassportIssueDate = String.IsNullOrEmpty(txtPassportIssueDate.Text) ? (DateTime?)null : Convert.ToDateTime(txtPassportIssueDate.Text);            
+            employeeModel.EmpPassportIssueCountry = txtPassportIssueCountry.Text;
+            employeeModel.EmpPassportIssueDate = String.IsNullOrEmpty(txtPassportIssueDate.Text) ? (DateTime?)null : Convert.ToDateTime(txtPassportIssueDate.Text);
             employeeModel.EmpPassportExpiryDate = String.IsNullOrEmpty(txtPassportExpiryDate.Text) ? (DateTime?)null : Convert.ToDateTime(txtPassportExpiryDate.Text);
             employeeModel.EmpECNRStatus = ddlECNRStatus.SelectedValue;
         }
@@ -198,8 +198,8 @@ namespace SphereInfoSolutionHRMS.Admin
             //Employees Professional Details            
             employeeModel.EmpDOJ = String.IsNullOrEmpty(txtDateOfJoining.Text) ? (DateTime?)null : Convert.ToDateTime(txtDateOfJoining.Text);
             employeeModel.EmpDepartment = Convert.ToInt32(ddlDepartment.SelectedValue);
-            employeeModel.EmpDesignation = Convert.ToInt32(ddlDesignation.SelectedValue);            
-            employeeModel.EmpBondStart = String.IsNullOrEmpty(txtBondStart.Text) ? (DateTime?)null : Convert.ToDateTime(txtBondStart.Text);            
+            employeeModel.EmpDesignation = Convert.ToInt32(ddlDesignation.SelectedValue);
+            employeeModel.EmpBondStart = String.IsNullOrEmpty(txtBondStart.Text) ? (DateTime?)null : Convert.ToDateTime(txtBondStart.Text);
             employeeModel.EmpBondEnd = String.IsNullOrEmpty(txtBondEnd.Text) ? (DateTime?)null : Convert.ToDateTime(txtBondEnd.Text);
             employeeModel.EmpOrganizationEmailID = txtOrganizationEmailID.Text;
             employeeModel.EmpClientID = Convert.ToInt32(ddlCLientName.SelectedValue);
@@ -211,15 +211,6 @@ namespace SphereInfoSolutionHRMS.Admin
             employeeModel.EmpAddressVerification = cbAddressVerification.Checked;
             employeeModel.EmpEducationVerification = cbEducationVerification.Checked;
             employeeModel.EmpEmploymentVerification = cbEmploymentVerification.Checked;
-        }
-
-        //Check if adding new employee or updating existing employee
-        protected int getSaveOperation()
-        {
-            //Operation:
-            //1: Add New
-            //2: Update Existing 
-            return 1;
         }
 
         //Bind selected employee details to the page
@@ -244,7 +235,7 @@ namespace SphereInfoSolutionHRMS.Admin
         protected void bindEmpoyeePersonal(EmployeeModel employeeModel)
         {
             //Employees Personal Details            
-            txtEmployeeID.Text = Convert.ToString(employeeModel.UserID);
+            txtEmployeeID.Text = "SIS" + Convert.ToString(employeeModel.UserID);
             imgEmployeePicture.ImageUrl = Convert.ToString(employeeModel.EmpImgURL);
             txtEmployeeFirstName.Text = employeeModel.EmpFirstName;
             txtEmployeeMiddleName.Text = employeeModel.EmpMiddleName;
@@ -301,9 +292,19 @@ namespace SphereInfoSolutionHRMS.Admin
         }
 
         //Remove employee i.e make the employee inactive 
-        protected void removeEmployee(Int32 EmpID)
+        protected void removeEmployee(Int32 UserID)
         {
-            employee.RemoveEmployee(EmpID);
+            Int32 CurrentUserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            Int32 i = employee.RemoveEmployee(UserID, CurrentUserID);
+            if (i > 0)
+            {
+                /*Employee Removed*/
+            }
+            else
+            {
+                /*Error*/
+            }
+            bindEmployeeList();
         }
 
         //Check which action button on the gridview is pressed
@@ -313,7 +314,7 @@ namespace SphereInfoSolutionHRMS.Admin
 
             if (e.CommandName == "Display")
             {
-                bindEmployeeDetails(UserID);                                
+                bindEmployeeDetails(UserID);
             }
             else if (e.CommandName == "Change")
             {
@@ -384,6 +385,65 @@ namespace SphereInfoSolutionHRMS.Admin
             }
         }
 
+        //link button to clear employee details and to bind new employee id
+        protected void lbAddNewEmployee_Click(object sender, EventArgs e)
+        {
+            bindEmployeeID();
+            clearEmployeeDetails();
+        }
 
+        protected void clearEmployeeDetails()
+        {
+            clearPersonalDetails();
+            clearPassportDetails();
+            clearProfessionalDetails();
+            bindAllDDL();
+        }
+
+        protected void clearPersonalDetails()
+        {
+            //Employees Personal Details                        
+            imgEmployeePicture.ImageUrl = "";
+            txtEmployeeFirstName.Text = "";
+            txtEmployeeMiddleName.Text = "";
+            txtEmployeeLastName.Text = "";            
+            txtDatefBirth.Text = "";            
+            txtMobile.Text = "";
+            txtAltMobile.Text = "";
+            txtPersonalEmailID.Text = "";
+            txtReligion.Text = "";
+            txtNationality.Text = "";
+            txtCurrentAddress.Text = "";
+            txtPermanentAddress.Text = "";
+            txtPincode.Text = "";
+            txtBankACC.Text = "";
+            txtPAN.Text = "";
+            txtAdhaarNumber.Text = "";
+        }
+
+        protected void clearPassportDetails()
+        {
+            //Passport Details
+            txtPassportNumber.Text = "";
+            txtPassportIssuePlace.Text = "";
+            txtPassportIssueCountry.Text = "";
+            txtPassportIssueDate.Text = "";
+            txtPassportExpiryDate.Text = "";
+        }
+
+        protected void clearProfessionalDetails()
+        {
+            //Employees Professional Details
+            txtDateOfJoining.Text = "";
+            txtBondStart.Text = "";
+            txtBondEnd.Text = "";
+            txtOrganizationEmailID.Text = "";
+            cbIsConfirm.Checked = false;
+            txtConfirmationDate.Text = "";
+            cbBackgroundVerification.Checked = false;
+            cbAddressVerification.Checked = false;
+            cbEducationVerification.Checked = false;
+            cbEmploymentVerification.Checked = false;
+        }
     }
 }
