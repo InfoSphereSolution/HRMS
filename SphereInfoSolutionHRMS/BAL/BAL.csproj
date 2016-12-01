@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="ClientHoliday.cs" />
     <Compile Include="Designation1.cs" />
     <Compile Include="DesignationMaster.cs" />
     <Compile Include="Login.cs" />

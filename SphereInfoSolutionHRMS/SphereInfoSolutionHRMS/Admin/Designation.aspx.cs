@@ -261,7 +261,7 @@ namespace SphereInfoSolutionHRMS.Admin
                     {
                         if (i == 1)
                         {
-                            lblMessageTempDesignation.Text = "Selected Roles Approved Succesfully";
+                            lblMessageTempDesignation.Text = "Selected Designation Approved Succesfully";
                             lblMessageTempDesignation.ForeColor = System.Drawing.Color.Green;
                         }
                         else
@@ -274,7 +274,7 @@ namespace SphereInfoSolutionHRMS.Admin
                     {
                         if (i == 2)
                         {
-                            lblMessageTempDesignation.Text = "Selected Roles Removed Succesfully";
+                            lblMessageTempDesignation.Text = "Selected Designation Removed Succesfully";
                             lblMessageTempDesignation.ForeColor = System.Drawing.Color.Green;
                         }
                         else

@@ -13,15 +13,6 @@ namespace SphereInfoSolutionHRMS.Admin {
     public partial class ClientDetails {
         
         /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
-        
-        /// <summary>
         /// gvClientList control.
         /// </summary>
         /// <remarks>
@@ -364,6 +355,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtIP;
         
         /// <summary>
+        /// satworkingpanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel satworkingpanel;
+        
+        /// <summary>
         /// cbIsSaturdayWorking control.
         /// </summary>
         /// <remarks>
@@ -508,15 +508,6 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.CheckBox cbFlexibleShift;
         
         /// <summary>
-        /// cbCustomShift control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbCustomShift;
-        
-        /// <summary>
         /// pnlCustomShift control.
         /// </summary>
         /// <remarks>
@@ -571,15 +562,6 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtCustomShiftHours;
         
         /// <summary>
-        /// btnAddCustomShift control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddCustomShift;
-        
-        /// <summary>
         /// btnCancelCustomShift control.
         /// </summary>
         /// <remarks>
@@ -598,15 +580,6 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.Label lblCustomShiftDetails;
         
         /// <summary>
-        /// gvCustomShiftList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCustomShiftList;
-        
-        /// <summary>
         /// btnBackClientDetails control.
         /// </summary>
         /// <remarks>
@@ -623,6 +596,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSaveClient;
+        
+        /// <summary>
+        /// btnupdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnupdate;
         
         /// <summary>
         /// lblstatus control.
@@ -733,15 +715,6 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtHolidayDate;
         
         /// <summary>
-        /// ddlIsOptional control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlIsOptional;
-        
-        /// <summary>
         /// ddlClientName control.
         /// </summary>
         /// <remarks>
@@ -749,6 +722,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlClientName;
+        
+        /// <summary>
+        /// ddlIsOptional control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlIsOptional;
         
         /// <summary>
         /// btnAddHoliday control.

@@ -8,6 +8,8 @@ namespace Models
 {
     public class ClientModel
     {
+        public int tempclientId { get; set; }
+        public int CreatedBy { get; set; }
         public int ClientId { get; set; }
         public string ClientName { get; set; }
         public int StateId { get; set; }
@@ -37,6 +39,11 @@ namespace Models
         public bool sat4 { get; set; }
         public bool sat5 { get; set; }
         public int optionalholiday { get; set; }
-    
+        public string ShipName { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+        public int Hours { get; set; }
+        public int UpdatedBy { get; set; }
+
     }
 }
