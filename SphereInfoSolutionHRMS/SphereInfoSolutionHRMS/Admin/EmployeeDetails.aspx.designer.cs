@@ -328,6 +328,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtCurrentAddress;
         
         /// <summary>
+        /// upSameAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upSameAddress;
+        
+        /// <summary>
         /// lblPermanentAddress control.
         /// </summary>
         /// <remarks>
@@ -850,6 +859,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtOrganizationEmailID;
         
         /// <summary>
+        /// upShiftClient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upShiftClient;
+        
+        /// <summary>
         /// lblClientName control.
         /// </summary>
         /// <remarks>
@@ -904,6 +922,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ddlReportingManager;
         
         /// <summary>
+        /// upConfirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upConfirm;
+        
+        /// <summary>
         /// cbIsConfirm control.
         /// </summary>
         /// <remarks>
@@ -920,6 +947,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtConfirmationDate;
+        
+        /// <summary>
+        /// ceConfirmationDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceConfirmationDate;
         
         /// <summary>
         /// lblUAN control.

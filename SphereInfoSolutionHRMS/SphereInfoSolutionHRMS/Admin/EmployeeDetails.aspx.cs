@@ -445,5 +445,22 @@ namespace SphereInfoSolutionHRMS.Admin
             cbEducationVerification.Checked = false;
             cbEmploymentVerification.Checked = false;
         }
+
+        protected void cbIsConfirm_CheckedChanged(object sender, EventArgs e)
+        {
+            txtConfirmationDate.Enabled = cbIsConfirm.Checked;
+        }
+
+        protected void chSameAddress_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chSameAddress.Checked)
+            {
+                txtPermanentAddress.Text = txtCurrentAddress.Text;
+            }
+            else 
+            {
+                txtPermanentAddress.Text = "";
+            }
+        }
     }
 }
