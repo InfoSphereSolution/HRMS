@@ -43,6 +43,7 @@
     <Compile Include="DesignationAttribute.cs" />
     <Compile Include="EmployeeModel.cs" />
     <Compile Include="LoginModel.cs" />
+    <Compile Include="MarkAttendanceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleModel.cs" />
   </ItemGroup>

@@ -22,6 +22,15 @@ namespace SphereInfoSolutionHRMS {
         protected global::System.Web.UI.WebControls.Label lblPageName;
         
         /// <summary>
+        /// lbtnMarkAttendance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbtnMarkAttendance;
+        
+        /// <summary>
         /// lbtnlogout control.
         /// </summary>
         /// <remarks>
