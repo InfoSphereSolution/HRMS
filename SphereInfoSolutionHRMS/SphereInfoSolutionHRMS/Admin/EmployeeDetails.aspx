@@ -38,22 +38,23 @@
                                 </td>
                             </tr>
                         </table>
+                        <asp:LinkButton ID="lbAddNewEmployee" CssClass="pull-right" OnClick="lbAddNewEmployee_Click" runat="server">Add New Employee</asp:LinkButton>
                         <h3 class="text-primary text-center">List of Employees</h3>
 
                         <asp:GridView ID="gvEmployeeList" runat="server" DataKeyNames="UserId" AutoGenerateColumns="False"
                             CssClass="table table-hover table-bordered table-condensed"
-                            HeaderStyle-CssClass="gvHeader" OnRowCommand="gvEmployeeList_RowCommand">
+                            HeaderStyle-CssClass="gvHeader" OnRowCommand="gvEmployeeList_RowCommand" OnRowDataBound="gvEmployeeList_RowDataBound">
                             <Columns>
                                 <asp:BoundField DataField="UserId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                                <asp:BoundField DataField="ReportingManager_Id" HeaderText="ReportingManager_Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                <asp:BoundField DataField="ReportingManager_Id" HeaderText="ReportingManager_Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                 <asp:BoundField DataField="Employee_Name" HeaderText="Employee_Name" />
-                                <asp:BoundField DataField="Designation_Name" HeaderText="Designation" />                                
+                                <asp:BoundField DataField="Designation_Name" HeaderText="Designation" />
                                 <asp:BoundField DataField="Reporting_Manager" HeaderText="Reporting Manager" />
                                 <asp:BoundField DataField="ClientName" HeaderText="Client" />
                                 <asp:BoundField DataField="IsActive" HeaderText="Is Active" />
                                 <asp:TemplateField HeaderText="Actions" ItemStyle-CssClass="center-block text-center">
                                     <ItemTemplate>
-                                        <asp:Button ID="btnViewEmployee" runat="server" CommandName="View" CommandArgument='<%# Eval("UserId") %>' Text="View" CssClass="btn btn-primary btn-xs"></asp:Button>
+                                        <asp:Button ID="btnDisplayEmployeeDetails" runat="server" CommandName="Display" CommandArgument='<%# Eval("UserId") %>' Text="View" CssClass="btn btn-primary btn-xs"></asp:Button>
                                         <asp:Button ID="btnEditEmployee" runat="server" CommandName="Change" CommandArgument='<%# Eval("UserId") %>' Text="Edit" CssClass="btn btn-primary btn-xs"></asp:Button>
                                         <asp:Button ID="btnRemoveEmployee" runat="server" CommandName="Remove" CommandArgument='<%# Eval("UserId") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
                                     </ItemTemplate>
@@ -157,11 +158,15 @@
                                         <asp:Label ID="lblCurrentAddress" runat="server" Text="Current Address" Font-Bold="true"></asp:Label>
                                         <asp:TextBox ID="txtCurrentAddress" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Enter Current Address Here.." runat="server"></asp:TextBox>
                                     </div>
-                                    <div class="form-group">
-                                        <asp:Label ID="lblPermanentAddress" runat="server" Text="Permanent Address" Font-Bold="true"></asp:Label>
-                                        (&nbsp;<asp:CheckBox ID="chSameAddress" CssClass="checkbox-inline" Text="Same as above" runat="server" />&nbsp;)
+                                    <asp:UpdatePanel ID="upSameAddress" runat="server">
+                                        <ContentTemplate>
+                                            <div class="form-group">
+                                                <asp:Label ID="lblPermanentAddress" runat="server" Text="Permanent Address" Font-Bold="true"></asp:Label>
+                                                (&nbsp;<asp:CheckBox ID="chSameAddress" CssClass="checkbox-inline" Text="Same as above" runat="server" OnCheckedChanged="chSameAddress_CheckedChanged" AutoPostBack="true" />&nbsp;)
                                         <asp:TextBox ID="txtPermanentAddress" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Enter Permanent Address Here.." runat="server"></asp:TextBox>
-                                    </div>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
                                     <div class="row">
 
                                         <div class="col-sm-4 form-group">
@@ -265,26 +270,27 @@
                                         </div>
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblPassportIssuePlace" runat="server" Text="Place of Issue" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtPassportIssuePlace" CssClass="form-control" Enabled="false" runat="server" placeholder="Enter Place Of Issue Number Here.."></asp:TextBox>
+                                            <asp:TextBox ID="txtPassportIssuePlace" CssClass="form-control" runat="server" placeholder="Enter Place Of Issue Number Here.."></asp:TextBox>
                                         </div>
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblPassportIssueCountry" runat="server" Text="Country of Issue" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtPassportIssueCountry" CssClass="form-control" Enabled="false" runat="server" placeholder="Enter Country Of Issue Here.."></asp:TextBox>
+                                            <asp:TextBox ID="txtPassportIssueCountry" CssClass="form-control" runat="server" placeholder="Enter Country Of Issue Here.."></asp:TextBox>
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblPassportIssueDate" runat="server" Text="Date of Issue" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtPassportIssueDate" CssClass="form-control" Enabled="false" runat="server" placeholder="Enter Date of Issue Here.."></asp:TextBox>
+                                            <asp:TextBox ID="txtPassportIssueDate" CssClass="form-control" runat="server" placeholder="Enter Date of Issue Here.."></asp:TextBox>
                                         </div>
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblPassportExpiryDate" runat="server" Text="Date of Expiry" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtPassportExpiryDate" CssClass="form-control" Enabled="false" runat="server" placeholder="Enter Place Of Issue Number Here.."></asp:TextBox>
+                                            <asp:TextBox ID="txtPassportExpiryDate" CssClass="form-control" runat="server" placeholder="Enter Place Of Issue Number Here.."></asp:TextBox>
                                         </div>
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblECNRStatus" runat="server" Text="ECNR Status" Font-Bold="true"></asp:Label>
-                                            <asp:DropDownList ID="ddlECNRStatus" CssClass="form-control" Enabled="false" runat="server">
+                                            <asp:DropDownList ID="ddlECNRStatus" CssClass="form-control" runat="server">
+                                                <asp:ListItem Text="Select Status" Value="-1"></asp:ListItem>
                                                 <asp:ListItem Text="ECR" Value="1"></asp:ListItem>
                                                 <asp:ListItem Text="ECNR" Value="0"></asp:ListItem>
                                             </asp:DropDownList>
@@ -326,12 +332,12 @@
                                         </div>
                                         <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
                                             <asp:Label ID="lblBondStart" runat="server" Text="Bond Start Date" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtBondStart" CssClass="form-control" Enabled="false" runat="server" placeholder="Enter Start Date Here.."></asp:TextBox>
+                                            <asp:TextBox ID="txtBondStart" CssClass="form-control" runat="server" placeholder="Enter Start Date Here.."></asp:TextBox>
                                             <cc1:CalendarExtender ID="ceBondStart" runat="server" TargetControlID="txtBondStart" Format="yyyy/M/dd"></cc1:CalendarExtender>
                                         </div>
                                         <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
                                             <asp:Label ID="lblBondEnd" runat="server" Text="Bond End Date" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtBondEnd" CssClass="form-control" Enabled="false" runat="server" placeholder="Enter End Date Here.."></asp:TextBox>
+                                            <asp:TextBox ID="txtBondEnd" CssClass="form-control" runat="server" placeholder="Enter End Date Here.."></asp:TextBox>
                                             <cc1:CalendarExtender ID="ceBondEnd" runat="server" TargetControlID="txtBondEnd" Format="yyyy/M/dd"></cc1:CalendarExtender>
                                         </div>
                                     </div>
@@ -343,28 +349,35 @@
                                         </div>
                                     </div>
 
-
-                                    <div class="row">
-                                        <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
-                                            <asp:Label ID="lblClientName" runat="server" Text="Client Name" Font-Bold="true"></asp:Label>
-                                            <asp:DropDownList ID="ddlCLientName" runat="server" CssClass="form-control"></asp:DropDownList>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
-                                            <asp:Label ID="lblShift" runat="server" Text="Shift(Timing)" Font-Bold="true"></asp:Label>
-                                            <asp:DropDownList ID="ddlShift" runat="server" CssClass="form-control"></asp:DropDownList>
-                                        </div>
-                                        <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
-                                            <asp:Label ID="lblReportingManager" runat="server" Text="Reporting Manager" Font-Bold="true"></asp:Label>
-                                            <asp:DropDownList ID="ddlReportingManager" runat="server" CssClass="form-control"></asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
-                                            <asp:CheckBox ID="cbIsConfirm" CssClass="checkbox-inline" Text="Confirmed?" runat="server" />
-                                            <asp:TextBox ID="txtConfirmationDate" CssClass="form-control" runat="server" Enabled="false" placeholder="Enter Confirmation Date Here.."></asp:TextBox>
-                                        </div>
-                                    </div>
+                                    <asp:UpdatePanel ID="upShiftClient" runat="server">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
+                                                    <asp:Label ID="lblClientName" runat="server" Text="Client Name" Font-Bold="true"></asp:Label>
+                                                    <asp:DropDownList ID="ddlCLientName" runat="server" CssClass="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlCLientName_SelectedIndexChanged"></asp:DropDownList>
+                                                </div>
+                                                <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
+                                                    <asp:Label ID="lblShift" runat="server" Text="Shift(Timing)" Font-Bold="true"></asp:Label>
+                                                    <asp:DropDownList ID="ddlShift" runat="server" CssClass="form-control"></asp:DropDownList>
+                                                </div>
+                                                <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
+                                                    <asp:Label ID="lblReportingManager" runat="server" Text="Reporting Manager" Font-Bold="true"></asp:Label>
+                                                    <asp:DropDownList ID="ddlReportingManager" runat="server" CssClass="form-control"></asp:DropDownList>
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                    <asp:UpdatePanel ID="upConfirm" runat="server">
+                                        <ContentTemplate>
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
+                                                    <asp:CheckBox ID="cbIsConfirm" CssClass="checkbox-inline" Text="Confirmed?" runat="server" AutoPostBack="True" OnCheckedChanged="cbIsConfirm_CheckedChanged" />
+                                                    <asp:TextBox ID="txtConfirmationDate" CssClass="form-control" runat="server" Enabled="false" placeholder="Enter Confirmation Date Here.."></asp:TextBox>
+                                                    <cc1:CalendarExtender ID="ceConfirmationDate" TargetControlID="txtConfirmationDate" runat="server"></cc1:CalendarExtender>
+                                                </div>
+                                            </div>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
 
                                     <hr class="small" />
 
