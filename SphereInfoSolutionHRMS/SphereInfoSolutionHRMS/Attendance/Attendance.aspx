@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+    <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
     <div class="row">
         <div class="col-sm-12">
             <asp:LinkButton ID="lbtnApplyLeave" href="#" runat="server" CssClass="pull-right">Apply Leave</asp:LinkButton>
