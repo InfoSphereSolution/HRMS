@@ -715,6 +715,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtHolidayDate;
         
         /// <summary>
+        /// CalendarExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
+        
+        /// <summary>
         /// ddlClientName control.
         /// </summary>
         /// <remarks>

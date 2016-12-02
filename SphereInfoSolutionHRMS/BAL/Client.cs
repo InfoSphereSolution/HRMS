@@ -51,6 +51,41 @@ namespace BAL
             }
             return value;
         }
+        //add Holiday Details 
+        public int UpdateHolidayDetails(Models.ClientModel clientmodel,int operation)
+        {
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+            sqlparam.Add(new SqlParameter("@Cl_HolidayId", clientmodel.Client_HolidayId));
+            sqlparam.Add(new SqlParameter("@HolidayName", clientmodel.HolidayName));
+            sqlparam.Add(new SqlParameter("@HolidayOn", clientmodel.HolidayOn));
+            sqlparam.Add(new SqlParameter("@ClientId", clientmodel.ClientId));
+            sqlparam.Add(new SqlParameter("@IsOptional", clientmodel.IsOptional));
+            sqlparam.Add(new SqlParameter("@AddedBy", clientmodel.AddedBy));
+            sqlparam.Add(new SqlParameter("@Operation", operation));
+            SqlParameter ResultOut = new SqlParameter("@Result", SqlDbType.Int)
+            {
+
+                Direction = ParameterDirection.Output
+            };
+            sqlparam.Add(ResultOut);
+            int i = DAL.SQLHelp.ExecuteNonQuery("Usp_UpdateClientHoliday", sqlparam);
+            int Result = Convert.ToInt32(ResultOut.Value.ToString());
+            return Result;
+        }
+
+        //Get all Holiday List
+        public DataTable GetHolidayList()
+        {
+            dt = DAL.SQLHelp.ExecuteSelect("select * from vw_GetClientsHolidayList");
+            return dt;
+        }
+
+        //Get Pending Holiday List
+        public DataTable GetPendingHolidayList()
+        {
+            dt = DAL.SQLHelp.ExecuteSelect("select * from vw_GetPendingClientsHolidayList");
+            return dt;
+        }
 
        public DataTable retrieveshift(int shift)
        {
@@ -412,6 +447,23 @@ namespace BAL
             sqlparam.Add(IsSuccessful);
             // 2 is to Remove Role
             int i = DAL.SQLHelp.ExecuteNonQuery("Usp_UpdateClient", sqlparam);
+            int value = Convert.ToInt32(IsSuccessful.Value.ToString());
+            return value;
+        }
+
+        public int ApproveOrRejectHoliday(Models.ClientModel clientmodel)
+        {
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+            sqlparam.Add(new SqlParameter("@PendingHolidayId",clientmodel.PendingClient_HolidayId));
+            sqlparam.Add(new SqlParameter("@AddedBy", clientmodel.CreatedBy));
+            sqlparam.Add(new SqlParameter("@Operation", clientmodel.Operation));
+            SqlParameter IsSuccessful = new SqlParameter("@Result", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+            sqlparam.Add(IsSuccessful);
+            // 2 is to Remove Role
+            int i = DAL.SQLHelp.ExecuteNonQuery("Usp_ApproveOrRejectClientsHoliday", sqlparam);
             int value = Convert.ToInt32(IsSuccessful.Value.ToString());
             return value;
         }

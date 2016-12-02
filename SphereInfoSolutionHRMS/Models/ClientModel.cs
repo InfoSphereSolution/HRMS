@@ -45,5 +45,13 @@ namespace Models
         public int Hours { get; set; }
         public int UpdatedBy { get; set; }
 
+
+        //Holiday Variables
+        public int? Client_HolidayId { get; set; }
+        public int? PendingClient_HolidayId { get; set; }
+        public string HolidayName { get; set; }
+        public DateTime? HolidayOn { get; set; }
+        public bool IsOptional { get; set; }
+       
     }
 }

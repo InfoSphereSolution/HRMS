@@ -57,7 +57,7 @@
 
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                      
+                                      <asp:BoundField DataField="NoOfOptionalHoliday" HeaderText="No of Optional Holiday" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                     </Columns>
                                 </asp:GridView>
                                 <asp:Label ID="lblMessageClientList" runat="server"></asp:Label>
@@ -431,17 +431,20 @@
                                         </div>
                                         <hr class="small" />
                                         <h3 class="text-primary">List of Holidays</h3>
-                                        <asp:GridView ID="gvHolidayList" runat="server" DataKeyNames="ClientHolidayId" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-condensed"
-                                            HeaderStyle-CssClass="gvHeader">
+                                        <asp:GridView ID="gvHolidayList" runat="server" DataKeyNames="Cl_HolidayId" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-condensed"
+                                            HeaderStyle-CssClass="gvHeader" OnRowCommand="gvHolidayList_RowCommand">
                                             <Columns>
-                                                <asp:BoundField DataField="ClientHolidayId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                                                <asp:BoundField DataField="HolidayName" HeaderText="Name" />
-                                                <asp:BoundField DataField="Date" HeaderText="Date" />
+                                                <asp:BoundField DataField="Cl_HolidayId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                                <asp:BoundField DataField="HolidayName" HeaderText="Holiday Name" />
+                                                <asp:BoundField DataField="ClientId" HeaderText="Client Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                                <asp:BoundField DataField="ClientName" HeaderText="Client Name" />
+                                                <asp:BoundField DataField="HolidayOn" HeaderText="Holiday On" DataFormatString="{0:yyyy-MM-dd}" />
                                                 <asp:BoundField DataField="IsOptional" HeaderText="Is Optional" />
                                                 <asp:BoundField DataField="IsActive" HeaderText="Is Active" />
                                                 <asp:TemplateField HeaderText="Remove">
                                                     <ItemTemplate>
-                                                        <asp:Button ID="btnRemoveHoliday" runat="server" CommandName="Remove" CommandArgument='<%# Eval("ClientHolidayId") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
+                                                        <asp:Button ID="btnEditHoliday" runat="server" CommandName="Change" CommandArgument='<%# ((GridViewRow) Container).RowIndex %>' Text="Edit" CssClass="btn btn-danger btn-xs"></asp:Button>
+                                                        <asp:Button ID="btnRemoveHoliday" runat="server" CommandName="Remove" CommandArgument='<%# Eval("Cl_HolidayId") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
@@ -456,7 +459,7 @@
                                         <br />
 
                                         <asp:GridView ID="gvTempHolidayList" runat="server" AutoGenerateColumns="False"
-                                            DataKeyNames="PendingClientHolidayId" CssClass="table table-bordered table-condensed" HeaderStyle-CssClass="gvHeader">
+                                            DataKeyNames="PendingHolidayId" CssClass="table table-bordered table-condensed" HeaderStyle-CssClass="gvHeader">
                                             <Columns>
                                                 <asp:TemplateField HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                                                     <HeaderTemplate>
@@ -466,17 +469,18 @@
                                                         <asp:CheckBox ID="chkboxSelectHoliday" runat="server" onclick="Check_Click(this)" />
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-                                                <asp:BoundField DataField="PendingClientHolidayId" HeaderText="Pending Client Holiday Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                                                <asp:BoundField DataField="ClientHolidayId" HeaderText="Client Holiday Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                                                <asp:BoundField DataField="HolidayName" HeaderText="Name" />
-                                                <asp:BoundField DataField="Date" HeaderText="Date" />
-                                                <asp:BoundField DataField="IsOptional" HeaderText="Is Optional" />
+                                                <asp:BoundField DataField="PendingHolidayId" HeaderText="Pending Client Holiday Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                                <asp:BoundField DataField="Cl_HolidayId" HeaderText="Client Holiday Id" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                                                <asp:BoundField DataField="HolidayName" HeaderText="Holiday Name" />
+                                                <asp:BoundField DataField="ClientName" HeaderText="Client Name" />
+                                                <asp:BoundField DataField="HolidayOn" HeaderText="Is Optional" />
+                                                   <asp:BoundField DataField="IsOptional" HeaderText="Is Optional" />
                                                 <asp:BoundField DataField="IsActive" HeaderText="Is Active" />
                                                 <asp:BoundField DataField="Operation" HeaderText="Operation" />
                                             </Columns>
                                         </asp:GridView>
-                                        <asp:Button ID="btnApproveHoliday" runat="server" Text="Approve" CssClass="btn btn-success btn-md" Width="100px" />&nbsp;&nbsp;
-                                        <asp:Button ID="btnRejectHoliday" runat="server" Text="Reject" CssClass="btn btn-danger btn-md" Width="100px" />
+                                        <asp:Button ID="btnApproveHoliday" runat="server" Text="Approve" CssClass="btn btn-success btn-md" Width="100px" OnClick="btnApproveHoliday_Click" />&nbsp;&nbsp;
+                                        <asp:Button ID="btnRejectHoliday" runat="server" Text="Reject" CssClass="btn btn-danger btn-md" Width="100px" OnClick="btnRejectHoliday_Click" />
                                         <br />
                                         <asp:Label ID="lblMessagePendingHoliday" runat="server"></asp:Label>
                                     </div>
@@ -495,6 +499,8 @@
                                             <tr>
                                                 <td>
                                                     <asp:TextBox ID="txtHolidayDate" runat="server" placeholder="Enter Date.." Width="250px" CssClass="form-control input-md"></asp:TextBox>
+                                                    <cc1:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtHolidayDate"
+                                                         Format="yyyy/MM/dd"></cc1:CalendarExtender>
                                                 </td>
                                             </tr>
                                              <tr>
@@ -507,9 +513,9 @@
                                             <tr>
                                                 <td>
                                                     <asp:DropDownList ID="ddlIsOptional" runat="server" Width="250px" CssClass="form-control input-md">
-                                                        <asp:ListItem  Value="0" Text="--Select Optinal--"></asp:ListItem>
+                                                        <asp:ListItem  Value="2" Text="Select IsOptional"></asp:ListItem>
                                                          <asp:ListItem  Value="1" Text="Yes"></asp:ListItem>
-                                                         <asp:ListItem  Value="2" Text="No"></asp:ListItem>
+                                                         <asp:ListItem  Value="0" Text="No"></asp:ListItem>
                                               
                                                     </asp:DropDownList>
                                               
@@ -518,7 +524,7 @@
                                            
                                             <tr>
                                                 <td colspan="2">
-                                                    <asp:Button ID="btnAddHoliday" runat="server" Text="Add" Width="250px" CssClass="btn btn-success btn-md"></asp:Button>
+                                                    <asp:Button ID="btnAddHoliday" runat="server" Text="Add" CommandArgument="Save" Width="250px" CssClass="btn btn-success btn-md" OnClick="btnAddHoliday_Click"></asp:Button>
                                                 </td>
                                             </tr>
                                             <tr>

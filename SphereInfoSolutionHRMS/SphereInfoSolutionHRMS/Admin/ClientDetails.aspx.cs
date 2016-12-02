@@ -22,7 +22,9 @@ namespace SphereInfoSolutionHRMS.Admin
         {
             if (!IsPostBack)
             {
-              
+                GetClientNames();
+                BindgvHolidayList();
+                BindgvTempHolidayList();
                 DisplayState();
                 DisplayCity();
                 DisplayStateCity();
@@ -32,10 +34,55 @@ namespace SphereInfoSolutionHRMS.Admin
                 //dt.Columns.AddRange(new DataColumn[5] { new DataColumn("ShiftName"), new DataColumn("StartTime"), new DataColumn("EndTime"), new DataColumn("Hours"), new DataColumn("Id") });
                 //ViewState["CustomShift"] = dt;
                 //this.bindgrid();
-              
+
+            }
+        }
+        //Bind client Name to dropdown
+        private void GetClientNames()
+        {
+            Employee employee = new Employee();
+            EmployeeModel employeeModel = new EmployeeModel();
+            dt = employee.FetchClient();
+            ddlClientName.DataSource = dt;
+            ddlClientName.DataValueField = "ClientId";
+            ddlClientName.DataTextField = "ClientName";
+            ddlClientName.DataBind();
+            ddlClientName.Items.Insert(0, new ListItem("Select Client", "0"));
+
+        }
+
+        //Get Holiday List and bind it to gridview
+        private void BindgvHolidayList()
+        {
+            client = new Client();
+            clientmodel = new ClientModel();
+            DataTable dtHolidayList = client.GetHolidayList();
+            if (dt.Rows.Count > 0)
+            {
+                gvHolidayList.DataSource = dtHolidayList;
+                gvHolidayList.DataBind();
+            }
+            else
+            {
+                //No records found
             }
         }
 
+        //Get Pending Holiday List and bind it to gridview
+        private void BindgvTempHolidayList()
+        {
+            client = new Client();
+            DataTable dtPendingHolidayList = client.GetPendingHolidayList();
+            if (dt.Rows.Count > 0)
+            {
+                gvTempHolidayList.DataSource = dtPendingHolidayList;
+                gvTempHolidayList.DataBind();
+            }
+            else
+            {
+                //No records found
+            }
+        }
         //Display Master Table Client
         protected void DisplayMasterClient()
         {
@@ -51,9 +98,9 @@ namespace SphereInfoSolutionHRMS.Admin
             {
 
                 gvClientList.Visible = false;
-               lblMessageClientList.Text = "No Roles Found";
+                lblMessageClientList.Text = "No Roles Found";
                 lblMessageClientList.ForeColor = System.Drawing.Color.Red;
-      
+
             }
         }
 
@@ -171,15 +218,15 @@ namespace SphereInfoSolutionHRMS.Admin
             clearall();
 
         }
-       //Clear All Controls
+        //Clear All Controls
         public void clearall()
         {
-            txtClientName.Text = txtAddress.Text =txtStateName.Text=txtCityName.Text=txtPincode.Text=txtContact.Text=txtSite.Text=txtIP.Text=txtNoOfOptionalHolidays.Text="";
+            txtClientName.Text = txtAddress.Text = txtStateName.Text = txtCityName.Text = txtPincode.Text = txtContact.Text = txtSite.Text = txtIP.Text = txtNoOfOptionalHolidays.Text = "";
 
-            ddlState.SelectedIndex = ddlCity.SelectedIndex = ddlGeneralShift.SelectedIndex=-1;
+            ddlState.SelectedIndex = ddlCity.SelectedIndex = ddlGeneralShift.SelectedIndex = -1;
             cbIsSaturdayWorking.Checked = false;
             cbFirstSaturday.Checked = cbSecondSaturday.Checked = cbThirdSaturday.Checked = cbFourthSaturday.Checked = cbFifthSaturday.Checked = false;
-            cbFlexibleShift.Checked = cbSecondShift.Checked = cbNightShift.Checked  = false;
+            cbFlexibleShift.Checked = cbSecondShift.Checked = cbNightShift.Checked = false;
             //txtCustomShiftName.Text = txtCustomShiftStart.Text = txtCustomShiftEnd.Text = txtCustomShiftHours.Text = "";
         }
         protected void cbIsSaturdayWorking_SelectedIndexChanged(object sender, EventArgs e)
@@ -187,15 +234,15 @@ namespace SphereInfoSolutionHRMS.Admin
             if (cbIsSaturdayWorking.Checked)
             {
                 pnlISSaturdayWorking.Visible = true;
-               // cbFifthSaturday.Visible = true;
+                // cbFifthSaturday.Visible = true;
             }
             else
             {
                 pnlISSaturdayWorking.Visible = false;
-         
+
 
             }
-               
+
         }
         protected void btnSaveClient_Click(object sender, EventArgs e)
         {
@@ -346,12 +393,12 @@ namespace SphereInfoSolutionHRMS.Admin
 
             }
 
-            clientmodel.Operation =1;
-         
+            clientmodel.Operation = 1;
+            clientmodel.optionalholiday = Convert.ToInt32(txtNoOfOptionalHolidays.Text);
             //Returns success value
-          //  int i = client.AddClient(clientmodel, ViewState["CustomShift"] as DataTable);
+            //  int i = client.AddClient(clientmodel, ViewState["CustomShift"] as DataTable);
             int i = client.AddClient(clientmodel);
-         
+
             if (i == -1)
             {
                 lblstatus.Text = "Client Already Added";
@@ -452,14 +499,14 @@ namespace SphereInfoSolutionHRMS.Admin
                 if (chkdApprove.Checked)
                 {
                     clientmodel.tempclientId = Convert.ToInt32(gvPendingClientList.DataKeys[gvrow.RowIndex].Value);
-                   clientmodel.ClientId = Convert.ToInt32(gvPendingClientList.Rows[gvrow.RowIndex].Cells[2].Text);
+                    clientmodel.ClientId = Convert.ToInt32(gvPendingClientList.Rows[gvrow.RowIndex].Cells[2].Text);
 
-                   int i = client.UpdateTempClient(clientmodel);
+                    int i = client.UpdateTempClient(clientmodel);
                     if (i == 1)
                     {
                         lblMessagePendingClientList.Text = "Selected Client Approved Succesfully";
                         lblMessagePendingClientList.ForeColor = System.Drawing.Color.Green;
-                    
+
                     }
                     else if (i == 2)
                     {
@@ -478,16 +525,16 @@ namespace SphereInfoSolutionHRMS.Admin
             }
 
             DisplayMasterClient();
-            Displaytemptable();   
+            Displaytemptable();
         }
-  
+
         protected void gvClientList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int index = Convert.ToInt32(e.CommandArgument);
-         
+
             if (e.CommandName == "Remove")
             {
-              
+
                 int UserId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
                 clientmodel.ClientId = index;
                 clientmodel.UpdatedBy = UserId;
@@ -551,10 +598,10 @@ namespace SphereInfoSolutionHRMS.Admin
             {
                 Retrivedata(index);
                 btnupdate.Visible = true;
-                btnSaveClient.Visible=false;
+                btnSaveClient.Visible = false;
 
             }
-          
+
             if (e.CommandName == "View")
             {
 
@@ -562,7 +609,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 btnupdate.Visible = false;
                 btnSaveClient.Visible = false;
             }
-           
+
             DisplayMasterClient();
             Displaytemptable();
         }
@@ -577,9 +624,9 @@ namespace SphereInfoSolutionHRMS.Admin
             txtClientName.Text = gr.Cells[1].Text;
             txtAddress.Text = gr.Cells[4].Text;
             //ddlState.SelectedItem.Text = gr.Cells[2].Text;
-            ddlState.SelectedValue = ddlState.Items.FindByText(gr.Cells[2].Text).Value; 
+            ddlState.SelectedValue = ddlState.Items.FindByText(gr.Cells[2].Text).Value;
             //ddlCity.SelectedItem.Text = gr.Cells[3].Text;
-            ddlCity.SelectedValue = ddlCity.Items.FindByText(gr.Cells[3].Text).Value; 
+            ddlCity.SelectedValue = ddlCity.Items.FindByText(gr.Cells[3].Text).Value;
             txtPincode.Text = gr.Cells[5].Text;
             txtContact.Text = gr.Cells[7].Text;
             txtSite.Text = gr.Cells[6].Text;
@@ -596,7 +643,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 pnlISSaturdayWorking.Visible = false;
             }
             dt = client.RetriveSaturdayWorking(id);
-            bool IsSat_1=false,IsSat_2=false,IsSat_3=false,IsSat_4=false,IsSat_5=false;
+            bool IsSat_1 = false, IsSat_2 = false, IsSat_3 = false, IsSat_4 = false, IsSat_5 = false;
             if (dt.Rows.Count > 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
@@ -619,7 +666,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 if (IsSat_2 == true)
                 {
                     cbSecondSaturday.Checked = true;
-                   
+
                 }
                 else
                 {
@@ -628,7 +675,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 if (IsSat_3 == true)
                 {
                     cbThirdSaturday.Checked = true;
-                    
+
                 }
                 else
                 {
@@ -637,7 +684,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 if (IsSat_4 == true)
                 {
                     cbFourthSaturday.Checked = true;
-                   
+
                 }
                 else
                 {
@@ -645,7 +692,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 }
                 if (IsSat_5 == true)
                 {
-                    
+
                     cbFifthSaturday.Checked = true;
                 }
                 else
@@ -653,14 +700,14 @@ namespace SphereInfoSolutionHRMS.Admin
                     cbFifthSaturday.Checked = false;
                 }
             }
-            txtNoOfOptionalHolidays.Text = gr.Cells[10].Text;
-           
-            dt = client.retrieveshift(id);  
+
+
+            dt = client.retrieveshift(id);
             //ddlGeneralShift.DataTextField = "ShiftsName";
             //ddlGeneralShift.DataValueField = "ShiftId";         
             //ddlGeneralShift.DataSource = dt;
             // ddlGeneralShift.DataBind();
-            int GeneralshiftID=0;
+            int GeneralshiftID = 0;
             if (dt.Rows.Count > 0)
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
@@ -691,7 +738,7 @@ namespace SphereInfoSolutionHRMS.Admin
             {
                 cbSecondShift.Checked = false;
 
-     
+
 
             }
             int nightshift = Convert.ToInt32(gr.Cells[15].Text);
@@ -737,7 +784,9 @@ namespace SphereInfoSolutionHRMS.Admin
                 cbFlexibleShift.Checked = false;
 
             }
-        
+
+            txtNoOfOptionalHolidays.Text = gr.Cells[20].Text;
+
         }
 
         //Retrieve Custom Shift
@@ -758,10 +807,10 @@ namespace SphereInfoSolutionHRMS.Admin
         //        gvGetCustomShiftDetail.Visible = false;
         //    }
         //}
-        
- 
 
-       
+
+
+
         protected void gvClientList_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -802,7 +851,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 Displaytemptable();
                 lblMessagePendingClientList.Text = "";
             }
-            }
+        }
 
         //Display Custom Shift Panel
         //protected void cbCustomShift_CheckedChanged(object sender, EventArgs e)
@@ -820,7 +869,7 @@ namespace SphereInfoSolutionHRMS.Admin
         //    }
         //}
 
-       
+
 
         //Update Master Table Record
         protected void btnupdate_Click(object sender, EventArgs e)
@@ -1031,7 +1080,7 @@ namespace SphereInfoSolutionHRMS.Admin
             clearall();
         }
 
-       
+
 
         protected void gvPendingClientList_SelectedIndexChanged1(object sender, EventArgs e)
         {
@@ -1117,6 +1166,235 @@ namespace SphereInfoSolutionHRMS.Admin
                 }
             }
         }
+
+
+        //Add holiday by clients
+        protected void btnAddHoliday_Click(object sender, EventArgs e)
+        {
+            int Result = 0;
+            string Action = Convert.ToString(((Button)sender).CommandArgument);
+            if (Action == "Save")
+            {
+                //Add new Holiday
+                Result = client.UpdateHolidayDetails(GetHolidayAttributes(), 1);
+            }
+            else
+            {
+                //Update Holiday
+                Result = client.UpdateHolidayDetails(GetHolidayAttributes(), 2);
+            }
+            
+            DisplayResultMessage(Result);
+            
+        }
+        //Display Alert msgs for holidays
+        private void DisplayResultMessage(int Result)
+        {
+            BindgvHolidayList();
+            BindgvTempHolidayList();
+            ClearHolidayControls();
+            if (Result == -1)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('This Holiday Exists for this client.');", true);
+            }
+            else if (Result == -2)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('This Holiday Exists for this client waiting for approval.');", true);
+            }
+            else if (Result == 1)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Added Succesfully.');", true);
+            }
+            else if (Result == 2)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Added waiting for approval.');", true);
+            }
+            else if (Result == 3)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Updated Successfully.');", true);
+            }
+            else if (Result == -3)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Request for update of this Holiday Already exists for this client.');", true);
+            }
+            else if (Result == 4)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Updated waiting for approval.');", true);
+            }
+            else if (Result == 5)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Deleted Successfully.');", true);
+            }
+            else if (Result == -5)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Request for Delete holiday already exists for this client');", true);
+            }
+            else if (Result == 6)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holidaty Deleted waiting for approval');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Error.');", true);
+            }
+        }
+
+        //Add Holiday values to model
+        public ClientModel GetHolidayAttributes()
+        {
+            clientmodel = new ClientModel();
+            if (ViewState["ClientHolidayId"] != null)
+            {
+                clientmodel.Client_HolidayId = Convert.ToInt32(ViewState["ClientHolidayId"].ToString());
+            }
+            clientmodel.HolidayName = txtHolidayname.Text;
+            clientmodel.HolidayOn = Convert.ToDateTime(txtHolidayDate.Text);
+            clientmodel.ClientId = Convert.ToInt32(ddlClientName.SelectedValue.ToString());
+            clientmodel.IsOptional = Convert.ToBoolean(Convert.ToInt32(ddlIsOptional.SelectedValue));
+            clientmodel.AddedBy = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+            return clientmodel;
+        }
+        //Clear Holiday Controls
+        private void ClearHolidayControls()
+        {
+            ddlClientName.Enabled = true;
+            txtHolidayname.Text = "";
+            txtHolidayDate.Text = "";
+            ddlClientName.SelectedIndex = -1;
+            ddlIsOptional.SelectedIndex = -1;
+            btnAddHoliday.Text = "Save";
+            btnAddHoliday.CommandArgument = "Save";
+        }
+
+        protected void gvHolidayList_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            
+            int index = Convert.ToInt32(e.CommandArgument);
+            if (e.CommandName == "Change")
+            {
+                //set button command and text
+                btnAddHoliday.Text = "Update";
+                btnAddHoliday.CommandArgument = "Update";
+                ddlClientName.Enabled = false;
+                BindHolidaysToControls(index);
+                
+
+            }
+            else
+            {
+                try
+                {
+                    //Remove data
+                    client = new Client();
+                    clientmodel = new ClientModel();
+                    clientmodel.Client_HolidayId = index;
+                    clientmodel.AddedBy = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+                    int Result = client.UpdateHolidayDetails(clientmodel, 3);
+                    DisplayResultMessage(Result);
+                }
+                catch (Exception ex)
+                {
+                }
+
+            }
+        }
+
+        //Binding selected data to controls (Holiday details)
+        private void BindHolidaysToControls(int index)
+        {
+            try
+            {
+                int Cl_HolidayId = 0,clientId=0;
+                String HolidayName = "", ClientName = "", HolidayOn = "";
+                bool IsOptional = false;
+
+                GridViewRow gvrow = gvHolidayList.Rows[index];
+                Cl_HolidayId = Convert.ToInt32(gvrow.Cells[0].Text);
+                ViewState["ClientHolidayId"] = Cl_HolidayId;
+                HolidayName = gvrow.Cells[1].Text;
+                clientId = Convert.ToInt32(gvrow.Cells[2].Text);
+                ClientName = gvrow.Cells[3].Text;
+                HolidayOn = gvrow.Cells[4].Text;
+                IsOptional = Convert.ToBoolean(gvrow.Cells[5].Text);
+                //Set the values to controls
+                txtHolidayname.Text = HolidayName;
+                txtHolidayDate.Text = HolidayOn;
+                ddlClientName.ClearSelection();
+                ddlClientName.SelectedValue = ddlClientName.Items.FindByValue(clientId.ToString()).Value;
+                ddlIsOptional.ClearSelection();
+               // ddlClientName.Items.FindByValue(Convert.ToInt32(Convert.ToString(ClientName)).ToString()).Selected = true ;
+                ddlIsOptional.Items.FindByValue(Convert.ToInt32(Convert.ToBoolean(IsOptional)).ToString()).Selected = true;
+            }
+            catch(Exception ex)
+            {
+            }
+        }
+
+        protected void btnApproveHoliday_Click(object sender, EventArgs e)
+        {
+            ApproveOrRejectHoliday(1);
+            BindgvHolidayList();
+            BindgvTempHolidayList();
+        }
+        protected void btnRejectHoliday_Click(object sender, EventArgs e)
+        {
+            ApproveOrRejectHoliday(2);
+            BindgvHolidayList();
+            BindgvTempHolidayList();
+        }
+        //Approve or Reject Holiday
+        private void ApproveOrRejectHoliday(int Operation)
+        {
+            foreach (GridViewRow gvrow in gvTempHolidayList.Rows)
+            {
+                CheckBox chkdApprove = (CheckBox)gvrow.FindControl("chkboxSelectHoliday");
+                clientmodel.CreatedBy = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+                clientmodel.Operation = Operation;
+                if (chkdApprove.Checked)
+                {
+                    clientmodel.PendingClient_HolidayId = Convert.ToInt32(gvTempHolidayList.DataKeys[gvrow.RowIndex].Value);
+
+                    int i = client.ApproveOrRejectHoliday(clientmodel);
+
+                    if (Operation == 1)
+                    {
+                        if (i == 1)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Approved.');", true);
+                            //lblMessageTempDesignation.Text = "Selected Roles Approved Succesfully";
+                            //lblMessageTempDesignation.ForeColor = System.Drawing.Color.Green;
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Error.');", true);
+                            //lblMessageTempDesignation.Text = "Error";
+                            //lblMessageTempDesignation.ForeColor = System.Drawing.Color.Red;
+                        }
+                    }
+                    else
+                    {
+                        if (i == 2)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Rejected.');", true);
+                            //lblMessageTempDesignation.Text = "Selected Roles Removed Succesfully";
+                            //lblMessageTempDesignation.ForeColor = System.Drawing.Color.Green;
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Error.');", true);
+                            //lblMessageTempDesignation.Text = "Error";
+                            //lblMessageTempDesignation.ForeColor = System.Drawing.Color.Red;
+                        }
+                    }
+                }
+            }
+        }
+
+       
+
+
+
+
         //protected void gvPendingClientList_RowCommand(object sender, GridViewCommandEventArgs e)
         //{
         //    int Index = int.Parse(e.CommandArgument.ToString());
@@ -1299,8 +1577,8 @@ namespace SphereInfoSolutionHRMS.Admin
         //    }
         //}
 
-       
-       
-      
+
+
+
     }
 }
