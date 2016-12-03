@@ -32,27 +32,38 @@ namespace SphereInfoSolutionHRMS
 
         protected Int32 IsAttendanceMarked()
         {
-            Int32 IsAttendanceMarked = markAttendance.CheckMarkAttendance(UserID);
+            Int32 IsAttendanceMarked = markAttendance.CheckMarkAttendance(getPunchUserInfo());
             return IsAttendanceMarked;
         }
 
         protected void ChangePunch()
         {
-            if (IsAttendanceMarked() == 1)
+            if (IsAttendanceMarked() == 3)
             {
                 lbtnMarkAttendance.Text = "Punch-In";
                 lbtnMarkAttendance.Enabled = true;
             }
-            else if (IsAttendanceMarked() == 2)
+            else if (IsAttendanceMarked() == -1 || IsAttendanceMarked() == 2)
             {
                 lbtnMarkAttendance.Text = "Punch-Out";
                 lbtnMarkAttendance.Enabled = true;
             }
-            else if (IsAttendanceMarked() == 3)
+            else if (IsAttendanceMarked() == -2 )
             {
                 lbtnMarkAttendance.Text = "Attendance Marked";
                 lbtnMarkAttendance.Enabled = false;
             }
+            else if (IsAttendanceMarked() == -3 || IsAttendanceMarked() == -4)
+            {
+                lbtnMarkAttendance.Text = "IP Address Not Matched";
+                lbtnMarkAttendance.Enabled = false;
+            }
+            else if (IsAttendanceMarked() == -3)
+            {
+                lbtnMarkAttendance.Text = "Shift Ended";
+                lbtnMarkAttendance.Enabled = false;
+            }
+             
             else { }
 
         }
@@ -87,7 +98,7 @@ namespace SphereInfoSolutionHRMS
         {
             MarkAttendanceModel markAttendanceModel = new MarkAttendanceModel();
             markAttendanceModel.UserID = UserID;
-            markAttendanceModel.IPAddress = "192.168.10.12";
+            markAttendanceModel.IPAddress = "198.168.121.1";
             return markAttendanceModel;
         }
     }

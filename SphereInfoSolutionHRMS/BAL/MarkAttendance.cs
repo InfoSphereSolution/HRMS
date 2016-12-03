@@ -11,20 +11,26 @@ namespace BAL
 {
     public class MarkAttendance
     {
-        
-        public Int32 CheckMarkAttendance(Int32 UserID)
+
+        public Int32 CheckMarkAttendance(MarkAttendanceModel markAttendanceModel)
         {
             /*Logic to check if Current User has marked attendance */
-
-
-
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+            sqlparam.Add(new SqlParameter("@UserID", markAttendanceModel.UserID));            
+            sqlparam.Add(new SqlParameter("@IP_Address", markAttendanceModel.IPAddress));
+            DataTable dt = DAL.SQLHelp.ExecuteReader("Usp_IsMarkedAttendance", sqlparam);
+            int i = Convert.ToInt32(dt.Rows[0][0]);
+            return i;
 
             /*
-             * 1: Have To Punch - In
-             * 2: Already Punched-In but not Punched - Out
-             * 3: Punched - In & Punched - Out
+             *  3 : Have To Punch - In  
+             * -1 : In time exist
+             * -2 : Out Time Exist
+             *  2 : Out Time Does not exist
+             * -3 : Not Eligible to Punch-In
+             * -4 : IP Does not match
              */
-            return 1;
+
         }
 
         public Boolean MarkUserAttendance(MarkAttendanceModel markAttendanceModel)
