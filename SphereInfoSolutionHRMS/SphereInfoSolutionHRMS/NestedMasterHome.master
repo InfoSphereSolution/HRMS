@@ -36,8 +36,9 @@
                                     <%--<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as  <span class="caret"></span></a>--%>
                                     <%--<ul class="dropdown-menu">--%>
                                     <li><a href="#">My Profile</a></li>
-                                    <li><a href="#">Change Password</a></li>
-                                    <li>
+                                  <li> <a href="/Admin/ChangePassword.aspx">ChangePassword</a></li> 
+                          <%--          <li><a href="#">Change Password</a></li>
+                           --%>         <li>
                                         <asp:LinkButton ID="lbtnlogout" runat="server" OnClick="btnlogout_Click">Logout</asp:LinkButton></li>
                                     <li><%--<asp:Button ID="btnlogout" runat="server" Text="Logout" OnClick="btnlogout_Click" CssClass="btn btn-primary btn-sm navbar-right" />--%></li>
                                     <%--</ul>--%>
