@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class MarkAttendanceModel
+    public class AttendanceModel
     {
         public Int32 UserID { get; set; }
         public String IPAddress { get; set; }

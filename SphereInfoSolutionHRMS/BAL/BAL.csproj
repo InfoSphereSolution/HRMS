@@ -44,6 +44,7 @@
     <Compile Include="Designation1.cs" />
     <Compile Include="DesignationMaster.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="Leave.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MarkAttendance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

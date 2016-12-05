@@ -12,7 +12,7 @@ namespace BAL
     public class MarkAttendance
     {
 
-        public Int32 CheckMarkAttendance(MarkAttendanceModel markAttendanceModel)
+        public Int32 CheckMarkAttendance(AttendanceModel markAttendanceModel)
         {
             /*Logic to check if Current User has marked attendance */
             List<SqlParameter> sqlparam = new List<SqlParameter>();
@@ -33,13 +33,13 @@ namespace BAL
 
         }
 
-        public Boolean MarkUserAttendance(MarkAttendanceModel markAttendanceModel)
+        public Boolean MarkUserAttendance(AttendanceModel markAttendanceModel)
         {
             return true;
         }
 
 
-        public DataTable FetchAttendance(MarkAttendanceModel markAttendanceModel)
+        public DataTable FetchAttendance(AttendanceModel markAttendanceModel)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
             sqlparam.Add(new SqlParameter("@UserID", markAttendanceModel.UserID));
@@ -49,7 +49,7 @@ namespace BAL
             return dt;
         }
 
-        public DataTable FetchAttendanceSummary(MarkAttendanceModel markAttendanceModel)
+        public DataTable FetchAttendanceSummary(AttendanceModel markAttendanceModel)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
             sqlparam.Add(new SqlParameter("@UserID", markAttendanceModel.UserID));

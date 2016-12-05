@@ -61,7 +61,7 @@
 
                                     <asp:TemplateField HeaderText="" ItemStyle-Font-Bold="true">
                                         <ItemTemplate>
-                                            <asp:Button ID="btnCancel" runat="server" Text="Cancel" CommandName="CancelLeave" />
+                                            <asp:Button ID="btnCancel" runat="server" Text="X" CommandName="CancelLeave" CssClass="btn btn-danger btn-sm"/>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -85,7 +85,7 @@
                 CssClass="table table-hover table-bordered table-condensed"
                 HeaderStyle-CssClass="gvHeader">
                 <Columns>
-                  <asp:BoundField DataField="LeaveID" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="LeaveID" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
                     <asp:BoundField DataField="FromDate" HeaderText="From Date" />
                     <asp:BoundField DataField="ToDate" HeaderText="To Date" />
@@ -103,7 +103,7 @@
                                 CssClass="table table-hover table-bordered table-condensed"
                                 HeaderStyle-CssClass="gvHeader">
                                 <Columns>
-                                     <asp:BoundField DataField="LeaveID" HeaderText="LeaveID" />
+                                    <asp:BoundField DataField="LeaveID" HeaderText="LeaveID" />
                                     <asp:BoundField DataField="Date" HeaderText="Date" />
 
                                     <asp:TemplateField HeaderText="Half Day ?" ItemStyle-Font-Bold="true">
@@ -116,8 +116,8 @@
 
                                     <asp:TemplateField HeaderText="" ItemStyle-Font-Bold="true">
                                         <ItemTemplate>
-                                            <asp:Button ID="btnApprove" runat="server" Text="Approve" CommandName="Approve" />
-                                            <asp:Button ID="btnReject" runat="server" Text="Reject" CommandName="Reject" />
+                                            <asp:Button ID="btnApprove" runat="server" Text="✓" CommandName="Approve"  CssClass="btn btn-success btn-sm" />
+                                            <asp:Button ID="btnReject" runat="server" Text="X" CommandName="Reject"  CssClass="btn btn-danger btn-sm" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -130,8 +130,11 @@
             <asp:Label ID="lblMessageApprovalLeave" runat="server"></asp:Label>
         </div>
 
-        <%--  --%>
+        <%-- Apply Leave  --%>
         <div class="col-lg-4 col-sm-4 text-center">
+            <hr class="small" />
+            <asp:Label ID="lblLeavesAvailable" runat="server" Text="Leaves Available: " Font-Bold="true"></asp:Label>
+            <asp:Label ID="lblAvailableLeaves" runat="server" Text="08"></asp:Label>
             <hr class="small" />
             <h3 class="text-primary">Apply Leave</h3>
             <asp:Panel ID="PanelLeaveRequsition" runat="server">
@@ -143,16 +146,15 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
-
                     <tr>
                         <td>
-                            <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="From Date"></asp:TextBox>
+                            <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="From Date" OnTextChanged="txtFromDate_TextChanged"></asp:TextBox>
                             <cc1:CalendarExtender ID="ceFromDate" runat="server" TargetControlID="txtFromDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="To Date"></asp:TextBox>
+                            <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="To Date" OnTextChanged="txtToDate_TextChanged"></asp:TextBox>
                             <cc1:CalendarExtender ID="ceToDate" runat="server" TargetControlID="txtToDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
                         </td>
                     </tr>
@@ -170,11 +172,15 @@
                 <br />
                 <!--Start - get halfday details-->
                 <div>
-                    <asp:Label ID="lblIsHalfDay" runat="server" Text="Is Halfday ?"></asp:Label>
+                    <asp:Label ID="lblIsHalfDay" runat="server" Text="Is Halfday ?" Visible="false"></asp:Label>
                 </div>
-                <asp:GridView ID="gvHalfdayDetails" runat="server" AutoGenerateColumns="false" Visible="false">
+                <asp:GridView ID="gvHalfdayDetails" runat="server" AutoGenerateColumns="false"
+                    Visible="false"
+                    ShowHeader="true"                    
+                    CssClass="table table-hover table-bordered table-condensed"
+                    HeaderStyle-CssClass="gvHeader">
                     <Columns>
-                        <asp:TemplateField HeaderText="Day">
+                        <asp:TemplateField HeaderText="Day" ItemStyle-CssClass="text-center" HeaderStyle-CssClass="text-center">
                             <HeaderTemplate>
                                 <asp:Label ID="lblHeaderDate" runat="server" Text="Date"></asp:Label>
                             </HeaderTemplate>
@@ -182,10 +188,10 @@
                                 <asp:Label ID="lblDate" runat="server" Text='<%# Eval("Date") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Is Halfday">
+                        <asp:TemplateField HeaderText="Is Halfday" ItemStyle-CssClass="text-center" HeaderStyle-CssClass="text-center">
                             <HeaderTemplate>
                                 <asp:CheckBox ID="cbHeaderIsHalfday" runat="server" />
-                                <asp:Label ID="lblHeadIsHalfday" runat="server" Text="Is Halfday"></asp:Label>
+                                <%--<asp:Label ID="lblHeadIsHalfday" runat="server" Text="Is Halfday"></asp:Label>--%>
                             </HeaderTemplate>
                             <ItemTemplate>
                                 <asp:CheckBox ID="cbIsHalfday" runat="server" />
@@ -196,8 +202,8 @@
                 <!--End - get halfday details-->
                 <br />
                 <div>
-                    <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-primary btn-sm" />
-                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-primary btn-sm" />
+                    <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-success btn-sm" />
+                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger btn-sm" />
                 </div>
             </asp:Panel>
         </div>

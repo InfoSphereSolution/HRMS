@@ -28,8 +28,7 @@ namespace SphereInfoSolutionHRMS.Login
         }
 
         private void AuthenticateUser(string username, string password)
-        {
-            
+        {            
             BAL.Login bAL = new BAL.Login();
             Models.LoginModel loginModel = new Models.LoginModel();
             loginModel.Username = username;

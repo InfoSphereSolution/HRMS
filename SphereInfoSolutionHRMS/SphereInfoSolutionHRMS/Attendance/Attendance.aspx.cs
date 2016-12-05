@@ -13,7 +13,7 @@ namespace SphereInfoSolutionHRMS.Attendance
     public partial class Attendance : System.Web.UI.Page
     {
         MarkAttendance markAttendance = new MarkAttendance();
-        MarkAttendanceModel markAttendanceModel = new MarkAttendanceModel();
+        AttendanceModel attendanceModel = new AttendanceModel();
         Int32 UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -103,13 +103,13 @@ namespace SphereInfoSolutionHRMS.Attendance
         }
 
 
-        protected MarkAttendanceModel bindUserInfo()
+        protected AttendanceModel bindUserInfo()
         {
-            MarkAttendanceModel markAttendanceModel = new MarkAttendanceModel();
-            markAttendanceModel.UserID = UserID;
-            markAttendanceModel.FromDate = Convert.ToDateTime(txtFromDate.Text);
-            markAttendanceModel.ToDate = Convert.ToDateTime(txtToDate.Text);
-            return markAttendanceModel;
+            AttendanceModel attendanceModel = new AttendanceModel();
+            attendanceModel.UserID = UserID;
+            attendanceModel.FromDate = Convert.ToDateTime(txtFromDate.Text);
+            attendanceModel.ToDate = Convert.ToDateTime(txtToDate.Text);
+            return attendanceModel;
 
         }
 

@@ -85,6 +85,24 @@ namespace SphereInfoSolutionHRMS.Attendance {
         protected global::System.Web.UI.WebControls.Label lblMessageApprovalLeave;
         
         /// <summary>
+        /// lblLeavesAvailable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLeavesAvailable;
+        
+        /// <summary>
+        /// lblAvailableLeaves control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvailableLeaves;
+        
+        /// <summary>
         /// PanelLeaveRequsition control.
         /// </summary>
         /// <remarks>
@@ -112,15 +130,6 @@ namespace SphereInfoSolutionHRMS.Attendance {
         protected global::System.Web.UI.WebControls.TextBox txtFromDate;
         
         /// <summary>
-        /// ceFromDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender ceFromDate;
-        
-        /// <summary>
         /// txtToDate control.
         /// </summary>
         /// <remarks>
@@ -128,15 +137,6 @@ namespace SphereInfoSolutionHRMS.Attendance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtToDate;
-        
-        /// <summary>
-        /// ceToDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender ceToDate;
         
         /// <summary>
         /// txtContactNo control.
