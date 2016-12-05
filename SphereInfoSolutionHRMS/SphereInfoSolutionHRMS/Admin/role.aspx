@@ -7,8 +7,7 @@
     <div class="row">
         <div class="col-lg-8 col-sm-8 text-center border-right">
             <div>                
-                <br />
-                <center>
+                <br />                
                 <table class="table-condensed">
                     <tr>                        
                         <td>
@@ -21,12 +20,10 @@
                             <asp:Button ID="btnShowAllRoles" runat="server" Text="Show All Roles" CssClass="btn btn-primary btn-md" OnClick="btnShowAllRoles_Click" />
                         </td>
                     </tr>
-                </table>
-                </center>
+                </table>                
             </div>
-            <hr class="small" />
+            <hr class="small" />            
             
-            <center>
             <h3 class="text-primary">List of Roles</h3>
             
             <asp:GridView ID="gvRole" runat="server" DataKeyNames="RoleId" AutoGenerateColumns="False"  OnRowCommand="gvRole_RowCommand" 
@@ -38,10 +35,8 @@
                     <asp:BoundField DataField="Role_Level" HeaderText="Level"/>
                     <asp:BoundField DataField="IsActive" HeaderText="Is Active" />
                     <asp:TemplateField HeaderText="Remove">
-                        <ItemTemplate>
-                            <center>
-                            <asp:Button ID="btnRemove" runat="server" CommandName="Remove" CommandArgument='<%# Eval("RoleId") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>
-                                </center>
+                        <ItemTemplate>                            
+                            <asp:Button ID="btnRemove" runat="server" CommandName="Remove" CommandArgument='<%# Eval("RoleId") %>' Text="X" CssClass="btn btn-danger btn-xs"></asp:Button>                                
                         </ItemTemplate>
                     </asp:TemplateField>                       
                 </Columns>
@@ -76,13 +71,11 @@
                 <asp:Button ID="btnapprove" runat="server" Text="Approve" OnClick="btnapprove_Click" CssClass="btn btn-success btn-md" Width="100px"/>&nbsp;&nbsp;
                 <asp:Button ID="btnreject" runat="server" Text="Reject" OnClick="btnreject_Click" CssClass="btn btn-danger btn-md" Width="100px"/>
                 <br />
-                <asp:Label ID="lblMessageTempRole" runat="server"></asp:Label>
-            </center>
+                <asp:Label ID="lblMessageTempRole" runat="server"></asp:Label>            
         </div>
 
-        <%--  --%>
-        <div class="col-lg-4 col-sm-4 text-center">
-            <center>
+        <%-- Add New Role --%>
+        <div class="col-lg-4 col-sm-4 text-center">            
                 <hr class="small" />
                 <h3 class="text-primary">Add Role</h3>
             <table class="table-condensed">
@@ -102,14 +95,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
-                        <center>
-                    <asp:Label ID="lblMessage" runat="server"></asp:Label>
-                            </center>
+                    <td colspan="2">                        
+                    <asp:Label ID="lblMessage" runat="server"></asp:Label>                            
                     </td>
                 </tr>
-            </table>
-                </center>
+            </table>                
         </div>
     </div>
 </asp:Content>

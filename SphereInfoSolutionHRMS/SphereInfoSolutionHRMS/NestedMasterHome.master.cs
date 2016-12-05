@@ -26,7 +26,7 @@ namespace SphereInfoSolutionHRMS
         {
             if (!IsPostBack)
             {
-                ChangePunch();
+                //ChangePunch();
             }
         }
 
@@ -90,7 +90,7 @@ namespace SphereInfoSolutionHRMS
                 /*Failed.. Try again!*/
             }
 
-            ChangePunch();
+            //ChangePunch();
         }
         
 
