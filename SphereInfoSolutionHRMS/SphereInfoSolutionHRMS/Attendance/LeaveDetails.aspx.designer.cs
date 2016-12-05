@@ -10,7 +10,7 @@
 namespace SphereInfoSolutionHRMS.Attendance {
     
     
-    public partial class Leave {
+    public partial class LeaveDetails {
         
         /// <summary>
         /// ToolkitScriptManager1 control.
@@ -20,6 +20,60 @@ namespace SphereInfoSolutionHRMS.Attendance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
+        /// lblAbsentDays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAbsentDays;
+        
+        /// <summary>
+        /// lblDaysAbsent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDaysAbsent;
+        
+        /// <summary>
+        /// lblLeaveTaken control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLeaveTaken;
+        
+        /// <summary>
+        /// lblTakenLeaves control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTakenLeaves;
+        
+        /// <summary>
+        /// lblLeavesAvailable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLeavesAvailable;
+        
+        /// <summary>
+        /// lblAvailableLeaves control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvailableLeaves;
         
         /// <summary>
         /// txtSearchLeave control.
@@ -58,13 +112,13 @@ namespace SphereInfoSolutionHRMS.Attendance {
         protected global::System.Web.UI.WebControls.GridView gvLeaveDetails;
         
         /// <summary>
-        /// lblMessageLeave control.
+        /// lblMessageLeaveDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessageLeave;
+        protected global::System.Web.UI.WebControls.Label lblMessageLeaveDetails;
         
         /// <summary>
         /// gvApprovalLeave control.
@@ -83,24 +137,6 @@ namespace SphereInfoSolutionHRMS.Attendance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageApprovalLeave;
-        
-        /// <summary>
-        /// lblLeavesAvailable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLeavesAvailable;
-        
-        /// <summary>
-        /// lblAvailableLeaves control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAvailableLeaves;
         
         /// <summary>
         /// PanelLeaveRequsition control.
@@ -191,5 +227,14 @@ namespace SphereInfoSolutionHRMS.Attendance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
+        
+        /// <summary>
+        /// lblAppliedStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAppliedStatus;
     }
 }

@@ -37,7 +37,7 @@
                                     <%--<ul class="dropdown-menu">--%>
                                     <li><a href="#">My Profile</a></li>
                                     <li>
-                                        <asp:LinkButton ID="lbtnMarkAttendance" runat="server" OnClick="lbtnattendance_Click" Visible="false" Enabled="false"></asp:LinkButton></li>
+                                        <asp:LinkButton ID="lbtnMarkAttendance" runat="server" OnClick="lbtnMarkAttendance_Click" Visible="false" Enabled="false"></asp:LinkButton></li>
                                     <li><a href="#">Change Password</a></li>
                                     <li><asp:LinkButton ID="lbtnlogout" runat="server" OnClick="btnlogout_Click">Logout</asp:LinkButton></li>
                                     
@@ -87,8 +87,12 @@
                             <asp:MenuItem Text="Client" NavigateUrl="~/Admin/ClientDetails.aspx" />
                             <asp:MenuItem Text="Employee" NavigateUrl="~/Admin/EmployeeDetails.aspx" />
                         </asp:MenuItem>
+
+                        <asp:MenuItem Text="Leave" NavigateUrl="~/Attendance/LeaveDetails.aspx"/>
+                        <asp:MenuItem Text="Reports" NavigateUrl="~/Reports/Reports.aspx"/>
                         <asp:MenuItem Text="Attendance" NavigateUrl="~/Attendance/Attendance.aspx" />
-                        <asp:MenuItem Text="Attendance" NavigateUrl="~/Attendance/Leave.aspx" />
+
+                        
                         <asp:MenuItem Text="Reports">
                             <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
                             <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />

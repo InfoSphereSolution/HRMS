@@ -1,26 +1,39 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="LeaveDetails.aspx.cs" Inherits="SphereInfoSolutionHRMS.Attendance.Leave" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="LeaveDetails.aspx.cs" Inherits="SphereInfoSolutionHRMS.Attendance.LeaveDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
-
+     <div class="row">        
+        <div class="col-sm-4">
+            <asp:Label ID="lblAbsentDays" runat="server" Text="No. of Days Absent: " Font-Bold="true"></asp:Label>
+            <asp:Label ID="lblDaysAbsent" runat="server" Text="02"></asp:Label>
+        </div>
+        <div class="col-sm-4">
+            <asp:Label ID="lblLeaveTaken" runat="server" Text="No. of Leaves Taken: " Font-Bold="true"></asp:Label>
+            <asp:Label ID="lblTakenLeaves" runat="server" Text="04"></asp:Label>
+        </div>        
+        <div class="col-sm-4">
+            <asp:Label ID="lblLeavesAvailable" runat="server" Text="No. of Leaves Available: " Font-Bold="true"></asp:Label>
+            <asp:Label ID="lblAvailableLeaves" runat="server" Text="15"></asp:Label>            
+        </div>        
+    </div>
     <div class="row">
         <div class="col-lg-8 col-sm-8 text-center border-right">
             <div>
                 <br />
-                <table class="table-condensed">
-                    <tr>
-                        <td>
+                
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12" style="padding:5px;">
                             <asp:TextBox ID="txtSearchLeave" runat="server" CssClass="form-control input-md" placeholder="Enter Date"></asp:TextBox>
-                        </td>
-                        <td>
-                            <asp:Button ID="btnSearchLeave" runat="server" Text="Search" CssClass="btn btn-primary btn-md" />
-                        </td>
-                        <td>
-                            <asp:Button ID="btnShowAllLeaves" runat="server" Text="Show All Leaves" CssClass="btn btn-primary btn-md" />
-                        </td>
-                    </tr>
-                </table>
+                        </div>
+                        <div class="col-sm-2 col-xs-5" style="padding:5px;">
+                            <asp:Button ID="btnSearchLeave" runat="server" Text="Search" CssClass="btn btn-primary btn-md"/>
+                        </div>
+                        <div class="col-sm-2 col-xs-2" style="padding:5px;">
+                            <asp:Button ID="btnShowAllLeaves" runat="server" Text="Show All Leaves" CssClass="btn btn-primary btn-md"/>
+                        </div>
+                    </div>
+                
             </div>
             <hr class="small" />
 
@@ -30,7 +43,7 @@
                 ShowHeader="true"
                 DataKeyNames="Id"
                 CssClass="table table-hover table-bordered table-condensed"
-                HeaderStyle-CssClass="gvHeader">
+                HeaderStyle-CssClass="gvHeader" OnRowDataBound="gvLeaveDetails_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="LeaveID" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                     <asp:BoundField DataField="FromDate" HeaderText="From Date" />
@@ -46,7 +59,8 @@
                                 AutoGenerateColumns="false"
                                 DataKeyNames="LeaveID"
                                 CssClass="table table-hover table-bordered table-condensed"
-                                HeaderStyle-CssClass="gvHeader">
+                                HeaderStyle-CssClass="gvHeader"
+                                OnRowCommand="gvLeaveChild_RowCommand">
                                 <Columns>
                                     <asp:BoundField DataField="LeaveID" HeaderText="LeaveID" />
                                     <asp:BoundField DataField="Date" HeaderText="Date" />
@@ -70,7 +84,7 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            <asp:Label ID="lblMessageLeave" runat="server"></asp:Label>
+            <asp:Label ID="lblMessageLeaveDetails" runat="server" Visible="false"></asp:Label>
             <br />
             <br />
             <hr class="small" />
@@ -83,7 +97,7 @@
                 ShowHeader="true"
                 DataKeyNames="Id"
                 CssClass="table table-hover table-bordered table-condensed"
-                HeaderStyle-CssClass="gvHeader">
+                HeaderStyle-CssClass="gvHeader" OnRowDataBound="gvApprovalLeave_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="LeaveID" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
@@ -101,7 +115,8 @@
                                 AutoGenerateColumns="false"
                                 DataKeyNames="LeaveID"
                                 CssClass="table table-hover table-bordered table-condensed"
-                                HeaderStyle-CssClass="gvHeader">
+                                HeaderStyle-CssClass="gvHeader"
+                                OnRowCommand="gvApprovalLeaveChild_RowCommand">
                                 <Columns>
                                     <asp:BoundField DataField="LeaveID" HeaderText="LeaveID" />
                                     <asp:BoundField DataField="Date" HeaderText="Date" />
@@ -127,14 +142,11 @@
                 </Columns>
             </asp:GridView>
             <br />
-            <asp:Label ID="lblMessageApprovalLeave" runat="server"></asp:Label>
+            <asp:Label ID="lblMessageApprovalLeave" runat="server" Visible="false"></asp:Label>
         </div>
 
         <%-- Apply Leave  --%>
-        <div class="col-lg-4 col-sm-4 text-center">
-            <hr class="small" />
-            <asp:Label ID="lblLeavesAvailable" runat="server" Text="Leaves Available: " Font-Bold="true"></asp:Label>
-            <asp:Label ID="lblAvailableLeaves" runat="server" Text="08"></asp:Label>
+        <div class="col-lg-4 col-sm-4 text-center">                        
             <hr class="small" />
             <h3 class="text-primary">Apply Leave</h3>
             <asp:Panel ID="PanelLeaveRequsition" runat="server">
@@ -204,6 +216,9 @@
                 <div>
                     <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-success btn-sm" OnClick="btnApply_Click" />
                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger btn-sm" />
+                </div>
+                <div>
+                    <asp:Label ID="lblAppliedStatus" runat="server" Visible="false"></asp:Label>
                 </div>
             </asp:Panel>
         </div>

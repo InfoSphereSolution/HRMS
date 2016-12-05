@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SphereInfoSolutionHRMS.Attendance {
+namespace SphereInfoSolutionHRMS.Reports {
     
     
-    public partial class Attendance {
+    public partial class Reports {
         
         /// <summary>
         /// ToolkitScriptManager1 control.
@@ -22,76 +22,85 @@ namespace SphereInfoSolutionHRMS.Attendance {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
-        /// lbtnApplyLeave control.
+        /// lblSelectReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbtnApplyLeave;
+        protected global::System.Web.UI.WebControls.Label lblSelectReport;
         
         /// <summary>
-        /// lblTotalDays control.
+        /// rbAttendance control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalDays;
+        protected global::System.Web.UI.WebControls.RadioButton rbAttendance;
         
         /// <summary>
-        /// lblPresentDays control.
+        /// rbLeave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPresentDays;
+        protected global::System.Web.UI.WebControls.RadioButton rbLeave;
         
         /// <summary>
-        /// lblAbsentDays control.
+        /// rvHoliday control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAbsentDays;
+        protected global::System.Web.UI.WebControls.RadioButton rvHoliday;
         
         /// <summary>
-        /// lblLeaveTaken control.
+        /// lblSelectClient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLeaveTaken;
+        protected global::System.Web.UI.WebControls.Label lblSelectClient;
         
         /// <summary>
-        /// lblTotalHours control.
+        /// ddlClient control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalHours;
+        protected global::System.Web.UI.WebControls.DropDownList ddlClient;
         
         /// <summary>
-        /// lblAvailableLeave control.
+        /// lblSelectEmployee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAvailableLeave;
+        protected global::System.Web.UI.WebControls.Label lblSelectEmployee;
         
         /// <summary>
-        /// lblRange control.
+        /// ddlEmployee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRange;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEmployee;
+        
+        /// <summary>
+        /// lblFromDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFromDate;
         
         /// <summary>
         /// txtFromDate control.
@@ -103,13 +112,13 @@ namespace SphereInfoSolutionHRMS.Attendance {
         protected global::System.Web.UI.WebControls.TextBox txtFromDate;
         
         /// <summary>
-        /// ceFromDate control.
+        /// lblToDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender ceFromDate;
+        protected global::System.Web.UI.WebControls.Label lblToDate;
         
         /// <summary>
         /// txtToDate control.
@@ -121,39 +130,21 @@ namespace SphereInfoSolutionHRMS.Attendance {
         protected global::System.Web.UI.WebControls.TextBox txtToDate;
         
         /// <summary>
-        /// ceToDate control.
+        /// btnDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender ceToDate;
+        protected global::System.Web.UI.WebControls.Button btnDetails;
         
         /// <summary>
-        /// btnViewAttendance control.
+        /// btnSummary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewAttendance;
-        
-        /// <summary>
-        /// gvEmployeeAttendance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEmployeeAttendance;
-        
-        /// <summary>
-        /// lblMessageAttendance control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessageAttendance;
+        protected global::System.Web.UI.WebControls.Button btnSummary;
     }
 }

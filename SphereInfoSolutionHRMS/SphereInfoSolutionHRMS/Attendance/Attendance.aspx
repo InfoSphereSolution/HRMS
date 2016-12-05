@@ -9,6 +9,26 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-sm-2">
+            <asp:Label ID="lblTotalDays" runat="server" Text="Total Days" Visible="false"></asp:Label>
+        </div>
+        <div class="col-sm-2">
+            <asp:Label ID="lblPresentDays" runat="server" Text="Present" Visible="false"></asp:Label>
+        </div>
+        <div class="col-sm-2">
+            <asp:Label ID="lblAbsentDays" runat="server" Text="Absent" Visible="false"></asp:Label>
+        </div>
+        <div class="col-sm-2">
+            <asp:Label ID="lblLeaveTaken" runat="server" Text="Leave Taken" Visible="false"></asp:Label>
+        </div>
+        <div class="col-sm-2">
+            <asp:Label ID="lblTotalHours" runat="server" Text="Total Hours" Visible="false"></asp:Label>
+        </div>
+        <div class="col-sm-2">
+            <asp:Label ID="lblAvailableLeave" runat="server" Text="Available Leave" Visible="false"></asp:Label>
+        </div>        
+    </div>
+    <div class="row">
         <div class="col-sm-12">
             <table class="table-condensed">
                 <tr>
@@ -30,26 +50,7 @@
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-2">
-            <asp:Label ID="lblTotalDays" runat="server" Text="Total Days" Visible="false"></asp:Label>
-        </div>
-        <div class="col-sm-2">
-            <asp:Label ID="lblPresentDays" runat="server" Text="Present" Visible="false"></asp:Label>
-        </div>
-        <div class="col-sm-2">
-            <asp:Label ID="lblAbsentDays" runat="server" Text="Absent" Visible="false"></asp:Label>
-        </div>
-        <div class="col-sm-2">
-            <asp:Label ID="lblLeaveTaken" runat="server" Text="Leave Taken" Visible="false"></asp:Label>
-        </div>
-        <div class="col-sm-2">
-            <asp:Label ID="lblTotalHours" runat="server" Text="Total Hours" Visible="false"></asp:Label>
-        </div>
-        <div class="col-sm-2">
-            <asp:Label ID="lblAvailableLeave" runat="server" Text="Available Leave" Visible="false"></asp:Label>
-        </div>        
-    </div>
+    
     <div class="row">
         <div class="col-sm-12">
             <asp:GridView ID="gvEmployeeAttendance" runat="server" DataKeyNames="AttendanceID" AutoGenerateColumns="False"

@@ -12,12 +12,12 @@ namespace BAL
     public class MarkAttendance
     {
 
-        public Int32 CheckMarkAttendance(AttendanceModel markAttendanceModel)
+        public Int32 CheckMarkAttendance(AttendanceModel attendanceModel)
         {
             /*Logic to check if Current User has marked attendance */
             List<SqlParameter> sqlparam = new List<SqlParameter>();
-            sqlparam.Add(new SqlParameter("@UserID", markAttendanceModel.UserID));            
-            sqlparam.Add(new SqlParameter("@IP_Address", markAttendanceModel.IPAddress));
+            sqlparam.Add(new SqlParameter("@UserID", attendanceModel.UserID));
+            sqlparam.Add(new SqlParameter("@IP_Address", attendanceModel.IPAddress));
             DataTable dt = DAL.SQLHelp.ExecuteReader("Usp_IsMarkedAttendance", sqlparam);
             int i = Convert.ToInt32(dt.Rows[0][0]);
             return i;
@@ -33,28 +33,28 @@ namespace BAL
 
         }
 
-        public Boolean MarkUserAttendance(AttendanceModel markAttendanceModel)
+        public Boolean MarkUserAttendance(AttendanceModel attendanceModel)
         {
             return true;
         }
 
 
-        public DataTable FetchAttendance(AttendanceModel markAttendanceModel)
+        public DataTable FetchAttendance(AttendanceModel attendanceModel)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
-            sqlparam.Add(new SqlParameter("@UserID", markAttendanceModel.UserID));
-            sqlparam.Add(new SqlParameter("@FromDate", markAttendanceModel.FromDate));
-            sqlparam.Add(new SqlParameter("@ToDate", markAttendanceModel.ToDate));
+            sqlparam.Add(new SqlParameter("@UserID", attendanceModel.UserID));
+            sqlparam.Add(new SqlParameter("@FromDate", attendanceModel.FromDate));
+            sqlparam.Add(new SqlParameter("@ToDate", attendanceModel.ToDate));
             DataTable dt = DAL.SQLHelp.ExecuteReader("", sqlparam);
             return dt;
         }
 
-        public DataTable FetchAttendanceSummary(AttendanceModel markAttendanceModel)
+        public DataTable FetchAttendanceSummary(AttendanceModel attendanceModel)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
-            sqlparam.Add(new SqlParameter("@UserID", markAttendanceModel.UserID));
-            sqlparam.Add(new SqlParameter("@FromDate", markAttendanceModel.FromDate));
-            sqlparam.Add(new SqlParameter("@ToDate", markAttendanceModel.ToDate));
+            sqlparam.Add(new SqlParameter("@UserID", attendanceModel.UserID));
+            sqlparam.Add(new SqlParameter("@FromDate", attendanceModel.FromDate));
+            sqlparam.Add(new SqlParameter("@ToDate", attendanceModel.ToDate));
             DataTable dt = DAL.SQLHelp.ExecuteReader("", sqlparam);
             return dt;
         }

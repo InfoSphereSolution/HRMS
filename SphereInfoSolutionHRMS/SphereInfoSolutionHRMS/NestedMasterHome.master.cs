@@ -13,7 +13,7 @@ namespace SphereInfoSolutionHRMS
     public partial class NestedMasterHome : System.Web.UI.MasterPage
     {
         MarkAttendance markAttendance = new MarkAttendance();
-        AttendanceModel markAttendanceModel = new AttendanceModel();
+        AttendanceModel attendanceModel = new AttendanceModel();
         Int32 UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
         public string PageName
         {
@@ -96,10 +96,10 @@ namespace SphereInfoSolutionHRMS
 
         protected AttendanceModel getPunchUserInfo()
         {
-            AttendanceModel markAttendanceModel = new AttendanceModel();
-            markAttendanceModel.UserID = UserID;
-            markAttendanceModel.IPAddress = "198.168.121.1";
-            return markAttendanceModel;
+            AttendanceModel attendanceModel = new AttendanceModel();
+            attendanceModel.UserID = UserID;
+            attendanceModel.IPAddress = "198.168.121.1";
+            return attendanceModel;
         }
     }
 }
