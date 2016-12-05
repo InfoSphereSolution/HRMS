@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="Leave.aspx.cs" Inherits="SphereInfoSolutionHRMS.Attendance.Leave" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="LeaveDetails.aspx.cs" Inherits="SphereInfoSolutionHRMS.Attendance.Leave" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
@@ -149,13 +149,13 @@
                     <tr>
                         <td>
                             <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="From Date" OnTextChanged="txtFromDate_TextChanged"></asp:TextBox>
-                            <cc1:CalendarExtender ID="ceFromDate" runat="server" TargetControlID="txtFromDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
+                            <%--<cc1:CalendarExtender ID="ceFromDate" runat="server" TargetControlID="txtFromDate" Format="yyyy/M/dd"></cc1:CalendarExtender>--%>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="To Date" OnTextChanged="txtToDate_TextChanged"></asp:TextBox>
-                            <cc1:CalendarExtender ID="ceToDate" runat="server" TargetControlID="txtToDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
+                            <%--<cc1:CalendarExtender ID="ceToDate" runat="server" TargetControlID="txtToDate" Format="yyyy/M/dd"></cc1:CalendarExtender>--%>
                         </td>
                     </tr>
                     <tr>
@@ -202,7 +202,7 @@
                 <!--End - get halfday details-->
                 <br />
                 <div>
-                    <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-success btn-sm" />
+                    <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-success btn-sm" OnClick="btnApply_Click" />
                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger btn-sm" />
                 </div>
             </asp:Panel>

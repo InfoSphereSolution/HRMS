@@ -66,7 +66,7 @@
     <Content Include="Admin\EmployeeDetails.aspx" />
     <Content Include="Admin\role.aspx" />
     <Content Include="Attendance\Attendance.aspx" />
-    <Content Include="Attendance\Leave.aspx" />
+    <Content Include="Attendance\LeaveDetails.aspx" />
     <Content Include="home.aspx" />
     <Content Include="Images\avatar_2x.png" />
     <Content Include="Images\images.jpg" />
@@ -124,12 +124,12 @@
     <Compile Include="Attendance\Attendance.aspx.designer.cs">
       <DependentUpon>Attendance.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Attendance\Leave.aspx.cs">
-      <DependentUpon>Leave.aspx</DependentUpon>
+    <Compile Include="Attendance\LeaveDetails.aspx.cs">
+      <DependentUpon>LeaveDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Attendance\Leave.aspx.designer.cs">
-      <DependentUpon>Leave.aspx</DependentUpon>
+    <Compile Include="Attendance\LeaveDetails.aspx.designer.cs">
+      <DependentUpon>LeaveDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>
