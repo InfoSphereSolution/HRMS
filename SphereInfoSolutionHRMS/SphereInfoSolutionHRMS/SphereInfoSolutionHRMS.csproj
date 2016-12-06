@@ -38,9 +38,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit, Version=4.1.7.1213, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\Mahesh Project\AjaxControlToolKit\AjaxControlToolkit.dll</HintPath>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\..\..\..\..\Desktop\Demo\HRMSSphere\toolkit\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -76,14 +75,12 @@
     <Content Include="Reports\Reports.aspx" />
     <Content Include="Style\css\navHome.css" />
     <Content Include="Style\js\CheckRow.js" />
-    <Content Include="Style\js\sidemenu.js" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Style\css\bootstrap-theme.css" />
     <Content Include="Style\css\bootstrap-theme.min.css" />
     <Content Include="Style\css\bootstrap.css" />
     <Content Include="Style\css\bootstrap.min.css" />
     <Content Include="Style\css\LoginCSS.css" />
-    <Content Include="Style\css\StyleHome.css" />
     <Content Include="Style\js\bootstrap.js" />
     <Content Include="Style\js\bootstrap.min.js" />
     <Content Include="Style\js\jquery-3.1.1.min.js" />
@@ -93,6 +90,7 @@
   <ItemGroup>
     <Compile Include="Admin\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>

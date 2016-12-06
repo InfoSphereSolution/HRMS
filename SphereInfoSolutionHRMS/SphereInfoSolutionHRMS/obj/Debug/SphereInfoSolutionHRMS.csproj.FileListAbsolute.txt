@@ -87,3 +87,6 @@ C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRM
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\ru\System.Spatial.resources.dll
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxControlToolkit.dll
+C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxMin.dll
+C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxControlToolkit.pdb
