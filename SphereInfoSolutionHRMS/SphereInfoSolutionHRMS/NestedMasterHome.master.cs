@@ -26,7 +26,7 @@ namespace SphereInfoSolutionHRMS
         {
             if (!IsPostBack)
             {
-                //ChangePunch();
+                ChangePunch();
             }
         }
 
@@ -38,33 +38,29 @@ namespace SphereInfoSolutionHRMS
 
         protected void ChangePunch()
         {
-            if (IsAttendanceMarked() == 3)
+            if (IsAttendanceMarked() == 1)
             {
                 lbtnMarkAttendance.Text = "Punch-In";
                 lbtnMarkAttendance.Enabled = true;
+                lbtnMarkAttendance.Visible = true;
             }
-            else if (IsAttendanceMarked() == -1 || IsAttendanceMarked() == 2)
+            else if (IsAttendanceMarked() == 3)
             {
                 lbtnMarkAttendance.Text = "Punch-Out";
                 lbtnMarkAttendance.Enabled = true;
+                lbtnMarkAttendance.Visible = true;
             }
-            else if (IsAttendanceMarked() == -2 )
+            else if (IsAttendanceMarked() == 2 )
             {
                 lbtnMarkAttendance.Text = "Attendance Marked";
                 lbtnMarkAttendance.Enabled = false;
+                lbtnMarkAttendance.Visible = true;
             }
-            else if (IsAttendanceMarked() == -3 || IsAttendanceMarked() == -4)
+            else 
             {
-                lbtnMarkAttendance.Text = "IP Address Not Matched";
                 lbtnMarkAttendance.Enabled = false;
+                lbtnMarkAttendance.Visible = false;
             }
-            else if (IsAttendanceMarked() == -3)
-            {
-                lbtnMarkAttendance.Text = "Shift Ended";
-                lbtnMarkAttendance.Enabled = false;
-            }
-             
-            else { }
 
         }
 
@@ -90,7 +86,7 @@ namespace SphereInfoSolutionHRMS
                 /*Failed.. Try again!*/
             }
 
-            //ChangePunch();
+            ChangePunch();
         }
         
 
