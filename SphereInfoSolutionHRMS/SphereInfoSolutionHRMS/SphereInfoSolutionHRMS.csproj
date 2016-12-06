@@ -61,6 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Global.asax" />
     <Content Include="User\ChangePassword.aspx" />
     <Content Include="Admin\ClientDetails.aspx" />
     <Content Include="Admin\Designation.aspx" />
@@ -76,14 +77,12 @@
     <Content Include="Reports\Reports.aspx" />
     <Content Include="Style\css\navHome.css" />
     <Content Include="Style\js\CheckRow.js" />
-    <Content Include="Style\js\sidemenu.js" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Style\css\bootstrap-theme.css" />
     <Content Include="Style\css\bootstrap-theme.min.css" />
     <Content Include="Style\css\bootstrap.css" />
     <Content Include="Style\css\bootstrap.min.css" />
     <Content Include="Style\css\LoginCSS.css" />
-    <Content Include="Style\css\StyleHome.css" />
     <Content Include="Style\js\bootstrap.js" />
     <Content Include="Style\js\bootstrap.min.js" />
     <Content Include="Style\js\jquery-3.1.1.min.js" />
@@ -91,6 +90,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="User\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -191,6 +193,7 @@
     <Content Include="Login\Web.config" />
     <Content Include="NestedMasterHome.master" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\SphereHRMS.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
