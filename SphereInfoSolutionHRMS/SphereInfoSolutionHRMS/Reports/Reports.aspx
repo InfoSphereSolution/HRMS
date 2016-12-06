@@ -10,13 +10,13 @@
             <asp:Label ID="lblSelectReport" runat="server" Text="Select Report: "></asp:Label>
         </div>
         <div class="col-md-3"  style="padding:5px">
-            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" />
+            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" OnCheckedChanged="rbAttendance_CheckedChanged" />
         </div>
         <div class="col-md-3"  style="padding:5px">
             <asp:RadioButton ID="rbLeave" Text="Leave" runat="server" GroupName="reports" />
         </div>
         <div class="col-md-3"  style="padding:5px">
-            <asp:RadioButton ID="rvHoliday" Text="Holiday" runat="server" GroupName="reports" />
+            <asp:RadioButton ID="rbHoliday" Text="Holiday" runat="server" GroupName="reports" />
         </div>
     </div>
     <hr class="small" />
@@ -58,7 +58,7 @@
             
         </div>
         <div class="col-md-3" style="padding:5px">
-            <asp:Button ID="btnDetails" runat="server" Text="View Details" CssClass="btn btn-primary btn-md" />
+            <asp:Button ID="btnDetails" runat="server" Text="View Details" CssClass="btn btn-primary btn-md" OnClick="btnDetails_Click" />
             <asp:Button ID="btnSummary" runat="server" Text="View Summary" CssClass="btn btn-primary btn-md" />
         </div>        
     </div>

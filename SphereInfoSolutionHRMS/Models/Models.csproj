@@ -46,6 +46,7 @@
     <Compile Include="LoginModel.cs" />
     <Compile Include="AttendanceModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportModel.cs" />
     <Compile Include="RoleModel.cs" />
   </ItemGroup>
   <ItemGroup>

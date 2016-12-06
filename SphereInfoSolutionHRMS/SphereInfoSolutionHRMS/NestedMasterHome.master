@@ -33,16 +33,16 @@
                                 </ul>
                                 <ul class="nav navbar-nav pull-right">
                                     <li><a href="../home.aspx" class="">Home</a></li>
-                                    <%--<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as  <span class="caret"></span></a>--%>
-                                    <%--<ul class="dropdown-menu">--%>
+                                    <%--<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Signed in as  <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">--%>
                                     <li><a href="#">My Profile</a></li>
                                     <li>
                                         <asp:LinkButton ID="lbtnMarkAttendance" runat="server" OnClick="lbtnMarkAttendance_Click" Visible="false" Enabled="false"></asp:LinkButton></li>
-                                    <li><a href="#">Change Password</a></li>
+                                    <li><a href="User/ChangePassword.aspx">Change Password</a></li>
                                     <li><asp:LinkButton ID="lbtnlogout" runat="server" OnClick="btnlogout_Click">Logout</asp:LinkButton></li>
                                     
-                                    <%--</ul>--%>
-                                    <%--</li>--%>
+                                    <%--</ul>
+                                    </li>--%>
                                 </ul>
                             </div>
                         </div>

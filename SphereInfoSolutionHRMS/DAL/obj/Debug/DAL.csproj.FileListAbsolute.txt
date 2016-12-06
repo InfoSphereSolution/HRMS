@@ -11,3 +11,4 @@ C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\bin\Debug\DAL.dll
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\bin\Debug\DAL.pdb
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.dll
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

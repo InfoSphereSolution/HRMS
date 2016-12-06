@@ -49,13 +49,13 @@ namespace SphereInfoSolutionHRMS.Reports {
         protected global::System.Web.UI.WebControls.RadioButton rbLeave;
         
         /// <summary>
-        /// rvHoliday control.
+        /// rbHoliday control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rvHoliday;
+        protected global::System.Web.UI.WebControls.RadioButton rbHoliday;
         
         /// <summary>
         /// lblSelectClient control.

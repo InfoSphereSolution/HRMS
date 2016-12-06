@@ -61,7 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\ChangePassword.aspx" />
+    <Content Include="User\ChangePassword.aspx" />
     <Content Include="Admin\ClientDetails.aspx" />
     <Content Include="Admin\Designation.aspx" />
     <Content Include="Admin\EmployeeDetails.aspx" />
@@ -91,10 +91,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\ChangePassword.aspx.cs">
+    <Compile Include="User\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\ChangePassword.aspx.designer.cs">
+    <Compile Include="User\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\ClientDetails.aspx.cs">
