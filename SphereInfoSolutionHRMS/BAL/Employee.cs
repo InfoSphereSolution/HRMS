@@ -121,7 +121,8 @@ namespace BAL
 
 
             //Employees Professional Details
-            employeeModel.EmpDOJ = Convert.ToDateTime(dt.Rows[0][27]);
+            //employeeModel.EmpDOJ = Convert.ToDateTime(dt.Rows[0][27]);
+            employeeModel.EmpDOJ = String.IsNullOrEmpty((dt.Rows[0][27].ToString())) ? (DateTime?)null : Convert.ToDateTime(dt.Rows[0][27]);
             employeeModel.EmpDepartment = Convert.ToInt32(dt.Rows[0][28]);
             employeeModel.EmpDesignation = Convert.ToInt32(dt.Rows[0][29]);
             //employeeModel.EmpBondStart = Convert.ToDateTime(dt.Rows[0][30]);
@@ -233,6 +234,15 @@ namespace BAL
             sqParam.Add(new SqlParameter("@Address_Check", employeeModel.EmpAddressVerification));
             sqParam.Add(new SqlParameter("@Educational_Check", employeeModel.EmpEducationVerification));
             sqParam.Add(new SqlParameter("@Employment_Check", employeeModel.EmpEmploymentVerification));
+        }
+
+        public Int32 encryptPassword(String Username, String EncryptedPassword)
+        {
+            List<SqlParameter> sqParam = new List<SqlParameter>();
+            sqParam.Add(new SqlParameter("@Username", Username));
+            sqParam.Add(new SqlParameter("@Password", EncryptedPassword));
+            Int32 i = SQLHelp.ExecuteNonQuery("Usp_EncryptEmployeePassword", sqParam);
+            return i;
         }
     }
 }

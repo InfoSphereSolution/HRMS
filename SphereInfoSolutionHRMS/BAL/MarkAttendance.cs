@@ -27,7 +27,6 @@ namespace BAL
              *  2 : Disabled
              *  3 : Have To Punch- Out
              */
-
         }
 
         public Boolean MarkUserAttendance(AttendanceModel attendanceModel)

@@ -61,6 +61,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="User\ChangePassword.aspx" />
     <Content Include="Admin\ClientDetails.aspx" />
@@ -70,7 +71,7 @@
     <Content Include="Attendance\Attendance.aspx" />
     <Content Include="Attendance\LeaveDetails.aspx" />
     <Content Include="home.aspx" />
-    <Content Include="Images\avatar_2x.png" />
+    <Content Include="ProfilePhoto\defaultPhoto.png" />
     <Content Include="Images\images.jpg" />
     <Content Include="Images\shpereconame.jpg" />
     <Content Include="Images\spherelogo.jpg" />
@@ -90,6 +91,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

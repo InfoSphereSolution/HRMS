@@ -8,6 +8,8 @@ using DAL;
 using BAL;
 using Models;
 using System.Data;
+using System.IO;
+using System.Web.Security;
 
 namespace SphereInfoSolutionHRMS.Admin
 {
@@ -121,13 +123,35 @@ namespace SphereInfoSolutionHRMS.Admin
                     /*New user Username & Password*/
                     String Username = Convert.ToString(dt.Rows[0][1]);
                     String Password = Convert.ToString(dt.Rows[0][2]);
+                    string encryptedpassword = FormsAuthentication.HashPasswordForStoringInConfigFile(Password, "SHA1");
+                    int i = employee.encryptPassword(Username, encryptedpassword);
+                    if (i == 1)
+                    {
+                        lblMessageEmployeeList.Text = "Username: " + Username + " & Password: " + Password;
+                        lblMessageEmployeeList.Visible = true;
+                    }
+                    else
+                    {
+                        lblMessageEmployeeList.Text = "Error";
+                        lblMessageEmployeeList.Visible = true;
+                    }
+                    
                 }
                 else if (IsSuccessful == 2)
-                { }
+                {
+                    lblMessageEmployeeList.Text = "Error";
+                    lblMessageEmployeeList.Visible = true;
+                }
                 else if (IsSuccessful == 3)
-                { }
+                {
+                    lblMessageEmployeeList.Text = "Updated Successfully";
+                    lblMessageEmployeeList.Visible = true;
+                }
                 else if (IsSuccessful == -3)
-                { }
+                {
+                    lblMessageEmployeeList.Text = "Error";
+                    lblMessageEmployeeList.Visible = true;
+                }
                 else { }
 
             }
@@ -158,7 +182,7 @@ namespace SphereInfoSolutionHRMS.Admin
 
             /*File uploade code*/
 
-            employeeModel.EmpImgURL = "";
+            employeeModel.EmpImgURL = UploadPhoto();
             employeeModel.EmpFirstName = txtEmployeeFirstName.Text;
             employeeModel.EmpMiddleName = txtEmployeeMiddleName.Text;
             employeeModel.EmpLastName = txtEmployeeLastName.Text;
@@ -219,6 +243,7 @@ namespace SphereInfoSolutionHRMS.Admin
             EmployeeModel employeeModel = employee.FetchEmployeeDetails(UserID);
             try
             {
+                bindAllDDL();
                 bindEmpoyeePersonal(employeeModel);
                 bindEmpoyeePassport(employeeModel);
                 bindEmpoyeeProfessional(employeeModel);
@@ -403,7 +428,7 @@ namespace SphereInfoSolutionHRMS.Admin
         protected void clearPersonalDetails()
         {
             //Employees Personal Details                        
-            imgEmployeePicture.ImageUrl = "";
+            imgEmployeePicture.ImageUrl = "~/ProfilePhoto/defaultPhoto.png";
             txtEmployeeFirstName.Text = "";
             txtEmployeeMiddleName.Text = "";
             txtEmployeeLastName.Text = "";            
@@ -462,5 +487,23 @@ namespace SphereInfoSolutionHRMS.Admin
                 txtPermanentAddress.Text = "";
             }
         }
+
+        protected String UploadPhoto()
+        {
+            String PhotoPath = "";
+            if (fuEmployeePicture.HasFile)
+            {
+                string fileName = Path.GetFileName(fuEmployeePicture.PostedFile.FileName);
+                fuEmployeePicture.PostedFile.SaveAs(Server.MapPath("~/ProfilePhoto/") + fileName);
+                PhotoPath = "~/ProfilePhoto/" + fileName;
+                return PhotoPath;
+            }
+            else
+            {
+                PhotoPath = "~/ProfilePhoto/defaultPhoto.png";
+                return PhotoPath;
+            }
+        }
+
     }
 }

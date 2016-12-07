@@ -14,7 +14,7 @@
             <asp:CheckBox ID="cbRememberMe" runat="server" />--%>
 
                 <div class="card card-container">                    
-                    <asp:Image ID="profileimg" class="profile-img-card" ImageUrl="~/Images/avatar_2x.png" alt="profile pic" runat="server" />
+                    <asp:Image ID="profileimg" class="profile-img-card" ImageUrl="~/ProfilePhoto/defaultPhoto.png" alt="profile pic" runat="server" />
                     <p id="profile-name" class="profile-name-card"></p>
                     <div id="form1" class="form-signin">
                         <span id="reauth-email" class="reauth-email"></span>

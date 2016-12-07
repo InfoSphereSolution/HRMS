@@ -75,8 +75,8 @@
                                     <div class="row">
                                         <div class="col-lg-8 col-sm-8 col-xs-12 form-group">
                                         </div>
-                                        <div class="col-lg-4 col-sm-4 col-xs-12 form-group">
-                                            <asp:Image ID="imgEmployeePicture" CssClass="img-responsive img-circle center-block" Style="padding: 5px" AlternateText="Profile Image" ImageAlign="Middle" ImageUrl="~/Images/spherelogo.jpg" runat="server" />
+                                        <div class="col-lg-4 col-sm-4 col-xs-12 form-group">                                            
+                                            <asp:Image ID="imgEmployeePicture" CssClass="img-responsive img-rounded center-block" Style="padding: 5px; max-width:200px" AlternateText="Profile Image" ImageAlign="Middle" ImageUrl="../ProfilePhoto/defaultPhoto.png" runat="server" />
                                             <asp:FileUpload ID="fuEmployeePicture" runat="server" CssClass="form-control center-block" />
                                         </div>
                                     </div>

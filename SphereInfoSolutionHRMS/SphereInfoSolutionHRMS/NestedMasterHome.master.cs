@@ -52,7 +52,7 @@ namespace SphereInfoSolutionHRMS
             }
             else if (IsAttendanceMarked() == 2 )
             {
-                lbtnMarkAttendance.Text = "Attendance Marked";
+                lbtnMarkAttendance.Text = "Disabled";
                 lbtnMarkAttendance.Enabled = false;
                 lbtnMarkAttendance.Visible = true;
             }
@@ -94,7 +94,7 @@ namespace SphereInfoSolutionHRMS
         {
             AttendanceModel attendanceModel = new AttendanceModel();
             attendanceModel.UserID = UserID;
-            attendanceModel.IPAddress = "198.168.121.1";
+            attendanceModel.IPAddress = "192.168.1.102";
             return attendanceModel;
         }
     }
