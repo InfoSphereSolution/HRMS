@@ -313,7 +313,7 @@ namespace SphereInfoSolutionHRMS.Attendance
                 {
                     IsHalfDay = 0;
                 }
-                dt.Rows.Add(1, UserID, 0, HolidayDate, null, null, null, null, null, null, null, null, null, "Applied", IsHalfDay, true, 0, 0, 0, null);
+                dt.Rows.Add(1, UserID, 0, HolidayDate, null, null, null, null, null, null, null, null, null, "Applied", IsHalfDay, true, 0, 0, UserID, null);
             }
 
             return dt;
