@@ -43,6 +43,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>F:\Rohit Thakur\Software\Ajax_toolkit\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack-PCL">
+      <HintPath>..\packages\HtmlAgilityPack-PCL.1.4.6\lib\HtmlAgilityPack-PCL.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -101,6 +107,11 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RDLCReports\Attendance\Details\DSAttendanceDetails.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSAttendanceDetails.xsd</DependentUpon>
     </Compile>
     <Compile Include="User\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -203,6 +214,17 @@
     <Content Include="NestedMasterHome.master" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\SphereHRMS.pubxml" />
+    <Content Include="Reports\RDLCReports\Attendance\Details\DSAttendanceDetails.xsc">
+      <DependentUpon>DSAttendanceDetails.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\RDLCReports\Attendance\Details\DSAttendanceDetails.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSAttendanceDetails.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\RDLCReports\Attendance\Details\DSAttendanceDetails.xss">
+      <DependentUpon>DSAttendanceDetails.xsd</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -226,6 +248,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Javascript\" />
+    <Folder Include="Reports\RDLCReports\Attendance\Summary\" />
+    <Folder Include="Reports\RDLCReports\Holiday\Details\" />
+    <Folder Include="Reports\RDLCReports\Leave\Details\" />
+    <Folder Include="Reports\RDLCReports\Leave\Summary\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
