@@ -53,21 +53,21 @@
     
     <div class="row">
         <div class="col-sm-12">
-            <asp:GridView ID="gvEmployeeAttendance" runat="server" DataKeyNames="AttendanceId" AutoGenerateColumns="False"
+            <asp:GridView ID="gvEmployeeAttendance" runat="server" DataKeyNames="Attendance_Id" AutoGenerateColumns="False"
                 CssClass="table table-hover table-bordered table-condensed"
                 HeaderStyle-CssClass="gvHeader">
                 <Columns>
-                    <asp:BoundField DataField="AttendanceId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="Attendance_Id" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                     <asp:BoundField DataField="Day" HeaderText="Day" />
                     <asp:BoundField DataField="Date" HeaderText="Date" />
-                    <asp:BoundField DataField="ShiftStart" HeaderText="Shift Start" />
+                    <asp:BoundField DataField="ShiftStartTime" HeaderText="Shift Start" />
                     <asp:BoundField DataField="InTime" HeaderText="In Time"/>
-                    <asp:BoundField DataField="ShiftClose" HeaderText="Shift Close" />
+                    <asp:BoundField DataField="ShiftEndTime" HeaderText="Shift Close" />
                     <asp:BoundField DataField="OutTime" HeaderText="Out Time" />
                     <asp:BoundField DataField="Late" HeaderText="Late" />
                     <asp:BoundField DataField="OverTime" HeaderText="Over Time"/>
-                    <asp:BoundField DataField="TotalHours" HeaderText="Total Hours" />
-                    <asp:BoundField DataField="Status" HeaderText="Status" />                    
+                    <asp:BoundField DataField="TotalHrs" HeaderText="Total Hours" />
+                    <asp:BoundField DataField="AttendanceStatus" HeaderText="Status" />                    
                 </Columns>
             </asp:GridView>
         </div>
