@@ -20,7 +20,7 @@ namespace SphereInfoSolutionHRMS.Attendance
             if (!IsPostBack)
             {
                 bindDates();
-                //bindAttendance();
+                bindAttendance();
             }
         }
 
@@ -34,7 +34,7 @@ namespace SphereInfoSolutionHRMS.Attendance
 
         protected void btnViewAttendance_Click(object sender, EventArgs e)
         {
-            //bindAttendance();
+            bindAttendance();
         }
 
         protected void bindAttendance()
@@ -48,8 +48,8 @@ namespace SphereInfoSolutionHRMS.Attendance
                 {
                     gvEmployeeAttendance.DataSource = dt;
                     gvEmployeeAttendance.DataBind();
-                    dt = markAttendance.FetchAttendanceSummary(bindUserInfo());
-                    bindAttendanceSummary(dt);
+                    //dt = markAttendance.FetchAttendanceSummary(bindUserInfo());
+                    //bindAttendanceSummary(dt);
                     displayAttendance();
                 }
                 else

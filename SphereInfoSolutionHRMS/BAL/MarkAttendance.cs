@@ -44,10 +44,10 @@ namespace BAL
         public DataTable FetchAttendance(AttendanceModel attendanceModel)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
-            sqlparam.Add(new SqlParameter("@UserID", attendanceModel.UserID));
+            sqlparam.Add(new SqlParameter("@UserId", attendanceModel.UserID));
             sqlparam.Add(new SqlParameter("@FromDate", attendanceModel.FromDate));
             sqlparam.Add(new SqlParameter("@ToDate", attendanceModel.ToDate));
-            DataTable dt = DAL.SQLHelp.ExecuteReader("", sqlparam);
+            DataTable dt = DAL.SQLHelp.ExecuteReader("Usp_GetAttendanceDetail", sqlparam);
             return dt;
         }
 

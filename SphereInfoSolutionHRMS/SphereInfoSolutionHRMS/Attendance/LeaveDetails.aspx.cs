@@ -19,11 +19,11 @@ namespace SphereInfoSolutionHRMS.Attendance
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack)
+            if (!IsPostBack)
             {
-                //BindLeaveType();
-                //BindLeaveDetails();
-                //BindApprovalLeaveDetails();
+                BindLeaveType();
+                BindLeaveDetails();
+                BindApprovalLeaveDetails();
                 //BindAvailableLeave();
             }
         }
@@ -38,12 +38,11 @@ namespace SphereInfoSolutionHRMS.Attendance
         //Bind dropdown leave type
         private void BindLeaveType()
         {
-            ddlLeaveType.Items.Clear();
-            //Models.Attendance attModels = new Models.Attendance();
+            ddlLeaveType.Items.Clear();            
             DataTable dt = leave.FetchLeaveTypes();
             ddlLeaveType.DataSource = dt;
             ddlLeaveType.DataTextField = "LeaveType";
-            ddlLeaveType.DataValueField = "Id";
+            ddlLeaveType.DataValueField = "LeaveTypeId";
             ddlLeaveType.DataBind();
             ddlLeaveType.Items.Insert(0, new ListItem("Select Leave Type", "0"));
         }
@@ -84,7 +83,6 @@ namespace SphereInfoSolutionHRMS.Attendance
             }
         }
 
-
         //Check if leave cancelled
         protected void gvLeaveChild_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -109,7 +107,7 @@ namespace SphereInfoSolutionHRMS.Attendance
                 //Send Mail                
             }
 
-            //BindLeaveDetails();
+            BindLeaveDetails();
 
         }
 
@@ -148,7 +146,6 @@ namespace SphereInfoSolutionHRMS.Attendance
             }
         }
 
-
         //Check Leave Approved or Rejected and updated the LeaveStatus
         protected void gvApprovalLeaveChild_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -176,9 +173,8 @@ namespace SphereInfoSolutionHRMS.Attendance
                 //SendEmail();
             }
 
-            //BindApprovalLeaveDetails();
+            BindApprovalLeaveDetails();
         }
-
 
         //Update the status of the leave request
         protected Boolean UpdateLeaveChild(Int32 LeaveID, DateTime LeaveDate, String Status)
@@ -197,7 +193,6 @@ namespace SphereInfoSolutionHRMS.Attendance
                 return false;
             }
         }
-
 
         //bind the half day gridview according to the ToDate
         protected void txtFromDate_TextChanged(object sender, EventArgs e)
@@ -253,7 +248,7 @@ namespace SphereInfoSolutionHRMS.Attendance
             if (i == 1) //Successfull
             {
             }
-            else if (1 == -1) // Already Applied
+            else if (1 == 0) // Already Applied
             {
             }
             else
@@ -278,8 +273,27 @@ namespace SphereInfoSolutionHRMS.Attendance
         {
 
             DataTable dt = new DataTable();
-            dt.Columns.Add("LeaveDate", typeof(DateTime));
-            dt.Columns.Add("IsHalfDay", typeof(int));
+            dt.Columns.Add("Attendance_Id", typeof(Int32));
+            dt.Columns.Add("UserId", typeof(Int32));
+            dt.Columns.Add("ClientId", typeof(Int32));
+            dt.Columns.Add("Date", typeof(DateTime));
+            dt.Columns.Add("ShiftStartTime", typeof(DateTime));
+            dt.Columns.Add("InTime", typeof(DateTime));
+            dt.Columns.Add("ShiftEndTime", typeof(DateTime));
+            dt.Columns.Add("OutTime", typeof(DateTime));
+            dt.Columns.Add("LocationIn", typeof(String));
+            dt.Columns.Add("LocationOut", typeof(String));
+            dt.Columns.Add("IP_In", typeof(String));
+            dt.Columns.Add("IP_Out", typeof(String));
+            dt.Columns.Add("AttendanceStatus", typeof(String));
+            dt.Columns.Add("LeaveStatus", typeof(String));
+            dt.Columns.Add("IsHalfDay", typeof(Boolean));
+            dt.Columns.Add("IsPaid", typeof(Boolean));
+            dt.Columns.Add("LeaveId", typeof(Int32));
+            dt.Columns.Add("LeaveQuotaUsed", typeof(Int32));
+            dt.Columns.Add("ApprovedRejectedBy", typeof(Int32));
+            dt.Columns.Add("ApprovedOrRejectedOn", typeof(DateTime));                    
+            
 
 
             DateTime HolidayDate = DateTime.Now;
@@ -299,7 +313,7 @@ namespace SphereInfoSolutionHRMS.Attendance
                 {
                     IsHalfDay = 0;
                 }
-                dt.Rows.Add(HolidayDate, IsHalfDay);
+                dt.Rows.Add(1, UserID, 0, HolidayDate, null, null, null, null, null, null, null, null, null, "Applied", IsHalfDay, true, 0, 0, 0, null);
             }
 
             return dt;

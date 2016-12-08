@@ -53,11 +53,11 @@
     
     <div class="row">
         <div class="col-sm-12">
-            <asp:GridView ID="gvEmployeeAttendance" runat="server" DataKeyNames="AttendanceID" AutoGenerateColumns="False"
+            <asp:GridView ID="gvEmployeeAttendance" runat="server" DataKeyNames="AttendanceId" AutoGenerateColumns="False"
                 CssClass="table table-hover table-bordered table-condensed"
                 HeaderStyle-CssClass="gvHeader">
                 <Columns>
-                    <asp:BoundField DataField="AttendanceID" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="AttendanceId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                     <asp:BoundField DataField="Day" HeaderText="Day" />
                     <asp:BoundField DataField="Date" HeaderText="Date" />
                     <asp:BoundField DataField="ShiftStart" HeaderText="Shift Start" />

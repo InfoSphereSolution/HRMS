@@ -41,14 +41,19 @@
 
             <asp:GridView ID="gvLeaveDetails" runat="server" AutoGenerateColumns="False"
                 ShowHeader="true"
-                DataKeyNames="Id"
+                DataKeyNames="LeaveId"
                 CssClass="table table-hover table-bordered table-condensed"
                 HeaderStyle-CssClass="gvHeader" OnRowDataBound="gvLeaveDetails_RowDataBound">
                 <Columns>
-                    <asp:BoundField DataField="LeaveID" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                    <asp:BoundField DataField="FromDate" HeaderText="From Date" />
-                    <asp:BoundField DataField="ToDate" HeaderText="To Date" />
+                    <asp:BoundField DataField="LeaveId" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="UserId" HeaderText="UserId" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="EmployeeName" HeaderText="Applied By" />
+                    <asp:BoundField DataField="LeaveType" HeaderText="Leave Type" />
+                    <asp:BoundField DataField="ContactNo" HeaderText="Contact" />
                     <asp:BoundField DataField="Reason" HeaderText="Reason" />
+                    <asp:BoundField DataField="FromDate" HeaderText="From Date" DataFormatString="{0:yyyy-M-dd}" />
+                    <asp:BoundField DataField="ToDate" HeaderText="To Date" DataFormatString="{0:yyyy-M-dd}" />
+                    <asp:BoundField DataField="AppliedOn" HeaderText="AppliedOn" DataFormatString="{0:yyyy-M-dd}" />
 
                     <asp:TemplateField HeaderText="Details" HeaderStyle-CssClass="gridviewHeader" ItemStyle-CssClass="gridviewIcon">
                         <ItemTemplate>
@@ -57,13 +62,20 @@
                                 runat="server"
                                 ShowHeader="true"
                                 AutoGenerateColumns="false"
-                                DataKeyNames="LeaveID"
+                                DataKeyNames="LeaveId"
                                 CssClass="table table-hover table-bordered table-condensed"
                                 HeaderStyle-CssClass="gvHeader"
                                 OnRowCommand="gvLeaveChild_RowCommand">
                                 <Columns>
-                                    <asp:BoundField DataField="LeaveID" HeaderText="LeaveID" />
-                                    <asp:BoundField DataField="Date" HeaderText="Date" />
+                                    <asp:BoundField DataField="LeaveId" HeaderText="LeaveID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                    <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:yyyy-M-dd}" />
+
+                                    <asp:TemplateField HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden">
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" ID="lblId" Text='<%# Eval("LeaveId") %>'></asp:Label>
+                                            <asp:Label runat="server" ID="lblFrom" Text='<%# Eval("Date") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Half Day ?" ItemStyle-Font-Bold="true">
                                         <ItemTemplate>
@@ -95,16 +107,19 @@
 
             <asp:GridView ID="gvApprovalLeave" runat="server" AutoGenerateColumns="False"
                 ShowHeader="true"
-                DataKeyNames="Id"
+                DataKeyNames="LeaveId"
                 CssClass="table table-hover table-bordered table-condensed"
                 HeaderStyle-CssClass="gvHeader" OnRowDataBound="gvApprovalLeave_RowDataBound">
                 <Columns>
-                    <asp:BoundField DataField="LeaveID" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
-                    <asp:BoundField DataField="Name" HeaderText="Name" />
-                    <asp:BoundField DataField="FromDate" HeaderText="From Date" />
-                    <asp:BoundField DataField="ToDate" HeaderText="To Date" />
-                    <asp:BoundField DataField="Contact" HeaderText="Contact" />
+                    <asp:BoundField DataField="LeaveId" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="UserId" HeaderText="UserId" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
+                    <asp:BoundField DataField="EmployeeName" HeaderText="Applied By" />
+                    <asp:BoundField DataField="LeaveType" HeaderText="Leave Type" />
+                    <asp:BoundField DataField="ContactNo" HeaderText="Contact" />
                     <asp:BoundField DataField="Reason" HeaderText="Reason" />
+                    <asp:BoundField DataField="FromDate" HeaderText="From Date" DataFormatString="{0:yyyy-M-dd}" />
+                    <asp:BoundField DataField="ToDate" HeaderText="To Date" DataFormatString="{0:yyyy-M-dd}" />
+                    <asp:BoundField DataField="AppliedOn" HeaderText="AppliedOn" DataFormatString="{0:yyyy-M-dd}" />
 
                     <asp:TemplateField HeaderText="Details" HeaderStyle-CssClass="gridviewHeader" ItemStyle-CssClass="gridviewIcon">
                         <ItemTemplate>
@@ -113,13 +128,20 @@
                                 runat="server"
                                 ShowHeader="true"
                                 AutoGenerateColumns="false"
-                                DataKeyNames="LeaveID"
+                                DataKeyNames="LeaveId"
                                 CssClass="table table-hover table-bordered table-condensed"
                                 HeaderStyle-CssClass="gvHeader"
                                 OnRowCommand="gvApprovalLeaveChild_RowCommand">
                                 <Columns>
-                                    <asp:BoundField DataField="LeaveID" HeaderText="LeaveID" />
-                                    <asp:BoundField DataField="Date" HeaderText="Date" />
+                                    <asp:BoundField DataField="LeaveId" HeaderText="LeaveID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                    <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:yyyy-M-dd}" />
+
+                                    <asp:TemplateField HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden">
+                                        <ItemTemplate>
+                                            <asp:Label runat="server" ID="lblId" Text='<%# Eval("LeaveId") %>'></asp:Label>
+                                            <asp:Label runat="server" ID="lblFrom" Text='<%# Eval("Date") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
 
                                     <asp:TemplateField HeaderText="Half Day ?" ItemStyle-Font-Bold="true">
                                         <ItemTemplate>

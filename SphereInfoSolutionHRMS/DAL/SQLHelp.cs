@@ -199,7 +199,7 @@ namespace DAL
                 }
 
             }
-            catch
+            catch(Exception)
             {
 
                 return false;
