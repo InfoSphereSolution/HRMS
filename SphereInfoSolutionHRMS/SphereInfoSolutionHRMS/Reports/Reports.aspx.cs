@@ -49,13 +49,12 @@ namespace SphereInfoSolutionHRMS.Reports
         protected void btnDetails_Click(object sender, EventArgs e)
         {
             DataTable dtDetail = report.FetchReport(getReportInfo(),1);
-            DataTable dtDetailHead = report.FetchReportHead(getReportInfo(),1);
+            DataTable dtDetailHead = report.FetchReportHeader(getReportInfo());
         }
 
         protected void btnSummary_Click(object sender, EventArgs e)
         {
-            DataTable dtSummary = report.FetchReport(getReportInfo(),0);
-            DataTable dtSummaryHead = report.FetchReportHead(getReportInfo(),0);
+            DataTable dtSummary = report.FetchReport(getReportInfo(),0);            
         }
 
         protected ReportModel getReportInfo()

@@ -55,9 +55,10 @@ namespace DAL
             catch (Exception ex)
             {
                 throw ex;
+                
             }
-
             return data;
+           
         }
 
         public static DataTable ExecuteSelect(string query)

@@ -15,10 +15,6 @@ namespace BAL
         //Get the Detail report
         public DataTable FetchReport(ReportModel reportModel, Int32 Operation)
         {
-
-            
-            
-
             List<SqlParameter> sqlparam = new List<SqlParameter>();
             sqlparam.Add(new SqlParameter("@ReportType", reportModel.ReportType));
             if (reportModel.ClientID == -1)
@@ -46,16 +42,14 @@ namespace BAL
         }
 
         //Get the Detail report Head
-        public DataTable FetchReportHead(ReportModel reportModel, Int32 Operation)
+        public DataTable FetchReportHeader(ReportModel reportModel)
         {
             List<SqlParameter> sqlparam = new List<SqlParameter>();
-            sqlparam.Add(new SqlParameter("@ReportType", reportModel.ReportType));            
-            sqlparam.Add(new SqlParameter("@ClientId", reportModel.ClientID));            
+            sqlparam.Add(new SqlParameter("@ReportType", reportModel.ReportType));                                    
             sqlparam.Add(new SqlParameter("@EmpId", reportModel.EmployeeID));            
             sqlparam.Add(new SqlParameter("@FromDate", reportModel.FromDate));
-            sqlparam.Add(new SqlParameter("@ToDate", reportModel.ToDate));
-            sqlparam.Add(new SqlParameter("@ReportOperation", Operation));
-            DataTable dt = DAL.SQLHelp.ExecuteReader("Usp_GetReports", sqlparam);            
+            sqlparam.Add(new SqlParameter("@ToDate", reportModel.ToDate));            
+            DataTable dt = DAL.SQLHelp.ExecuteReader("Usp_GetReportsHeader", sqlparam);            
             return dt;
         }
 

@@ -246,8 +246,7 @@ namespace SphereInfoSolutionHRMS.Admin
         }
         protected void btnSaveClient_Click(object sender, EventArgs e)
         {
-            bool Is_Sat = false;
-            bool custom = false;
+            bool Is_Sat = false;            
             if (cbIsSaturdayWorking.Checked)
             {
                 Is_Sat = true;
@@ -874,8 +873,7 @@ namespace SphereInfoSolutionHRMS.Admin
         //Update Master Table Record
         protected void btnupdate_Click(object sender, EventArgs e)
         {
-            bool Is_Sat = false;
-            bool custom = false;
+            bool Is_Sat = false;            
             if (cbIsSaturdayWorking.Checked)
             {
                 Is_Sat = true;
@@ -1292,7 +1290,7 @@ namespace SphereInfoSolutionHRMS.Admin
                     int Result = client.UpdateHolidayDetails(clientmodel, 3);
                     DisplayResultMessage(Result);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
 
@@ -1325,7 +1323,7 @@ namespace SphereInfoSolutionHRMS.Admin
                // ddlClientName.Items.FindByValue(Convert.ToInt32(Convert.ToString(ClientName)).ToString()).Selected = true ;
                 ddlIsOptional.Items.FindByValue(Convert.ToInt32(Convert.ToBoolean(IsOptional)).ToString()).Selected = true;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }

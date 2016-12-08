@@ -164,8 +164,7 @@ namespace BAL
                 UpdatedEmployeePassport(employeeModel);
                 UpdatedEmployeeProfessional(employeeModel);
 
-                dt = DAL.SQLHelp.ExecuteReader("Usp_UpdateEmployee", sqParam);
-                return dt;
+                dt = DAL.SQLHelp.ExecuteReader("Usp_UpdateEmployee", sqParam);                
 
             }
             catch (Exception)
