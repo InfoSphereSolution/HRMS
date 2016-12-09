@@ -50,6 +50,7 @@
       <HintPath>..\packages\HtmlAgilityPack-PCL.1.4.6\lib\HtmlAgilityPack-PCL.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -252,6 +253,9 @@
     <Folder Include="Reports\RDLCReports\Holiday\Details\" />
     <Folder Include="Reports\RDLCReports\Leave\Details\" />
     <Folder Include="Reports\RDLCReports\Leave\Summary\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\RDLCReports\Attendance\Details\ReportAttendanceDetails.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="Reports.aspx.cs" Inherits="SphereInfoSolutionHRMS.Reports.Reports" %>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
 
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
@@ -63,4 +65,11 @@
         </div>        
     </div>
     <hr class="small" />
+
+    <div class="row">
+         <div class="col-xs-12">
+             <rsweb:ReportViewer ID="ReportViewerAttendanceDetails" runat="server" Width="100%" Height="500px"></rsweb:ReportViewer>
+        </div>
+    </div>
+
 </asp:Content>

@@ -10,7 +10,7 @@ using Models;
 
 namespace BAL
 {
-    public class Report
+    public class ReportStatistics
     {
         //Get the Detail report
         public DataTable FetchReport(ReportModel reportModel, Int32 Operation)

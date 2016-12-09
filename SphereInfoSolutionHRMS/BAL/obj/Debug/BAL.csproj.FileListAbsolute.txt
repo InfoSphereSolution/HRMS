@@ -25,3 +25,12 @@ C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\Models.
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.dll
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.pdb
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\BAL.dll
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\BAL.pdb
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\DAL.dll
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\Models.dll
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\DAL.pdb
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\Models.pdb
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.dll
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.pdb
