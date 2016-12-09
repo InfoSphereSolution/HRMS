@@ -113,6 +113,7 @@ namespace SphereInfoSolutionHRMS.Reports
             {
                 ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
+                ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
 
                 string EmpCode="", EmpName="", Dept="", Desig="", ClientName="",PhotoUrl="";
                 string FromDate="", ToDate="";
@@ -129,11 +130,12 @@ namespace SphereInfoSolutionHRMS.Reports
                     FromDate = Convert.ToString(txtFromDate.Text);
                     ToDate = Convert.ToString(txtToDate.Text);
                     PhotoUrl = Convert.ToString(dtHeader.Rows[0]["PhotoUrl"]);
+                    
                     NoOfAbsentDays = Convert.ToString(dtHeader.Rows[0]["NoOfAbsentDays"]);
                     NoOfDaysWorked = Convert.ToString(dtHeader.Rows[0]["NoOfDaysWorked"]);
                     TotalHrsWorked = Convert.ToString(dtHeader.Rows[0]["TotalHrs"]);
                 }
-               
+                string imagePath = new Uri(Server.MapPath(PhotoUrl)).AbsoluteUri;
                 List<ReportParameter> param = new List<ReportParameter>();
                 param.Add(new ReportParameter("EmpCode", EmpCode));
                 param.Add(new ReportParameter("EmpName", EmpName));
@@ -142,7 +144,8 @@ namespace SphereInfoSolutionHRMS.Reports
                 param.Add(new ReportParameter("ClientName", ClientName));
                 param.Add(new ReportParameter("FromDate", FromDate));
                 param.Add(new ReportParameter("ToDate", ToDate));
-                param.Add(new ReportParameter("PhotoUrl", PhotoUrl));
+                //param.Add(new ReportParameter("PhotoUrl", PhotoUrl));
+                param.Add(new ReportParameter("PhotoUrl", imagePath));
                 param.Add(new ReportParameter("NoOfAbsentDays", NoOfAbsentDays));
                 param.Add(new ReportParameter("NoOfDaysWorked", NoOfDaysWorked));
                 param.Add(new ReportParameter("TotalHrs", TotalHrsWorked));

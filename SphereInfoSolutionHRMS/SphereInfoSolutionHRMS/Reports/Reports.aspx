@@ -12,7 +12,7 @@
             <asp:Label ID="lblSelectReport" runat="server" Text="Select Report: "></asp:Label>
         </div>
         <div class="col-md-3"  style="padding:5px">
-            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" Checked="true" />
+            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" />
         </div>
         <div class="col-md-3"  style="padding:5px">
             <asp:RadioButton ID="rbLeave" Text="Leave" runat="server" GroupName="reports" />
@@ -68,7 +68,8 @@
 
     <div class="row">
          <div class="col-xs-12">
-             <rsweb:ReportViewer ID="ReportViewerAttendanceDetails" runat="server" Width="100%" Height="500px"></rsweb:ReportViewer>
+             <rsweb:ReportViewer ID="ReportViewerAttendanceDetails" runat="server" Width="100%" 
+                 Height="500px"></rsweb:ReportViewer>
         </div>
     </div>
 

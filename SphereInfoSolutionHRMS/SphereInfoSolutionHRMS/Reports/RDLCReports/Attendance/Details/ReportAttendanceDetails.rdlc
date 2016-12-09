@@ -1152,7 +1152,7 @@
           <Top>1.03in</Top>
           <Left>0.25917in</Left>
           <Height>0.25in</Height>
-          <Width>1in</Width>
+          <Width>1.14583in</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -1261,7 +1261,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!EmpName.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1291,7 +1291,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!EmpCode.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1351,7 +1351,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!Designation_Name.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1381,7 +1381,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!Department_Name.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1411,7 +1411,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!ToDate.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1501,7 +1501,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!FromDate.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1561,7 +1561,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!NoOfDaysWorked.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1621,7 +1621,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!TotalHrs.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1651,7 +1651,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!NoOfAbsentDays.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1681,7 +1681,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=Parameters!ClientName.Value</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1705,13 +1705,13 @@
           </Style>
         </Textbox>
         <Image Name="ImgEmp">
-          <Source>Embedded</Source>
+          <Source>External</Source>
           <Value>=Parameters!PhotoUrl.Value</Value>
-          <Sizing>FitProportional</Sizing>
-          <Top>0.88417in</Top>
-          <Left>6.19667in</Left>
-          <Height>0.5in</Height>
-          <Width>0.5in</Width>
+          <MIMEType>image/png</MIMEType>
+          <Top>0.58208in</Top>
+          <Left>6.26041in</Left>
+          <Height>2.33334in</Height>
+          <Width>4.14583in</Width>
           <ZIndex>21</ZIndex>
           <Style>
             <Border>
