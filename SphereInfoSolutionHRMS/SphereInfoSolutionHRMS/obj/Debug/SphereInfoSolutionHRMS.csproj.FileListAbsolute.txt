@@ -54,3 +54,10 @@ C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolution
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.pdb
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\RdlCompile.cache
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\RdlCompile.compiled
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\HtmlAgilityPack-PCL.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\HtmlAgilityPack.dll
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\HtmlAgilityPack.pdb
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\HtmlAgilityPack.xml
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\HtmlAgilityPack-PCL.xml
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\RdlCompile.cache
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\RdlCompile.compiled

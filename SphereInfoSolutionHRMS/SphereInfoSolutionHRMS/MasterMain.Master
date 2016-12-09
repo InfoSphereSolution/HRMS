@@ -6,15 +6,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Main Master</title>
-    
+
     <%--<script src="Style/js/jquery-3.1.1.min.js"></script>--%>
-    <link href="Style/css/LoginCSS.css" rel="stylesheet" />        
-    <script src="../Style/js/CheckRow.js"></script>    
-    <script src="Style/js/jquery.min.js"></script>    
-    <script src="Style/js/bootstrap.min.js"></script>    
+    <link href="Style/css/LoginCSS.css" rel="stylesheet" />
+    <script src="../Style/js/CheckRow.js"></script>
+    <script src="Style/js/jquery.min.js"></script>
+    <script src="Style/js/bootstrap.min.js"></script>
     <link href="Style/css/bootstrap.css" rel="stylesheet" />
-   
-  
+
+
     <link href="Style/css/navHome.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -23,10 +23,14 @@
     <div class="container">
         <div id="header" class="row">
             <div class="col-lg-5 col-sm-5">
-                <asp:Image ID="imgLogo" class="img-responsive pull-right-lg center-block" runat="server" ImageUrl="~/Images/spherelogo.jpg" alt="logo" Style="max-height: 125px" />
+                <a href="../home.aspx">
+                    <asp:Image ID="imgLogo" class="img-responsive pull-right-lg center-block" runat="server" ImageUrl="~/Images/spherelogo.jpg" alt="logo" Style="max-height: 125px" />
+                </a>
             </div>
             <div class="col-lg-7 col-sm-7">
-                <asp:Image ID="imgName" class="img-responsive pull-left-lg center-block" runat="server" ImageUrl="~/Images/shpereconame.jpg" alt="Sphere Info Solution" Style="max-height: 125px" />
+                <a href="../home.aspx">
+                    <asp:Image ID="imgName" class="img-responsive pull-left-lg center-block" runat="server" ImageUrl="~/Images/shpereconame.jpg" alt="Sphere Info Solution" Style="max-height: 125px" />
+                </a>
             </div>
         </div>
         <form id="mainForm" runat="server">

@@ -12,7 +12,7 @@
             <asp:Label ID="lblSelectReport" runat="server" Text="Select Report: "></asp:Label>
         </div>
         <div class="col-md-3"  style="padding:5px">
-            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" />
+            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" Checked="true" />
         </div>
         <div class="col-md-3"  style="padding:5px">
             <asp:RadioButton ID="rbLeave" Text="Leave" runat="server" GroupName="reports" />
