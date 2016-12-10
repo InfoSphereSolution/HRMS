@@ -160,6 +160,137 @@ namespace SphereInfoSolutionHRMS.Reports
                 //lblmsg.Text = "No Records Found";
             }
         }
-        
+
+        private void GetAttendanceSummaryReport(DataTable dtDetails)
+        {
+
+            ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/ReportAttendanceDetails.rdlc");
+            if (dtDetails.Rows.Count >= 1)
+            {
+                ReportDataSource Details = new ReportDataSource("DSAttendanceSummary", dtDetails);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
+                ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
+
+               
+                List<ReportParameter> param = new List<ReportParameter>();
+                
+                param.Add(new ReportParameter("FromDate", txtFromDate.Text));
+                param.Add(new ReportParameter("ToDate", txtToDate.Text));
+               
+
+                this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
+
+            }
+            else
+            {
+                ReportViewerAttendanceDetails.Visible = false;
+                //lblmsg.Text = "No Records Found";
+            }
+        }
+
+        private void GetLeaveDetailReport(DataTable dtDetails, DataTable dtHeader)
+        {
+
+            ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/ReportAttendanceDetails.rdlc");
+            if (dtDetails.Rows.Count >= 1)
+            {
+                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
+                ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
+
+                string EmpCode = "", EmpName = "", Dept = "", Desig = "", ClientName = "", PhotoUrl = "";
+                string FromDate = "", ToDate = "";
+                string NoOfDaysWorked = "", NoOfAbsentDays = "";
+                string TotalHrsWorked = "";
+
+                if (dtHeader.Rows.Count >= 1)
+                {
+                    EmpCode = Convert.ToString(dtHeader.Rows[0]["EmpCode"]);
+                    EmpName = Convert.ToString(dtHeader.Rows[0]["EmpName"]);
+                    Dept = Convert.ToString(dtHeader.Rows[0]["Department_Name"]);
+                    Desig = Convert.ToString(dtHeader.Rows[0]["Designation_Name"]);
+                    ClientName = Convert.ToString(dtHeader.Rows[0]["ClientName"]);
+                    FromDate = Convert.ToString(txtFromDate.Text);
+                    ToDate = Convert.ToString(txtToDate.Text);
+                    PhotoUrl = Convert.ToString(dtHeader.Rows[0]["PhotoUrl"]);
+
+                    NoOfAbsentDays = Convert.ToString(dtHeader.Rows[0]["NoOfAbsentDays"]);
+                    NoOfDaysWorked = Convert.ToString(dtHeader.Rows[0]["NoOfDaysWorked"]);
+                    TotalHrsWorked = Convert.ToString(dtHeader.Rows[0]["TotalHrs"]);
+                }
+                string imagePath = new Uri(Server.MapPath(PhotoUrl)).AbsoluteUri;
+                List<ReportParameter> param = new List<ReportParameter>();
+                param.Add(new ReportParameter("EmpCode", EmpCode));
+                param.Add(new ReportParameter("EmpName", EmpName));
+                param.Add(new ReportParameter("Department_Name", Dept));
+                param.Add(new ReportParameter("Designation_Name", Desig));
+                param.Add(new ReportParameter("ClientName", ClientName));
+                param.Add(new ReportParameter("FromDate", FromDate));
+                param.Add(new ReportParameter("ToDate", ToDate));             
+                param.Add(new ReportParameter("PhotoUrl", imagePath));
+                param.Add(new ReportParameter("NoOfAbsentDays", NoOfAbsentDays));
+                param.Add(new ReportParameter("NoOfDaysWorked", NoOfDaysWorked));
+                param.Add(new ReportParameter("TotalHrs", TotalHrsWorked));
+
+                this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
+
+            }
+            else
+            {
+                ReportViewerAttendanceDetails.Visible = false;
+                //lblmsg.Text = "No Records Found";
+            }
+        }
+
+        private void GetLeaveSummaryReport(DataTable dtDetails)
+        {
+
+            ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/.rdlc");
+            if (dtDetails.Rows.Count >= 1)
+            {
+                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
+                ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
+                
+                List<ReportParameter> param = new List<ReportParameter>();
+               
+                param.Add(new ReportParameter("FromDate", txtFromDate.Text));
+                param.Add(new ReportParameter("ToDate", txtToDate.Text));
+                
+
+                this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
+
+            }
+            else
+            {
+                ReportViewerAttendanceDetails.Visible = false;
+                //lblmsg.Text = "No Records Found";
+            }
+        }
+
+        private void GetHolidayDetailReport(DataTable dtDetails)
+        {
+
+            ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/.rdlc");
+            if (dtDetails.Rows.Count >= 1)
+            {
+                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear(); 
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
+
+            }
+            else
+            {
+                ReportViewerAttendanceDetails.Visible = false;
+                //lblmsg.Text = "No Records Found";
+            }
+        }
     }
 }

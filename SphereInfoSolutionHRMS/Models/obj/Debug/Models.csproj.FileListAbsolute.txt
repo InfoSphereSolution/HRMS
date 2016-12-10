@@ -19,3 +19,10 @@ C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\DAL.
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.dll
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.pdb
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\Models.dll
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\Models.pdb
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\DAL.dll
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\DAL.pdb
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.dll
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.pdb
