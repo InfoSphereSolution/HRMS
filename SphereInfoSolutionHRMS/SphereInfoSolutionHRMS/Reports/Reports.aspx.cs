@@ -18,7 +18,7 @@ namespace SphereInfoSolutionHRMS.Reports
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 bindClient();
                 bindEmployee(-1);
@@ -49,28 +49,65 @@ namespace SphereInfoSolutionHRMS.Reports
 
         protected void btnDetails_Click(object sender, EventArgs e)
         {
-            DataTable dtDetail = report.FetchReport(getReportInfo(),1);
+            DataTable dtDetail = report.FetchReport(getReportInfo(), 1);
             DataTable dtDetailHead = report.FetchReportHeader(getReportInfo());
-            GetAttendanceDetailReport(dtDetail,dtDetailHead);
+            
+            if (getReportType() == 1)
+            {
+                //attendance
+                GetAttendanceDetailReport(dtDetail, dtDetailHead);
+            }
+            else if (getReportType() == 2)
+            {
+                //leave
+                GetLeaveDetailReport(dtDetail, dtDetailHead);
+
+            }
+            else
+            {
+                //holiday
+            }
+            // GetLeaveDetailReport(dtDetail, dtDetailHead);
+            //GetLeaveSummaryReport(dtDetail);
+            //GetHolidayDetailReport(dtDetail);
         }
 
         protected void btnSummary_Click(object sender, EventArgs e)
         {
-            DataTable dtSummary = report.FetchReport(getReportInfo(),0);            
+
+            if (getReportType() == 1)
+            {
+                //attendance
+            }
+            else if (getReportType() == 2)
+            {
+                //leave
+            }
+            else
+            {
+                //holiday
+            }
+            if (rbAttendance.Checked)
+            {
+                DataTable dtSummary = report.FetchReport(getReportInfo(), 0);
+                GetAttendanceSummaryReport(dtSummary);
+
+            }
+
         }
 
         protected ReportModel getReportInfo()
         {
             ReportModel reportModel = new ReportModel();
             reportModel.UserID = UserID;
-            reportModel.ReportType = getReportType();            
-            reportModel.ClientID = Convert.ToInt32(ddlClient.SelectedValue);            
+            reportModel.ReportType = getReportType();
+            reportModel.ClientID = Convert.ToInt32(ddlClient.SelectedValue);
             reportModel.EmployeeID = Convert.ToInt32(ddlEmployee.SelectedValue);
             reportModel.FromDate = Convert.ToDateTime(txtFromDate.Text);
             reportModel.ToDate = Convert.ToDateTime(txtToDate.Text);
             return reportModel;
         }
-                
+
 
         //check which report is needed
         protected Int32 getReportType()
@@ -104,93 +141,8 @@ namespace SphereInfoSolutionHRMS.Reports
             bindEmployee(ClientID);
         }
 
+        #region AttednaceDetails
         private void GetAttendanceDetailReport(DataTable dtDetails, DataTable dtHeader)
-        {
-            
-            ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
-            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/ReportAttendanceDetails.rdlc");
-            if (dtDetails.Rows.Count >= 1)
-            {
-                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
-                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
-                ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
-
-                string EmpCode="", EmpName="", Dept="", Desig="", ClientName="",PhotoUrl="";
-                string FromDate="", ToDate="";
-                string NoOfDaysWorked="", NoOfAbsentDays="";
-                string TotalHrsWorked="";
-
-                if (dtHeader.Rows.Count >= 1)
-                {
-                    EmpCode = Convert.ToString(dtHeader.Rows[0]["EmpCode"]);
-                    EmpName = Convert.ToString(dtHeader.Rows[0]["EmpName"]);
-                    Dept = Convert.ToString(dtHeader.Rows[0]["Department_Name"]);
-                    Desig = Convert.ToString(dtHeader.Rows[0]["Designation_Name"]);
-                    ClientName = Convert.ToString(dtHeader.Rows[0]["ClientName"]);
-                    FromDate = Convert.ToString(txtFromDate.Text);
-                    ToDate = Convert.ToString(txtToDate.Text);
-                    PhotoUrl = Convert.ToString(dtHeader.Rows[0]["PhotoUrl"]);
-                    
-                    NoOfAbsentDays = Convert.ToString(dtHeader.Rows[0]["NoOfAbsentDays"]);
-                    NoOfDaysWorked = Convert.ToString(dtHeader.Rows[0]["NoOfDaysWorked"]);
-                    TotalHrsWorked = Convert.ToString(dtHeader.Rows[0]["TotalHrs"]);
-                }
-                string imagePath = new Uri(Server.MapPath(PhotoUrl)).AbsoluteUri;
-                List<ReportParameter> param = new List<ReportParameter>();
-                param.Add(new ReportParameter("EmpCode", EmpCode));
-                param.Add(new ReportParameter("EmpName", EmpName));
-                param.Add(new ReportParameter("Department_Name", Dept));
-                param.Add(new ReportParameter("Designation_Name", Desig));
-                param.Add(new ReportParameter("ClientName", ClientName));
-                param.Add(new ReportParameter("FromDate", FromDate));
-                param.Add(new ReportParameter("ToDate", ToDate));
-                //param.Add(new ReportParameter("PhotoUrl", PhotoUrl));
-                param.Add(new ReportParameter("PhotoUrl", imagePath));
-                param.Add(new ReportParameter("NoOfAbsentDays", NoOfAbsentDays));
-                param.Add(new ReportParameter("NoOfDaysWorked", NoOfDaysWorked));
-                param.Add(new ReportParameter("TotalHrs", TotalHrsWorked));
-
-                this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
-                ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
-                
-            }
-            else
-            {
-                ReportViewerAttendanceDetails.Visible = false;
-                //lblmsg.Text = "No Records Found";
-            }
-        }
-
-        private void GetAttendanceSummaryReport(DataTable dtDetails)
-        {
-
-            ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
-            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/ReportAttendanceDetails.rdlc");
-            if (dtDetails.Rows.Count >= 1)
-            {
-                ReportDataSource Details = new ReportDataSource("DSAttendanceSummary", dtDetails);
-                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
-                ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
-
-               
-                List<ReportParameter> param = new List<ReportParameter>();
-                
-                param.Add(new ReportParameter("FromDate", txtFromDate.Text));
-                param.Add(new ReportParameter("ToDate", txtToDate.Text));
-               
-
-                this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
-                ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
-
-            }
-            else
-            {
-                ReportViewerAttendanceDetails.Visible = false;
-                //lblmsg.Text = "No Records Found";
-            }
-        }
-
-        private void GetLeaveDetailReport(DataTable dtDetails, DataTable dtHeader)
         {
 
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
@@ -216,7 +168,6 @@ namespace SphereInfoSolutionHRMS.Reports
                     FromDate = Convert.ToString(txtFromDate.Text);
                     ToDate = Convert.ToString(txtToDate.Text);
                     PhotoUrl = Convert.ToString(dtHeader.Rows[0]["PhotoUrl"]);
-
                     NoOfAbsentDays = Convert.ToString(dtHeader.Rows[0]["NoOfAbsentDays"]);
                     NoOfDaysWorked = Convert.ToString(dtHeader.Rows[0]["NoOfDaysWorked"]);
                     TotalHrsWorked = Convert.ToString(dtHeader.Rows[0]["TotalHrs"]);
@@ -229,7 +180,7 @@ namespace SphereInfoSolutionHRMS.Reports
                 param.Add(new ReportParameter("Designation_Name", Desig));
                 param.Add(new ReportParameter("ClientName", ClientName));
                 param.Add(new ReportParameter("FromDate", FromDate));
-                param.Add(new ReportParameter("ToDate", ToDate));             
+                param.Add(new ReportParameter("ToDate", ToDate));                
                 param.Add(new ReportParameter("PhotoUrl", imagePath));
                 param.Add(new ReportParameter("NoOfAbsentDays", NoOfAbsentDays));
                 param.Add(new ReportParameter("NoOfDaysWorked", NoOfDaysWorked));
@@ -245,23 +196,25 @@ namespace SphereInfoSolutionHRMS.Reports
                 //lblmsg.Text = "No Records Found";
             }
         }
-
-        private void GetLeaveSummaryReport(DataTable dtDetails)
+        #endregion
+        #region AttendanceSummary
+        private void GetAttendanceSummaryReport(DataTable dtDetails)
         {
 
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
-            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/.rdlc");
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Summary/AttendanceSummaryReport.rdlc");
             if (dtDetails.Rows.Count >= 1)
             {
-                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
+                ReportDataSource Details = new ReportDataSource("DataSet1", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
-                
+
+
                 List<ReportParameter> param = new List<ReportParameter>();
-               
+
                 param.Add(new ReportParameter("FromDate", txtFromDate.Text));
                 param.Add(new ReportParameter("ToDate", txtToDate.Text));
-                
+
 
                 this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
@@ -273,16 +226,57 @@ namespace SphereInfoSolutionHRMS.Reports
                 //lblmsg.Text = "No Records Found";
             }
         }
+        #endregion
 
-        private void GetHolidayDetailReport(DataTable dtDetails)
+        #region LeaveDetails
+        private void GetLeaveDetailReport(DataTable dtDetails, DataTable dtHeader)
         {
 
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
-            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/.rdlc");
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Leave/Details/ReportLeaveDetails.rdlc");
             if (dtDetails.Rows.Count >= 1)
             {
-                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
-                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear(); 
+                ReportDataSource Details = new ReportDataSource("DataSet2", dtDetails);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
+                ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
+
+                string EmpCode = "", EmpName = "", Dept = "", Desig = "", ClientName = "", PhotoUrl = "";
+                string FromDate = "", ToDate = "";
+                string NoOfAppliedLeaves = "", NoOfRejectedLeaves = "",NoOfCancelledLeaves="",NoOfTakenLeaves="",NoOfApprovedLeaves="";
+                if (dtHeader.Rows.Count >= 1)
+                {
+                    EmpCode = Convert.ToString(dtHeader.Rows[0]["EmpCode"]);
+                    EmpName = Convert.ToString(dtHeader.Rows[0]["EmpName"]);
+                    Dept = Convert.ToString(dtHeader.Rows[0]["Department_Name"]);
+                    Desig = Convert.ToString(dtHeader.Rows[0]["Designation_Name"]);
+                    ClientName = Convert.ToString(dtHeader.Rows[0]["ClientName"]);
+                    FromDate = Convert.ToString(txtFromDate.Text);
+                    ToDate = Convert.ToString(txtToDate.Text);
+                    PhotoUrl = Convert.ToString(dtHeader.Rows[0]["PhotoUrl"]);
+                    NoOfAppliedLeaves = Convert.ToString(dtHeader.Rows[0]["NoOfAppliedLeaves"]);
+                    NoOfApprovedLeaves = Convert.ToString(dtHeader.Rows[0]["NoOfApprovedLeaves"]);
+                    NoOfRejectedLeaves = Convert.ToString(dtHeader.Rows[0]["NoOfRejectedLeaves"]);
+                    NoOfCancelledLeaves = Convert.ToString(dtHeader.Rows[0]["NoOfCancelledLeaves"]);
+                    NoOfTakenLeaves = Convert.ToString(dtHeader.Rows[0]["NoOfTakenLeaves"]);
+                 }
+                string imagePath = new Uri(Server.MapPath(PhotoUrl)).AbsoluteUri;
+                List<ReportParameter> param = new List<ReportParameter>();
+                param.Add(new ReportParameter("EmpCode", EmpCode));
+                param.Add(new ReportParameter("EmpName", EmpName));
+                param.Add(new ReportParameter("Department_Name", Dept));
+                param.Add(new ReportParameter("Designation_Name", Desig));
+                param.Add(new ReportParameter("ClientName", ClientName));
+                param.Add(new ReportParameter("FromDate", FromDate));
+                param.Add(new ReportParameter("ToDate", ToDate));
+                param.Add(new ReportParameter("PhotoUrl", imagePath));
+                param.Add(new ReportParameter("NoOfAppliedLeaves", NoOfAppliedLeaves));
+                param.Add(new ReportParameter("NoOfApprovedLeaves", NoOfApprovedLeaves));
+                param.Add(new ReportParameter("NoOfRejectedLeaves", NoOfRejectedLeaves));
+                param.Add(new ReportParameter("NoOfCancelledLeaves", NoOfCancelledLeaves));
+                param.Add(new ReportParameter("NoOfTakenLeaves", NoOfTakenLeaves));
+
+        
+                this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
 
             }
@@ -292,5 +286,57 @@ namespace SphereInfoSolutionHRMS.Reports
                 //lblmsg.Text = "No Records Found";
             }
         }
+        #endregion
+
+        #region LeaveSummary
+        private void GetLeaveSummaryReport(DataTable dtDetails)
+        {
+
+            ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/.rdlc");
+            if (dtDetails.Rows.Count >= 1)
+            {
+                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
+                ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
+
+                List<ReportParameter> param = new List<ReportParameter>();
+
+                param.Add(new ReportParameter("FromDate", txtFromDate.Text));
+                param.Add(new ReportParameter("ToDate", txtToDate.Text));
+
+
+                this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
+
+            }
+            else
+            {
+                ReportViewerAttendanceDetails.Visible = false;
+                //lblmsg.Text = "No Records Found";
+            }
+        }
+        #endregion
+
+        #region HolidayDetail
+        private void GetHolidayDetailReport(DataTable dtDetails)
+        {
+
+            ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/.rdlc");
+            if (dtDetails.Rows.Count >= 1)
+            {
+                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
+
+            }
+            else
+            {
+                ReportViewerAttendanceDetails.Visible = false;
+                //lblmsg.Text = "No Records Found";
+            }
+        }
+        #endregion
     }
 }

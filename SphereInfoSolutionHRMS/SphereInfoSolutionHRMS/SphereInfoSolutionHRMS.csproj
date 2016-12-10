@@ -42,11 +42,9 @@
     <Reference Include="AjaxControlToolkit">
       <HintPath>D:\SavitaPractical\Ajax_toolkit\AjaxControlToolkit.dll</HintPath>
     </Reference>
-    <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
-    </Reference>
-    <Reference Include="HtmlAgilityPack-PCL">
-      <HintPath>..\packages\HtmlAgilityPack-PCL.1.4.6\lib\HtmlAgilityPack-PCL.dll</HintPath>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
@@ -97,7 +95,9 @@
     <Content Include="Style\js\jquery-3.1.1.min.js" />
     <Content Include="Style\js\npm.js" />
     <Content Include="User\MyProfile.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">
@@ -122,7 +122,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSAttendanceDetails.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Reports\RDLCReports\Attendance\Summary\DSAttendanceSummary.Designer.cs" />
+    <Compile Include="Reports\RDLCReports\Attendance\Summary\DSAttendaceSummaryRep.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSAttendaceSummaryRep.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RDLCReports\Leave\Details\DSLeaveDetails.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSLeaveDetails.xsd</DependentUpon>
+    </Compile>
     <Compile Include="User\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -229,7 +238,9 @@
     <Content Include="Style\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Login\Web.config" />
     <Content Include="NestedMasterHome.master" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\SphereHRMS.pubxml" />
     <Content Include="Reports\RDLCReports\Attendance\Details\DSAttendanceDetails.xsc">
       <DependentUpon>DSAttendanceDetails.xsd</DependentUpon>
@@ -242,16 +253,27 @@
     <Content Include="Reports\RDLCReports\Attendance\Details\DSAttendanceDetails.xss">
       <DependentUpon>DSAttendanceDetails.xsd</DependentUpon>
     </Content>
-    <Content Include="Reports\RDLCReports\Attendance\Summary\DSAttendanceSummary.xsc">
-      <DependentUpon>DSAttendanceSummary.xsd</DependentUpon>
+    <Content Include="Reports\RDLCReports\Attendance\Summary\DSAttendaceSummaryRep.xsc">
+      <DependentUpon>DSAttendaceSummaryRep.xsd</DependentUpon>
     </Content>
-    <None Include="Reports\RDLCReports\Attendance\Summary\DSAttendanceSummary.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSAttendanceSummary1.Designer.cs</LastGenOutput>
+    <None Include="Reports\RDLCReports\Attendance\Summary\DSAttendaceSummaryRep.xsd">
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSAttendaceSummaryRep.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Reports\RDLCReports\Attendance\Summary\DSAttendanceSummary.xss">
-      <DependentUpon>DSAttendanceSummary.xsd</DependentUpon>
+    <Content Include="Reports\RDLCReports\Attendance\Summary\DSAttendaceSummaryRep.xss">
+      <DependentUpon>DSAttendaceSummaryRep.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\RDLCReports\Leave\Details\DSLeaveDetails.xsc">
+      <DependentUpon>DSLeaveDetails.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\RDLCReports\Leave\Details\DSLeaveDetails.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSLeaveDetails.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\RDLCReports\Leave\Details\DSLeaveDetails.xss">
+      <DependentUpon>DSLeaveDetails.xsd</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -277,11 +299,15 @@
   <ItemGroup>
     <Folder Include="Javascript\" />
     <Folder Include="Reports\RDLCReports\Holiday\Details\" />
-    <Folder Include="Reports\RDLCReports\Leave\Details\" />
     <Folder Include="Reports\RDLCReports\Leave\Summary\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\RDLCReports\Attendance\Details\ReportAttendanceDetails.rdlc" />
+    <EmbeddedResource Include="Reports\RDLCReports\Attendance\Summary\AttendanceSummaryReport.rdlc" />
+    <EmbeddedResource Include="Reports\RDLCReports\Leave\Details\ReportLeaveDetails.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
