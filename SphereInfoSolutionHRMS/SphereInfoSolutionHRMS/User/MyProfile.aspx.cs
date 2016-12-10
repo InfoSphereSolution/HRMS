@@ -12,7 +12,7 @@ namespace SphereInfoSolutionHRMS.Login
     public partial class MyProfile : System.Web.UI.Page
     {
         LoginModel login = new LoginModel();
-        Employee emp = new Employee();
+        Profile profile = new Profile();
         DataTable dt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +25,7 @@ namespace SphereInfoSolutionHRMS.Login
         protected void GetEmployeeProfile()
         {
             login.UserId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
-            dt = emp.EmployeeProfile(login);
+            dt = profile.EmployeeProfile(login);
             if (dt.Rows.Count > 0)
             {
                 for(int i=0;i<dt.Rows.Count;i++)

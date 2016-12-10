@@ -71,6 +71,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Login\AboutUs.aspx" />
     <Content Include="User\ChangePassword.aspx" />
     <Content Include="Admin\ClientDetails.aspx" />
     <Content Include="Admin\Designation.aspx" />
@@ -96,6 +97,7 @@
     <Content Include="Style\js\bootstrap.min.js" />
     <Content Include="Style\js\jquery-3.1.1.min.js" />
     <Content Include="Style\js\npm.js" />
+    <Content Include="User\MyProfile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +110,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login\AboutUs.aspx.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\AboutUs.aspx.designer.cs">
+      <DependentUpon>AboutUs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\RDLCReports\Attendance\Details\DSAttendanceDetails.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -198,6 +207,13 @@
     </Compile>
     <Compile Include="Reports\Reports.aspx.designer.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User\MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User\MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

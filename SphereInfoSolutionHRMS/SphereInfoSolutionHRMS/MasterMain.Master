@@ -44,7 +44,7 @@
         <div id="footer" class="row">
             <div class="col-lg-12 text-right">
                 <asp:HyperLink ID="hlLogin" runat="server" Visible="false">Login</asp:HyperLink>
-                <asp:HyperLink ID="hlAboutContact" runat="server">About/Contact</asp:HyperLink>
+                <asp:HyperLink ID="hlAboutContact" runat="server" NavigateUrl="~/Login/AboutUs.aspx">About/Contact</asp:HyperLink>
             </div>
             <div class="col-lg-12 text-center">
                 <asp:Label ID="lblCopyright" runat="server" Text="© 2016 Sphere Info Solutions Pvt. Ltd. All Rights Reserved."></asp:Label>
