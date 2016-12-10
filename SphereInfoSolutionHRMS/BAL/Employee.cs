@@ -51,6 +51,13 @@ namespace BAL
             return dt;
         }
 
+        public DataTable EmployeeProfile(LoginModel login)
+        {
+            List<SqlParameter> sqlparam=new List<SqlParameter>();
+            sqlparam.Add(new SqlParameter("@UserId",login.UserId));
+            DataTable dt=DAL.SQLHelp.ExecuteReader("Usp_GetProfile",sqlparam);
+            return dt;
+        }
         public DataTable FetchShift()
         {
             DataTable dt = DAL.SQLHelp.ExecuteReader("Usp_GetShiftList", null);
