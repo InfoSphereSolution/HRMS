@@ -127,10 +127,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSAttendaceSummaryRep.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RDLCReports\Holiday\Details\DSHoliday.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSHoliday.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reports\RDLCReports\Leave\Details\DSLeaveDetails.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSLeaveDetails.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RDLCReports\Leave\Summary\DSLeaveSummary.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSLeaveSummary.xsd</DependentUpon>
     </Compile>
     <Compile Include="User\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
@@ -267,6 +277,17 @@
     <Content Include="Reports\RDLCReports\Leave\Details\DSLeaveDetails.xsc">
       <DependentUpon>DSLeaveDetails.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\RDLCReports\Holiday\Details\DSHoliday.xsc">
+      <DependentUpon>DSHoliday.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\RDLCReports\Holiday\Details\DSHoliday.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSHoliday.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\RDLCReports\Holiday\Details\DSHoliday.xss">
+      <DependentUpon>DSHoliday.xsd</DependentUpon>
+    </Content>
     <None Include="Reports\RDLCReports\Leave\Details\DSLeaveDetails.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -274,6 +295,17 @@
     </None>
     <Content Include="Reports\RDLCReports\Leave\Details\DSLeaveDetails.xss">
       <DependentUpon>DSLeaveDetails.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\RDLCReports\Leave\Summary\DSLeaveSummary.xsc">
+      <DependentUpon>DSLeaveSummary.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\RDLCReports\Leave\Summary\DSLeaveSummary.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSLeaveSummary.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\RDLCReports\Leave\Summary\DSLeaveSummary.xss">
+      <DependentUpon>DSLeaveSummary.xsd</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -298,13 +330,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Javascript\" />
-    <Folder Include="Reports\RDLCReports\Holiday\Details\" />
-    <Folder Include="Reports\RDLCReports\Leave\Summary\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\RDLCReports\Attendance\Details\ReportAttendanceDetails.rdlc" />
     <EmbeddedResource Include="Reports\RDLCReports\Attendance\Summary\AttendanceSummaryReport.rdlc" />
+    <EmbeddedResource Include="Reports\RDLCReports\Holiday\Details\ReportHoliday.rdlc" />
     <EmbeddedResource Include="Reports\RDLCReports\Leave\Details\ReportLeaveDetails.rdlc" />
+    <EmbeddedResource Include="Reports\RDLCReports\Leave\Summary\ReportLeaveSummary.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -66,33 +66,30 @@ namespace SphereInfoSolutionHRMS.Reports
             else
             {
                 //holiday
+                GetHolidayDetailReport(dtDetail);
             }
-            // GetLeaveDetailReport(dtDetail, dtDetailHead);
-            //GetLeaveSummaryReport(dtDetail);
-            //GetHolidayDetailReport(dtDetail);
+            
         }
 
         protected void btnSummary_Click(object sender, EventArgs e)
         {
+            DataTable dtSummary = report.FetchReport(getReportInfo(), 0);
 
             if (getReportType() == 1)
             {
-                //attendance
+                //attendance summary
+                GetAttendanceSummaryReport(dtSummary);
             }
             else if (getReportType() == 2)
             {
-                //leave
+                //leave summary
+                GetLeaveSummaryReport(dtSummary);
             }
             else
             {
                 //holiday
             }
-            if (rbAttendance.Checked)
-            {
-                DataTable dtSummary = report.FetchReport(getReportInfo(), 0);
-                GetAttendanceSummaryReport(dtSummary);
-
-            }
+     
 
         }
 
@@ -103,8 +100,10 @@ namespace SphereInfoSolutionHRMS.Reports
             reportModel.ReportType = getReportType();
             reportModel.ClientID = Convert.ToInt32(ddlClient.SelectedValue);
             reportModel.EmployeeID = Convert.ToInt32(ddlEmployee.SelectedValue);
-            reportModel.FromDate = Convert.ToDateTime(txtFromDate.Text);
-            reportModel.ToDate = Convert.ToDateTime(txtToDate.Text);
+            //reportModel.FromDate = Convert.ToDateTime(txtFromDate.Text);
+            reportModel.FromDate = String.IsNullOrEmpty(txtFromDate.Text) ? (DateTime?)null : Convert.ToDateTime(txtFromDate.Text);
+            //reportModel.ToDate = Convert.ToDateTime(txtToDate.Text);
+            reportModel.ToDate = String.IsNullOrEmpty(txtToDate.Text) ? (DateTime?)null : Convert.ToDateTime(txtToDate.Text);
             return reportModel;
         }
 
@@ -149,6 +148,7 @@ namespace SphereInfoSolutionHRMS.Reports
             ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/ReportAttendanceDetails.rdlc");
             if (dtDetails.Rows.Count >= 1)
             {
+                ReportViewerAttendanceDetails.Visible = true;
                 ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
@@ -205,16 +205,22 @@ namespace SphereInfoSolutionHRMS.Reports
             ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Summary/AttendanceSummaryReport.rdlc");
             if (dtDetails.Rows.Count >= 1)
             {
+                ReportViewerAttendanceDetails.Visible = true;
                 ReportDataSource Details = new ReportDataSource("DataSet1", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
 
-
+                string PhotoUrl = "";
+                if (dtDetails.Rows.Count > 0)
+                {
+                    PhotoUrl = Convert.ToString(dtDetails.Rows[0]["PhotoUrl"]);
+                }
+                string imagePath = new Uri(Server.MapPath(PhotoUrl)).AbsoluteUri;
                 List<ReportParameter> param = new List<ReportParameter>();
 
                 param.Add(new ReportParameter("FromDate", txtFromDate.Text));
                 param.Add(new ReportParameter("ToDate", txtToDate.Text));
-
+                param.Add(new ReportParameter("PhotoUrl", imagePath));
 
                 this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
@@ -236,6 +242,7 @@ namespace SphereInfoSolutionHRMS.Reports
             ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Leave/Details/ReportLeaveDetails.rdlc");
             if (dtDetails.Rows.Count >= 1)
             {
+                ReportViewerAttendanceDetails.Visible = true;
                 ReportDataSource Details = new ReportDataSource("DataSet2", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
@@ -289,21 +296,29 @@ namespace SphereInfoSolutionHRMS.Reports
         #endregion
 
         #region LeaveSummary
-        private void GetLeaveSummaryReport(DataTable dtDetails)
+        private void GetLeaveSummaryReport(DataTable dtLeaveSummary)
         {
 
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
-            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/.rdlc");
-            if (dtDetails.Rows.Count >= 1)
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Leave/Summary/ReportLeaveSummary.rdlc");
+            if (dtLeaveSummary.Rows.Count >= 1)
             {
-                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
+                ReportViewerAttendanceDetails.Visible = true;
+                ReportDataSource Details = new ReportDataSource("DSLeaveSummary", dtLeaveSummary);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
 
+                string PhotoUrl = "";
+                if (dtLeaveSummary.Rows.Count > 0)
+                {
+                    PhotoUrl = Convert.ToString(dtLeaveSummary.Rows[0]["PhotoUrl"]);
+                }
+                string imagePath = new Uri(Server.MapPath(PhotoUrl)).AbsoluteUri;
                 List<ReportParameter> param = new List<ReportParameter>();
 
                 param.Add(new ReportParameter("FromDate", txtFromDate.Text));
                 param.Add(new ReportParameter("ToDate", txtToDate.Text));
+                param.Add(new ReportParameter("PhotoUrl", imagePath));
 
 
                 this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
@@ -323,10 +338,11 @@ namespace SphereInfoSolutionHRMS.Reports
         {
 
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
-            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/.rdlc");
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Holiday/Details/ReportHoliday.rdlc");
             if (dtDetails.Rows.Count >= 1)
             {
-                ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
+                ReportViewerAttendanceDetails.Visible = true;
+                ReportDataSource Details = new ReportDataSource("DSHoliday", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
 
