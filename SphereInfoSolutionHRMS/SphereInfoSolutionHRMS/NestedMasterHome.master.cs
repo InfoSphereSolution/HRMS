@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -14,6 +16,8 @@ namespace SphereInfoSolutionHRMS
     {
         MarkAttendance markAttendance = new MarkAttendance();
         AttendanceModel attendanceModel = new AttendanceModel();
+        Profile profile = new Profile();
+
         Int32 UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
         public string PageName
         {
@@ -27,6 +31,7 @@ namespace SphereInfoSolutionHRMS
             if (!IsPostBack)
             {
                 ChangePunch();
+                bindSideMenu(FetchMenuItem(0), 0, null);
             }
         }
 
@@ -96,6 +101,37 @@ namespace SphereInfoSolutionHRMS
             attendanceModel.UserID = UserID;
             attendanceModel.IPAddress = "192.168.1.102";
             return attendanceModel;
+        }
+
+        protected DataTable FetchMenuItem(Int32 ParentID)
+        {            
+            DataTable dt = profile.FetchSideMenu(ParentID);
+            return dt;
+        }
+
+        private void bindSideMenu(DataTable dt, int parentMenuId, MenuItem parentMenuItem)
+        {
+            string currentPage = Path.GetFileName(Request.Url.AbsolutePath);
+            foreach (DataRow row in dt.Rows)
+            {
+                MenuItem menuItem = new MenuItem
+                {
+                    Value = row["Menu_Id"].ToString(),
+                    Text = row["MenuText"].ToString(),
+                    NavigateUrl = row["PageName"].ToString(),
+                    Selected = row["PageName"].ToString().EndsWith(currentPage, StringComparison.CurrentCultureIgnoreCase)
+                };
+                if (parentMenuId == 0)
+                {
+                    menuSide.Items.Add(menuItem);
+                    DataTable dtChild = this.FetchMenuItem(int.Parse(menuItem.Value));
+                    bindSideMenu(dtChild, int.Parse(menuItem.Value), menuItem);
+                }
+                else
+                {
+                    parentMenuItem.ChildItems.Add(menuItem);
+                }
+            }
         }
     }
 }

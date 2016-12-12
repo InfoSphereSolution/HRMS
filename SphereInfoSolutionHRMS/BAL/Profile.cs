@@ -18,5 +18,11 @@ namespace BAL
             DataTable dt = DAL.SQLHelp.ExecuteReader("Usp_GetProfile", sqlparam);
             return dt;
         }
+
+        public DataTable FetchSideMenu(int ParentID)
+        {
+            DataTable dt = DAL.SQLHelp.ExecuteSelect("Select * from Mst_Menu where ParentMenu_Id = " + ParentID);
+            return dt;
+        }
     }
 }

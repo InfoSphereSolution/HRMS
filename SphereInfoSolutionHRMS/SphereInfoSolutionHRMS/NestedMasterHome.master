@@ -4,7 +4,7 @@
     <style>
         .menuText
         {
-            font-size: medium;
+            font-size: medium;                        
         }
     </style>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -57,56 +57,25 @@
             <div class="col-lg-2" style="background-color: #D5D8DC">
                 <%--Start sidemenu--%>
 
-                <asp:Menu ID="Menu1"
+                <asp:Menu ID="menuSide"
                     runat="server"
                     Orientation="Horizontal"
-                    StaticDisplayLevels="1"
-                    DynamicPopOutImageUrl="../Img/arrow.png"
+                    StaticDisplayLevels="1"                    
                     StaticEnableDefaultPopOutImage="False"
                     MaximumDynamicDisplayLevels="10"
                     EnableViewState="false"
-                    CssClass="nav navbar-fix-top"
+                    CssClass="nav menuText"                    
                     StaticMenuStyle-CssClass="nav navbar-nav"
                     StaticSelectedStyle-CssClass="active"
                     DynamicMenuStyle-CssClass="dropdown-menu"
                     IncludeStyleBlock="false"
                     SkipLinkText=""
-                    RenderingMode="List"
-                    class="menuText">
-
-                    <Items>
-                        <asp:MenuItem Text="Admin">
-                            <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
-                            <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Client" NavigateUrl="~/Admin/ClientDetails.aspx" />
-                            <asp:MenuItem Text="Employee" NavigateUrl="~/Admin/EmployeeDetails.aspx" />
-                        </asp:MenuItem>
-                        <asp:MenuItem Text="Miscellaneous">
-                            <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
-                            <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Client" NavigateUrl="~/Admin/ClientDetails.aspx" />
-                            <asp:MenuItem Text="Employee" NavigateUrl="~/Admin/EmployeeDetails.aspx" />
-                        </asp:MenuItem>
-
-                        <asp:MenuItem Text="Leave" NavigateUrl="~/Attendance/LeaveDetails.aspx"/>
-                        <asp:MenuItem Text="Reports" NavigateUrl="~/Reports/Reports.aspx"/>
-                        <asp:MenuItem Text="Attendance" NavigateUrl="~/Attendance/Attendance.aspx" />
-
-                        
-                        <asp:MenuItem Text="Reports">
-                            <asp:MenuItem Text="Role" NavigateUrl="~/Admin/role.aspx" />
-                            <asp:MenuItem Text="Designation" NavigateUrl="~/Admin/Designation.aspx" />
-                            <asp:MenuItem Text="Client" NavigateUrl="~/Admin/ClientDetails.aspx" />
-                            <asp:MenuItem Text="Employee" NavigateUrl="~/Admin/EmployeeDetails.aspx" />
-                        </asp:MenuItem>
-                    </Items>
+                    RenderingMode="List">                  
                 </asp:Menu>
-
-
+                
                 <%--End sidemenu--%>
             </div>
-
-
+            
             <div class="col-lg-10" style="min-height: 500px">
                 <%-- homecontent --%>
                 <asp:ContentPlaceHolder ID="homeContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>

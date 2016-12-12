@@ -40,13 +40,13 @@ namespace SphereInfoSolutionHRMS {
         protected global::System.Web.UI.WebControls.LinkButton lbtnlogout;
         
         /// <summary>
-        /// Menu1 control.
+        /// menuSide control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Menu1;
+        protected global::System.Web.UI.WebControls.Menu menuSide;
         
         /// <summary>
         /// homeContentPlaceHolder control.
