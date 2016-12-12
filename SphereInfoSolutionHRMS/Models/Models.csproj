@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessModel.cs" />
     <Compile Include="ClientModel.cs" />
     <Compile Include="DesignationAttribute.cs" />
     <Compile Include="EmployeeModel.cs" />

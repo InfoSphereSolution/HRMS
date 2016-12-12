@@ -88,6 +88,8 @@ namespace DAL
             object objValue=null;
             try
             {
+                if (_sqlConnection.State == ConnectionState.Open)
+                    _sqlConnection.Close();
                 _sqlConnection.Open();
                 SqlCommand cmd = new SqlCommand(query, _sqlConnection);
                objValue = cmd.ExecuteScalar();              
@@ -188,7 +190,7 @@ namespace DAL
         {
             try
             {
-
+                if(_sqlConnection.State == ConnectionState.Closed)
                 _sqlConnection.Open();
                 using (SqlBulkCopy bulkCopy =
                           new SqlBulkCopy(_sqlConnection))
