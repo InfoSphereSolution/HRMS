@@ -66,6 +66,9 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login\AboutUs.aspx" />
+    <Content Include="ProfilePhoto\aaa.jpg" />
+    <Content Include="ProfilePhoto\Desert.jpg" />
+    <Content Include="ProfilePhoto\Koala.jpg" />
     <Content Include="User\ChangePassword.aspx" />
     <Content Include="Admin\ClientDetails.aspx" />
     <Content Include="Admin\Designation.aspx" />
