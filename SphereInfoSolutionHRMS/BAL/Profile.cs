@@ -19,10 +19,29 @@ namespace BAL
             return dt;
         }
 
-        public DataTable FetchSideMenu(int ParentID)
+        public DataTable FetchSideMenu(Int32 UserID, Int32 ParentID)
         {
-            DataTable dt = DAL.SQLHelp.ExecuteSelect("Select * from Mst_Menu where ParentMenu_Id = " + ParentID);
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+            if (ParentID == 0)
+            {
+                sqlparam.Add(new SqlParameter("@ParentId", null));
+            }
+            else
+            {
+                sqlparam.Add(new SqlParameter("@ParentId", ParentID));
+            }
+            
+            sqlparam.Add(new SqlParameter("@UserId", UserID));
+            
+            DataTable dt = DAL.SQLHelp.ExecuteReader("Usp_GetSideMenu", sqlparam);
             return dt;
+        }
+
+        public String FetchUserName(Int32 UserID)
+        {
+            DataTable dt = DAL.SQLHelp.ExecuteSelect("Select (FirstName + ' ' + LastName) as Name  from vw_GetEmployeeDetails Where UserId = " + UserID);
+            String UserName = Convert.ToString(dt.Rows[0][0]);
+            return UserName;
         }
     }
 }

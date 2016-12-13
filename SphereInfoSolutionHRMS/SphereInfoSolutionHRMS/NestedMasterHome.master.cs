@@ -31,7 +31,7 @@ namespace SphereInfoSolutionHRMS
             if (!IsPostBack)
             {
                 ChangePunch();
-                bindSideMenu(FetchMenuItem(0), 0, null);
+                bindSideMenu(FetchMenuItem(UserID, 0), 0, null);
             }
         }
 
@@ -103,9 +103,9 @@ namespace SphereInfoSolutionHRMS
             return attendanceModel;
         }
 
-        protected DataTable FetchMenuItem(Int32 ParentID)
+        protected DataTable FetchMenuItem(Int32 UserID, Int32 ParentID)
         {            
-            DataTable dt = profile.FetchSideMenu(ParentID);
+            DataTable dt = profile.FetchSideMenu(UserID, ParentID);
             return dt;
         }
 
@@ -116,7 +116,7 @@ namespace SphereInfoSolutionHRMS
             {
                 MenuItem menuItem = new MenuItem
                 {
-                    Value = row["Menu_Id"].ToString(),
+                    Value = row["MenuId"].ToString(),
                     Text = row["MenuText"].ToString(),
                     NavigateUrl = row["PageName"].ToString(),
                     Selected = row["PageName"].ToString().EndsWith(currentPage, StringComparison.CurrentCultureIgnoreCase)
@@ -124,7 +124,7 @@ namespace SphereInfoSolutionHRMS
                 if (parentMenuId == 0)
                 {
                     menuSide.Items.Add(menuItem);
-                    DataTable dtChild = this.FetchMenuItem(int.Parse(menuItem.Value));
+                    DataTable dtChild = this.FetchMenuItem(UserID, int.Parse(menuItem.Value));
                     bindSideMenu(dtChild, int.Parse(menuItem.Value), menuItem);
                 }
                 else

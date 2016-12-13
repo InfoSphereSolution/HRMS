@@ -20,6 +20,8 @@ namespace SphereInfoSolutionHRMS.Admin
         Boolean IsApprove = false;
         String CurrentPageID = "";
         DataTable dt = new DataTable();
+        DataTable dtFunctionality = new DataTable();
+        Boolean Add, Update, Delete, Approve;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -57,8 +59,7 @@ namespace SphereInfoSolutionHRMS.Admin
 
         protected void addFunctionality(TreeNode child)
         {
-            DataTable dtFunctionality = access.FetchFunctionalities(child.Value);
-            Boolean Add, Update, Delete, Approve;
+            dtFunctionality = access.FetchFunctionalities(child.Value);            
             Add = Convert.ToBoolean(dtFunctionality.Rows[0]["Add"]);
             Update = Convert.ToBoolean(dtFunctionality.Rows[0]["Update"]);
             Delete = Convert.ToBoolean(dtFunctionality.Rows[0]["Delete"]);
@@ -208,6 +209,11 @@ namespace SphereInfoSolutionHRMS.Admin
                 if (treeNode.Value == ((row[0]).ToString()) && treeNode.Text == ((row[1]).ToString()))
             {
                 treeNode.Checked = true;
+                if (treeNode.ChildNodes.Count > 0)
+                {                    
+                        addGivenFunctionality(treeNode);                    
+                }
+
             }
             }
             // Print each node recursively.
@@ -228,12 +234,42 @@ namespace SphereInfoSolutionHRMS.Admin
             }
         }
 
+        protected void addGivenFunctionality(TreeNode child)
+        {
+            dtFunctionality = access.FetchGivenFunctionalities(child.Value, Convert.ToInt32(ddlDesignation.SelectedValue));
+            if (dtFunctionality.Rows.Count > 0 && child.ChildNodes.Count > 0)
+            {
+                Add = Convert.ToBoolean(dtFunctionality.Rows[0]["IsAdd"]);
+                Update = Convert.ToBoolean(dtFunctionality.Rows[0]["IsUpdate"]);
+                Delete = Convert.ToBoolean(dtFunctionality.Rows[0]["IsDelete"]);
+                Approve = Convert.ToBoolean(dtFunctionality.Rows[0]["IsApprove"]);
 
-        
-
-        
+                if (Add || Update || Delete || Approve)
+                {
+                    foreach (TreeNode nnn in child.ChildNodes)
+                    {
+                        if (nnn.Text == "Add" && Add)
+                        {
+                            nnn.Checked = true;
+                        }
+                        else if (nnn.Text == "Edit" && Update)
+                        {
+                            nnn.Checked = true;
+                        }
+                        else if (nnn.Text == "Delete" && Delete)
+                        {
+                            nnn.Checked = true;
+                        }
+                        else if (nnn.Text == "Approve/Reject" && Approve)
+                        {
+                            nnn.Checked = true;
+                        }
+                        else { }
+                    }
+                }
+            }
             
-        
+        }       
 
        
     }

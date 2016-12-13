@@ -39,7 +39,6 @@ namespace BAL
         public Boolean GrantAccess(DataTable dtChecked)
         {
             Int32 DesignationId = Convert.ToInt32(dtChecked.Rows[0]["DesignationId"]);
-
             int delete = Convert.ToInt32(SQLHelp.ExecuteScalarValue("Delete from Mst_Access_Control where DesignationId = "+ DesignationId));            
             Boolean i = DAL.SQLHelp.CopyToServer("Mst_Access_Control", dtChecked);
             return i;
@@ -55,14 +54,10 @@ namespace BAL
             return dt;
         }
 
-        public DataTable FetchGivenAccessChild(String ParentID, Int32 DesignationId)
+        public DataTable FetchGivenFunctionalities(String MenuID, Int32 DesignationID)
         {
-            List<SqlParameter> sqlparam = new List<SqlParameter>();
-            sqlparam.Add(new SqlParameter("@ParentID", Convert.ToInt32(ParentID)));
-            sqlparam.Add(new SqlParameter("@DesignationID", DesignationId));
-            DataTable dt = SQLHelp.ExecuteReader("Usp_GetGivenAccessChild", sqlparam);
+            DataTable dt = DAL.SQLHelp.ExecuteSelect("select IsAdd, IsUpdate, IsDelete, IsApprove from Mst_Access_Control where DesignationId = " + DesignationID + "and MenuId = " + Convert.ToInt32(MenuID));
             return dt;
         }
-        
     }
 }
