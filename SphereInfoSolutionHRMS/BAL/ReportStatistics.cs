@@ -75,6 +75,15 @@ namespace BAL
             //DataTable dt = DAL.SQLHelp.ExecuteSelect("Select UserId, (FirstName + ' ' + LastName) as Name from Tbl_PersonalDetail");
             return dt;
         }
-        
+
+
+       
+        public DataTable FetchEmployeeReport(bool EmpType)
+        {
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+            sqlparam.Add(new SqlParameter("@EmpType", EmpType));
+            DataTable dt = DAL.SQLHelp.ExecuteReader("Usp_GetEmployeeReport", sqlparam);
+            return dt;
+        }
     }
 }

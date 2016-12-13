@@ -6,13 +6,26 @@
 
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
     <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
-
+    <div class="row">
+        
+             <div class="col-md-3 text-center"  style="padding:5px">
+            <asp:Label ID="lblEmployeeType" runat="server" Text="Select Employee Type: "></asp:Label>
+        </div>
+         <div class="col-md-1"  style="padding:5px">
+             <asp:LinkButton ID="lnkbtnActive" runat="server" OnClick="lnkbtnActive_Click">Active</asp:LinkButton>
+        </div>
+         <div class="col-md-1"  style="padding:5px">
+             <asp:LinkButton ID="lnkbtnNotActive" runat="server" OnClick="lnkbtnNotActive_Click">Not Active</asp:LinkButton>
+        </div>
+       
+         
+    </div>
     <div class="row">
         <div class="col-md-3 text-center"  style="padding:5px">
             <asp:Label ID="lblSelectReport" runat="server" Text="Select Report: "></asp:Label>
         </div>
         <div class="col-md-3"  style="padding:5px">
-            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" />
+            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" Checked="true"/>
         </div>
         <div class="col-md-3"  style="padding:5px">
             <asp:RadioButton ID="rbLeave" Text="Leave" runat="server" GroupName="reports" />
@@ -20,6 +33,7 @@
         <div class="col-md-3"  style="padding:5px">
             <asp:RadioButton ID="rbHoliday" Text="Holiday" runat="server" GroupName="reports" />
         </div>
+       
     </div> 
     
     <hr class="small" />

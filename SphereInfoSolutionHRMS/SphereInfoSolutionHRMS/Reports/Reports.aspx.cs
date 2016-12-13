@@ -354,5 +354,61 @@ namespace SphereInfoSolutionHRMS.Reports
             }
         }
         #endregion
+
+        //Active Employees
+        protected void lnkbtnActive_Click(object sender, EventArgs e)
+        {
+            GetActiveOrInactiveEmployee(true);
+        }
+        //InActive Employees
+        protected void lnkbtnNotActive_Click(object sender, EventArgs e)
+        {
+            GetActiveOrInactiveEmployee(false);
+        }
+
+        private void GetActiveOrInactiveEmployee(bool EmpType)
+        {
+            DataTable dtEmpReport = report.FetchEmployeeReport(EmpType);
+            GetActiveOrInactiveEmployeeReport(dtEmpReport,EmpType);
+
+            
+        }
+        private void GetActiveOrInactiveEmployeeReport(DataTable dtDetails, bool EmpType)
+        {
+
+            ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
+            ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Employees/ReportActiveOrNotActiveEmployees.rdlc");
+            if (dtDetails.Rows.Count >= 1)
+            {
+                ReportViewerAttendanceDetails.Visible = true;
+                ReportDataSource Details = new ReportDataSource("DSIsActiveEmployee", dtDetails);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
+                ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
+
+                string PhotoUrl = "";
+                string EmployeeType = "";
+                PhotoUrl = Convert.ToString(dtDetails.Rows[0]["PhotoUrl"]);
+                string imagePath = new Uri(Server.MapPath(PhotoUrl)).AbsoluteUri;
+                List<ReportParameter> param = new List<ReportParameter>(); 
+                param.Add(new ReportParameter("PhotoUrl", imagePath));
+                if (EmpType == true)
+                {
+                    EmployeeType = "Active";
+                }
+                else
+                {
+                    EmployeeType = "Not Active";
+                }
+                param.Add(new ReportParameter("EmployeeType", EmployeeType));
+                this.ReportViewerAttendanceDetails.LocalReport.SetParameters(param);
+                ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
+
+            }
+            else
+            {
+                ReportViewerAttendanceDetails.Visible = false;
+                //lblmsg.Text = "No Records Found";
+            }
+        }
     }
 }
