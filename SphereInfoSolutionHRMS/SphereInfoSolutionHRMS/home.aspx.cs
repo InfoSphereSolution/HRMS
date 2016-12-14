@@ -18,6 +18,7 @@ namespace SphereInfoSolutionHRMS
             if (!IsPostBack)
             {
                 ((NestedMasterHome)this.Master).PageName = "Overview";
+                ((NestedMasterHome)this.Master).PageID = 0;
                 lblGreetings.Text = "Welcome, " + getUserName(UserId);
             }
         }

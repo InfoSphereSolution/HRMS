@@ -13,6 +13,15 @@ namespace SphereInfoSolutionHRMS.Admin {
     public partial class role {
         
         /// <summary>
+        /// pnListRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnListRole;
+        
+        /// <summary>
         /// txtSearchRole control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.Label lblMessageRole;
         
         /// <summary>
+        /// pnPendingRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnPendingRole;
+        
+        /// <summary>
         /// gvTempRole control.
         /// </summary>
         /// <remarks>
@@ -92,6 +110,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageTempRole;
+        
+        /// <summary>
+        /// pnAddRole control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnAddRole;
         
         /// <summary>
         /// txtrolename control.

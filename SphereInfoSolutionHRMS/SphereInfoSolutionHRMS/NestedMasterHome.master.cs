@@ -17,23 +17,30 @@ namespace SphereInfoSolutionHRMS
         MarkAttendance markAttendance = new MarkAttendance();
         AttendanceModel attendanceModel = new AttendanceModel();
         Profile profile = new Profile();
-
         Int32 UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+        
+
         public string PageName
         {
             get { return this.lblPageName.Text; }
             set { this.lblPageName.Text = value; }
         }
 
+        public Int32 PageID { get; set; }
+        public DataTable dtUserAccess { get; set; } 
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-                ChangePunch();
-                bindSideMenu(FetchMenuItem(UserID, 0), 0, null);
+            {   
+                    ChangePunch();
+                    bindSideMenu(FetchMenuItem(UserID, 0), 0, null);                
             }
         }
+
+
+        
 
         protected Int32 IsAttendanceMarked()
         {

@@ -59,5 +59,15 @@ namespace BAL
             DataTable dt = DAL.SQLHelp.ExecuteSelect("select IsAdd, IsUpdate, IsDelete, IsApprove from Mst_Access_Control where DesignationId = " + DesignationID + "and MenuId = " + Convert.ToInt32(MenuID));
             return dt;
         }
+
+        public DataTable CheckGivenAccess(int UserID, int PageID)
+        {
+            List<SqlParameter> sqlparam = new List<SqlParameter>();
+            sqlparam.Add(new SqlParameter("@UserId", UserID));
+            sqlparam.Add(new SqlParameter("@MenuId", PageID));
+            DataTable dt = SQLHelp.ExecuteReader("Usp_GetUserAccess", sqlparam);
+            return dt;
+        }
     }
 }
+

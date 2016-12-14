@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using Models;
+using BAL;
 namespace SphereInfoSolutionHRMS.Admin
 {
     public partial class role : System.Web.UI.Page
@@ -13,21 +14,54 @@ namespace SphereInfoSolutionHRMS.Admin
         Models.RoleModel rolemodel = new RoleModel();
         BAL.Role rolelevel = new BAL.Role();
         DataSet ds = new DataSet();
-        
+        Int32 UserId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+        Int32 PageId = 2;
+        Access access = new Access();
+        Boolean IsAdd = false;
+        Boolean IsUpdate = false;
+        Boolean IsDelete = false;
+        Boolean IsApprove = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                Displaylevel();
-                bindgrid();
-                bindTempgrid();
-                ((NestedMasterHome)this.Master).PageName = "Role";
+                if (PageId != 0)
+                {
+                    checkGivenAccess();
+                }                
+                    Displaylevel();
+                    bindgrid();
+                    bindTempgrid();
+                    ((NestedMasterHome)this.Master).PageName = "Role";
+                
+
+            }
+        }
+
+        protected void checkGivenAccess()
+        {
+            DataTable dt = access.CheckGivenAccess(UserId, PageId);
+
+            if (dt.Rows.Count > 0)
+            {
+                pnListRole.Visible = true;
+                IsAdd = Convert.ToBoolean(dt.Rows[0][0]);
+                IsUpdate = Convert.ToBoolean(dt.Rows[0][1]);
+                IsDelete = Convert.ToBoolean(dt.Rows[0][2]);
+                IsApprove = Convert.ToBoolean(dt.Rows[0][3]);
+                if (IsAdd)
+                {
+                    pnAddRole.Visible = true;
+                }
+                if (IsApprove)
+                {
+                    pnPendingRole.Visible = true;
+                }
             }
         }
         public void Displaylevel()
         {
-
-
             DataTable dt = new DataTable();
             dt = rolelevel.DisplayLevel();
             ddllevel.DataTextField = "Role_Level";
@@ -41,9 +75,9 @@ namespace SphereInfoSolutionHRMS.Admin
         public void bindgrid()
         {
             DataTable dt = new DataTable();
-            dt = rolelevel.Displaydata();            
+            dt = rolelevel.Displaydata();
             if (dt.Rows.Count > 0)
-            {
+            {                
                 gvRole.DataSource = dt;
                 gvRole.DataBind();
                 gvRole.Visible = true;
@@ -51,10 +85,9 @@ namespace SphereInfoSolutionHRMS.Admin
             }
             else
             {
-                gvRole.Visible = false;                
+                gvRole.Visible = false;
                 lblMessageRole.Text = "No Roles Found";
                 lblMessageRole.ForeColor = System.Drawing.Color.Red;
-                
             }
         }
 
@@ -80,7 +113,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 lblMessageTempRole.Text = "No Pending Request Found";
                 lblMessageTempRole.ForeColor = System.Drawing.Color.Red;
             }
-            
+
         }
         protected void RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -91,7 +124,7 @@ namespace SphereInfoSolutionHRMS.Admin
             }
         }
 
-     
+
         protected void btnAddRole_Click(object sender, EventArgs e)
         {
             rolemodel.RoleName = txtrolename.Text;
@@ -181,20 +214,26 @@ namespace SphereInfoSolutionHRMS.Admin
             {
                 int IsActive = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "IsActive"));
                 Button btnRemove = (Button)e.Row.FindControl("btnRemove");
+                if (IsDelete)
+                {
+                    btnRemove.Visible = true;
+                }
+                else
+                {
+                    btnRemove.Visible = false;
+                }
 
                 if (IsActive == 0)
                 {
                     e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#D5D8DC"); ;
-                    btnRemove.Enabled = false;  
+                    btnRemove.Enabled = false;
                     btnRemove.CssClass = "btn btn-danger btn-xs disabled";
-                    
+
                 }
                 else if (IsActive == 1)
                 {
-                    //e.Row.BackColor = System.Drawing.Color.Honeydew;
-                    btnRemove.Visible = true;
-                    btnRemove.Enabled = true;                    
-                   
+                    //e.Row.BackColor = System.Drawing.Color.Honeydew;                    
+                    btnRemove.Enabled = true;
                 }
                 else
                 {
@@ -231,7 +270,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 if (chkdApprove.Checked)
                 {
                     rolemodel.TempRoleId = Convert.ToInt32(gvTempRole.DataKeys[gvrow.RowIndex].Value);
-                    
+
                     int i = rolelevel.UpdateTempRole(rolemodel);
 
                     if (Operation == 1)
@@ -245,7 +284,7 @@ namespace SphereInfoSolutionHRMS.Admin
                         {
                             lblMessageTempRole.Text = "Error";
                             lblMessageTempRole.ForeColor = System.Drawing.Color.Red;
-                        }                        
+                        }
                     }
                     else
                     {
@@ -258,9 +297,9 @@ namespace SphereInfoSolutionHRMS.Admin
                         {
                             lblMessageTempRole.Text = "Error";
                             lblMessageTempRole.ForeColor = System.Drawing.Color.Red;
-                        }                        
+                        }
                     }
-                }                
+                }
             }
         }
 
@@ -289,7 +328,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 lblMessageRole.ForeColor = System.Drawing.Color.Red;
 
             }
-        }       
-        
+        }
+
     }
 }
