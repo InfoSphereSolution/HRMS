@@ -22,6 +22,7 @@ namespace SphereInfoSolutionHRMS.Admin
         {
             if (!IsPostBack)
             {
+                ((NestedMasterHome)this.Master).PageName = "Employee";
                 bindEmployeeList();
                 bindAllDDL();
                 bindEmployeeID();

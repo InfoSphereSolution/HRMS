@@ -134,6 +134,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSAttendaceSummaryRep.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reports\RDLCReports\Employees\DSIsActiveEmployee.Designer.cs" />
     <Compile Include="Reports\RDLCReports\Holiday\Details\DSHoliday.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -287,6 +288,17 @@
     <Content Include="Reports\RDLCReports\Holiday\Details\DSHoliday.xsc">
       <DependentUpon>DSHoliday.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\RDLCReports\Employees\DSIsActiveEmployee.xsc">
+      <DependentUpon>DSIsActiveEmployee.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\RDLCReports\Employees\DSIsActiveEmployee.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSIsActiveEmployee1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Reports\RDLCReports\Employees\DSIsActiveEmployee.xss">
+      <DependentUpon>DSIsActiveEmployee.xsd</DependentUpon>
+    </Content>
     <None Include="Reports\RDLCReports\Holiday\Details\DSHoliday.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -341,6 +353,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Reports\RDLCReports\Attendance\Details\ReportAttendanceDetails.rdlc" />
     <EmbeddedResource Include="Reports\RDLCReports\Attendance\Summary\AttendanceSummaryReport.rdlc" />
+    <EmbeddedResource Include="Reports\RDLCReports\Employees\ReportActiveOrNotActiveEmployees.rdlc" />
     <EmbeddedResource Include="Reports\RDLCReports\Holiday\Details\ReportHoliday.rdlc" />
     <EmbeddedResource Include="Reports\RDLCReports\Leave\Details\ReportLeaveDetails.rdlc" />
     <EmbeddedResource Include="Reports\RDLCReports\Leave\Summary\ReportLeaveSummary.rdlc" />

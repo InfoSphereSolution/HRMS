@@ -40,6 +40,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.Button btnShowAllDesignation;
         
         /// <summary>
+        /// pnlListDesignation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlListDesignation;
+        
+        /// <summary>
         /// gvDesignation control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageDesignation;
+        
+        /// <summary>
+        /// pnlPendingDesignation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlPendingDesignation;
         
         /// <summary>
         /// gvTempDesignation control.
@@ -92,6 +110,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageTempDesignation;
+        
+        /// <summary>
+        /// pnlAddDesignation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAddDesignation;
         
         /// <summary>
         /// ddlDepartmentName control.

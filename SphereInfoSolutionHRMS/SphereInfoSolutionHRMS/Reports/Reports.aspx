@@ -25,13 +25,13 @@
             <asp:Label ID="lblSelectReport" runat="server" Text="Select Report: "></asp:Label>
         </div>
         <div class="col-md-3"  style="padding:5px">
-            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" Checked="true"/>
+            <asp:RadioButton ID="rbAttendance" Text="Attendance" runat="server" GroupName="reports" Checked="true" OnCheckedChanged="rbAttendance_CheckedChanged" AutoPostBack="true"/>
         </div>
         <div class="col-md-3"  style="padding:5px">
-            <asp:RadioButton ID="rbLeave" Text="Leave" runat="server" GroupName="reports" />
+            <asp:RadioButton ID="rbLeave" Text="Leave" runat="server" GroupName="reports" OnCheckedChanged="rbAttendance_CheckedChanged" AutoPostBack="true"/>
         </div>
         <div class="col-md-3"  style="padding:5px">
-            <asp:RadioButton ID="rbHoliday" Text="Holiday" runat="server" GroupName="reports" />
+            <asp:RadioButton ID="rbHoliday" Text="Holiday" runat="server" GroupName="reports" OnCheckedChanged="rbAttendance_CheckedChanged" AutoPostBack="true"/>
         </div>
        
     </div> 
@@ -48,7 +48,7 @@
             <asp:Label ID="lblSelectEmployee" runat="server" Text="Select Employee: "></asp:Label>
         </div>
         <div class="col-md-3"  style="padding:5px">
-            <asp:DropDownList ID="ddlEmployee" runat="server" Width="100%" CssClass="form-control input-md"></asp:DropDownList>
+            <asp:DropDownList ID="ddlEmployee" runat="server" Width="100%" CssClass="form-control input-md" AutoPostBack="true" OnSelectedIndexChanged="ddlEmployee_SelectedIndexChanged"></asp:DropDownList>
         </div>
     </div>
 
@@ -82,9 +82,13 @@
 
     <div class="row">
          <div class="col-xs-12">
-             <rsweb:ReportViewer ID="ReportViewerAttendanceDetails" runat="server" Width="100%" 
-                 Height="500px"></rsweb:ReportViewer>
+            <asp:Label ID="lblmsg" runat="server" Text=""></asp:Label>
         </div>
+         <div class="col-xs-12">
+             <rsweb:ReportViewer ID="ReportViewerAttendanceDetails" runat="server" Width="100%" 
+                 Height="500px" ></rsweb:ReportViewer>
+        </div>
+       
     </div>
 
 </asp:Content>

@@ -6,42 +6,42 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.34944in</Width>
+              <Width>1.39489in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.04545in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.04545in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.04545in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.04545in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.04545in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.04545in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.04545in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>1.04545in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.2825in</Width>
+              <Width>1.32795in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.83333in</Width>
+              <Width>1.87878in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.24306in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -442,7 +442,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.25in</Height>
+              <Height>0.24306in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -837,9 +837,9 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet2</DataSetName>
-        <Left>0.5in</Left>
-        <Height>0.5in</Height>
-        <Width>12.46527in</Width>
+        <Top>0.01389in</Top>
+        <Height>0.48611in</Height>
+        <Width>12.96527in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -850,7 +850,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>14in</Width>
+  <Width>12.96527in</Width>
   <Page>
     <PageHeader>
       <Height>3.41319in</Height>
@@ -1201,7 +1201,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>No. of Applied Leaves</Value>
+                  <Value>No. Of Applied Leaves</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1261,7 +1261,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>No. of Approved Leaves</Value>
+                  <Value>No. Of Approved Leaves</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1302,7 +1302,7 @@
           <Top>1.58556in</Top>
           <Left>10.17015in</Left>
           <Height>0.25in</Height>
-          <Width>1.57292in</Width>
+          <Width>1.61235in</Width>
           <ZIndex>14</ZIndex>
           <Style>
             <Border>
@@ -1393,7 +1393,7 @@
         <Line Name="Line1">
           <Top>3.015in</Top>
           <Height>0in</Height>
-          <Width>13.84375in</Width>
+          <Width>12.96527in</Width>
           <ZIndex>18</ZIndex>
           <Style>
             <Border>
@@ -1404,7 +1404,7 @@
         <Line Name="Line2">
           <Top>1.47333in</Top>
           <Height>0in</Height>
-          <Width>14in</Width>
+          <Width>12.96527in</Width>
           <ZIndex>19</ZIndex>
           <Style>
             <Border>
@@ -1520,7 +1520,7 @@
           <Top>2.35069in</Top>
           <Left>8.51736in</Left>
           <Height>0.25in</Height>
-          <Width>1.62501in</Width>
+          <Width>1.59723in</Width>
           <ZIndex>23</ZIndex>
           <Style>
             <Border>
@@ -1550,7 +1550,7 @@
           <Top>2.37847in</Top>
           <Left>10.17015in</Left>
           <Height>0.25in</Height>
-          <Width>1.32985in</Width>
+          <Width>1.61235in</Width>
           <ZIndex>24</ZIndex>
           <Style>
             <Border>
@@ -1569,7 +1569,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Taken Leaves</Value>
+                  <Value>No Of Taken Leaves</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
@@ -1580,7 +1580,7 @@
           <Top>2.64694in</Top>
           <Left>8.51735in</Left>
           <Height>0.25in</Height>
-          <Width>0.9375in</Width>
+          <Width>1.59724in</Width>
           <ZIndex>25</ZIndex>
           <Style>
             <Border>
@@ -1609,8 +1609,8 @@
           <rd:DefaultName>Textbox58</rd:DefaultName>
           <Top>2.60528in</Top>
           <Left>10.17015in</Left>
-          <Height>0.25in</Height>
-          <Width>0.77208in</Width>
+          <Height>0.29166in</Height>
+          <Width>1.61235in</Width>
           <ZIndex>26</ZIndex>
           <Style>
             <Border>

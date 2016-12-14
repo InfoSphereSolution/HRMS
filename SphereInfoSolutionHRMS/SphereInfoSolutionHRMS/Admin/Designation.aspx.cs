@@ -15,18 +15,51 @@ namespace SphereInfoSolutionHRMS.Admin
         BAL.DesignationMaster designation = new BAL.DesignationMaster();
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
+        Int32 UserId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+        Int32 PageId = 3;
+        Access access = new Access();
+        Boolean IsAdd = false;
+        Boolean IsUpdate = false;
+        Boolean IsDelete = false;
+        Boolean IsApprove = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 ((NestedMasterHome)this.Master).PageName = "Designation";
+                if (PageId != 0)
+                {
+                    checkGivenAccess();
+                } 
                 DisplayDepartment();
                 DisplayRole();
                 DisplayDesigantion();
                 DisplayTempDesigantion();
             }
         }
+        //Check Given Access
+        protected void checkGivenAccess()
+        {
+            DataTable dt = access.CheckGivenAccess(UserId, PageId);
 
+            if (dt.Rows.Count > 0)
+            {
+                pnlListDesignation.Visible = true;
+                IsAdd = Convert.ToBoolean(dt.Rows[0][0]);
+                IsUpdate = Convert.ToBoolean(dt.Rows[0][1]);
+                IsDelete = Convert.ToBoolean(dt.Rows[0][2]);
+                IsApprove = Convert.ToBoolean(dt.Rows[0][3]);
+                if (IsAdd)
+                {
+                    pnlAddDesignation.Visible = true;
+                }
+                if (IsApprove)
+                {
+                    pnlPendingDesignation.Visible = true;
+                }
+            }
+        }
         //Display Department List
         public void DisplayDepartment()
         {

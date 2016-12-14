@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.6875in</Width>
+              <Width>0.19792in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1in</Width>
@@ -527,7 +527,7 @@
         </TablixRowHierarchy>
         <DataSetName>DSIsActiveEmployee</DataSetName>
         <Height>0.5in</Height>
-        <Width>8.78125in</Width>
+        <Width>8.29167in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -538,7 +538,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>9.09375in</Width>
+  <Width>8.29167in</Width>
   <Page>
     <PageHeader>
       <Height>1.54736in</Height>

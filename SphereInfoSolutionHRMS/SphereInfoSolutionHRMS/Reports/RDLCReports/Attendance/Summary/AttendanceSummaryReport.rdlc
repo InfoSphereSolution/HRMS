@@ -6,7 +6,7 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.28646in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1in</Width>
@@ -673,7 +673,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Height>0.5in</Height>
-        <Width>9in</Width>
+        <Width>8.28646in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -684,7 +684,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>10in</Width>
+  <Width>8.35589in</Width>
   <Page>
     <PageHeader>
       <Height>1.66194in</Height>
@@ -695,7 +695,8 @@
           <Source>Embedded</Source>
           <Value>spherelogo</Value>
           <Sizing>FitProportional</Sizing>
-          <Left>1.64411in</Left>
+          <Top>0.13069in</Top>
+          <Left>0.57468in</Left>
           <Height>1.33903in</Height>
           <Width>1.42708in</Width>
           <Style>
@@ -711,7 +712,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Detailed Attendance Report</Value>
+                  <Value>Summary Attendance Report</Value>
                   <Style>
                     <FontSize>20pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -725,8 +726,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox29</rd:DefaultName>
-          <Top>0.13069in</Top>
-          <Left>3.14062in</Left>
+          <Top>0.26138in</Top>
+          <Left>2.07119in</Left>
           <Height>0.85986in</Height>
           <Width>5.21527in</Width>
           <ZIndex>1</ZIndex>
@@ -760,8 +761,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.10292in</Top>
-          <Left>3.14062in</Left>
+          <Top>1.23361in</Top>
+          <Left>2.07119in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>2</ZIndex>
@@ -790,8 +791,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox6</rd:DefaultName>
-          <Top>1.10292in</Top>
-          <Left>4.14062in</Left>
+          <Top>1.23361in</Top>
+          <Left>3.07119in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>3</ZIndex>
@@ -823,8 +824,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.10292in</Top>
-          <Left>5.36333in</Left>
+          <Top>1.23361in</Top>
+          <Left>4.2939in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>4</ZIndex>
@@ -853,8 +854,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox10</rd:DefaultName>
-          <Top>1.10292in</Top>
-          <Left>6.37722in</Left>
+          <Top>1.23361in</Top>
+          <Left>5.30779in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>5</ZIndex>

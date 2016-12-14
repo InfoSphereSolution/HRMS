@@ -13,6 +13,15 @@ namespace SphereInfoSolutionHRMS.Admin {
     public partial class ClientDetails {
         
         /// <summary>
+        /// pnlListOfClient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlListOfClient;
+        
+        /// <summary>
         /// gvClientList control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageClientList;
+        
+        /// <summary>
+        /// pnlPendinClients control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlPendinClients;
         
         /// <summary>
         /// gvPendingClientList control.
@@ -643,6 +661,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.Button btnShowAllHolidays;
         
         /// <summary>
+        /// pnlHolidayList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlHolidayList;
+        
+        /// <summary>
         /// gvHolidayList control.
         /// </summary>
         /// <remarks>
@@ -659,6 +686,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessageHolidayList;
+        
+        /// <summary>
+        /// pnlPendingHolidays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlPendingHolidays;
         
         /// <summary>
         /// gvTempHolidayList control.
@@ -695,6 +731,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMessagePendingHoliday;
+        
+        /// <summary>
+        /// pnlAddHolidays control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlAddHolidays;
         
         /// <summary>
         /// txtHolidayname control.

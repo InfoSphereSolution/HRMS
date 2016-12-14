@@ -22,6 +22,8 @@ namespace SphereInfoSolutionHRMS.Reports
             {
                 bindClient();
                 bindEmployee(-1);
+                EnableOrDisable("Attendance");
+                EnableOrDisable();
             }
         }
 
@@ -138,6 +140,7 @@ namespace SphereInfoSolutionHRMS.Reports
         {
             Int32 ClientID = Convert.ToInt32(ddlClient.SelectedValue.ToString());
             bindEmployee(ClientID);
+            ReportViewerAttendanceDetails.Visible = false;
         }
 
         #region AttednaceDetails
@@ -146,9 +149,10 @@ namespace SphereInfoSolutionHRMS.Reports
 
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
             ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/ReportAttendanceDetails.rdlc");
-            if (dtDetails.Rows.Count >= 1)
+            if (dtDetails.Rows.Count > 0)
             {
                 ReportViewerAttendanceDetails.Visible = true;
+                lblmsg.Visible = false;
                 ReportDataSource Details = new ReportDataSource("DSAttendanceDetails", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
@@ -158,7 +162,7 @@ namespace SphereInfoSolutionHRMS.Reports
                 string NoOfDaysWorked = "", NoOfAbsentDays = "";
                 string TotalHrsWorked = "";
 
-                if (dtHeader.Rows.Count >= 1)
+                if (dtHeader.Rows.Count >0)
                 {
                     EmpCode = Convert.ToString(dtHeader.Rows[0]["EmpCode"]);
                     EmpName = Convert.ToString(dtHeader.Rows[0]["EmpName"]);
@@ -193,19 +197,21 @@ namespace SphereInfoSolutionHRMS.Reports
             else
             {
                 ReportViewerAttendanceDetails.Visible = false;
-                //lblmsg.Text = "No Records Found";
+                lblmsg.Visible = true;
+                lblmsg.Text = "No Records Found";
             }
         }
         #endregion
         #region AttendanceSummary
         private void GetAttendanceSummaryReport(DataTable dtDetails)
         {
-
+            
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
             ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Summary/AttendanceSummaryReport.rdlc");
-            if (dtDetails.Rows.Count >= 1)
+            if (dtDetails.Rows.Count >0)
             {
                 ReportViewerAttendanceDetails.Visible = true;
+                lblmsg.Visible = false;
                 ReportDataSource Details = new ReportDataSource("DataSet1", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
@@ -229,7 +235,8 @@ namespace SphereInfoSolutionHRMS.Reports
             else
             {
                 ReportViewerAttendanceDetails.Visible = false;
-                //lblmsg.Text = "No Records Found";
+                lblmsg.Visible = true;
+                lblmsg.Text = "No Records Found";
             }
         }
         #endregion
@@ -237,12 +244,13 @@ namespace SphereInfoSolutionHRMS.Reports
         #region LeaveDetails
         private void GetLeaveDetailReport(DataTable dtDetails, DataTable dtHeader)
         {
-
+            
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
             ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Leave/Details/ReportLeaveDetails.rdlc");
-            if (dtDetails.Rows.Count >= 1)
+            if (dtDetails.Rows.Count >0)
             {
                 ReportViewerAttendanceDetails.Visible = true;
+                lblmsg.Visible = false;
                 ReportDataSource Details = new ReportDataSource("DataSet2", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
@@ -250,7 +258,7 @@ namespace SphereInfoSolutionHRMS.Reports
                 string EmpCode = "", EmpName = "", Dept = "", Desig = "", ClientName = "", PhotoUrl = "";
                 string FromDate = "", ToDate = "";
                 string NoOfAppliedLeaves = "", NoOfRejectedLeaves = "",NoOfCancelledLeaves="",NoOfTakenLeaves="",NoOfApprovedLeaves="";
-                if (dtHeader.Rows.Count >= 1)
+                if (dtHeader.Rows.Count >0)
                 {
                     EmpCode = Convert.ToString(dtHeader.Rows[0]["EmpCode"]);
                     EmpName = Convert.ToString(dtHeader.Rows[0]["EmpName"]);
@@ -290,7 +298,8 @@ namespace SphereInfoSolutionHRMS.Reports
             else
             {
                 ReportViewerAttendanceDetails.Visible = false;
-                //lblmsg.Text = "No Records Found";
+                lblmsg.Visible = true;
+                lblmsg.Text = "No Records Found";
             }
         }
         #endregion
@@ -298,12 +307,13 @@ namespace SphereInfoSolutionHRMS.Reports
         #region LeaveSummary
         private void GetLeaveSummaryReport(DataTable dtLeaveSummary)
         {
-
+            
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
             ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Leave/Summary/ReportLeaveSummary.rdlc");
-            if (dtLeaveSummary.Rows.Count >= 1)
+            if (dtLeaveSummary.Rows.Count >0)
             {
                 ReportViewerAttendanceDetails.Visible = true;
+                lblmsg.Visible = false;
                 ReportDataSource Details = new ReportDataSource("DSLeaveSummary", dtLeaveSummary);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.EnableExternalImages = true;
@@ -328,7 +338,8 @@ namespace SphereInfoSolutionHRMS.Reports
             else
             {
                 ReportViewerAttendanceDetails.Visible = false;
-                //lblmsg.Text = "No Records Found";
+                lblmsg.Visible = true;
+                lblmsg.Text = "No Records Found";
             }
         }
         #endregion
@@ -336,12 +347,13 @@ namespace SphereInfoSolutionHRMS.Reports
         #region HolidayDetail
         private void GetHolidayDetailReport(DataTable dtDetails)
         {
-
+            
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
             ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Holiday/Details/ReportHoliday.rdlc");
-            if (dtDetails.Rows.Count >= 1)
+            if (dtDetails.Rows.Count >0)
             {
                 ReportViewerAttendanceDetails.Visible = true;
+                lblmsg.Visible = false;
                 ReportDataSource Details = new ReportDataSource("DSHoliday", dtDetails);
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Clear();
                 ReportViewerAttendanceDetails.LocalReport.DataSources.Add(Details);
@@ -350,7 +362,8 @@ namespace SphereInfoSolutionHRMS.Reports
             else
             {
                 ReportViewerAttendanceDetails.Visible = false;
-                //lblmsg.Text = "No Records Found";
+                lblmsg.Visible = true;
+                lblmsg.Text = "No Records Found";
             }
         }
         #endregion
@@ -409,6 +422,92 @@ namespace SphereInfoSolutionHRMS.Reports
                 ReportViewerAttendanceDetails.Visible = false;
                 //lblmsg.Text = "No Records Found";
             }
+        }
+
+        protected void rbAttendance_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbAttendance.Checked == true)
+            {
+                EnableOrDisable("Attendance");
+                ReportViewerAttendanceDetails.Visible = false;
+            }
+            else if (rbLeave.Checked == true)
+            {
+                EnableOrDisable("Leave");
+               ReportViewerAttendanceDetails.Visible = false;
+            }
+            else
+            {
+                EnableOrDisable("Holiday");
+                ReportViewerAttendanceDetails.Visible = false;
+            }
+            ClearControls();
+        }
+
+        //Enable and disable the controls based on selected radio button (Report type)
+        private void EnableOrDisable(string ReportType)
+        {
+            if (ReportType == "Attendance")
+            {
+                ddlClient.Enabled = true;
+                ddlEmployee.Enabled = true;
+                txtFromDate.Enabled = true;
+                txtToDate.Enabled = true;
+                btnDetails.Enabled = true;
+                btnSummary.Enabled = true;
+                EnableOrDisable();
+            }
+            else if (ReportType == "Leave")
+            {
+                ddlClient.Enabled = true;
+                ddlEmployee.Enabled = true;
+                txtFromDate.Enabled = true;
+                txtToDate.Enabled = true;
+                btnDetails.Enabled = true;
+                btnSummary.Enabled = true;
+                EnableOrDisable();
+            }
+            else if (ReportType == "Holiday")
+            {
+                ddlClient.Enabled = true;
+                ddlEmployee.Enabled = false;
+                txtFromDate.Enabled = false;
+                txtToDate.Enabled = false;
+                btnDetails.Enabled = true;
+                btnSummary.Enabled = false;
+            }
+            else
+            {
+                //do nothing
+            }
+        }
+
+        //Clear Controls
+        private void ClearControls()
+        {
+            ddlClient.SelectedIndex = -1;
+            ddlEmployee.SelectedIndex = -1;
+            txtFromDate.Text = "";
+            txtToDate.Text = "";
+        }
+
+        protected void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+              EnableOrDisable();
+              //ReportViewerAttendanceDetails.Visible = false;
+        }
+        //Enable and disable the controls based on selected Dropdown (Employee All or single)
+        private void EnableOrDisable()
+        {
+            if (ddlEmployee.SelectedItem.Text != "-- All --")
+            {
+                btnDetails.Enabled = true;
+            }
+            else
+            {
+                btnDetails.Enabled = false;
+            }
+           
         }
     }
 }

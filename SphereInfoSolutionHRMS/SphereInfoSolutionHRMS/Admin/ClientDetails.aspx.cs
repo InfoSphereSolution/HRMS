@@ -18,10 +18,22 @@ namespace SphereInfoSolutionHRMS.Admin
         BAL.Client client = new Client();
         Models.ClientModel clientmodel = new ClientModel();
         DataTable dt = new DataTable();
+        Int32 UserId = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+        Int32 PageId = 4;
+        Access access = new Access();
+        Boolean IsAdd = false;
+        Boolean IsUpdate = false;
+        Boolean IsDelete = false;
+        Boolean IsApprove = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                ((NestedMasterHome)this.Master).PageName = "Client";
+                if (PageId != 0)
+                {
+                    checkGivenAccess();
+                } 
                 GetClientNames();
                 BindgvHolidayList();
                 BindgvTempHolidayList();
@@ -37,6 +49,31 @@ namespace SphereInfoSolutionHRMS.Admin
 
             }
         }
+        //Check Given Access
+        protected void checkGivenAccess()
+        {
+            DataTable dt = access.CheckGivenAccess(UserId, PageId);
+
+            if (dt.Rows.Count > 0)
+            {
+                pnlListOfClient.Visible = true;
+                pnlHolidayList.Visible = true;
+                IsAdd = Convert.ToBoolean(dt.Rows[0][0]);
+                IsUpdate = Convert.ToBoolean(dt.Rows[0][1]);
+                IsDelete = Convert.ToBoolean(dt.Rows[0][2]);
+                IsApprove = Convert.ToBoolean(dt.Rows[0][3]);
+                if (IsAdd)
+                {
+                    pnlAddHolidays.Visible = true;
+                }
+                if (IsApprove)
+                {
+                    pnlPendinClients.Visible = true;
+                    pnlPendingHolidays.Visible = true;
+                }
+            }
+        }
+
         //Bind client Name to dropdown
         private void GetClientNames()
         {
