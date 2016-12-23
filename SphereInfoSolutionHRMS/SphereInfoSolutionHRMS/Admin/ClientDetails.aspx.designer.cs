@@ -760,33 +760,6 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.Label lblstatus;
         
         /// <summary>
-        /// txtSearchHoliday control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchHoliday;
-        
-        /// <summary>
-        /// btnSearchHoliday control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchHoliday;
-        
-        /// <summary>
-        /// btnShowAllHolidays control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowAllHolidays;
-        
-        /// <summary>
         /// pnlHolidayList control.
         /// </summary>
         /// <remarks>

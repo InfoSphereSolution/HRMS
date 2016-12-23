@@ -24,7 +24,7 @@
     </script>
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
-    <div class="row">
+    <%--<div class="row">
         <div class="col-sm-4">
             <asp:Label ID="lblAbsentDays" runat="server" Text="No. of Days Absent: " Font-Bold="true"></asp:Label>
             <asp:Label ID="lblDaysAbsent" runat="server" Text="02"></asp:Label>
@@ -37,10 +37,104 @@
             <asp:Label ID="lblLeavesAvailable" runat="server" Text="No. of Leaves Available: " Font-Bold="true"></asp:Label>
             <asp:Label ID="lblAvailableLeaves" runat="server" Text="15"></asp:Label>
         </div>
+    </div>--%>
+    <div class="row">
+        <%-- Apply Leave  --%>
+        <div class="col-lg-4 col-sm-4 text-center">
+
+            <h3 class="text-primary">Apply Leave</h3>
+            <hr class="small" />
+            <asp:Panel ID="PanelLeaveRequsition" runat="server">
+                <table class="table-condensed">
+                    <tr>
+                        <td>
+                            <asp:DropDownList ID="ddlLeaveType" runat="server" CssClass="form-control" Width="250px">
+                                <asp:ListItem Text="--Select Leave Type--" Value="0"></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RFLeaveType" InitialValue="0" ControlToValidate="ddlLeaveType" runat="server" ForeColor="Red"
+                                ErrorMessage="Enter From Date" ValidationGroup="grpLeave"></asp:RequiredFieldValidator>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="From Date" OnTextChanged="txtFromDate_TextChanged"></asp:TextBox>
+                            <cc1:CalendarExtender ID="ceFromDate" runat="server" TargetControlID="txtFromDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
+                            <asp:RequiredFieldValidator ID="RFFromDate" ControlToValidate="txtFromDate" runat="server" ForeColor="Red"
+                                ErrorMessage="Enter From Date" ValidationGroup="grpLeave"></asp:RequiredFieldValidator>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="To Date" OnTextChanged="txtToDate_TextChanged"></asp:TextBox>
+                            <cc1:CalendarExtender ID="ceToDate" runat="server" TargetControlID="txtToDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
+                            <asp:RequiredFieldValidator ID="RfToDate" ControlToValidate="txtToDate" runat="server" ForeColor="Red"
+                                ErrorMessage="Enter To Date" ValidationGroup="grpLeave"></asp:RequiredFieldValidator>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:TextBox ID="txtContactNo" runat="server" MaxLength="10" CssClass="form-control" Width="250px" placeholder="Contact"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RFContact" ControlToValidate="txtContactNo"
+                                runat="server" ForeColor="Red" ValidationGroup="grpLeave" ErrorMessage="Enter Only Digit"></asp:RequiredFieldValidator>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:TextBox ID="txtReason" runat="server" CssClass="form-control" Width="250px" placeholder="Reason"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ValidationGroup="grpLeave" ControlToValidate="txtReason" runat="server" ForeColor="Red" ErrorMessage="Enter Reason"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                </table>
+                <br />
+                <!--Start - get halfday details-->
+                <div>
+                    <asp:Label ID="lblIsHalfDay" runat="server" Text="Is Halfday ?" Visible="false"></asp:Label>
+                </div>
+                <asp:GridView ID="gvHalfdayDetails" runat="server" AutoGenerateColumns="false"
+                    Visible="false"
+                    ShowHeader="true"
+                    CssClass="table table-hover table-bordered table-condensed"
+                    HeaderStyle-CssClass="gvHeader">
+                    <Columns>
+                        <asp:TemplateField HeaderText="Day" ItemStyle-CssClass="text-center" HeaderStyle-CssClass="text-center">
+                            <HeaderTemplate>
+                                <asp:Label ID="lblHeaderDate" runat="server" Text="Date"></asp:Label>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="lblDate" runat="server" Text='<%# Eval("Date") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Is Halfday" ItemStyle-CssClass="text-center" HeaderStyle-CssClass="text-center">
+                            <HeaderTemplate>
+                                <%--<asp:CheckBox ID="cbHeaderIsHalfday" runat="server" />--%>
+                                <%--<asp:Label ID="lblHeadIsHalfday" runat="server" Text="Is Halfday"></asp:Label>--%>
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <asp:CheckBox ID="cbIsHalfday" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+                <!--End - get halfday details-->
+                <br />
+                <div>
+                    <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-success btn-sm"
+                        OnClientClick="if (typeof(Page_ClientValidate) == 'function') { Page_ClientValidate(); if(Page_IsValid) { return confirm('Do You Want To Apply Leave?'); } };" OnClick="btnApply_Click" />
+                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger btn-sm" OnClick="btnCancel_Click" />
+                </div>
+                <div>
+                    <asp:Label ID="lblAppliedStatus" runat="server" Visible="false"></asp:Label>
+                </div>
+            </asp:Panel>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-8 col-sm-8 text-center border-right">
-            <div>
+            <%-- <div>
                 <br />
 
                 <div class="row">
@@ -56,7 +150,7 @@
                 </div>
 
             </div>
-            <hr class="small" />
+            <hr class="small" />--%>
 
             <h3 class="text-primary">Leaves Taken</h3>
 
@@ -188,96 +282,6 @@
             <asp:Label ID="lblMessageApprovalLeave" runat="server" Visible="false"></asp:Label>
         </div>
 
-        <%-- Apply Leave  --%>
-        <div class="col-lg-4 col-sm-4 text-center">
-            <hr class="small" />
-            <h3 class="text-primary">Apply Leave</h3>
-            <asp:Panel ID="PanelLeaveRequsition" runat="server">
-                <table class="table-condensed">
-                    <tr>
-                        <td>
-                            <asp:DropDownList ID="ddlLeaveType" runat="server" CssClass="form-control" Width="250px">
-                                <asp:ListItem Text="--Select Leave Type--" Value="0"></asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RFLeaveType" InitialValue="0" ControlToValidate="ddlLeaveType" runat="server" ForeColor="Red"
-                                ErrorMessage="Enter From Date" ValidationGroup="grpLeave"></asp:RequiredFieldValidator>
 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="From Date" OnTextChanged="txtFromDate_TextChanged"></asp:TextBox>
-                            <cc1:CalendarExtender ID="ceFromDate" runat="server" TargetControlID="txtFromDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
-                            <asp:RequiredFieldValidator ID="RFFromDate" ControlToValidate="txtFromDate" runat="server" ForeColor="Red"
-                                ErrorMessage="Enter From Date" ValidationGroup="grpLeave"></asp:RequiredFieldValidator>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="To Date" OnTextChanged="txtToDate_TextChanged"></asp:TextBox>
-                            <cc1:CalendarExtender ID="ceToDate" runat="server" TargetControlID="txtToDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
-                            <asp:RequiredFieldValidator ID="RfToDate" ControlToValidate="txtToDate" runat="server" ForeColor="Red"
-                                ErrorMessage="Enter To Date" ValidationGroup="grpLeave"></asp:RequiredFieldValidator>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:TextBox ID="txtContactNo" runat="server" MaxLength="10" CssClass="form-control" Width="250px" placeholder="Contact"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RFContact" ControlToValidate="txtContactNo"
-                                runat="server" ForeColor="Red" ValidationGroup="grpLeave" ErrorMessage="Enter Only Digit"></asp:RequiredFieldValidator>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:TextBox ID="txtReason" runat="server" CssClass="form-control" Width="250px" placeholder="Reason"></asp:TextBox>
-                            <asp:RequiredFieldValidator ValidationGroup="grpLeave" ControlToValidate="txtReason" runat="server" ForeColor="Red" ErrorMessage="Enter Reason"></asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                </table>
-                <br />
-                <!--Start - get halfday details-->
-                <div>
-                    <asp:Label ID="lblIsHalfDay" runat="server" Text="Is Halfday ?" Visible="false"></asp:Label>
-                </div>
-                <asp:GridView ID="gvHalfdayDetails" runat="server" AutoGenerateColumns="false"
-                    Visible="false"
-                    ShowHeader="true"
-                    CssClass="table table-hover table-bordered table-condensed"
-                    HeaderStyle-CssClass="gvHeader">
-                    <Columns>
-                        <asp:TemplateField HeaderText="Day" ItemStyle-CssClass="text-center" HeaderStyle-CssClass="text-center">
-                            <HeaderTemplate>
-                                <asp:Label ID="lblHeaderDate" runat="server" Text="Date"></asp:Label>
-                            </HeaderTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblDate" runat="server" Text='<%# Eval("Date") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Is Halfday" ItemStyle-CssClass="text-center" HeaderStyle-CssClass="text-center">
-                            <HeaderTemplate>
-                                <asp:CheckBox ID="cbHeaderIsHalfday" runat="server" />
-                                <%--<asp:Label ID="lblHeadIsHalfday" runat="server" Text="Is Halfday"></asp:Label>--%>
-                            </HeaderTemplate>
-                            <ItemTemplate>
-                                <asp:CheckBox ID="cbIsHalfday" runat="server" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-                <!--End - get halfday details-->
-                <br />
-                <div>
-                    <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-success btn-sm"
-                        OnClientClick="if (typeof(Page_ClientValidate) == 'function') { Page_ClientValidate(); if(Page_IsValid) { return confirm('Do You Want To Apply Leave?'); } };" OnClick="btnApply_Click" />
-                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger btn-sm" />
-                </div>
-                <div>
-                    <asp:Label ID="lblAppliedStatus" runat="server" Visible="false"></asp:Label>
-                </div>
-            </asp:Panel>
-        </div>
     </div>
 </asp:Content>

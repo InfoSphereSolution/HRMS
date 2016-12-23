@@ -86,7 +86,7 @@
                 <%--View All Employee--%>
                 <div role="tabpanel" class="tab-pane active" id="viewAllEmployees">
                     <div id="listOfEmployees">
-                        <table class="table-condensed">
+                       <%-- <table class="table-condensed">
                             <tr>
                                 <td>
                                     <asp:TextBox ID="txtSearchEmployeeName" runat="server" CssClass="form-control input-md" placeholder="Enter Employee Name Here.."></asp:TextBox>
@@ -99,7 +99,7 @@
                                     <asp:Button ID="btnShowAllEmployee" runat="server" Text="Show All Employee" CssClass="btn btn-primary btn-md" OnClick="btnShowAllEmployee_Click" />
                                 </td>
                             </tr>
-                        </table>
+                        </table>--%>
                         <asp:LinkButton ID="lbAddNewEmployee" CssClass="pull-right" OnClick="lbAddNewEmployee_Click" runat="server" CausesValidation="false">Add New Employee</asp:LinkButton>
                         <h3 class="text-primary text-center">List of Employees</h3>
 

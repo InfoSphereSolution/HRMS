@@ -13,42 +13,6 @@ namespace SphereInfoSolutionHRMS.Admin {
     public partial class EmployeeDetails {
         
         /// <summary>
-        /// txtSearchEmployeeName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchEmployeeName;
-        
-        /// <summary>
-        /// RFSearchEmp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFSearchEmp;
-        
-        /// <summary>
-        /// btnSearchEmployee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchEmployee;
-        
-        /// <summary>
-        /// btnShowAllEmployee control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShowAllEmployee;
-        
-        /// <summary>
         /// lbAddNewEmployee control.
         /// </summary>
         /// <remarks>

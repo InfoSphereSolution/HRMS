@@ -27,8 +27,10 @@ namespace SphereInfoSolutionHRMS.Attendance
 
         protected void bindDates()
         {
-            txtToDate.Text = Convert.ToString(DateTime.Now);
-            txtFromDate.Text = Convert.ToString(DateTime.Now.AddMonths(-3));
+            txtFromDate.Text = DateTime.Now.AddMonths(-3).ToString("yyyy/M/dd");
+            ceFromDate.EndDate = DateTime.Now;
+            txtToDate.Text = DateTime.Now.ToString("yyyy/M/dd");
+            ceToDate.EndDate = DateTime.Now;
         }
 
 
@@ -65,40 +67,40 @@ namespace SphereInfoSolutionHRMS.Attendance
             }
         }
 
-        protected void bindAttendanceSummary(DataTable dt)
-        {
-            if (dt.Rows.Count > 0)
-            {
-                lblTotalDays.Text = Convert.ToString(dt.Rows[0][0]);
-                lblPresentDays.Text = Convert.ToString(dt.Rows[0][1]);
-                lblAbsentDays.Text = Convert.ToString(dt.Rows[0][2]);
-                lblTotalHours.Text = Convert.ToString(dt.Rows[0][3]);
-                lblLeaveTaken.Text = Convert.ToString(dt.Rows[0][4]);
-                lblAvailableLeave.Text = Convert.ToString(dt.Rows[0][5]);                
-            }
-        }
+        //protected void bindAttendanceSummary(DataTable dt)
+        //{
+        //    if (dt.Rows.Count > 0)
+        //    {
+        //        lblTotalDays.Text = Convert.ToString(dt.Rows[0][0]);
+        //        lblPresentDays.Text = Convert.ToString(dt.Rows[0][1]);
+        //        lblAbsentDays.Text = Convert.ToString(dt.Rows[0][2]);
+        //        lblTotalHours.Text = Convert.ToString(dt.Rows[0][3]);
+        //        lblLeaveTaken.Text = Convert.ToString(dt.Rows[0][4]);
+        //        lblAvailableLeave.Text = Convert.ToString(dt.Rows[0][5]);                
+        //    }
+        //}
 
         protected void displayAttendance()
         {
             gvEmployeeAttendance.Visible = true;
-            lblTotalDays.Visible = true;
-            lblPresentDays.Visible = true;
-            lblAbsentDays.Visible = true;
-            lblTotalHours.Visible = true;
-            lblLeaveTaken.Visible = true;
-            lblAvailableLeave.Visible = true;
+            //lblTotalDays.Visible = true;
+            //lblPresentDays.Visible = true;
+            //lblAbsentDays.Visible = true;
+            //lblTotalHours.Visible = true;
+            //lblLeaveTaken.Visible = true;
+            //lblAvailableLeave.Visible = true;
             lblMessageAttendance.Visible = false;
         }
 
         protected void hideAttendance()
         {
             gvEmployeeAttendance.Visible = false;
-            lblTotalDays.Visible = false;
-            lblPresentDays.Visible = false;
-            lblAbsentDays.Visible = false;
-            lblTotalHours.Visible = false;
-            lblLeaveTaken.Visible = false;
-            lblAvailableLeave.Visible = false;
+            //lblTotalDays.Visible = false;
+            //lblPresentDays.Visible = false;
+            //lblAbsentDays.Visible = false;
+            //lblTotalHours.Visible = false;
+            //lblLeaveTaken.Visible = false;
+            //lblAvailableLeave.Visible = false;
             lblMessageAttendance.Visible = true;
             lblMessageAttendance.Text = "No records found..";
         }

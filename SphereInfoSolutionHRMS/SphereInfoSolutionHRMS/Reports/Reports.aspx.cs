@@ -456,6 +456,7 @@ namespace SphereInfoSolutionHRMS.Reports
                 txtToDate.Enabled = true;
                 btnDetails.Enabled = true;
                 btnSummary.Enabled = true;
+                RFClient.Enabled = false;
                 RFEmployee.Enabled = true;
                 RFFromDate.Enabled = true;
                 RFTodate.Enabled = true;
@@ -469,6 +470,7 @@ namespace SphereInfoSolutionHRMS.Reports
                 txtToDate.Enabled = true;
                 btnDetails.Enabled = true;
                 btnSummary.Enabled = true;
+                RFClient.Enabled = false;
                 RFEmployee.Enabled = true;
                 RFFromDate.Enabled = true;
                 RFTodate.Enabled = true;
@@ -482,6 +484,7 @@ namespace SphereInfoSolutionHRMS.Reports
                 txtToDate.Enabled = false;
                 btnDetails.Enabled = true;
                 btnSummary.Enabled = false;
+                RFClient.Enabled = true;
                 RFFromDate.Enabled = false;
                 RFTodate.Enabled = false;
                 RFEmployee.Enabled = false;

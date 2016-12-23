@@ -3,9 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
     <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
-    <div class="row">
+  <%--  <div class="row">
         <div class="col-sm-12">
-            <asp:LinkButton ID="lbtnApplyLeave" href="#" runat="server" CssClass="pull-right">Apply Leave</asp:LinkButton>
+            <asp:LinkButton ID="lbtnApplyLeave" runat="server" CssClass="pull-right">Apply Leave</asp:LinkButton>
         </div>
     </div>
     <div class="row">
@@ -27,7 +27,7 @@
         <div class="col-sm-2">
             <asp:Label ID="lblAvailableLeave" runat="server" Text="Available Leave" Visible="false"></asp:Label>
         </div>        
-    </div>
+    </div>--%>
     <div class="row">
         <div class="col-sm-12">
             <table class="table-condensed">
@@ -36,11 +36,11 @@
                         <asp:Label ID="lblRange" runat="server" Font-Bold="true" Text="Range:"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtFromDate" CssClass="form-control" runat="server" placeholder="From Date.."></asp:TextBox>
+                        From Date: <asp:TextBox ID="txtFromDate" CssClass="form-control" ReadOnly="true" runat="server" placeholder="From Date.."></asp:TextBox>
                         <cc1:CalendarExtender ID="ceFromDate" runat="server" TargetControlID="txtFromDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
                     </td>
                     <td>
-                        <asp:TextBox ID="txtToDate" CssClass="form-control" runat="server" placeholder="To Date.."></asp:TextBox>                       
+                        To Date<asp:TextBox ID="txtToDate" CssClass="form-control" ReadOnly="true" runat="server" placeholder="To Date.."></asp:TextBox>                       
                         <cc1:CalendarExtender ID="ceToDate" runat="server" TargetControlID="txtToDate" Format="yyyy/M/dd"></cc1:CalendarExtender> 
                     </td>
                     <td>

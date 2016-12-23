@@ -496,7 +496,7 @@
                     <div id="ClientholidayList">
                         <div class="row">
                             <div class="col-lg-8 col-sm-8 text-center border-right">
-                                <div>
+                                <%--<div>
                                     <br />
                                     <table class="table-condensed">
                                         <tr>
@@ -511,7 +511,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                </div>
+                                </div>--%>
                                 <hr class="small" />
                                 <asp:Panel ID="pnlHolidayList" runat="server" Visible="false">
                                     <h3 class="text-primary">List of Holidays</h3>

@@ -33,7 +33,7 @@ namespace SphereInfoSolutionHRMS.Attendance
         protected void BindAvailableLeave()
         {            
             int AvailableLeave = leave.FetchAvailableLeave(UserID);
-            lblAvailableLeaves.Text = AvailableLeave.ToString();
+            //lblAvailableLeaves.Text = AvailableLeave.ToString();
         } 
 
         //Bind dropdown leave type
@@ -248,12 +248,14 @@ namespace SphereInfoSolutionHRMS.Attendance
             if (Page.IsValid)
             {
                 int i = leave.ApplyLeave(getLeaveInfo(), getHalfdayDetails());
-                if (i == 1) //Successfull
+                if (i == 1) 
                 {
+                    //Successfull
                     lblMessageLeaveDetails.Text = "Leave Applied Successfully";
                 }
-                else if (1 == 0) // Already Applied
+                else if (1 == 0) 
                 {
+                    // Already Applied
                     lblMessageLeaveDetails.Text = "Leave Already Applied";
                 }
                 else
@@ -261,6 +263,7 @@ namespace SphereInfoSolutionHRMS.Attendance
                     lblMessageLeaveDetails.Text = "Error";
                 }
                 BindLeaveDetails();
+                ClearControls();
             }
         }
 
@@ -328,5 +331,25 @@ namespace SphereInfoSolutionHRMS.Attendance
             return dt;
 
         }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            ClearControls();
+        }
+
+        private void ClearControls() 
+        {
+            ddlLeaveType.SelectedIndex = -1;
+            txtContactNo.Text = "";
+            txtFromDate.Text = "";
+            txtReason.Text = "";
+            txtToDate.Text = "";
+            DataTable dt = new DataTable();
+            gvHalfdayDetails.DataSource = dt;
+            gvHalfdayDetails.DataBind();
+            gvHalfdayDetails.Visible = false;
+            lblIsHalfDay.Visible = false;
+            
+        }   
     }
 }

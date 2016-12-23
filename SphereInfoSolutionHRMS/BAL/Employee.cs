@@ -136,7 +136,7 @@ namespace BAL
             employeeModel.EmpIsConfirm = Convert.ToBoolean(dt.Rows[0][36]);
             //employeeModel.EmpConfirmDate = Convert.ToDateTime(dt.Rows[0][37]);
             employeeModel.EmpConfirmDate = String.IsNullOrEmpty((dt.Rows[0][37].ToString())) ? (DateTime?)null : Convert.ToDateTime(dt.Rows[0][37]);
-            employeeModel.EmpBackgroundVerification = String.IsNullOrEmpty((dt.Rows[0][38]).ToString()) ? (Boolean?)null : Convert.ToBoolean(dt.Rows[0][38]);
+            employeeModel.EmpBackgroundVerification = String.IsNullOrEmpty(dt.Rows[0][38].ToString()) ? (bool?)null : Convert.ToBoolean(dt.Rows[0][38]);
             employeeModel.EmpAddressVerification = String.IsNullOrEmpty((dt.Rows[0][39]).ToString()) ? (Boolean?)null : Convert.ToBoolean(dt.Rows[0][39]);
             employeeModel.EmpEducationVerification = String.IsNullOrEmpty((dt.Rows[0][40]).ToString()) ? (Boolean?)null : Convert.ToBoolean(dt.Rows[0][40]);
             employeeModel.EmpEmploymentVerification = String.IsNullOrEmpty((dt.Rows[0][41]).ToString()) ? (Boolean?)null : Convert.ToBoolean(dt.Rows[0][41]);
