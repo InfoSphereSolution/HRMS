@@ -52,9 +52,9 @@ namespace Models
         public Int32 EmpReportingManagerID { get; set; }
         public Boolean EmpIsConfirm { get; set; }
         public DateTime? EmpConfirmDate { get; set; }
-        public Boolean EmpBackgroundVerification { get; set; }
-        public Boolean EmpAddressVerification { get; set; }
-        public Boolean EmpEducationVerification { get; set; }
-        public Boolean EmpEmploymentVerification { get; set; }
+        public Boolean? EmpBackgroundVerification { get; set; }
+        public Boolean? EmpAddressVerification { get; set; }
+        public Boolean? EmpEducationVerification { get; set; }
+        public Boolean? EmpEmploymentVerification { get; set; }
     }
 }

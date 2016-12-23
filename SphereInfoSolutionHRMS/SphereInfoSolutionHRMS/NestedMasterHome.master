@@ -39,7 +39,7 @@
                                     <li>
                                         <asp:LinkButton ID="lbtnMarkAttendance" runat="server" OnClick="lbtnMarkAttendance_Click" Visible="false" Enabled="false"></asp:LinkButton></li>
                                     <li><a href="../User/ChangePassword.aspx">Change Password</a></li>
-                                    <li><asp:LinkButton ID="lbtnlogout" runat="server" OnClick="btnlogout_Click">Logout</asp:LinkButton></li>
+                                    <li><asp:LinkButton ID="lbtnlogout" runat="server" OnClick="btnlogout_Click" CausesValidation="false">Logout</asp:LinkButton></li>
                                     
                                     <%--</ul>
                                     </li>--%>

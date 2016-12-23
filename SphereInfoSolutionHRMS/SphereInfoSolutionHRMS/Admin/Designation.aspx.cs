@@ -130,56 +130,59 @@ namespace SphereInfoSolutionHRMS.Admin
 
         protected void btnAddDesignation_Click(object sender, EventArgs e)
         {
-            desigantionmodel.DesignationName = txtDesignationname.Text;
-            if (!string.IsNullOrEmpty(ddlRole.SelectedValue.ToString()))
+            if (Page.IsValid)
             {
+                desigantionmodel.DesignationName = txtDesignationname.Text;
+                if (!string.IsNullOrEmpty(ddlRole.SelectedValue.ToString()))
+                {
 
-                desigantionmodel.RoleId = Convert.ToInt32(ddlRole.SelectedValue.ToString());
-            }
-            if (!string.IsNullOrEmpty(ddlDepartmentName.SelectedValue.ToString()))
-            {
+                    desigantionmodel.RoleId = Convert.ToInt32(ddlRole.SelectedValue.ToString());
+                }
+                if (!string.IsNullOrEmpty(ddlDepartmentName.SelectedValue.ToString()))
+                {
 
-                desigantionmodel.DeptId = Convert.ToInt32(ddlDepartmentName.SelectedValue.ToString());
-            }
+                    desigantionmodel.DeptId = Convert.ToInt32(ddlDepartmentName.SelectedValue.ToString());
+                }
 
 
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                desigantionmodel.CreatedBy = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
-                // Do stuf...
-            }
-            int i = designation.AddDesignation(desigantionmodel);
-            if (i == -1)
-            {
-                lblMessage.Text = "Designation Already Added";
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    desigantionmodel.CreatedBy = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+                    // Do stuf...
+                }
+                int i = designation.AddDesignation(desigantionmodel);
+                if (i == -1)
+                {
+                    lblMessage.Text = "Designation Already Added";
 
-                lblMessage.ForeColor = System.Drawing.Color.Red;
-            }
-            else if (i == 1)
-            {
-                lblMessage.Text = "Designation Added Succesfully";
-                lblMessage.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (i == 3)
-            {
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
+                else if (i == 1)
+                {
+                    lblMessage.Text = "Designation Added Succesfully";
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (i == 3)
+                {
 
-                lblMessage.Text = "Designation Added Succesfully.. Wating for approval.";
-                lblMessage.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (i == -3)
-            {
+                    lblMessage.Text = "Designation Added Succesfully.. Wating for approval.";
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (i == -3)
+                {
 
-                lblMessage.Text = "Designation Already Exist.. Wating for approval.";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                lblMessage.Text = "Error";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
-            }
+                    lblMessage.Text = "Designation Already Exist.. Wating for approval.";
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    lblMessage.Text = "Error";
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
 
-            DisplayTempDesigantion();
-            DisplayDesigantion();
+                DisplayTempDesigantion();
+                DisplayDesigantion();
+            }
         }
 
 
@@ -237,6 +240,8 @@ namespace SphereInfoSolutionHRMS.Admin
                 int IsActive = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "IsActive"));
                 Button btnRemove = (Button)e.Row.FindControl("btnRemove");
 
+                btnRemove.Attributes["onclick"] = "if(!confirm('Do you want to delete Designation?')){ return false; };";
+             
                 if (IsActive == 0)
                 {
                     e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#D5D8DC"); ;
@@ -322,22 +327,25 @@ namespace SphereInfoSolutionHRMS.Admin
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            String Designation = txtSearchDesignation.Text;
-            txtSearchDesignation.Text = "";
-            DataTable dt = designation.FilterDesignation(Designation);
-            if (dt.Rows.Count > 0)
+            if (Page.IsValid)
             {
-                gvDesignation.DataSource = dt;
-                gvDesignation.DataBind();
-                gvDesignation.Visible = true;
-                lblMessageDesignation.Text = "";
-            }
-            else
-            {
-                gvDesignation.Visible = false;
-                lblMessageDesignation.Text = "No Roles Found";
-                lblMessageDesignation.ForeColor = System.Drawing.Color.Red;
+                String Designation = txtSearchDesignation.Text;
+                txtSearchDesignation.Text = "";
+                DataTable dt = designation.FilterDesignation(Designation);
+                if (dt.Rows.Count > 0)
+                {
+                    gvDesignation.DataSource = dt;
+                    gvDesignation.DataBind();
+                    gvDesignation.Visible = true;
+                    lblMessageDesignation.Text = "";
+                }
+                else
+                {
+                    gvDesignation.Visible = false;
+                    lblMessageDesignation.Text = "No Roles Found";
+                    lblMessageDesignation.ForeColor = System.Drawing.Color.Red;
 
+                }
             }
         }
 

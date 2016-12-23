@@ -1,9 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NestedMasterHome.master" AutoEventWireup="true" CodeBehind="LeaveDetails.aspx.cs" Inherits="SphereInfoSolutionHRMS.Attendance.LeaveDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
+    <script type="text/javascript">
+        function DeleteConfirm() {
+            var Ans = confirm("Do you want to Remove Selected Employee Leave Details?");
+            if (Ans) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function AddConfirm() {
+            var Ans = confirm("Do you want to Add Selected Employee Leave Details?");
+            if (Ans) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+    </script>
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
     <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
-     <div class="row">        
+    <div class="row">
         <div class="col-sm-4">
             <asp:Label ID="lblAbsentDays" runat="server" Text="No. of Days Absent: " Font-Bold="true"></asp:Label>
             <asp:Label ID="lblDaysAbsent" runat="server" Text="02"></asp:Label>
@@ -11,29 +32,29 @@
         <div class="col-sm-4">
             <asp:Label ID="lblLeaveTaken" runat="server" Text="No. of Leaves Taken: " Font-Bold="true"></asp:Label>
             <asp:Label ID="lblTakenLeaves" runat="server" Text="04"></asp:Label>
-        </div>        
+        </div>
         <div class="col-sm-4">
             <asp:Label ID="lblLeavesAvailable" runat="server" Text="No. of Leaves Available: " Font-Bold="true"></asp:Label>
-            <asp:Label ID="lblAvailableLeaves" runat="server" Text="15"></asp:Label>            
-        </div>        
+            <asp:Label ID="lblAvailableLeaves" runat="server" Text="15"></asp:Label>
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-8 col-sm-8 text-center border-right">
             <div>
                 <br />
-                
-                    <div class="row">
-                        <div class="col-sm-6 col-xs-12" style="padding:5px;">
-                            <asp:TextBox ID="txtSearchLeave" runat="server" CssClass="form-control input-md" placeholder="Enter Date"></asp:TextBox>
-                        </div>
-                        <div class="col-sm-2 col-xs-5" style="padding:5px;">
-                            <asp:Button ID="btnSearchLeave" runat="server" Text="Search" CssClass="btn btn-primary btn-md"/>
-                        </div>
-                        <div class="col-sm-2 col-xs-2" style="padding:5px;">
-                            <asp:Button ID="btnShowAllLeaves" runat="server" Text="Show All Leaves" CssClass="btn btn-primary btn-md"/>
-                        </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12" style="padding: 5px;">
+                        <asp:TextBox ID="txtSearchLeave" runat="server" CssClass="form-control input-md" placeholder="Enter Date"></asp:TextBox>
                     </div>
-                
+                    <div class="col-sm-2 col-xs-5" style="padding: 5px;">
+                        <asp:Button ID="btnSearchLeave" runat="server" Text="Search" CssClass="btn btn-primary btn-md" />
+                    </div>
+                    <div class="col-sm-2 col-xs-2" style="padding: 5px;">
+                        <asp:Button ID="btnShowAllLeaves" runat="server" Text="Show All Leaves" CssClass="btn btn-primary btn-md" />
+                    </div>
+                </div>
+
             </div>
             <hr class="small" />
 
@@ -42,7 +63,7 @@
             <asp:GridView ID="gvLeaveDetails" runat="server" AutoGenerateColumns="False"
                 ShowHeader="true"
                 DataKeyNames="LeaveId"
-                CssClass="table table-hover table-bordered table-condensed"
+                CssClass="table table-hover table-bordered"
                 HeaderStyle-CssClass="gvHeader" OnRowDataBound="gvLeaveDetails_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="LeaveId" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
@@ -67,7 +88,7 @@
                                 HeaderStyle-CssClass="gvHeader"
                                 OnRowCommand="gvLeaveChild_RowCommand">
                                 <Columns>
-                                    <asp:BoundField DataField="LeaveId" HeaderText="LeaveID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                    <asp:BoundField DataField="LeaveId" HeaderText="LeaveID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                     <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:yyyy-M-dd}" />
 
                                     <asp:TemplateField HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden">
@@ -87,7 +108,7 @@
 
                                     <asp:TemplateField HeaderText="" ItemStyle-Font-Bold="true">
                                         <ItemTemplate>
-                                            <asp:Button ID="btnCancel" runat="server" Text="X" CommandName="CancelLeave" CssClass="btn btn-danger btn-sm"/>
+                                            <asp:Button ID="btnCancel" runat="server" Text="X" CommandName="CancelLeave" CssClass="btn btn-danger btn-sm" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -133,7 +154,7 @@
                                 HeaderStyle-CssClass="gvHeader"
                                 OnRowCommand="gvApprovalLeaveChild_RowCommand">
                                 <Columns>
-                                    <asp:BoundField DataField="LeaveId" HeaderText="LeaveID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden"/>
+                                    <asp:BoundField DataField="LeaveId" HeaderText="LeaveID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                     <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:yyyy-M-dd}" />
 
                                     <asp:TemplateField HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden">
@@ -153,8 +174,8 @@
 
                                     <asp:TemplateField HeaderText="" ItemStyle-Font-Bold="true">
                                         <ItemTemplate>
-                                            <asp:Button ID="btnApprove" runat="server" Text="✓" CommandName="Approve"  CssClass="btn btn-success btn-sm" />
-                                            <asp:Button ID="btnReject" runat="server" Text="X" CommandName="Reject"  CssClass="btn btn-danger btn-sm" />
+                                            <asp:Button ID="btnApprove" runat="server" Text="✓" CommandName="Approve" CssClass="btn btn-success btn-sm" />
+                                            <asp:Button ID="btnReject" runat="server" Text="X" CommandName="Reject" CssClass="btn btn-danger btn-sm" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -168,7 +189,7 @@
         </div>
 
         <%-- Apply Leave  --%>
-        <div class="col-lg-4 col-sm-4 text-center">                        
+        <div class="col-lg-4 col-sm-4 text-center">
             <hr class="small" />
             <h3 class="text-primary">Apply Leave</h3>
             <asp:Panel ID="PanelLeaveRequsition" runat="server">
@@ -176,30 +197,43 @@
                     <tr>
                         <td>
                             <asp:DropDownList ID="ddlLeaveType" runat="server" CssClass="form-control" Width="250px">
-                                <asp:ListItem Text="--Select Leave Type--"></asp:ListItem>
+                                <asp:ListItem Text="--Select Leave Type--" Value="0"></asp:ListItem>
                             </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RFLeaveType" InitialValue="0" ControlToValidate="ddlLeaveType" runat="server" ForeColor="Red"
+                                ErrorMessage="Enter From Date" ValidationGroup="grpLeave"></asp:RequiredFieldValidator>
+
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="From Date" OnTextChanged="txtFromDate_TextChanged"></asp:TextBox>
-                            <%--<cc1:CalendarExtender ID="ceFromDate" runat="server" TargetControlID="txtFromDate" Format="yyyy/M/dd"></cc1:CalendarExtender>--%>
+                            <cc1:CalendarExtender ID="ceFromDate" runat="server" TargetControlID="txtFromDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
+                            <asp:RequiredFieldValidator ID="RFFromDate" ControlToValidate="txtFromDate" runat="server" ForeColor="Red"
+                                ErrorMessage="Enter From Date" ValidationGroup="grpLeave"></asp:RequiredFieldValidator>
+
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <asp:TextBox ID="txtToDate" runat="server" CssClass="form-control" AutoPostBack="True" Width="250px" placeholder="To Date" OnTextChanged="txtToDate_TextChanged"></asp:TextBox>
-                            <%--<cc1:CalendarExtender ID="ceToDate" runat="server" TargetControlID="txtToDate" Format="yyyy/M/dd"></cc1:CalendarExtender>--%>
+                            <cc1:CalendarExtender ID="ceToDate" runat="server" TargetControlID="txtToDate" Format="yyyy/M/dd"></cc1:CalendarExtender>
+                            <asp:RequiredFieldValidator ID="RfToDate" ControlToValidate="txtToDate" runat="server" ForeColor="Red"
+                                ErrorMessage="Enter To Date" ValidationGroup="grpLeave"></asp:RequiredFieldValidator>
+
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:TextBox ID="txtContactNo" runat="server" CssClass="form-control" Width="250px" placeholder="Contact"></asp:TextBox>
+                            <asp:TextBox ID="txtContactNo" runat="server" MaxLength="10" CssClass="form-control" Width="250px" placeholder="Contact"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RFContact" ControlToValidate="txtContactNo"
+                                runat="server" ForeColor="Red" ValidationGroup="grpLeave" ErrorMessage="Enter Only Digit"></asp:RequiredFieldValidator>
+
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <asp:TextBox ID="txtReason" runat="server" CssClass="form-control" Width="250px" placeholder="Reason"></asp:TextBox>
+                            <asp:RequiredFieldValidator ValidationGroup="grpLeave" ControlToValidate="txtReason" runat="server" ForeColor="Red" ErrorMessage="Enter Reason"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                 </table>
@@ -210,7 +244,7 @@
                 </div>
                 <asp:GridView ID="gvHalfdayDetails" runat="server" AutoGenerateColumns="false"
                     Visible="false"
-                    ShowHeader="true"                    
+                    ShowHeader="true"
                     CssClass="table table-hover table-bordered table-condensed"
                     HeaderStyle-CssClass="gvHeader">
                     <Columns>
@@ -236,7 +270,8 @@
                 <!--End - get halfday details-->
                 <br />
                 <div>
-                    <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-success btn-sm" OnClick="btnApply_Click" />
+                    <asp:Button ID="btnApply" runat="server" Text="Apply" CssClass="btn btn-success btn-sm"
+                        OnClientClick="if (typeof(Page_ClientValidate) == 'function') { Page_ClientValidate(); if(Page_IsValid) { return confirm('Do You Want To Apply Leave?'); } };" OnClick="btnApply_Click" />
                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-danger btn-sm" />
                 </div>
                 <div>

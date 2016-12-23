@@ -26,3 +26,10 @@ C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\D
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.dll
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.pdb
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\Models.dll
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\Models.pdb
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\DAL.dll
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\Models\bin\Debug\DAL.pdb
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.csprojResolveAssemblyReference.cache
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.dll
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\Models\obj\Debug\Models.pdb

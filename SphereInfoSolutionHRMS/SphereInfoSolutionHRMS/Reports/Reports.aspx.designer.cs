@@ -22,6 +22,15 @@ namespace SphereInfoSolutionHRMS.Reports {
         protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// lblEmployeeType control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace SphereInfoSolutionHRMS.Reports {
         protected global::System.Web.UI.WebControls.DropDownList ddlClient;
         
         /// <summary>
+        /// RFClient control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFClient;
+        
+        /// <summary>
         /// lblSelectEmployee control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,15 @@ namespace SphereInfoSolutionHRMS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlEmployee;
+        
+        /// <summary>
+        /// RFEmployee control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFEmployee;
         
         /// <summary>
         /// lblFromDate control.
@@ -139,6 +166,24 @@ namespace SphereInfoSolutionHRMS.Reports {
         protected global::System.Web.UI.WebControls.TextBox txtFromDate;
         
         /// <summary>
+        /// ceDateofBirth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceDateofBirth;
+        
+        /// <summary>
+        /// RFFromDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFFromDate;
+        
+        /// <summary>
         /// lblToDate control.
         /// </summary>
         /// <remarks>
@@ -155,6 +200,24 @@ namespace SphereInfoSolutionHRMS.Reports {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtToDate;
+        
+        /// <summary>
+        /// CalendarExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
+        
+        /// <summary>
+        /// RFTodate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFTodate;
         
         /// <summary>
         /// btnDetails control.

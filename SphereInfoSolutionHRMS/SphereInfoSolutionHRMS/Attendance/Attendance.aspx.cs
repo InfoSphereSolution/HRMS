@@ -19,6 +19,7 @@ namespace SphereInfoSolutionHRMS.Attendance
         {
             if (!IsPostBack)
             {
+                ((NestedMasterHome)this.Master).PageName = "Attendance";
                 bindDates();
                 bindAttendance();
             }

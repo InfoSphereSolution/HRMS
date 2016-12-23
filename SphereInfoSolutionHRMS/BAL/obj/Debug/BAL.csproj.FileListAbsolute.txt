@@ -34,3 +34,12 @@ C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\Mode
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.dll
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.pdb
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\BAL.dll
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\BAL.pdb
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\DAL.dll
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\Models.dll
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\DAL.pdb
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\BAL\bin\Debug\Models.pdb
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.csprojResolveAssemblyReference.cache
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.dll
+D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\BAL\obj\Debug\BAL.pdb

@@ -13,8 +13,7 @@
     <script src="Style/js/jquery.min.js"></script>
     <script src="Style/js/bootstrap.min.js"></script>
     <link href="Style/css/bootstrap.css" rel="stylesheet" />
-
-
+ 
     <link href="Style/css/navHome.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
