@@ -157,6 +157,15 @@ namespace SphereInfoSolutionHRMS.Attendance {
         protected global::System.Web.UI.WebControls.DropDownList ddlLeaveType;
         
         /// <summary>
+        /// RFLeaveType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFLeaveType;
+        
+        /// <summary>
         /// txtFromDate control.
         /// </summary>
         /// <remarks>
@@ -164,6 +173,24 @@ namespace SphereInfoSolutionHRMS.Attendance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFromDate;
+        
+        /// <summary>
+        /// ceFromDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceFromDate;
+        
+        /// <summary>
+        /// RFFromDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFFromDate;
         
         /// <summary>
         /// txtToDate control.
@@ -175,6 +202,24 @@ namespace SphereInfoSolutionHRMS.Attendance {
         protected global::System.Web.UI.WebControls.TextBox txtToDate;
         
         /// <summary>
+        /// ceToDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CalendarExtender ceToDate;
+        
+        /// <summary>
+        /// RfToDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfToDate;
+        
+        /// <summary>
         /// txtContactNo control.
         /// </summary>
         /// <remarks>
@@ -182,6 +227,15 @@ namespace SphereInfoSolutionHRMS.Attendance {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContactNo;
+        
+        /// <summary>
+        /// RFContact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFContact;
         
         /// <summary>
         /// txtReason control.

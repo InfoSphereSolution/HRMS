@@ -20,6 +20,7 @@ namespace SphereInfoSolutionHRMS.Reports
         {
             if (!IsPostBack)
             {
+                ((NestedMasterHome)this.Master).PageName = "Reports";
                 bindClient();
                 bindEmployee(-1);
                 EnableOrDisable("Attendance");
@@ -455,6 +456,9 @@ namespace SphereInfoSolutionHRMS.Reports
                 txtToDate.Enabled = true;
                 btnDetails.Enabled = true;
                 btnSummary.Enabled = true;
+                RFEmployee.Enabled = true;
+                RFFromDate.Enabled = true;
+                RFTodate.Enabled = true;
                 EnableOrDisable();
             }
             else if (ReportType == "Leave")
@@ -465,6 +469,9 @@ namespace SphereInfoSolutionHRMS.Reports
                 txtToDate.Enabled = true;
                 btnDetails.Enabled = true;
                 btnSummary.Enabled = true;
+                RFEmployee.Enabled = true;
+                RFFromDate.Enabled = true;
+                RFTodate.Enabled = true;
                 EnableOrDisable();
             }
             else if (ReportType == "Holiday")
@@ -475,6 +482,9 @@ namespace SphereInfoSolutionHRMS.Reports
                 txtToDate.Enabled = false;
                 btnDetails.Enabled = true;
                 btnSummary.Enabled = false;
+                RFFromDate.Enabled = false;
+                RFTodate.Enabled = false;
+                RFEmployee.Enabled = false;
             }
             else
             {

@@ -112,6 +112,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtClientName;
         
         /// <summary>
+        /// RFClientName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFClientName;
+        
+        /// <summary>
         /// lblAddress control.
         /// </summary>
         /// <remarks>
@@ -130,6 +139,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
+        /// RFAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFAddress;
+        
+        /// <summary>
         /// lblState control.
         /// </summary>
         /// <remarks>
@@ -146,6 +164,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlState;
+        
+        /// <summary>
+        /// RFState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFState;
         
         /// <summary>
         /// btnAddStatePanel control.
@@ -193,6 +220,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtStateName;
         
         /// <summary>
+        /// RFVState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVState;
+        
+        /// <summary>
         /// btnCancelState control.
         /// </summary>
         /// <remarks>
@@ -227,6 +263,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCity;
+        
+        /// <summary>
+        /// RFVCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFVCity;
         
         /// <summary>
         /// btnAddCityPanel control.
@@ -319,6 +364,24 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtPincode;
         
         /// <summary>
+        /// RFPinCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFPinCode;
+        
+        /// <summary>
+        /// RegExpPinCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegExpPinCode;
+        
+        /// <summary>
         /// lblContact control.
         /// </summary>
         /// <remarks>
@@ -335,6 +398,24 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContact;
+        
+        /// <summary>
+        /// RFContactNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFContactNo;
+        
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// lblSite control.
@@ -355,6 +436,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtSite;
         
         /// <summary>
+        /// RFSite control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFSite;
+        
+        /// <summary>
         /// lblIP control.
         /// </summary>
         /// <remarks>
@@ -371,6 +461,24 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIP;
+        
+        /// <summary>
+        /// RFIPAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFIPAddress;
+        
+        /// <summary>
+        /// REgExpIPaddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator REgExpIPaddress;
         
         /// <summary>
         /// satworkingpanel control.
@@ -463,6 +571,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtNoOfOptionalHolidays;
         
         /// <summary>
+        /// RFOptional control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFOptional;
+        
+        /// <summary>
         /// btnToShift control.
         /// </summary>
         /// <remarks>
@@ -488,6 +605,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlGeneralShift;
+        
+        /// <summary>
+        /// RFddlShift control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFddlShift;
         
         /// <summary>
         /// lblGeneralShiftDetails control.
@@ -751,6 +877,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtHolidayname;
         
         /// <summary>
+        /// RFHolidayname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFHolidayname;
+        
+        /// <summary>
         /// txtHolidayDate control.
         /// </summary>
         /// <remarks>
@@ -769,6 +904,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::AjaxControlToolkit.CalendarExtender CalendarExtender1;
         
         /// <summary>
+        /// RFHolidayDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFHolidayDate;
+        
+        /// <summary>
         /// ddlClientName control.
         /// </summary>
         /// <remarks>
@@ -778,6 +922,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ddlClientName;
         
         /// <summary>
+        /// RFClientNmae control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFClientNmae;
+        
+        /// <summary>
         /// ddlIsOptional control.
         /// </summary>
         /// <remarks>
@@ -785,6 +938,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlIsOptional;
+        
+        /// <summary>
+        /// RFDISOptional control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFDISOptional;
         
         /// <summary>
         /// btnAddHoliday control.

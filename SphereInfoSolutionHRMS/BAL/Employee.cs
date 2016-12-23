@@ -136,10 +136,10 @@ namespace BAL
             employeeModel.EmpIsConfirm = Convert.ToBoolean(dt.Rows[0][36]);
             //employeeModel.EmpConfirmDate = Convert.ToDateTime(dt.Rows[0][37]);
             employeeModel.EmpConfirmDate = String.IsNullOrEmpty((dt.Rows[0][37].ToString())) ? (DateTime?)null : Convert.ToDateTime(dt.Rows[0][37]);
-            employeeModel.EmpBackgroundVerification = Convert.ToBoolean(dt.Rows[0][38]);
-            employeeModel.EmpAddressVerification = Convert.ToBoolean(dt.Rows[0][39]);
-            employeeModel.EmpEducationVerification = Convert.ToBoolean(dt.Rows[0][40]);
-            employeeModel.EmpEmploymentVerification = Convert.ToBoolean(dt.Rows[0][41]);
+            employeeModel.EmpBackgroundVerification = String.IsNullOrEmpty((dt.Rows[0][38]).ToString()) ? (Boolean?)null : Convert.ToBoolean(dt.Rows[0][38]);
+            employeeModel.EmpAddressVerification = String.IsNullOrEmpty((dt.Rows[0][39]).ToString()) ? (Boolean?)null : Convert.ToBoolean(dt.Rows[0][39]);
+            employeeModel.EmpEducationVerification = String.IsNullOrEmpty((dt.Rows[0][40]).ToString()) ? (Boolean?)null : Convert.ToBoolean(dt.Rows[0][40]);
+            employeeModel.EmpEmploymentVerification = String.IsNullOrEmpty((dt.Rows[0][41]).ToString()) ? (Boolean?)null : Convert.ToBoolean(dt.Rows[0][41]);
 
 
             return employeeModel;
@@ -187,7 +187,7 @@ namespace BAL
             sqParam.Add(new SqlParameter("@MiddleName", employeeModel.EmpMiddleName));
             sqParam.Add(new SqlParameter("@LastName", employeeModel.EmpLastName));
             sqParam.Add(new SqlParameter("@Gender", employeeModel.EmpGender));
-            sqParam.Add(new SqlParameter("@DOB", employeeModel.EmpDOB));
+            sqParam.Add(new SqlParameter("@DOB", string.IsNullOrEmpty(employeeModel.EmpDOB.ToString()) ? (object)DBNull.Value : Convert.ToDateTime(employeeModel.EmpDOB)));
             sqParam.Add(new SqlParameter("@Marital_Status", employeeModel.EmpMaritalStatus));
             sqParam.Add(new SqlParameter("@MobileNo", employeeModel.EmpContact));
             sqParam.Add(new SqlParameter("@Emergency_ContactNo", employeeModel.EmpAltContact));
@@ -210,25 +210,27 @@ namespace BAL
             sqParam.Add(new SqlParameter("@PassportNo", employeeModel.EmpPassportNumber));
             sqParam.Add(new SqlParameter("@PlaceOfIssue", employeeModel.EmpPassportIssuePlace));
             sqParam.Add(new SqlParameter("@CountryOfIssue", employeeModel.EmpPassportIssueCountry));
-            sqParam.Add(new SqlParameter("@DateOfIssue", employeeModel.EmpPassportIssueDate));
-            sqParam.Add(new SqlParameter("@DateOfExpiry", employeeModel.EmpPassportExpiryDate));
+            sqParam.Add(new SqlParameter("@DateOfIssue", string.IsNullOrEmpty(employeeModel.EmpPassportIssueDate.ToString()) ? (object)DBNull.Value : Convert.ToDateTime(employeeModel.EmpPassportIssueDate)));
+
+            sqParam.Add(new SqlParameter("@DateOfExpiry", string.IsNullOrEmpty(employeeModel.EmpPassportExpiryDate.ToString()) ? (object)DBNull.Value : Convert.ToDateTime(employeeModel.EmpPassportExpiryDate)));
             sqParam.Add(new SqlParameter("@ECNR_Status", employeeModel.EmpECNRStatus));
         }
 
         protected void UpdatedEmployeeProfessional(Models.EmployeeModel employeeModel)
         {            
             // Professional details
-            sqParam.Add(new SqlParameter("@DOJ", employeeModel.EmpDOJ));
+
+            sqParam.Add(new SqlParameter("@DOJ", string.IsNullOrEmpty(employeeModel.EmpDOJ.ToString()) ? (object)DBNull.Value : Convert.ToDateTime(employeeModel.EmpDOJ)));
             sqParam.Add(new SqlParameter("@Department", employeeModel.EmpDepartment));
             sqParam.Add(new SqlParameter("@Designation", employeeModel.EmpDesignation));
-            sqParam.Add(new SqlParameter("@Bond_Start_Date", employeeModel.EmpBondStart));
-            sqParam.Add(new SqlParameter("@Bond_End_Date", employeeModel.EmpBondEnd));
+            sqParam.Add(new SqlParameter("@Bond_Start_Date", string.IsNullOrEmpty(employeeModel.EmpBondStart.ToString()) ? (object)DBNull.Value : Convert.ToDateTime(employeeModel.EmpBondStart)));
+            sqParam.Add(new SqlParameter("@Bond_End_Date", string.IsNullOrEmpty(employeeModel.EmpBondEnd.ToString()) ? (object)DBNull.Value : Convert.ToDateTime(employeeModel.EmpBondEnd)));
             sqParam.Add(new SqlParameter("@Official_Email_Id", employeeModel.EmpOrganizationEmailID));
             sqParam.Add(new SqlParameter("@Client_Id", employeeModel.EmpClientID));
             sqParam.Add(new SqlParameter("@ShiftTimeId", employeeModel.EmpShiftID));
             sqParam.Add(new SqlParameter("@ReportingManager_Id", employeeModel.EmpReportingManagerID));
             sqParam.Add(new SqlParameter("@Confirmation_Status", employeeModel.EmpIsConfirm));
-            sqParam.Add(new SqlParameter("@Confirmation_Date", employeeModel.EmpConfirmDate));
+            sqParam.Add(new SqlParameter("@Confirmation_Date", string.IsNullOrEmpty(employeeModel.EmpConfirmDate.ToString()) ? (object)DBNull.Value : Convert.ToDateTime(employeeModel.EmpConfirmDate)));
             sqParam.Add(new SqlParameter("@Background_VerificationCheck", employeeModel.EmpBackgroundVerification));
             sqParam.Add(new SqlParameter("@Address_Check", employeeModel.EmpAddressVerification));
             sqParam.Add(new SqlParameter("@Educational_Check", employeeModel.EmpEducationVerification));

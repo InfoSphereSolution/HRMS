@@ -6,7 +6,9 @@
 
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
     <cc1:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></cc1:ToolkitScriptManager>
-    <div class="row">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+                <div class="row">
         
              <div class="col-md-3 text-center"  style="padding:5px">
             <asp:Label ID="lblEmployeeType" runat="server" Text="Select Employee Type: "></asp:Label>
@@ -43,13 +45,17 @@
         </div>
         <div class="col-md-3"  style="padding:5px">
             <asp:DropDownList ID="ddlClient" runat="server" Width="100%" CssClass="form-control input-md" AutoPostBack="True" OnSelectedIndexChanged="ddlClient_SelectedIndexChanged"></asp:DropDownList>
-        </div>
+    <asp:RequiredFieldValidator ID="RFClient" runat="server" Enabled="false" ValidationGroup="grpReports" InitialValue="-1" ControlToValidate="ddlClient" ErrorMessage="Select Client" ForeColor="Red"></asp:RequiredFieldValidator>
+           
+             </div>
         <div class="col-md-3 text-center""  style="padding:5px">
             <asp:Label ID="lblSelectEmployee" runat="server" Text="Select Employee: "></asp:Label>
         </div>
         <div class="col-md-3"  style="padding:5px">
             <asp:DropDownList ID="ddlEmployee" runat="server" Width="100%" CssClass="form-control input-md" AutoPostBack="true" OnSelectedIndexChanged="ddlEmployee_SelectedIndexChanged"></asp:DropDownList>
-        </div>
+         <asp:RequiredFieldValidator ID="RFEmployee" Enabled="false" ValidationGroup="grpReports" runat="server" InitialValue="-1" ControlToValidate="ddlEmployee" ErrorMessage="Select Employee" ForeColor="Red"></asp:RequiredFieldValidator>
+     
+              </div>
     </div>
 
     <div class="row">
@@ -58,14 +64,18 @@
         </div>
         <div class="col-md-3"  style="padding:5px">
             <asp:TextBox ID="txtFromDate" CssClass="form-control" runat="server" placeholder="Enter From Date Here.."></asp:TextBox>
-            <%--<cc1:calendarextender id="ceDateofBirth" runat="server" targetcontrolid="txtDatefBirth" format="yyyy/M/dd"></cc1:calendarextender>--%>
-        </div>
+            <cc1:calendarextender id="ceDateofBirth" runat="server" targetcontrolid="txtFromDate" format="yyyy/M/dd"></cc1:calendarextender>
+            <asp:RequiredFieldValidator ID="RFFromDate" Enabled="false" runat="server" ValidationGroup="grpReports" ControlToValidate="txtFromDate" ErrorMessage="Enter To Date" ForeColor="Red"></asp:RequiredFieldValidator>
+  
+              </div>
         <div class="col-md-3 text-center""  style="padding:5px">
             <asp:Label ID="lblToDate" runat="server" Text="To Date: "></asp:Label>
         </div>
         <div class="col-md-3"  style="padding:5px">
             <asp:TextBox ID="txtToDate" CssClass="form-control" runat="server" placeholder="Enter To Date Here.."></asp:TextBox>
-            <%--<cc1:calendarextender id="CalendarExtender1" runat="server" targetcontrolid="txtDatefBirth" format="yyyy/M/dd"></cc1:calendarextender>--%>
+         
+            <cc1:calendarextender id="CalendarExtender1" runat="server" targetcontrolid="txtToDate" format="yyyy/M/dd"></cc1:calendarextender>
+        <asp:RequiredFieldValidator ID="RFTodate" runat="server" Enabled="false" ValidationGroup="grpReports" ControlToValidate="txtToDate" ErrorMessage="Enter To Date" ForeColor="Red"></asp:RequiredFieldValidator>
         </div>
     </div>
 
@@ -74,8 +84,8 @@
             
         </div>
         <div class="col-md-3" style="padding:5px">
-            <asp:Button ID="btnDetails" runat="server" Text="View Details" CssClass="btn btn-primary btn-md" OnClick="btnDetails_Click" />
-            <asp:Button ID="btnSummary" runat="server" Text="View Summary" CssClass="btn btn-primary btn-md" OnClick="btnSummary_Click" />
+            <asp:Button ID="btnDetails" runat="server" ValidationGroup="grpReports" Text="View Details" CssClass="btn btn-primary btn-md" OnClick="btnDetails_Click" />
+            <asp:Button ID="btnSummary" runat="server" Text="View Summary" ValidationGroup="grpReports" CssClass="btn btn-primary btn-md" OnClick="btnSummary_Click" />
         </div>        
     </div>
     <hr class="small" />
@@ -90,5 +100,8 @@
         </div>
        
     </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
 
 </asp:Content>

@@ -59,7 +59,7 @@
                 <Columns>
                     <asp:BoundField DataField="Attendance_Id" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                     <asp:BoundField DataField="Day" HeaderText="Day" />
-                    <asp:BoundField DataField="Date" HeaderText="Date" />
+                    <asp:BoundField DataField="Date" HeaderText="Date" DataFormatString="{0:yyyy-M-dd}"/>
                     <asp:BoundField DataField="ShiftStartTime" HeaderText="Shift Start" />
                     <asp:BoundField DataField="InTime" HeaderText="In Time"/>
                     <asp:BoundField DataField="ShiftEndTime" HeaderText="Shift Close" />

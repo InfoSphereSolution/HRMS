@@ -94,14 +94,16 @@ namespace SphereInfoSolutionHRMS.Admin
             client = new Client();
             clientmodel = new ClientModel();
             DataTable dtHolidayList = client.GetHolidayList();
-            if (dt.Rows.Count > 0)
+            if (dtHolidayList.Rows.Count > 0)
             {
+                lblMessageHolidayList.Visible = false;
                 gvHolidayList.DataSource = dtHolidayList;
                 gvHolidayList.DataBind();
             }
             else
             {
-                //No records found
+                lblMessageHolidayList.Visible = true;
+                lblMessageHolidayList.Text = "No Holiday Added";
             }
         }
 
@@ -110,13 +112,20 @@ namespace SphereInfoSolutionHRMS.Admin
         {
             client = new Client();
             DataTable dtPendingHolidayList = client.GetPendingHolidayList();
-            if (dt.Rows.Count > 0)
+            if (dtPendingHolidayList.Rows.Count > 0)
             {
+                lblMessagePendingHoliday.Visible = false;
+                btnApproveHoliday.Visible = true;
+                btnRejectHoliday.Visible = true;
                 gvTempHolidayList.DataSource = dtPendingHolidayList;
                 gvTempHolidayList.DataBind();
             }
             else
             {
+                btnApproveHoliday.Visible = false; ;
+                btnRejectHoliday.Visible = false;
+                lblMessagePendingHoliday.Visible = true;
+                lblMessagePendingHoliday.Text = "No records found";
                 //No records found
             }
         }
@@ -283,214 +292,217 @@ namespace SphereInfoSolutionHRMS.Admin
         }
         protected void btnSaveClient_Click(object sender, EventArgs e)
         {
-            bool Is_Sat = false;            
-            if (cbIsSaturdayWorking.Checked)
+            if (Page.IsValid)
             {
-                Is_Sat = true;
-
-            }
-            else
-            {
-                Is_Sat = false;
-
-            }
-
-            clientmodel.ClientName = txtClientName.Text;
-            clientmodel.ClientAddress = txtAddress.Text;
-            clientmodel.StateId = Convert.ToInt32(ddlState.SelectedValue);
-            clientmodel.CityId = Convert.ToInt32(ddlCity.SelectedValue);
-            clientmodel.ClientAddress = txtAddress.Text;
-            clientmodel.pinCode = Convert.ToInt32(txtPincode.Text);
-            clientmodel.WebSite = txtSite.Text;
-            clientmodel.ContactNo = txtContact.Text;
-            clientmodel.IP_Address = txtIP.Text;
-            clientmodel.Is_Sat_Working = Is_Sat;
-            clientmodel.AddedBy = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
-            if (ddlGeneralShift.SelectedItem.Text == "General-1")
-            {
-                clientmodel.General_Shift1 = 1;
-            }
-            else
-            {
-
-                clientmodel.General_Shift1 = 0;
-
-
-            }
-            if (ddlGeneralShift.SelectedItem.Text == "General-2")
-            {
-
-                clientmodel.General_Shift2 = 1;
-            }
-            else
-            {
-                clientmodel.General_Shift2 = 0;
-
-
-            }
-            if (ddlGeneralShift.SelectedItem.Text == "General-3")
-            {
-                clientmodel.General_Shift3 = 1;
-            }
-            else
-            {
-                clientmodel.General_Shift3 = 0;
-
-
-            }
-
-            if (cbSecondShift.Checked)
-            {
-                clientmodel.SecondShift = 1;
-            }
-            else
-            {
-                clientmodel.SecondShift = 0;
-            }
-            if (cbNightShift.Checked)
-            {
-                clientmodel.NightShift = 1;
-            }
-            else
-            {
-                clientmodel.NightShift = 0;
-
-            }
-            if (cbFlexibleShift.Checked)
-            {
-
-                clientmodel.FlexibleTime = 1;
-            }
-            else
-            {
-                clientmodel.FlexibleTime = 0;
-            }
-            //if (cbCustomShift.Checked)
-            //{
-
-            //    clientmodel.IsCustomShift = true;
-            //}
-            //else
-            //{
-
-            //    clientmodel.IsCustomShift = false;
-            //}
-
-            if (cbIsSaturdayWorking.Checked)
-            {
-                // bool sat1 = false, sat2 = false, sat3 = false, sat4 = false, sat5 = false;
-                if (cbFirstSaturday.Checked)
+                bool Is_Sat = false;
+                if (cbIsSaturdayWorking.Checked)
                 {
-                    clientmodel.sat1 = true;
+                    Is_Sat = true;
 
                 }
                 else
                 {
-                    clientmodel.sat1 = false;
-                }
-                if (cbSecondSaturday.Checked)
-                {
-                    clientmodel.sat2 = true;
+                    Is_Sat = false;
 
                 }
-                else
-                {
-                    clientmodel.sat2 = false;
-                }
-                if (cbThirdSaturday.Checked)
-                {
-                    clientmodel.sat3 = true;
 
-                }
-                else
+                clientmodel.ClientName = txtClientName.Text;
+                clientmodel.ClientAddress = txtAddress.Text;
+                clientmodel.StateId = Convert.ToInt32(ddlState.SelectedValue);
+                clientmodel.CityId = Convert.ToInt32(ddlCity.SelectedValue);
+                clientmodel.ClientAddress = txtAddress.Text;
+                clientmodel.pinCode = Convert.ToInt32(txtPincode.Text);
+                clientmodel.WebSite = txtSite.Text;
+                clientmodel.ContactNo = txtContact.Text;
+                clientmodel.IP_Address = txtIP.Text;
+                clientmodel.Is_Sat_Working = Is_Sat;
+                clientmodel.AddedBy = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+                if (ddlGeneralShift.SelectedItem.Text == "General-1")
                 {
-                    clientmodel.sat3 = false;
-                }
-                if (cbFourthSaturday.Checked)
-                {
-
-                    clientmodel.sat4 = true;
+                    clientmodel.General_Shift1 = 1;
                 }
                 else
                 {
 
-                    clientmodel.sat4 = false;
+                    clientmodel.General_Shift1 = 0;
+
+
                 }
-                if (cbFifthSaturday.Checked)
+                if (ddlGeneralShift.SelectedItem.Text == "General-2")
                 {
-                    clientmodel.sat5 = true;
+
+                    clientmodel.General_Shift2 = 1;
                 }
                 else
                 {
+                    clientmodel.General_Shift2 = 0;
 
-                    clientmodel.sat5 = false;
+
                 }
-                btnupdate.Visible = false;
+                if (ddlGeneralShift.SelectedItem.Text == "General-3")
+                {
+                    clientmodel.General_Shift3 = 1;
+                }
+                else
+                {
+                    clientmodel.General_Shift3 = 0;
 
-            }
 
-            clientmodel.Operation = 1;
-            clientmodel.optionalholiday = Convert.ToInt32(txtNoOfOptionalHolidays.Text);
-            //Returns success value
-            //  int i = client.AddClient(clientmodel, ViewState["CustomShift"] as DataTable);
-            int i = client.AddClient(clientmodel);
+                }
 
-            if (i == -1)
-            {
-                lblstatus.Text = "Client Already Added";
+                if (cbSecondShift.Checked)
+                {
+                    clientmodel.SecondShift = 1;
+                }
+                else
+                {
+                    clientmodel.SecondShift = 0;
+                }
+                if (cbNightShift.Checked)
+                {
+                    clientmodel.NightShift = 1;
+                }
+                else
+                {
+                    clientmodel.NightShift = 0;
 
-                lblstatus.ForeColor = System.Drawing.Color.Red;
-            }
-            else if (i == -2)
-            {
-                lblstatus.Text = "Client Name is already exists..Waiting for approval";
-                lblstatus.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (i == 1)
-            {
-                lblstatus.Text = "Client Added Succesfully";
-                lblstatus.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (i == 2)
-            {
-                lblstatus.Text = "Client Updated Succesfully";
-                lblstatus.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (i == 3)
-            {
+                }
+                if (cbFlexibleShift.Checked)
+                {
 
-                lblstatus.Text = "Client Deleted Succesfully";
-                lblstatus.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (i == 4)
-            {
+                    clientmodel.FlexibleTime = 1;
+                }
+                else
+                {
+                    clientmodel.FlexibleTime = 0;
+                }
+                //if (cbCustomShift.Checked)
+                //{
 
-                lblstatus.Text = "Client Added.. Wating for approval.";
-                lblstatus.ForeColor = System.Drawing.Color.Red;
+                //    clientmodel.IsCustomShift = true;
+                //}
+                //else
+                //{
+
+                //    clientmodel.IsCustomShift = false;
+                //}
+
+                if (cbIsSaturdayWorking.Checked)
+                {
+                    // bool sat1 = false, sat2 = false, sat3 = false, sat4 = false, sat5 = false;
+                    if (cbFirstSaturday.Checked)
+                    {
+                        clientmodel.sat1 = true;
+
+                    }
+                    else
+                    {
+                        clientmodel.sat1 = false;
+                    }
+                    if (cbSecondSaturday.Checked)
+                    {
+                        clientmodel.sat2 = true;
+
+                    }
+                    else
+                    {
+                        clientmodel.sat2 = false;
+                    }
+                    if (cbThirdSaturday.Checked)
+                    {
+                        clientmodel.sat3 = true;
+
+                    }
+                    else
+                    {
+                        clientmodel.sat3 = false;
+                    }
+                    if (cbFourthSaturday.Checked)
+                    {
+
+                        clientmodel.sat4 = true;
+                    }
+                    else
+                    {
+
+                        clientmodel.sat4 = false;
+                    }
+                    if (cbFifthSaturday.Checked)
+                    {
+                        clientmodel.sat5 = true;
+                    }
+                    else
+                    {
+
+                        clientmodel.sat5 = false;
+                    }
+                    btnupdate.Visible = false;
+
+                }
+
+                clientmodel.Operation = 1;
+                clientmodel.optionalholiday = Convert.ToInt32(txtNoOfOptionalHolidays.Text);
+                //Returns success value
+                //  int i = client.AddClient(clientmodel, ViewState["CustomShift"] as DataTable);
+                int i = client.AddClient(clientmodel);
+
+                if (i == -1)
+                {
+                    lblstatus.Text = "Client Already Added";
+
+                    lblstatus.ForeColor = System.Drawing.Color.Red;
+                }
+                else if (i == -2)
+                {
+                    lblstatus.Text = "Client Name is already exists..Waiting for approval";
+                    lblstatus.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (i == 1)
+                {
+                    lblstatus.Text = "Client Added Succesfully";
+                    lblstatus.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (i == 2)
+                {
+                    lblstatus.Text = "Client Updated Succesfully";
+                    lblstatus.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (i == 3)
+                {
+
+                    lblstatus.Text = "Client Deleted Succesfully";
+                    lblstatus.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (i == 4)
+                {
+
+                    lblstatus.Text = "Client Added.. Wating for approval.";
+                    lblstatus.ForeColor = System.Drawing.Color.Red;
+                }
+                else if (i == 5)
+                {
+                    lblstatus.Text = "Client Updated.. Wating for approval.";
+                    lblstatus.ForeColor = System.Drawing.Color.Red;
+                }
+                else if (i == -5)
+                {
+                    lblstatus.Text = "Request already exists.. Wating for approval.";
+                    lblstatus.ForeColor = System.Drawing.Color.Red;
+                }
+                else if (i == 6)
+                {
+                    lblstatus.Text = "Deleted .. Wating for approval.";
+                    lblstatus.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    lblstatus.Text = "Error";
+                    lblstatus.ForeColor = System.Drawing.Color.Red;
+                }
+                DisplayMasterClient();
+                Displaytemptable();
+                clearall();
             }
-            else if (i == 5)
-            {
-                lblstatus.Text = "Client Updated.. Wating for approval.";
-                lblstatus.ForeColor = System.Drawing.Color.Red;
-            }
-            else if (i == -5)
-            {
-                lblstatus.Text = "Request already exists.. Wating for approval.";
-                lblstatus.ForeColor = System.Drawing.Color.Red;
-            }
-            else if (i == 6)
-            {
-                lblstatus.Text = "Deleted .. Wating for approval.";
-                lblstatus.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                lblstatus.Text = "Error";
-                lblstatus.ForeColor = System.Drawing.Color.Red;
-            }
-            DisplayMasterClient();
-            Displaytemptable();
-            clearall();
         }
         ////Add Cutom Shift
         ////protected void btnAddCustomShift_Click(object sender, EventArgs e)
@@ -855,7 +867,11 @@ namespace SphereInfoSolutionHRMS.Admin
                 Button btnRemoveClient = (Button)e.Row.FindControl("btnRemoveClient");
                 Button btnEditClient = (Button)e.Row.FindControl("btnEditClient");
                 Button btnViewClient = (Button)e.Row.FindControl("btnViewClient");
-
+                btnRemoveClient.Attributes["onclick"] = "if(!confirm('Do you want to delete Client?')){ return false; };";
+                btnEditClient.Attributes["onclick"] = "if(!confirm('Do you want to Edit Client?')){ return false; };";
+                btnViewClient.Attributes["onclick"] = "if(!confirm('Do you want to View Client Details?')){ return false; };";
+          
+               
                 if (IsActive == 0)
                 {
                     e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#D5D8DC"); ;
@@ -1206,72 +1222,86 @@ namespace SphereInfoSolutionHRMS.Admin
         //Add holiday by clients
         protected void btnAddHoliday_Click(object sender, EventArgs e)
         {
-            int Result = 0;
-            string Action = Convert.ToString(((Button)sender).CommandArgument);
-            if (Action == "Save")
+            if (Page.IsValid)
             {
-                //Add new Holiday
-                Result = client.UpdateHolidayDetails(GetHolidayAttributes(), 1);
+                int Result = 0;
+                string Action = Convert.ToString(((Button)sender).CommandArgument);
+                if (Action == "Save")
+                {
+                    //Add new Holiday
+                    Result = client.UpdateHolidayDetails(GetHolidayAttributes(), 1);
+                }
+                else
+                {
+                    //Update Holiday
+                    Result = client.UpdateHolidayDetails(GetHolidayAttributes(), 2);
+                }
+
+                DisplayResultMessage(Result);
             }
-            else
-            {
-                //Update Holiday
-                Result = client.UpdateHolidayDetails(GetHolidayAttributes(), 2);
-            }
-            
-            DisplayResultMessage(Result);
-            
         }
         //Display Alert msgs for holidays
         private void DisplayResultMessage(int Result)
         {
-            BindgvHolidayList();
-            BindgvTempHolidayList();
-            ClearHolidayControls();
+            
             if (Result == -1)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('This Holiday Exists for this client.');", true);
+                lblMessageAddHoliday.Text = "This Holiday Exists for this client.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('This Holiday Exists for this client.');", true);
             }
             else if (Result == -2)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('This Holiday Exists for this client waiting for approval.');", true);
+                lblMessageAddHoliday.Text = "This Holiday Exists for this client waiting for approval.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('This Holiday Exists for this client waiting for approval.');", true);
             }
             else if (Result == 1)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Added Succesfully.');", true);
+                lblMessageAddHoliday.Text = "Holiday Added Succesfully.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Added Succesfully.');", true);
             }
             else if (Result == 2)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Added waiting for approval.');", true);
+                lblMessageAddHoliday.Text = "Holiday Added waiting for approval.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Added waiting for approval.');", true);
             }
             else if (Result == 3)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Updated Successfully.');", true);
+                lblMessageAddHoliday.Text = "Holiday Updated Successfully.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Updated Successfully.');", true);
             }
             else if (Result == -3)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Request for update of this Holiday Already exists for this client.');", true);
+                lblMessageAddHoliday.Text = "Request for update of this Holiday Already exists for this client.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Request for update of this Holiday Already exists for this client.');", true);
             }
             else if (Result == 4)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Updated waiting for approval.');", true);
+                lblMessageAddHoliday.Text = "Holiday Updated waiting for approval.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Updated waiting for approval.');", true);
             }
             else if (Result == 5)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Deleted Successfully.');", true);
+                lblMessageAddHoliday.Text = "Holiday Deleted Successfully.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holiday Deleted Successfully.');", true);
             }
             else if (Result == -5)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Request for Delete holiday already exists for this client');", true);
+                lblMessageAddHoliday.Text = "Request for Delete holiday already exists for this client.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Request for Delete holiday already exists for this client');", true);
             }
             else if (Result == 6)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holidaty Deleted waiting for approval');", true);
+                lblMessageAddHoliday.Text = "Holidaty Deleted waiting for approval.";
+               // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holidaty Deleted waiting for approval');", true);
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Error.');", true);
+                lblMessageAddHoliday.Text = "Error.";
+                //ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Error.');", true);
             }
+            BindgvHolidayList();
+            BindgvTempHolidayList();
+            ClearHolidayControls();
         }
 
         //Add Holiday values to model
@@ -1421,6 +1451,39 @@ namespace SphereInfoSolutionHRMS.Admin
                             //lblMessageTempDesignation.ForeColor = System.Drawing.Color.Red;
                         }
                     }
+                }
+            }
+        }
+
+        protected void gvHolidayList_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                int IsActive = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "IsActive"));
+                Button btnRemove = (Button)e.Row.FindControl("btnRemoveHoliday");
+                Button btnEdit = (Button)e.Row.FindControl("btnEditHoliday");
+
+                btnRemove.Attributes["onclick"] = "if(!confirm('Do you want to delete Holiday?')){ return false; };";
+
+                if (IsActive == 0)
+                {
+                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#D5D8DC"); ;
+                    btnRemove.Enabled = false;
+                    btnEdit.Enabled = false;
+                    btnRemove.CssClass = "btn btn-danger btn-xs disabled";
+
+                }
+                else if (IsActive == 1)
+                {
+                    //e.Row.BackColor = System.Drawing.Color.Honeydew;
+                    //btnRemove.Visible = true;
+                    btnEdit.Enabled = true;
+                    btnRemove.Enabled = true;
+
+                }
+                else
+                {
+                    e.Row.BackColor = System.Drawing.Color.Blue;
                 }
             }
         }

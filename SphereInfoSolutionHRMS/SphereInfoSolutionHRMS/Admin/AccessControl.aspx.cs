@@ -27,6 +27,7 @@ namespace SphereInfoSolutionHRMS.Admin
         {
             if (!IsPostBack)
             {
+                ((NestedMasterHome)this.Master).PageName = "Access Control";
                 PopulateAccessControl(access.FetchAccess(), 0, null);
                 bindDesignation();
             }
@@ -114,18 +115,20 @@ namespace SphereInfoSolutionHRMS.Admin
 
         protected void btnGiveAccess_Click(object sender, EventArgs e)
         {
-            dt.Columns.Add("Access_Id", typeof(Int32));
-            dt.Columns.Add("DesignationId", typeof(Int32));
-            dt.Columns.Add("MenuId", typeof(Int32));
-            dt.Columns.Add("IsAdd", typeof(Boolean));
-            dt.Columns.Add("IsUpdate", typeof(Boolean));
-            dt.Columns.Add("IsDelete", typeof(Boolean));
-            dt.Columns.Add("IsApprove", typeof(Boolean));
-            dt.Columns.Add("AddedBy", typeof(Int32));
-            dt.Columns.Add("AddedOn", typeof(DateTime));
-            TreeNodeCollection tvAccessControl = this.tvAccessControl.Nodes;            
-            Boolean i = access.GrantAccess(GetCheckedNodes(tvAccessControl));
-
+            if (Page.IsValid)
+            {
+                dt.Columns.Add("Access_Id", typeof(Int32));
+                dt.Columns.Add("DesignationId", typeof(Int32));
+                dt.Columns.Add("MenuId", typeof(Int32));
+                dt.Columns.Add("IsAdd", typeof(Boolean));
+                dt.Columns.Add("IsUpdate", typeof(Boolean));
+                dt.Columns.Add("IsDelete", typeof(Boolean));
+                dt.Columns.Add("IsApprove", typeof(Boolean));
+                dt.Columns.Add("AddedBy", typeof(Int32));
+                dt.Columns.Add("AddedOn", typeof(DateTime));
+                TreeNodeCollection tvAccessControl = this.tvAccessControl.Nodes;
+                Boolean i = access.GrantAccess(GetCheckedNodes(tvAccessControl));
+            }
         }
 
 

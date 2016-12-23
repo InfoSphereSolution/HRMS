@@ -13,6 +13,24 @@ namespace SphereInfoSolutionHRMS.Admin {
     public partial class role {
         
         /// <summary>
+        /// ToolkitScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager ToolkitScriptManager1;
+        
+        /// <summary>
+        /// RolePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel RolePanel;
+        
+        /// <summary>
         /// pnListRole control.
         /// </summary>
         /// <remarks>
@@ -29,6 +47,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchRole;
+        
+        /// <summary>
+        /// RFSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFSearch;
         
         /// <summary>
         /// btnSearch control.
@@ -130,6 +157,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.TextBox txtrolename;
         
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
         /// ddllevel control.
         /// </summary>
         /// <remarks>
@@ -137,6 +173,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddllevel;
+        
+        /// <summary>
+        /// reqValQuestionType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator reqValQuestionType;
         
         /// <summary>
         /// btnAddRole control.

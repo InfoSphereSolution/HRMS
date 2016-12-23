@@ -21,6 +21,7 @@ namespace SphereInfoSolutionHRMS.Attendance
         {
             if (!IsPostBack)
             {
+                ((NestedMasterHome)this.Master).PageName = "Leave";
                 BindLeaveType();
                 BindLeaveDetails();
                 BindApprovalLeaveDetails();
@@ -93,7 +94,7 @@ namespace SphereInfoSolutionHRMS.Attendance
             Label lblDate = (Label)row.FindControl("lblFrom");
             Int32 LeaveID = Convert.ToInt32(lblID.Text);
             DateTime LeaveDate = Convert.ToDateTime(lblDate.Text);
-            LeaveDate.ToString("YYYY-mm-dd");
+            LeaveDate.ToString("yyyy/M/dd");
             Boolean result = false;
 
             if (e.CommandName.Equals("CancelLeave"))
@@ -155,7 +156,7 @@ namespace SphereInfoSolutionHRMS.Attendance
 
             Int32 LeaveID = Convert.ToInt32(lblID.Text);
             DateTime LeaveDate = Convert.ToDateTime(lblDate.Text);
-            LeaveDate.ToString("YYYY-mm-dd");
+            LeaveDate.ToString("yyyy/M/dd");
             Boolean result = false;
 
             if (e.CommandName.Equals("Approve"))
@@ -227,7 +228,7 @@ namespace SphereInfoSolutionHRMS.Attendance
             dt.Columns.Add("Date");
             for (DateTime StartDate = FromDate.Date; StartDate.Date <= ToDate.Date; StartDate = StartDate.AddDays(1))
             {
-                dt.Rows.Add(StartDate.Date.ToString("dd'/'MM'/'yyyy"));
+                dt.Rows.Add(StartDate.Date.ToString("yyyy/M/dd"));
             }
             try
             {
@@ -244,15 +245,23 @@ namespace SphereInfoSolutionHRMS.Attendance
         //Apply leave 
         protected void btnApply_Click(object sender, EventArgs e)
         {
-            int i = leave.ApplyLeave(getLeaveInfo(), getHalfdayDetails());
-            if (i == 1) //Successfull
+            if (Page.IsValid)
             {
+                int i = leave.ApplyLeave(getLeaveInfo(), getHalfdayDetails());
+                if (i == 1) //Successfull
+                {
+                    lblMessageLeaveDetails.Text = "Leave Applied Successfully";
+                }
+                else if (1 == 0) // Already Applied
+                {
+                    lblMessageLeaveDetails.Text = "Leave Already Applied";
+                }
+                else
+                {
+                    lblMessageLeaveDetails.Text = "Error";
+                }
+                BindLeaveDetails();
             }
-            else if (1 == 0) // Already Applied
-            {
-            }
-            else
-            { }
         }
 
         //get the details of the leave

@@ -22,6 +22,15 @@ namespace SphereInfoSolutionHRMS.Admin {
         protected global::System.Web.UI.WebControls.DropDownList ddlDesignation;
         
         /// <summary>
+        /// RFDesignation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RFDesignation;
+        
+        /// <summary>
         /// tvAccessControl control.
         /// </summary>
         /// <remarks>

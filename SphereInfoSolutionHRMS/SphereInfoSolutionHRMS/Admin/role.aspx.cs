@@ -123,52 +123,61 @@ namespace SphereInfoSolutionHRMS.Admin
                 e.Row.Attributes.Add("onmouseout", "MouseEvents(this, event)");
             }
         }
-
+        public void clearall()
+        {
+            txtrolename.Text = "";
+            ddllevel.SelectedIndex = -1;
+        }
 
         protected void btnAddRole_Click(object sender, EventArgs e)
         {
-            rolemodel.RoleName = txtrolename.Text;
-            if (!String.IsNullOrEmpty(ddllevel.SelectedValue.ToString()))
+            if (Page.IsValid)
             {
-                rolemodel.RoleLevel = Convert.ToInt32(ddllevel.SelectedValue.ToString());
-            }
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                rolemodel.CreatedBy = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
-                // Do stuf...
-            }
-            BAL.Role rolelevel = new BAL.Role();
-            int i = rolelevel.AddRole(rolemodel);
-            if (i == -1)
-            {
-                lblMessage.Text = "Role Already Exist";
+                rolemodel.RoleName = txtrolename.Text;
+                if (!String.IsNullOrEmpty(ddllevel.SelectedValue.ToString()))
+                {
+                    rolemodel.RoleLevel = Convert.ToInt32(ddllevel.SelectedValue.ToString());
+                }
+                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                {
+                    rolemodel.CreatedBy = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
+                    // Do stuf...
+                }
+                BAL.Role rolelevel = new BAL.Role();
+                int i = rolelevel.AddRole(rolemodel);
+                if (i == -1)
+                {
+                    lblMessage.Text = "Role Already Exist";
 
-                lblMessage.ForeColor = System.Drawing.Color.Red;
-            }
-            else if (i == 1)
-            {
-                lblMessage.Text = "Role Added Succesfully";
-                lblMessage.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (i == 3)
-            {
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
+                else if (i == 1)
+                {
+                    lblMessage.Text = "Role Added Succesfully";
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (i == 3)
+                {
 
-                lblMessage.Text = "Role Added Succesfully.. Wating for approval.";
-                lblMessage.ForeColor = System.Drawing.Color.Green;
-            }
-            else if (i == -3)
-            {
+                    lblMessage.Text = "Role Added Succesfully.. Wating for approval.";
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                }
+                else if (i == -3)
+                {
 
-                lblMessage.Text = "Role Already Exist.. Wating for approval.";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
+                    lblMessage.Text = "Role Already Exist.. Wating for approval.";
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
+                else
+                {
+                    lblMessage.Text = "Error";
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
+                bindgrid();
+                bindTempgrid();
+                clearall();
             }
-            else
-            {
-                lblMessage.Text = "Error";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
-            }
-            bindgrid();
-            bindTempgrid();
+            
         }
 
         protected void gvRole_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -214,14 +223,15 @@ namespace SphereInfoSolutionHRMS.Admin
             {
                 int IsActive = Convert.ToInt32(DataBinder.Eval(e.Row.DataItem, "IsActive"));
                 Button btnRemove = (Button)e.Row.FindControl("btnRemove");
-                if (IsDelete)
-                {
-                    btnRemove.Visible = true;
-                }
-                else
-                {
-                    btnRemove.Visible = false;
-                }
+                btnRemove.Attributes["onclick"] = "if(!confirm('Do you want to delete Role?')){ return false; };";
+                //if (IsDelete)
+                //{
+                //    btnRemove.Visible = true;
+                //}
+                //else
+                //{
+                //    btnRemove.Visible = false;
+                //}
 
                 if (IsActive == 0)
                 {
@@ -311,22 +321,25 @@ namespace SphereInfoSolutionHRMS.Admin
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            String SearchRole = txtSearchRole.Text;
-            txtSearchRole.Text = "";
-            DataTable dt = rolelevel.SearchRole(SearchRole);
-            if (dt.Rows.Count > 0)
+            if (Page.IsValid)
             {
-                gvRole.DataSource = dt;
-                gvRole.DataBind();
-                gvRole.Visible = true;
-                lblMessageRole.Text = "";
-            }
-            else
-            {
-                gvRole.Visible = false;
-                lblMessageRole.Text = "No Roles Found";
-                lblMessageRole.ForeColor = System.Drawing.Color.Red;
+                String SearchRole = txtSearchRole.Text;
+                txtSearchRole.Text = "";
+                DataTable dt = rolelevel.SearchRole(SearchRole);
+                if (dt.Rows.Count > 0)
+                {
+                    gvRole.DataSource = dt;
+                    gvRole.DataBind();
+                    gvRole.Visible = true;
+                    lblMessageRole.Text = "";
+                }
+                else
+                {
+                    gvRole.Visible = false;
+                    lblMessageRole.Text = "No Roles Found";
+                    lblMessageRole.ForeColor = System.Drawing.Color.Red;
 
+                }
             }
         }
 

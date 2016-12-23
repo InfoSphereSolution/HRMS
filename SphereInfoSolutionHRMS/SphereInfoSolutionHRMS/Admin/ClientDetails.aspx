@@ -3,7 +3,57 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="homeContentPlaceHolder" runat="server">
+    <script type="text/javascript">
+        function DeleteConfirm() {
+            var Ans = confirm("Do you want to Delete Selected Client Record?");
+            if (Ans) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function AddConfirm() {
+            var Ans = confirm("Do you want to Add Selected Client Record?");
+            if (Ans) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function DeleteHolidayConfirm() {
+            var Ans = confirm("Do you want to Delete Selected Holiday Record?");
+            if (Ans) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function AddHolidayConfirm() {
+            var Ans = confirm("Do you want to Add Selected Holiday Record?");
+            if (Ans) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+    <script type="text/javascript">
 
+        function isNumber(evt) {
+
+            var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+            if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+                return false;
+
+            return true;
+        }
+
+
+    </script>
     <cc1:ToolkitScriptManager runat="server"></cc1:ToolkitScriptManager>
 
 
@@ -112,8 +162,8 @@
                                         </asp:TemplateField>--%>
                                 </Columns>
                             </asp:GridView>
-                            <asp:Button ID="btnApproveClient" runat="server" Text="Approve" CssClass="btn btn-success btn-md" Width="100px" OnClick="btnApproveClient_Click" />&nbsp;&nbsp;
-                        <asp:Button ID="btnRejectClient" runat="server" Text="Reject" CssClass="btn btn-danger btn-md" Width="100px" OnClick="btnRejectClient_Click" />
+                            <asp:Button ID="btnApproveClient" runat="server" Text="Approve" CssClass="btn btn-success btn-md" Width="100px" OnClick="btnApproveClient_Click" OnClientClick="return AddConfirm();" />&nbsp;&nbsp;
+                        <asp:Button ID="btnRejectClient" runat="server" Text="Reject" CssClass="btn btn-danger btn-md" Width="100px" OnClick="btnRejectClient_Click" OnClientClick="return DeleteConfirm();" />
                             <br />
                             <asp:Label ID="lblMessagePendingClientList" runat="server"></asp:Label>
                         </asp:Panel>
@@ -135,6 +185,8 @@
                                         <div class="col-sm-8 col-xs-12 form-group">
                                             <asp:Label ID="lblClientName" runat="server" Text="Name" Font-Bold="true"></asp:Label>
                                             <asp:TextBox ID="txtClientName" CssClass="form-control" runat="server" placeholder="Enter Client Name Here.."></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFClientName" ValidationGroup="grpclient" runat="server" ErrorMessage="Enter Client Name" ControlToValidate="txtClientName" ForeColor="Red"></asp:RequiredFieldValidator>
+
                                         </div>
                                     </div>
                                     <%--<div class="form-group">
@@ -144,11 +196,15 @@
                                     <div class="form-group">
                                         <asp:Label ID="lblAddress" runat="server" Text="Address" Font-Bold="true"></asp:Label>
                                         <asp:TextBox ID="txtAddress" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Enter Address Here.." runat="server"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RFAddress" ValidationGroup="grpclient" runat="server" ErrorMessage="Enter Address" ControlToValidate="txtAddress" ForeColor="Red"></asp:RequiredFieldValidator>
+
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblState" runat="server" Text="State" Font-Bold="true"></asp:Label>
                                             <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control"></asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RFState" runat="server" ValidationGroup="grpclient" ErrorMessage="Select State"
+                                                ControlToValidate="ddlState" InitialValue="--Select State--" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                             <div style="padding: 2px;">
                                                 <asp:Button ID="btnAddStatePanel" runat="server" CssClass="btn btn-primary btn-md form-control pull-right" Text="+" Width="15%" />
@@ -171,10 +227,11 @@
                                                     </div>
                                                     <div class="modal-body" style="padding: 5px;">
                                                         <asp:TextBox ID="txtStateName" CssClass="form-control" placeholder="Enter State Name Here.." runat="server"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="RFVState" ValidationGroup="grpclientState" runat="server" ErrorMessage="Enter State Name" ForeColor="Red" ControlToValidate="txtStateName"></asp:RequiredFieldValidator>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <asp:Button ID="btnCancelState" runat="server" class="btn btn-md btn-primary" Text="Cancel" />
-                                                        <asp:Button ID="btnAddNewState" runat="server" class="btn btn-md btn-primary" Text="Add State" OnClick="btnAddNewState_Click" />
+                                                        <asp:Button ID="btnAddNewState" runat="server" class="btn btn-md btn-primary" Text="Add State" OnClick="btnAddNewState_Click" ValidationGroup="grpclientState" />
                                                     </div>
                                                 </div>
                                             </asp:Panel>
@@ -184,9 +241,11 @@
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblCity" runat="server" Text="City" Font-Bold="true"></asp:Label>
                                             <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control"></asp:DropDownList>
+                                            <asp:RequiredFieldValidator ID="RFVCity" runat="server" ErrorMessage="Select City" ValidationGroup="grpclientCity"
+                                                ControlToValidate="ddlCity" InitialValue="--Select City--" ForeColor="Red"></asp:RequiredFieldValidator>
 
                                             <div style="padding: 2px;">
-                                                <asp:Button ID="btnAddCityPanel" runat="server" CssClass="btn btn-primary btn-md form-control pull-right" Text="+" Width="15%" />
+                                                <asp:Button ID="btnAddCityPanel" runat="server" CssClass="btn btn-primary btn-md form-control pull-right" Text="+" Width="15%" ValidationGroup="grpclientCity" />
                                             </div>
 
                                             <cc1:ModalPopupExtender ID="mpeAddCity" runat="server"
@@ -205,7 +264,9 @@
                                                     <div class="modal-body" style="padding: 5px;">
 
                                                         <asp:DropDownList ID="ddlCityState" runat="server" CssClass="form-control"></asp:DropDownList>
+
                                                         <asp:TextBox ID="txtCityName" CssClass="form-control" placeholder="Enter City Name Here.." runat="server"></asp:TextBox>
+
                                                     </div>
                                                     <div class="modal-footer">
                                                         <asp:Button ID="btnCancelCity" runat="server" class="btn btn-md btn-primary" Text="Cancel" />
@@ -219,23 +280,40 @@
 
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblPincode" runat="server" Text="Pincode" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtPincode" CssClass="form-control" runat="server" placeholder="Enter Pincode Here.."></asp:TextBox>
+                                            <asp:TextBox ID="txtPincode" CssClass="form-control" runat="server" MaxLength="6" placeholder="Enter Pincode Here.." onkeypress="javascript:return isNumber(event)"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFPinCode" ValidationGroup="grpclient" runat="server" ErrorMessage="Enter Pin Code" ForeColor="Red"
+                                                ControlToValidate="txtPincode">
+                                            </asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegExpPinCode" ValidationGroup="grpclient" runat="server" ErrorMessage="Pincode should be of 6 digits"
+                                                ForeColor="Red" ControlToValidate="txtPincode" ValidationExpression="[0-9]{6}"></asp:RegularExpressionValidator>
+
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6 form-group">
                                             <asp:Label ID="lblContact" runat="server" Text="Contact" Font-Bold="true"></asp:Label>
-                                            <asp:TextBox ID="txtContact" CssClass="form-control" runat="server" placeholder="Enter Phone Number Here.."></asp:TextBox>
+                                            <asp:TextBox ID="txtContact" CssClass="form-control" runat="server" MaxLength="10" placeholder="Enter Phone Number Here.." onkeypress="javascript:return isNumber(event)"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFContactNo" ValidationGroup="grpclient" runat="server" ErrorMessage="Enter Contact No" ForeColor="Red" ControlToValidate="txtContact">
+                                            </asp:RequiredFieldValidator>
+                                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ValidationGroup="grpclient" runat="server" ForeColor="Red" ErrorMessage="Contact number should be of 10 digits"
+                                                ControlToValidate="txtContact" ValidationExpression="[0-9]{10}"></asp:RegularExpressionValidator>
+
                                         </div>
                                         <div class="col-sm-6 form-group">
                                             <asp:Label ID="lblSite" runat="server" Text="Website" Font-Bold="true"></asp:Label>
                                             <asp:TextBox ID="txtSite" CssClass="form-control" runat="server" placeholder="Enter Website Address Here.."></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFSite" runat="server" ValidationGroup="grpclient" ErrorMessage="Enter Site" ForeColor="Red" ControlToValidate="txtSite"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <asp:Label ID="lblIP" runat="server" Text="IP Address" Font-Bold="true"></asp:Label>
                                         <asp:TextBox ID="txtIP" CssClass="form-control" runat="server" placeholder="Enter IP Adress Here.."></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="RFIPAddress" runat="server" ValidationGroup="grpclient" ErrorMessage="Enter IP address" ForeColor="Red"
+                                            ControlToValidate="txtIP"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ID="REgExpIPaddress" runat="server" ValidationGroup="grpclient" ErrorMessage="Invalid IP" ControlToValidate="txtIP"
+                                            ValidationExpression="\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b"></asp:RegularExpressionValidator>
+
                                     </div>
                                     <asp:UpdatePanel ID="satworkingpanel" runat="server">
                                         <ContentTemplate>
@@ -267,6 +345,7 @@
                                         <div class="col-sm-4 form-group">
                                             <asp:Label ID="lblNoOfOptionalHolidays" runat="server" Text="Number of Paid Optional Holidays" Font-Bold="true"></asp:Label>
                                             <asp:TextBox ID="txtNoOfOptionalHolidays" CssClass="form-control" runat="server" placeholder="Enter Number of Paid Optional Holidays Allowed Here.."></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RFOptional" runat="server" ValidationGroup="grpclient" ForeColor="Red" ControlToValidate="txtNoOfOptionalHolidays" ErrorMessage="Enter Number of  Optional Holidays"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
 
@@ -294,6 +373,7 @@
                                                         <asp:ListItem Text="General-2" Value="2" />
                                                         <asp:ListItem Text="General-3" Value="3" />
                                                     </asp:DropDownList>
+                                                    <asp:RequiredFieldValidator ID="RFddlShift" ValidationGroup="grpclient" runat="server" ControlToValidate="ddlGeneralShift" InitialValue="0" ErrorMessage="Select Shift" ForeColor="Red"></asp:RequiredFieldValidator>
                                                 </div>
                                                 <div class="col-sm-6 form-group">
                                                     <asp:Label ID="lblGeneralShiftDetails" runat="server" Text="Label">
@@ -400,7 +480,8 @@
 
                                     <asp:Button ID="btnBackClientDetails" href="#clientDetails" aria-controls="clientDetails" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-left" Text="Back" />
 
-                                    <asp:Button ID="btnSaveClient" runat="server" class="btn btn-lg btn-primary pull-right" Text="Save" OnClick="btnSaveClient_Click" />
+                                    <asp:Button ID="btnSaveClient" ValidationGroup="grpclient" runat="server" class="btn btn-lg btn-primary pull-right" Text="Save" OnClick="btnSaveClient_Click"
+                                        OnClientClick="if (typeof(Page_ClientValidate) == 'function') { Page_ClientValidate(); if(Page_IsValid) { return confirm('Do You Want To Save this Client?'); } };" />
                                     <asp:Button runat="server" ID="btnupdate" class="btn btn-lg btn-primary pull-right" Text="Update" OnClick="btnupdate_Click" Visible="false" />
                                     <asp:Label runat="server" ID="lblstatus"></asp:Label>
                                     <%--<asp:Button ID="btnToHoliday" href="#holidayList" aria-controls="holidayList" role="tab" data-toggle="tab" runat="server" class="btn btn-lg btn-primary pull-right" Text="Next" />--%>
@@ -420,10 +501,10 @@
                                     <table class="table-condensed">
                                         <tr>
                                             <td>
-                                                <asp:TextBox ID="txtSearchHoliday" runat="server" CssClass="form-control input-md" placeholder="Enter Holiday"></asp:TextBox>
+                                                <asp:TextBox ID="txtSearchHoliday" ValidationGroup="grpsearch" runat="server" CssClass="form-control input-md" placeholder="Enter Holiday"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:Button ID="btnSearchHoliday" runat="server" Text="Search" CssClass="btn btn-primary btn-md" />
+                                                <asp:Button ID="btnSearchHoliday" ValidationGroup="grpsearch" runat="server" Text="Search" CssClass="btn btn-primary btn-md" />
                                             </td>
                                             <td>
                                                 <asp:Button ID="btnShowAllHolidays" runat="server" Text="Show All Holidays" CssClass="btn btn-primary btn-md" />
@@ -435,7 +516,7 @@
                                 <asp:Panel ID="pnlHolidayList" runat="server" Visible="false">
                                     <h3 class="text-primary">List of Holidays</h3>
                                     <asp:GridView ID="gvHolidayList" runat="server" DataKeyNames="Cl_HolidayId" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-condensed"
-                                        HeaderStyle-CssClass="gvHeader" OnRowCommand="gvHolidayList_RowCommand">
+                                        HeaderStyle-CssClass="gvHeader" OnRowCommand="gvHolidayList_RowCommand" OnRowDataBound="gvHolidayList_RowDataBound">
                                         <Columns>
                                             <asp:BoundField DataField="Cl_HolidayId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                             <asp:BoundField DataField="HolidayName" HeaderText="Holiday Name" />
@@ -484,8 +565,8 @@
                                             <asp:BoundField DataField="Operation" HeaderText="Operation" />
                                         </Columns>
                                     </asp:GridView>
-                                    <asp:Button ID="btnApproveHoliday" runat="server" Text="Approve" CssClass="btn btn-success btn-md" Width="100px" OnClick="btnApproveHoliday_Click" />&nbsp;&nbsp;
-                                        <asp:Button ID="btnRejectHoliday" runat="server" Text="Reject" CssClass="btn btn-danger btn-md" Width="100px" OnClick="btnRejectHoliday_Click" />
+                                    <asp:Button ID="btnApproveHoliday" runat="server" Text="Approve" OnClientClick="return confirm('Selected data will be Approved?');" CssClass="btn btn-success btn-md" Width="100px" OnClick="btnApproveHoliday_Click" />&nbsp;&nbsp;
+                                        <asp:Button ID="btnRejectHoliday" runat="server" Text="Reject" OnClientClick="return confirm('Selected data will be Rejected?');" CssClass="btn btn-danger btn-md" Width="100px" OnClick="btnRejectHoliday_Click" />
                                     <br />
                                     <asp:Label ID="lblMessagePendingHoliday" runat="server"></asp:Label>
                                 </asp:Panel>
@@ -501,6 +582,7 @@
                                         <tr>
                                             <td>
                                                 <asp:TextBox ID="txtHolidayname" runat="server" placeholder="Enter Holiday.." Width="250px" CssClass="form-control input-md"></asp:TextBox>
+                                                <asp:RequiredFieldValidator ID="RFHolidayname" ValidationGroup="grpholiday" runat="server" ErrorMessage="Enter Holiday Name" ForeColor="Red" ControlToValidate="txtHolidayname"></asp:RequiredFieldValidator>
                                             </td>
                                         </tr>
                                         <tr>
@@ -509,12 +591,16 @@
                                                 <cc1:CalendarExtender ID="CalendarExtender1" runat="server" TargetControlID="txtHolidayDate"
                                                     Format="yyyy/MM/dd">
                                                 </cc1:CalendarExtender>
+                                                <asp:RequiredFieldValidator ID="RFHolidayDate" runat="server" ValidationGroup="grpholiday" ControlToValidate="txtHolidayDate" ForeColor="Red" ErrorMessage="SelectDate"></asp:RequiredFieldValidator>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <asp:DropDownList ID="ddlClientName" runat="server" Width="250px" CssClass="form-control input-md">
                                                 </asp:DropDownList>
+                                                <asp:RequiredFieldValidator ID="RFClientNmae" runat="server" ValidationGroup="grpholiday" ControlToValidate="ddlClientName" ErrorMessage="Select Client" ForeColor="Red" InitialValue="0"></asp:RequiredFieldValidator>
+
+
                                             </td>
                                         </tr>
                                         <tr>
@@ -526,12 +612,15 @@
 
                                                 </asp:DropDownList>
 
+                                                <asp:RequiredFieldValidator ID="RFDISOptional" ValidationGroup="grpholiday" runat="server" ControlToValidate="ddlIsOptional" ForeColor="Red" ErrorMessage="Select IsOptional" InitialValue="2"></asp:RequiredFieldValidator>
+
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td colspan="2">
-                                                <asp:Button ID="btnAddHoliday" runat="server" Text="Add" CommandArgument="Save" Width="250px" CssClass="btn btn-success btn-md" OnClick="btnAddHoliday_Click"></asp:Button>
+                                                <asp:Button ID="btnAddHoliday" ValidationGroup="grpholiday" runat="server" Text="Add" CommandArgument="Save" Width="250px" CssClass="btn btn-success btn-md" OnClick="btnAddHoliday_Click"
+                                                    OnClientClick="if (typeof(Page_ClientValidate) == 'function') { Page_ClientValidate(); if(Page_IsValid) { return confirm('Do You Want To Save this Holiday?'); } };"></asp:Button>
                                             </td>
                                         </tr>
                                         <tr>
