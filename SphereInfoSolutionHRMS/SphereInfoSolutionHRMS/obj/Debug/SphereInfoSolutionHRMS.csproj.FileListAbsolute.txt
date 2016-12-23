@@ -39,11 +39,9 @@ C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolution
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\BAL.dll
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\DAL.dll
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Models.dll
-C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxMin.dll
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\BAL.pdb
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\DAL.pdb
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Models.pdb
-C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxControlToolkit.pdb
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.csprojResolveAssemblyReference.cache
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.dll
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.pdb
@@ -51,9 +49,6 @@ C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolution
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\RdlCompile.compiled
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\RdlCompile.cache
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\RdlCompile.compiled
-C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\HtmlAgilityPack.dll
-C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\HtmlAgilityPack.pdb
-C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\HtmlAgilityPack.xml
 C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\RdlCompile.cache
 C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\RdlCompile.compiled
 C:\Users\admin\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\AjaxControlToolkit.dll
