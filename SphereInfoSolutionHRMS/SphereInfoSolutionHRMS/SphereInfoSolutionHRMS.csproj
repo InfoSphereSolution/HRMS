@@ -360,7 +360,9 @@
     <Folder Include="Javascript\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\RDLCReports\Attendance\Details\ReportAttendanceDetails.rdlc" />
+    <Content Include="Reports\RDLCReports\Attendance\Details\ReportAttendanceDetails.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Reports\RDLCReports\Attendance\Summary\AttendanceSummaryReport.rdlc" />
     <EmbeddedResource Include="Reports\RDLCReports\Employees\ReportActiveOrNotActiveEmployees.rdlc" />
     <EmbeddedResource Include="Reports\RDLCReports\Holiday\Details\ReportHoliday.rdlc" />

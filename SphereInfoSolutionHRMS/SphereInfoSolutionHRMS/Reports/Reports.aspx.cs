@@ -149,7 +149,9 @@ namespace SphereInfoSolutionHRMS.Reports
         {
 
             ReportViewerAttendanceDetails.ProcessingMode = ProcessingMode.Local;
+           
             ReportViewerAttendanceDetails.LocalReport.ReportPath = Server.MapPath("~/Reports/RDLCReports/Attendance/Details/ReportAttendanceDetails.rdlc");
+           
             if (dtDetails.Rows.Count > 0)
             {
                 ReportViewerAttendanceDetails.Visible = true;

@@ -115,9 +115,9 @@ namespace SphereInfoSolutionHRMS
             ipaddr = System.Net.Dns.GetHostName();
             IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(ipaddr);
             IPAddress[] addr = ipEntry.AddressList;
-            ipaddr = addr[addr.Length - 1].ToString();
-            //attendanceModel.IPAddress = "192.168.1.102";
-            attendanceModel.IPAddress = ipaddr;
+            //ipaddr = addr[addr.Length - 1].ToString();
+            attendanceModel.IPAddress = "192.168.1.102";
+            //attendanceModel.IPAddress = ipaddr;
 
             return attendanceModel;
         }
