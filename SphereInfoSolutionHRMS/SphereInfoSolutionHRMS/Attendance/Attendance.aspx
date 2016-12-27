@@ -54,7 +54,7 @@
     <div class="row">
         <div class="col-sm-12">
             <asp:GridView ID="gvEmployeeAttendance" runat="server" DataKeyNames="Attendance_Id" AutoGenerateColumns="False"
-                CssClass="table table-hover table-bordered table-condensed"
+                CssClass="table table-hover table-bordered table-condensed" OnPageIndexChanging="gvEmployeeAttendance_PageIndexChanging"
                 HeaderStyle-CssClass="gvHeader">
                 <Columns>
                     <asp:BoundField DataField="Attendance_Id" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />

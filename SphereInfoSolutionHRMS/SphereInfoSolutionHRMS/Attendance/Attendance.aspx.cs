@@ -28,8 +28,11 @@ namespace SphereInfoSolutionHRMS.Attendance
         protected void bindDates()
         {
             txtFromDate.Text = DateTime.Now.AddMonths(-3).ToString("yyyy/M/dd");
+            
             ceFromDate.EndDate = DateTime.Now;
+            
             txtToDate.Text = DateTime.Now.ToString("yyyy/M/dd");
+            
             ceToDate.EndDate = DateTime.Now;
         }
 
@@ -114,6 +117,12 @@ namespace SphereInfoSolutionHRMS.Attendance
             attendanceModel.ToDate = Convert.ToDateTime(txtToDate.Text);
             return attendanceModel;
 
+        }
+
+        protected void gvEmployeeAttendance_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvEmployeeAttendance.PageIndex = e.NewPageIndex;
+            bindAttendance();
         }
 
 

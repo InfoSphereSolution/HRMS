@@ -353,5 +353,18 @@ namespace SphereInfoSolutionHRMS.Admin
         {
             DisplayDesigantion();
         }
+
+        protected void gvDesignation_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvDesignation.PageIndex = e.NewPageIndex;
+            DisplayDesigantion();
+
+        }
+
+        protected void gvTempDesignation_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvTempDesignation.PageIndex = e.NewPageIndex;
+            DisplayTempDesigantion();
+        }
     }
 }

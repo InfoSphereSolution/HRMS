@@ -70,7 +70,7 @@
                 <h3 class="text-primary">List of Designations</h3>
                 <asp:GridView ID="gvDesignation" runat="server" DataKeyNames="Desig_Id" AutoGenerateColumns="False"
                     OnRowCommand="gvDesignation_RowCommand" OnRowDataBound="gvDesignation_RowDataBound" CssClass="table table-hover table-bordered table-condensed"
-                    HeaderStyle-CssClass="gvHeader">
+                    HeaderStyle-CssClass="gvHeader" OnPageIndexChanging="gvDesignation_PageIndexChanging">
                     <Columns>
                         <asp:BoundField DataField="Desig_Id" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                         <asp:BoundField DataField="Department_Name" HeaderText="Department Name" />
@@ -97,7 +97,7 @@
                 <br />
 
                 <asp:GridView ID="gvTempDesignation" runat="server" AutoGenerateColumns="False"
-                    OnRowDataBound="RowDataBound" DataKeyNames="TempDesigId" CssClass="table table-bordered table-condensed" HeaderStyle-CssClass="gvHeader">
+                    OnRowDataBound="RowDataBound" OnPageIndexChanging="gvTempDesignation_PageIndexChanging" DataKeyNames="TempDesigId" CssClass="table table-bordered table-condensed" HeaderStyle-CssClass="gvHeader">
                     <Columns>
                         <asp:TemplateField HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
                             <HeaderTemplate>

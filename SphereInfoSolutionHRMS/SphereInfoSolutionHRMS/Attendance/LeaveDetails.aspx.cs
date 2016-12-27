@@ -26,6 +26,9 @@ namespace SphereInfoSolutionHRMS.Attendance
                 BindLeaveDetails();
                 BindApprovalLeaveDetails();
                 //BindAvailableLeave();
+                ceFromDate.StartDate = DateTime.Now;
+                txtFromDate.Attributes.Add("readonly", "readonly");
+                txtToDate.Attributes.Add("readonly", "readonly");
             }
         }
         
@@ -251,18 +254,21 @@ namespace SphereInfoSolutionHRMS.Attendance
                 if (i == 1) 
                 {
                     //Successfull
-                    lblMessageLeaveDetails.Text = "Leave Applied Successfully";
+                    lblAppliedStatus.Visible = true;
+                    lblAppliedStatus.Text = "Leave Applied Successfully";
                 }
                 else if (1 == 0) 
                 {
                     // Already Applied
-                    lblMessageLeaveDetails.Text = "Leave Already Applied";
+                    lblAppliedStatus.Text = "Leave Already Applied";
                 }
                 else
                 {
-                    lblMessageLeaveDetails.Text = "Error";
+                    lblAppliedStatus.Text = "Error";
                 }
+                
                 BindLeaveDetails();
+                BindApprovalLeaveDetails();
                 ClearControls();
             }
         }
@@ -350,6 +356,26 @@ namespace SphereInfoSolutionHRMS.Attendance
             gvHalfdayDetails.Visible = false;
             lblIsHalfDay.Visible = false;
             
+        }
+
+        protected void gvHalfdayDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvHalfdayDetails.PageIndex = e.NewPageIndex;
+            DataTable dt = new DataTable();
+            gvHalfdayDetails.DataSource = dt;
+            gvHalfdayDetails.DataBind();
+        }
+
+        protected void gvLeaveDetails_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvLeaveDetails.PageIndex = e.NewPageIndex;
+            BindLeaveDetails();
+        }
+
+        protected void gvApprovalLeave_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvApprovalLeave.PageIndex = e.NewPageIndex;
+            BindApprovalLeaveDetails();
         }   
     }
 }

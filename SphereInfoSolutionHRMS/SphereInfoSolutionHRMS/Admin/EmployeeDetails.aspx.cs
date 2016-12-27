@@ -577,5 +577,11 @@ namespace SphereInfoSolutionHRMS.Admin
             }
         }
 
+        protected void gvEmployeeList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvEmployeeList.PageIndex = e.NewPageIndex;
+            bindEmployeeList();
+        }
+
     }
 }

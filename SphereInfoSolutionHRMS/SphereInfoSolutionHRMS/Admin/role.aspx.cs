@@ -343,5 +343,17 @@ namespace SphereInfoSolutionHRMS.Admin
             }
         }
 
+        protected void gvRole_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvRole.PageIndex = e.NewPageIndex;
+            bindgrid();
+        }
+
+        protected void gvTempRole_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvTempRole.PageIndex = e.NewPageIndex;
+            bindTempgrid();
+        }
+
     }
 }

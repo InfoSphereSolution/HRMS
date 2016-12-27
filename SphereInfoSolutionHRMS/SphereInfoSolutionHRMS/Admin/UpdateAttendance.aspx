@@ -16,6 +16,8 @@
                                 <td>
                                     <asp:DropDownList ID="ddlEmployee" runat="server" CssClass="form-control" Width="250px" AutoPostBack="true" OnSelectedIndexChanged="ddlEmployee_SelectedIndexChanged">
                                     </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RFEmployee" runat="server" ErrorMessage="Select Employee" ControlToValidate="ddlEmployee"
+                                        ForeColor="Red" InitialValue="-1" ValidationGroup="grpAtt"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -43,18 +45,23 @@
                             </tr>
 
                             <tr>
-                                <td>Enter Start Time:
+                                <td>Enter Punch In Time:
                                     <asp:TextBox ID="txtEnterST" runat="server" CssClass="form-control" Width="250px"></asp:TextBox>
-
+                                    <asp:RequiredFieldValidator ForeColor="Red" ID="RFST" ControlToValidate="txtEnterST" ValidationGroup="grpAtt" runat="server" ErrorMessage="Enter PunchIn Time"></asp:RequiredFieldValidator>
                                 </td>
-                                <td>Enter End Time:
+                                <td>Enter Punch Out Time:
                                     <asp:TextBox ID="txtEnterET" runat="server" CssClass="form-control" Width="250px"></asp:TextBox>
-
+                                    <asp:RequiredFieldValidator ForeColor="Red" ID="RFET" ControlToValidate="txtEnterET" ValidationGroup="grpAtt" runat="server" ErrorMessage="Enter PunchOut Time"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <asp:Button ID="btnMark" runat="server" Text="Mark Attendance" CssClass="btn btn-success btn-md" OnClick="btnMark_Click" />
+                                    <asp:Button ID="btnMark" ValidationGroup="grpAtt" runat="server" Text="Mark Attendance" CssClass="btn btn-success btn-md" OnClick="btnMark_Click" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblmsg" runat="server" Text="" Visible="false"></asp:Label>
                                 </td>
                             </tr>
                         </table>

@@ -20,7 +20,8 @@ namespace SphereInfoSolutionHRMS.Admin
             {
                 ((NestedMasterHome)this.Master).PageName = "Mark Attendance";
                 BindEmployee();
-                ceTDate.EndDate = DateTime.Now;
+                ceTDate.StartDate = DateTime.Now.AddDays(-10);
+                ceTDate.EndDate = DateTime.Now.AddDays(-1);
                 txtDate.Attributes.Add("readonly", "readonly");
             }
         }
@@ -90,17 +91,19 @@ namespace SphereInfoSolutionHRMS.Admin
                 if (InTime != "" && OutTime != "" && Status == "Present")
                 {
                     //Intime & OutTime is not null
+
                     txtEnterST.Text = InTime;
                     txtEnterET.Text = OutTime;
                     txtEnterST.Enabled = false;
                     txtEnterET.Enabled = false;
                     btnMark.Enabled = false;
                 }
-                else if (InTime != "" && OutTime == "" && Status == "Waiting for Punch out")
+                else if (InTime != "" && OutTime == "" && Status == "Waiting for PunchOut")
                 {
                     //Intime is not null & OutTime is null
+
                     txtEnterST.Text = InTime;
-                    txtEnterET.Text = OutTime;
+                    txtEnterET.Text = txtDate.Text + " " + txtShiftEndTime.Text;
                     txtEnterST.Enabled = false;
                     txtEnterET.Enabled = true;
                     if (ShiftName == "Flexible (9 hours)")
@@ -156,6 +159,28 @@ namespace SphereInfoSolutionHRMS.Admin
             DateTime OutTime = Convert.ToDateTime(txtEnterET.Text);
             DateTime date = Convert.ToDateTime(txtDate.Text);
            int i= markAttendance.MarkAttendanceByHr(UserId, date, InTime, OutTime);
+           lblmsg.Visible = true;
+           if (i == 1)
+           {
+               lblmsg.Text = "Attendance Marked Successfully..";
+               ClearControls();
+           }
+           else
+           {
+               lblmsg.Text = "Attendance Not Updated..";
+           }
+        }
+
+        private void ClearControls()
+        {
+            txtDate.Text = "";
+            txtEnterET.Text = "";
+            txtEnterST.Text = "";
+            txtShift.Text = "";
+            txtShiftEndTime.Text = "";
+            txtShiftStartTime.Text = "";
+            ddlEmployee.SelectedIndex = -1;
+
         }
     }
 }

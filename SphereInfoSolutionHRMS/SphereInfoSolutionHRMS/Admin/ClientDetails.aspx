@@ -77,7 +77,7 @@
                         <asp:Panel ID="pnlListOfClient" runat="server" Visible="false">
                             <h3 class="text-primary">List of Clients</h3>
 
-                            <asp:GridView ID="gvClientList" runat="server" DataKeyNames="ClientId" AutoGenerateColumns="False"
+                            <asp:GridView ID="gvClientList" runat="server" DataKeyNames="ClientId" AutoGenerateColumns="False" OnPageIndexChanging="gvClientList_PageIndexChanging"
                                 CssClass="table table-hover table-bordered table-condensed" OnRowCommand="gvClientList_RowCommand" OnRowDataBound="gvClientList_RowDataBound"
                                 HeaderStyle-CssClass="gvHeader">
                                 <Columns>
@@ -515,7 +515,7 @@
                                 <hr class="small" />
                                 <asp:Panel ID="pnlHolidayList" runat="server" Visible="false">
                                     <h3 class="text-primary">List of Holidays</h3>
-                                    <asp:GridView ID="gvHolidayList" runat="server" DataKeyNames="Cl_HolidayId" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-condensed"
+                                    <asp:GridView ID="gvHolidayList" OnPageIndexChanging="gvHolidayList_PageIndexChanging" runat="server" DataKeyNames="Cl_HolidayId" AutoGenerateColumns="False" CssClass="table table-hover table-bordered table-condensed"
                                         HeaderStyle-CssClass="gvHeader" OnRowCommand="gvHolidayList_RowCommand" OnRowDataBound="gvHolidayList_RowDataBound">
                                         <Columns>
                                             <asp:BoundField DataField="Cl_HolidayId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
@@ -544,7 +544,7 @@
                                     <h3 class="text-primary">Pending Requests</h3>
                                     <br />
 
-                                    <asp:GridView ID="gvTempHolidayList" runat="server" AutoGenerateColumns="False"
+                                    <asp:GridView ID="gvTempHolidayList" OnPageIndexChanging="gvTempHolidayList_PageIndexChanging" runat="server" AutoGenerateColumns="False"
                                         DataKeyNames="PendingHolidayId" CssClass="table table-bordered table-condensed" HeaderStyle-CssClass="gvHeader">
                                         <Columns>
                                             <asp:TemplateField HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">

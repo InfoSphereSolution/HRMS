@@ -104,7 +104,7 @@
                         <h3 class="text-primary text-center">List of Employees</h3>
 
                         <asp:GridView ID="gvEmployeeList" runat="server" DataKeyNames="UserId" AutoGenerateColumns="False"
-                            CssClass="table table-hover table-bordered table-condensed"
+                            CssClass="table table-hover table-bordered table-condensed" OnPageIndexChanging="gvEmployeeList_PageIndexChanging"
                             HeaderStyle-CssClass="gvHeader" OnRowCommand="gvEmployeeList_RowCommand" OnRowDataBound="gvEmployeeList_RowDataBound">
                             <Columns>
                                 <asp:BoundField DataField="UserId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />

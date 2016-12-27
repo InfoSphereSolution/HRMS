@@ -98,7 +98,7 @@
                     Visible="false"
                     ShowHeader="true"
                     CssClass="table table-hover table-bordered table-condensed"
-                    HeaderStyle-CssClass="gvHeader">
+                    HeaderStyle-CssClass="gvHeader" OnPageIndexChanging="gvHalfdayDetails_PageIndexChanging">
                     <Columns>
                         <asp:TemplateField HeaderText="Day" ItemStyle-CssClass="text-center" HeaderStyle-CssClass="text-center">
                             <HeaderTemplate>
@@ -157,7 +157,7 @@
             <asp:GridView ID="gvLeaveDetails" runat="server" AutoGenerateColumns="False"
                 ShowHeader="true"
                 DataKeyNames="LeaveId"
-                CssClass="table table-hover table-bordered"
+                CssClass="table table-hover table-bordered" OnPageIndexChanging="gvLeaveDetails_PageIndexChanging"
                 HeaderStyle-CssClass="gvHeader" OnRowDataBound="gvLeaveDetails_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="LeaveId" HeaderText="Leave ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
@@ -221,7 +221,7 @@
             <br />
 
             <asp:GridView ID="gvApprovalLeave" runat="server" AutoGenerateColumns="False"
-                ShowHeader="true"
+                ShowHeader="true" OnPageIndexChanging="gvApprovalLeave_PageIndexChanging"
                 DataKeyNames="LeaveId"
                 CssClass="table table-hover table-bordered table-condensed"
                 HeaderStyle-CssClass="gvHeader" OnRowDataBound="gvApprovalLeave_RowDataBound">

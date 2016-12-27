@@ -33,7 +33,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 if (PageId != 0)
                 {
                     checkGivenAccess();
-                } 
+                }
                 GetClientNames();
                 BindgvHolidayList();
                 BindgvTempHolidayList();
@@ -870,8 +870,8 @@ namespace SphereInfoSolutionHRMS.Admin
                 btnRemoveClient.Attributes["onclick"] = "if(!confirm('Do you want to delete Client?')){ return false; };";
                 btnEditClient.Attributes["onclick"] = "if(!confirm('Do you want to Edit Client?')){ return false; };";
                 btnViewClient.Attributes["onclick"] = "if(!confirm('Do you want to View Client Details?')){ return false; };";
-          
-               
+
+
                 if (IsActive == 0)
                 {
                     e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#D5D8DC"); ;
@@ -926,7 +926,7 @@ namespace SphereInfoSolutionHRMS.Admin
         //Update Master Table Record
         protected void btnupdate_Click(object sender, EventArgs e)
         {
-            bool Is_Sat = false;            
+            bool Is_Sat = false;
             if (cbIsSaturdayWorking.Checked)
             {
                 Is_Sat = true;
@@ -1243,7 +1243,7 @@ namespace SphereInfoSolutionHRMS.Admin
         //Display Alert msgs for holidays
         private void DisplayResultMessage(int Result)
         {
-            
+
             if (Result == -1)
             {
                 lblMessageAddHoliday.Text = "This Holiday Exists for this client.";
@@ -1292,7 +1292,7 @@ namespace SphereInfoSolutionHRMS.Admin
             else if (Result == 6)
             {
                 lblMessageAddHoliday.Text = "Holidaty Deleted waiting for approval.";
-               // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holidaty Deleted waiting for approval');", true);
+                // ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Holidaty Deleted waiting for approval');", true);
             }
             else
             {
@@ -1333,7 +1333,7 @@ namespace SphereInfoSolutionHRMS.Admin
 
         protected void gvHolidayList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            
+
             int index = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "Change")
             {
@@ -1342,7 +1342,7 @@ namespace SphereInfoSolutionHRMS.Admin
                 btnAddHoliday.CommandArgument = "Update";
                 ddlClientName.Enabled = false;
                 BindHolidaysToControls(index);
-                
+
 
             }
             else
@@ -1369,7 +1369,7 @@ namespace SphereInfoSolutionHRMS.Admin
         {
             try
             {
-                int Cl_HolidayId = 0,clientId=0;
+                int Cl_HolidayId = 0, clientId = 0;
                 String HolidayName = "", ClientName = "", HolidayOn = "";
                 bool IsOptional = false;
 
@@ -1387,10 +1387,10 @@ namespace SphereInfoSolutionHRMS.Admin
                 ddlClientName.ClearSelection();
                 ddlClientName.SelectedValue = ddlClientName.Items.FindByValue(clientId.ToString()).Value;
                 ddlIsOptional.ClearSelection();
-               // ddlClientName.Items.FindByValue(Convert.ToInt32(Convert.ToString(ClientName)).ToString()).Selected = true ;
+                // ddlClientName.Items.FindByValue(Convert.ToInt32(Convert.ToString(ClientName)).ToString()).Selected = true ;
                 ddlIsOptional.Items.FindByValue(Convert.ToInt32(Convert.ToBoolean(IsOptional)).ToString()).Selected = true;
             }
-            catch(Exception)
+            catch (Exception)
             {
             }
         }
@@ -1488,7 +1488,25 @@ namespace SphereInfoSolutionHRMS.Admin
             }
         }
 
-       
+        protected void gvClientList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvClientList.PageIndex = e.NewPageIndex;
+            DisplayMasterClient();
+        }
+
+        protected void gvHolidayList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvHolidayList.PageIndex = e.NewPageIndex;
+            BindgvHolidayList();
+        }
+
+        protected void gvTempHolidayList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvTempHolidayList.PageIndex = e.NewPageIndex;
+            BindgvTempHolidayList();
+        }
+
+
 
 
 

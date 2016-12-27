@@ -103,6 +103,7 @@ namespace BAL
         public int MarkAttendanceByHr(int UserId,DateTime Date,DateTime InTime,DateTime OutTime)
         {
             DataTable dt = new DataTable();
+            int i = 0;
             try
             {
                 List<SqlParameter> sqlparam = new List<SqlParameter>();
@@ -110,13 +111,13 @@ namespace BAL
                 sqlparam.Add(new SqlParameter("@Date", Date));
                 sqlparam.Add(new SqlParameter("@InTime", InTime));
                 sqlparam.Add(new SqlParameter("@OutTime", OutTime));
-                int i = DAL.SQLHelp.ExecuteNonQuery("Usp_MarkForgotAttendance", sqlparam);
+                 i = DAL.SQLHelp.ExecuteNonQuery("Usp_MarkForgotAttendance", sqlparam);
 
             }
             catch (Exception ex)
             {
             }
-            return 1;
+            return i;
         }
     }
 }

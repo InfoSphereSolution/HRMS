@@ -75,7 +75,7 @@
                         <h3 class="text-primary">List of Roles</h3>
                         <asp:GridView ID="gvRole" runat="server" DataKeyNames="RoleId" AutoGenerateColumns="False" OnRowCommand="gvRole_RowCommand"
                             OnRowDataBound="gvRole_RowDataBound" CssClass="table table-hover table-bordered table-condensed"
-                            HeaderStyle-CssClass="gvHeader">
+                            HeaderStyle-CssClass="gvHeader" OnPageIndexChanging="gvRole_PageIndexChanging">
                             <Columns>
                                 <asp:BoundField DataField="RoleId" HeaderText="ID" HeaderStyle-CssClass="hidden" ItemStyle-CssClass="hidden" />
                                 <asp:BoundField DataField="RoleName" HeaderText="Name" />
@@ -100,7 +100,7 @@
                         <h3 class="text-primary">Pending Requests</h3>
                         <br />
 
-                        <asp:GridView ID="gvTempRole" runat="server" AutoGenerateColumns="False" OnRowDataBound="RowDataBound"
+                        <asp:GridView ID="gvTempRole" OnPageIndexChanging="gvTempRole_PageIndexChanging" runat="server" AutoGenerateColumns="False" OnRowDataBound="RowDataBound"
                             DataKeyNames="TempRoleId" CssClass="table table-bordered table-condensed" HeaderStyle-CssClass="gvHeader">
                             <Columns>
                                 <asp:TemplateField HeaderStyle-CssClass="text-center" ItemStyle-CssClass="text-center">
