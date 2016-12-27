@@ -52,3 +52,8 @@ C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolution
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.dll
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\obj\Debug\SphereInfoSolutionHRMS.pdb
 C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Reports\RDLCReports\Attendance\Details\ReportAttendanceDetails.rdlc
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Reports\RDLCReports\Employees\ReportActiveOrNotActiveEmployees.rdlc
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Reports\RDLCReports\Holiday\Details\ReportHoliday.rdlc
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Reports\RDLCReports\Leave\Details\ReportLeaveDetails.rdlc
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Reports\RDLCReports\Leave\Summary\ReportLeaveSummary.rdlc
+C:\Users\user\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\SphereInfoSolutionHRMS\bin\Reports\RDLCReports\Attendance\Summary\AttendanceSummaryReport.rdlc

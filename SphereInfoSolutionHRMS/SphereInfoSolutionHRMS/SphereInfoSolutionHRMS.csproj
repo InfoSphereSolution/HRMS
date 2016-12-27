@@ -363,11 +363,21 @@
     <Content Include="Reports\RDLCReports\Attendance\Details\ReportAttendanceDetails.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Reports\RDLCReports\Attendance\Summary\AttendanceSummaryReport.rdlc" />
-    <EmbeddedResource Include="Reports\RDLCReports\Employees\ReportActiveOrNotActiveEmployees.rdlc" />
-    <EmbeddedResource Include="Reports\RDLCReports\Holiday\Details\ReportHoliday.rdlc" />
-    <EmbeddedResource Include="Reports\RDLCReports\Leave\Details\ReportLeaveDetails.rdlc" />
-    <EmbeddedResource Include="Reports\RDLCReports\Leave\Summary\ReportLeaveSummary.rdlc" />
+    <Content Include="Reports\RDLCReports\Attendance\Summary\AttendanceSummaryReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RDLCReports\Employees\ReportActiveOrNotActiveEmployees.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RDLCReports\Holiday\Details\ReportHoliday.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RDLCReports\Leave\Details\ReportLeaveDetails.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reports\RDLCReports\Leave\Summary\ReportLeaveSummary.rdlc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
