@@ -16,5 +16,6 @@ D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.dll
 D:\SavitaPractical\ValidHRMS\HRMS\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.pdb
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\bin\Debug\DAL.dll
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\bin\Debug\DAL.pdb
+C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.dll
 C:\Users\Amaresh\Documents\GitHub\HRMS\SphereInfoSolutionHRMS\DAL\obj\Debug\DAL.pdb

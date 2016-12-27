@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BAL;
 using Models;
+using System.Net;
 
 namespace SphereInfoSolutionHRMS
 {
@@ -18,7 +19,7 @@ namespace SphereInfoSolutionHRMS
         AttendanceModel attendanceModel = new AttendanceModel();
         Profile profile = new Profile();
         Int32 UserID = Convert.ToInt32(HttpContext.Current.User.Identity.Name);
-        
+
 
         public string PageName
         {
@@ -27,20 +28,24 @@ namespace SphereInfoSolutionHRMS
         }
 
         public Int32 PageID { get; set; }
-        public DataTable dtUserAccess { get; set; } 
+        public DataTable dtUserAccess { get; set; }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {   
-                    ChangePunch();
-                    bindSideMenu(FetchMenuItem(UserID, 0), 0, null);                
+            {
+                ChangePunch();
+                bindSideMenu(FetchMenuItem(UserID, 0), 0, null);
+                MarkUnmarkedAttendance();
             }
         }
 
+        private void MarkUnmarkedAttendance()
+        {
+            markAttendance.MarkUnmarkedAttendance();
+        }
 
-        
 
         protected Int32 IsAttendanceMarked()
         {
@@ -62,13 +67,13 @@ namespace SphereInfoSolutionHRMS
                 lbtnMarkAttendance.Enabled = true;
                 lbtnMarkAttendance.Visible = true;
             }
-            else if (IsAttendanceMarked() == 2 )
+            else if (IsAttendanceMarked() == 2)
             {
                 lbtnMarkAttendance.Text = "Disabled";
                 lbtnMarkAttendance.Enabled = false;
                 lbtnMarkAttendance.Visible = true;
             }
-            else 
+            else
             {
                 lbtnMarkAttendance.Enabled = false;
                 lbtnMarkAttendance.Visible = false;
@@ -100,18 +105,25 @@ namespace SphereInfoSolutionHRMS
 
             ChangePunch();
         }
-        
+
 
         protected AttendanceModel getPunchUserInfo()
         {
             AttendanceModel attendanceModel = new AttendanceModel();
             attendanceModel.UserID = UserID;
-            attendanceModel.IPAddress = "192.168.1.102";
+            string ipaddr = "";
+            ipaddr = System.Net.Dns.GetHostName();
+            IPHostEntry ipEntry = System.Net.Dns.GetHostEntry(ipaddr);
+            IPAddress[] addr = ipEntry.AddressList;
+            ipaddr = addr[addr.Length - 1].ToString();
+            //attendanceModel.IPAddress = "192.168.1.102";
+            attendanceModel.IPAddress = ipaddr;
+
             return attendanceModel;
         }
 
         protected DataTable FetchMenuItem(Int32 UserID, Int32 ParentID)
-        {            
+        {
             DataTable dt = profile.FetchSideMenu(UserID, ParentID);
             return dt;
         }

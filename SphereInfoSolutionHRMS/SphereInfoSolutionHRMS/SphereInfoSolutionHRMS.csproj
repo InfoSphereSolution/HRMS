@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\AccessControl.aspx" />
+    <Content Include="Admin\UpdateAttendance.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Login\AboutUs.aspx" />
@@ -107,6 +108,13 @@
     </Compile>
     <Compile Include="Admin\AccessControl.aspx.designer.cs">
       <DependentUpon>AccessControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UpdateAttendance.aspx.cs">
+      <DependentUpon>UpdateAttendance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UpdateAttendance.aspx.designer.cs">
+      <DependentUpon>UpdateAttendance.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
